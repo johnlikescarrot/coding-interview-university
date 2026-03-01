@@ -9,6 +9,17 @@ describe('Parser logic', () => {
     vi.clearAllMocks();
   });
 
+  it('should return empty array if file does not exist', () => {
+    vi.spyOn(fs, 'existsSync').mockReturnValue(false);
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+    const result = parseCurriculum('nonexistent.md');
+    expect(result).toEqual([]);
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('File not found'));
+
+    consoleSpy.mockRestore();
+  });
+
   it('should parse curriculum sections and topics', () => {
     const mockMd = '## Section 1\n### Topic 1\n- [Link](url)';
     vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
@@ -54,12 +65,22 @@ describe('Parser logic', () => {
     expect(result[1].topics[0].id).toBe('same-title-2');
   });
 
-  it('should parse language resources correctly', () => {
-    const mockMd = '- Python\n  - [Link](http://py.com)\n- C++\n  - [Video](https://youtube.com/watch?v=cpp)';
+  it('should handle headings without sections (edge case)', () => {
+    const mockMd = '# Title\nSome paragraph without sections';
+    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
+    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+
+    const result = parseCurriculum('dummy.md');
+    expect(result).toEqual([]);
+  });
+
+  it('should parse language resources correctly and prevent duplicates', () => {
+    const mockMd = '- Python\n  - [Link](http://py.com)\n  - [Link](http://py.com)\n- C++\n  - [Video](https://youtube.com/watch?v=cpp)';
     vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
     vi.spyOn(fs, 'existsSync').mockReturnValue(true);
 
     const result = parseLanguageResources('lang.md');
+    expect(result['Python']).toHaveLength(1);
     expect(result['Python'][0]).toMatchObject({
       title: 'Link',
       url: 'http://py.com',

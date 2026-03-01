@@ -28,7 +28,11 @@ export function Sidebar() {
           <span className="text-muted-foreground font-medium">Overall Progress</span>
           <span className="font-bold">{progressPercent}%</span>
         </div>
-        <Progress value={progressPercent} className="h-2" />
+        <Progress
+          value={progressPercent}
+          className="h-2"
+          aria-label="Curriculum mastery progress"
+        />
         <p className="text-[10px] text-muted-foreground mt-3 text-center">
           {completed.length} of {totalTopics} topics mastered
         </p>

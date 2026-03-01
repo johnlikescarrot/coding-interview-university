@@ -1,8 +1,16 @@
 import path from "path";
-import { parseLanguageResources } from "@/lib/parser";
+import { parseLanguageResources, Resource } from "@/lib/parser";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Video, FileText, Code2 } from "lucide-react";
+import { ExternalLink, Video, FileText, Code2, Book, Zap, HelpCircle } from "lucide-react";
+
+const IconMap: Record<Resource['type'], any> = {
+  video: { icon: Video, color: "text-red-500" },
+  article: { icon: FileText, color: "text-blue-500" },
+  book: { icon: Book, color: "text-green-500" },
+  interactive: { icon: Zap, color: "text-yellow-500" },
+  other: { icon: HelpCircle, color: "text-muted-foreground" }
+};
 
 export default function ResourcesPage() {
   const filePath = path.join(process.cwd(), "content/programming-language-resources.md");
@@ -42,25 +50,26 @@ export default function ResourcesPage() {
             </CardHeader>
             <CardContent className="p-0 flex-1">
               <div className="divide-y divide-muted/50">
-                {resources.slice(0, 10).map((res) => (
-                  <a
-                    key={res.url}
-                    href={res.url}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="flex items-start gap-3 p-4 hover:bg-muted/50 transition-colors group"
-                  >
-                    {res.type === 'video' ? (
-                      <Video className="h-4 w-4 mt-1 text-red-500" />
-                    ) : (
-                      <FileText className="h-4 w-4 mt-1 text-blue-500" />
-                    )}
-                    <span className="text-sm font-medium leading-tight flex-1 group-hover:text-primary transition-colors">
-                      {res.title}
-                    </span>
-                    <ExternalLink className="h-3 w-3 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" />
-                  </a>
-                ))}
+                {resources.slice(0, 10).map((res) => {
+                  const TypeIcon = IconMap[res.type]?.icon || HelpCircle;
+                  const iconColor = IconMap[res.type]?.color || "text-muted-foreground";
+
+                  return (
+                    <a
+                      key={res.url}
+                      href={res.url}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="flex items-start gap-3 p-4 hover:bg-muted/50 transition-colors group"
+                    >
+                      <TypeIcon className={`h-4 w-4 mt-1 ${iconColor}`} />
+                      <span className="text-sm font-medium leading-tight flex-1 group-hover:text-primary transition-colors">
+                        {res.title}
+                      </span>
+                      <ExternalLink className="h-3 w-3 mt-1 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </a>
+                  );
+                })}
               </div>
               {resources.length > 10 && (
                 <div className="p-3 text-center bg-muted/10">

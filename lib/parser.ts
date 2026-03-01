@@ -39,7 +39,8 @@ const getResourceType = (url: string): Resource['type'] => {
   const u = url.toLowerCase();
   if (u.includes('youtube.com') || u.includes('youtu.be') || u.includes('vimeo.com')) return 'video';
   if (u.includes('amazon.com') || u.includes('books.google') || u.includes('oreilly.com')) return 'book';
-  if (u.includes('interactive') || u.includes('labex.io') || u.includes('exercism.org')) return 'interactive';
+  // Restrict interactive to specific known domains to avoid broad word matches
+  if (u.includes('labex.io') || u.includes('exercism.org') || u.includes('codewars.com') || u.includes('leetcode.com')) return 'interactive';
   return 'article';
 };
 
@@ -88,16 +89,18 @@ export function parseCurriculum(filePath: string): Section[] {
         }
       } else if (node.type === 'list' && currentTopic) {
         node.children?.forEach((listItem) => {
-          // Standard pattern: listItem -> paragraph -> link
           const paragraph = listItem.children?.find((c) => c.type === 'paragraph');
           if (paragraph) {
             const link = paragraph.children?.find((c) => c.type === 'link');
             if (link && link.url) {
-               currentTopic?.resources.push({
-                 title: extractText(link) || extractText(paragraph),
-                 url: link.url,
-                 type: getResourceType(link.url)
-               });
+               // Prevent duplicates by checking URL
+               if (!currentTopic?.resources.some(r => r.url === link.url)) {
+                 currentTopic?.resources.push({
+                   title: extractText(link) || extractText(paragraph),
+                   url: link.url,
+                   type: getResourceType(link.url)
+                 });
+               }
             }
           }
         });
@@ -124,11 +127,14 @@ export function parseLanguageResources(filePath: string): Record<string, Resourc
             if (t.startsWith('- [')) {
                 const match = t.match(/\[(.*?)\]\((.*?)\)/);
                 if (match && currentLang) {
-                    sections[currentLang].push({
-                        title: match[1],
-                        url: match[2],
-                        type: getResourceType(match[2])
-                    });
+                    // Prevent duplicates
+                    if (!sections[currentLang].some(r => r.url === match[2])) {
+                      sections[currentLang].push({
+                          title: match[1],
+                          url: match[2],
+                          type: getResourceType(match[2])
+                      });
+                    }
                 }
             } else if (t.startsWith('- ')) {
                 const lang = t.replace('- ', '').trim();

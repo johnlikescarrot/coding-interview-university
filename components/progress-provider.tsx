@@ -24,7 +24,13 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem("ciu-progress")
     if (saved) {
       try {
-        setCompleted(JSON.parse(saved))
+        const parsed = JSON.parse(saved)
+        // Runtime validation: Ensure it's a string array
+        if (Array.isArray(parsed) && parsed.every(i => typeof i === "string")) {
+          setCompleted(parsed)
+        } else {
+          console.warn("Invalid data format in localStorage: ciu-progress")
+        }
       } catch (e) {
         console.error("Failed to parse progress from localStorage", e)
       }
@@ -35,7 +41,11 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   // Persist to localStorage when completed changes
   useEffect(() => {
     if (isMounted) {
-      localStorage.setItem("ciu-progress", JSON.stringify(completed))
+      try {
+        localStorage.setItem("ciu-progress", JSON.stringify(completed))
+      } catch (err) {
+        console.error("Failed to save ciu-progress to localStorage", err)
+      }
     }
   }, [completed, isMounted])
 

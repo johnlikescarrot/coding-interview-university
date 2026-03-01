@@ -18,16 +18,21 @@ interface CurriculumViewProps {
 export function CurriculumView({ sections }: CurriculumViewProps) {
   const { completed, toggleTopic, setTotalTopics } = useProgress()
 
+  // Only render sections that have topics
+  const validSections = React.useMemo(() =>
+    sections.filter(s => s.topics.length > 0),
+  [sections])
+
   // Calculate total topics once on mount or when sections change
   React.useEffect(() => {
-    const total = sections.reduce((acc, section) => acc + section.topics.length, 0)
+    const total = validSections.reduce((acc, section) => acc + section.topics.length, 0)
     setTotalTopics(total)
-  }, [sections, setTotalTopics])
+  }, [validSections, setTotalTopics])
 
   return (
     <div className="space-y-12">
-      {sections.map((section, sidx) => (
-        <section key={sidx} className="space-y-6">
+      {validSections.map((section, sidx) => (
+        <section key={section.title || sidx} className="space-y-6">
           <div className="space-y-2">
             <h2 className="text-3xl font-extrabold tracking-tight">{section.title}</h2>
             <div className="h-1 w-20 bg-primary rounded-full" />
@@ -55,9 +60,9 @@ export function CurriculumView({ sections }: CurriculumViewProps) {
                   <div className="pl-10 space-y-4">
                     {topic.resources.length > 0 ? (
                       <div className="grid gap-3 sm:grid-cols-2">
-                        {topic.resources.map((res, ridx) => (
+                        {topic.resources.map((res) => (
                           <a
-                            key={ridx}
+                            key={res.url}
                             href={res.url}
                             target="_blank"
                             rel="noopener noreferrer"
