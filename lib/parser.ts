@@ -116,7 +116,10 @@ export function parseCurriculum(filePath: string): Section[] {
 
 export function parseLanguageResources(filePath: string): Record<string, Resource[]> {
     try {
-        if (!fs.existsSync(filePath)) return {};
+        if (!fs.existsSync(filePath)) {
+            console.error(`Language resources file not found: ${filePath}`);
+            return {};
+        }
         const content = fs.readFileSync(filePath, 'utf-8');
         const sections: Record<string, Resource[]> = {};
         const lines = content.split('\n');

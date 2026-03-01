@@ -4,7 +4,9 @@ import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Video, FileText, Code2, Book, Zap, HelpCircle } from "lucide-react";
 
-const IconMap: Record<Resource['type'], any> = {
+interface IconEntry { icon: React.ComponentType<{ className?: string }>; color: string; }
+
+const IconMap: Record<Resource["type"], IconEntry> = {
   video: { icon: Video, color: "text-red-500" },
   article: { icon: FileText, color: "text-blue-500" },
   book: { icon: Book, color: "text-green-500" },
