@@ -6,14 +6,14 @@ import Flashcards from '../Flashcards';
 // Comprehensive Mocks
 vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, onClick, className, onKeyDown, ...props }: any) => {
+    div: ({ children, onClick, className, onKeyDown, 'aria-label': ariaLabel, ...props }: any) => {
       const domProps = Object.fromEntries(
         Object.entries(props).filter(([key]) => !['initial', 'animate', 'exit', 'transition'].includes(key))
       );
       const isInteractive = !!onClick || !!onKeyDown;
       return (
         <div
-          {...(isInteractive ? { role: "button", tabIndex: 0, onClick, onKeyDown } : {})}
+          {...(isInteractive ? { role: "button", tabIndex: 0, onClick, onKeyDown, "aria-label": ariaLabel } : {})}
           className={className}
           data-testid="motion-div"
           {...domProps}
@@ -62,12 +62,10 @@ describe('Flashcards', () => {
 
   it('renders correctly and flips', () => {
     render(<Flashcards cards={mockCards} labels={mockLabels} />);
-    // Shuffling is enabled, so just look for the question label + text
     const card = screen.getByLabelText(new RegExp(`${mockLabels.question}, ${mockLabels.flip}`, 'i'));
     expect(card).toBeInTheDocument();
 
     fireEvent.click(card);
-    // After flip, should show the answer label side
     expect(screen.getByLabelText(new RegExp(mockLabels.answer, 'i'))).toBeInTheDocument();
   });
 
@@ -75,7 +73,43 @@ describe('Flashcards', () => {
     render(<Flashcards cards={mockCards} labels={mockLabels} />);
     const nextBtn = screen.getByLabelText(new RegExp(mockLabels.next, 'i'));
     fireEvent.click(nextBtn);
-    // Should show a valid question
     expect(screen.getByText(/Question [12]/)).toBeInTheDocument();
+
+    const prevBtn = screen.getByLabelText(new RegExp(mockLabels.prev, 'i'));
+    fireEvent.click(prevBtn);
+    expect(screen.getByText(/Question [12]/)).toBeInTheDocument();
+  });
+
+  it('handles keyboard flip', () => {
+    render(<Flashcards cards={mockCards} labels={mockLabels} />);
+    const card = screen.getByLabelText(new RegExp(`${mockLabels.question}, ${mockLabels.flip}`, 'i'));
+
+    fireEvent.keyDown(card, { key: 'Enter' });
+    expect(screen.getByLabelText(new RegExp(mockLabels.answer, 'i'))).toBeInTheDocument();
+
+    fireEvent.keyDown(card, { key: ' ', code: 'Space' });
+    expect(screen.getByLabelText(new RegExp(mockLabels.question, 'i'))).toBeInTheDocument();
+  });
+
+  it('resets the deck', () => {
+    render(<Flashcards cards={mockCards} labels={mockLabels} />);
+    const nextBtn = screen.getByLabelText(new RegExp(mockLabels.next, 'i'));
+    fireEvent.click(nextBtn);
+
+    const resetBtn = screen.getByText(mockLabels.reset);
+    fireEvent.click(resetBtn);
+
+    expect(screen.getByText(/1 \/ 2/)).toBeInTheDocument();
+  });
+
+  it('renders null for empty cards', () => {
+    const { container } = render(<Flashcards cards={[]} labels={mockLabels} />);
+    expect(container.firstChild).toBeNull();
+  });
+
+  it('disables navigation for single-card deck', () => {
+    render(<Flashcards cards={[{ q: 'Q1', a: 'A1' }]} labels={mockLabels} />);
+    expect(screen.getByLabelText(mockLabels.next)).toBeDisabled();
+    expect(screen.getByLabelText(mockLabels.prev)).toBeDisabled();
   });
 });

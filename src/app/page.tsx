@@ -2,126 +2,144 @@
 
 import * as React from "react"
 import DashboardShell from "@/components/layout/DashboardShell"
+import { Skeleton } from "@/components/ui/skeleton"
 import Roadmap from "@/components/curriculum/Roadmap"
 import SofaWhiteboard from "@/components/whiteboard/SofaWhiteboard"
 import Flashcards from "@/components/study/Flashcards"
-import { CurriculumTopic } from "@/lib/parser"
 import { useProgressStore } from "@/store/useProgressStore"
-import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
-import { AlertCircle, RefreshCcw } from "lucide-react"
-import { Button } from "@/components/ui/button"
+import { CurriculumTopic } from "@/lib/parser"
 
-const TOPIC_LIMIT = 20
-
-const FLASHCARD_LABELS: Record<string, { title: string; subtitle: string; question: string; answer: string; next: string; prev: string; reset: string; flip: string }> = {
+const FLASHCARD_LABELS = {
   en: {
     title: "Active Recall",
-    subtitle: "Test your knowledge with randomized flashcards.",
+    subtitle: "Quick-fire conceptual challenges to solidify your understanding.",
     question: "Question",
     answer: "Answer",
     next: "Next card",
     prev: "Previous card",
-    reset: "Reset deck",
-    flip: "click to see answer"
+    reset: "Shuffle deck",
+    flip: "Press Space or Enter to flip",
   },
   es: {
     title: "Recuerdo Activo",
-    subtitle: "Pon a prueba tus conocimientos con tarjetas aleatorias.",
+    subtitle: "Desafíos conceptuales rápidos para consolidar tu comprensión.",
     question: "Pregunta",
     answer: "Respuesta",
-    next: "Siguiente tarjeta",
-    prev: "Tarjeta anterior",
-    reset: "Reiniciar mazo",
-    flip: "clic para ver respuesta"
+    next: "Siguiente",
+    prev: "Anterior",
+    reset: "Barajar mazo",
+    flip: "Pulsa Espacio o Enter para voltear",
   },
   cn: {
-    title: "主动回想",
-    subtitle: "通过随机闪卡测试您的知识。",
+    title: "主动回忆",
+    subtitle: "快速的概念挑战，巩固你的理解。",
     question: "问题",
     answer: "答案",
     next: "下一张",
     prev: "上一张",
-    reset: "重置卡组",
-    flip: "点击查看答案"
+    reset: "打乱卡片",
+    flip: "按空格或回车翻转",
   },
   ja: {
     title: "アクティブリコール",
-    subtitle: "ランダムなフラッシュカードで知識をテストしましょう。",
+    subtitle: "理解を深めるための、スピーディーな概念チャレンジ。",
     question: "問題",
     answer: "解答",
-    next: "次のカード",
-    prev: "前のカード",
-    reset: "デッキをリセット",
-    flip: "クリックして回答を表示"
-  }
+    next: "次へ",
+    prev: "前へ",
+    reset: "シャッフル",
+    flip: "スペースまたはEnterで裏返す",
+  },
 }
 
-export default function Home() {
-  const { language } = useProgressStore()
+const ARENA_LABELS = {
+  en: { title: "Practice Arena", subtitle: "Sharpen your logic with the Sofa Whiteboard." },
+  es: { title: "Campo de Práctica", subtitle: "Afina tu lógica con la Pizarra Sofa." },
+  cn: { title: "演武场", subtitle: "使用 Sofa 白板磨练你的逻辑。" },
+  ja: { title: "演習場", subtitle: "Sofa ホワイトボードで論理を磨きましょう。" },
+}
+
+const FLASHCARDS = {
+  en: [
+    { q: "What is Big O notation used for?", a: "To describe the upper bound of an algorithm's time or space complexity." },
+    { q: "What is the average time complexity of Quick Sort?", a: "O(n log n)" },
+    { q: "Describe the LIFO principle in a Stack.", a: "Last-In, First-Out: The most recently added element is the first one to be removed." },
+  ],
+  es: [
+    { q: "¿Para qué se usa la notación Big O?", a: "Para describir el límite superior de la complejidad de tiempo o espacio de un algoritmo." },
+    { q: "¿Cuál es la complejidad de tiempo promedio de Quick Sort?", a: "O(n log n)" },
+    { q: "Describe el principio LIFO en una Pila.", a: "Last-In, First-Out: El último elemento en entrar es el primero en salir." },
+  ],
+  cn: [
+    { q: "大 O 表示法用于什么？", a: "描述算法时间或空间复杂度的上界。" },
+    { q: "快速排序的平均时间复杂度是多少？", a: "O(n log n)" },
+    { q: "描述栈中的 LIFO 原则。", a: "后进先出：最近添加的元素是第一个被移除的。" },
+  ],
+  ja: [
+    { q: "Big O 記法は何のために使われますか？", a: "アルゴリズムの時間または空間計算量の上限を記述するため。" },
+    { q: "クイックソートの平均時間計算量は？", a: "O(n log n)" },
+    { q: "スタックにおける LIFO の原則を説明してください。", a: "後入れ先出し：最後に追加された要素が最初に削除されます。" },
+  ],
+}
+
+export default function HomePage() {
   const [topics, setTopics] = React.useState<CurriculumTopic[]>([])
   const [isLoading, setIsLoading] = React.useState(true)
   const [error, setError] = React.useState<string | null>(null)
-  const [retryCount, setRetryCount] = React.useState(0)
-
-  const fetchData = React.useCallback(async (lang: string, signal: AbortSignal) => {
-    setIsLoading(true)
-    setError(null)
-    try {
-      const res = await fetch(`/data/curriculum-${lang}.json`, { signal })
-      if (!res.ok) {
-        throw new Error(`Failed to load curriculum: ${res.status} ${res.statusText}`)
-      }
-      const data = await res.json()
-      if (!signal.aborted) {
-        setTopics(data)
-      }
-    } catch (err) {
-      if (err instanceof Error && err.name !== 'AbortError' && !signal.aborted) {
-        console.error("Failed to fetch curriculum", err)
-        setError(err.message || "An unexpected error occurred while loading the curriculum.")
-      }
-    } finally {
-      if (!signal.aborted) {
-        setIsLoading(false)
-      }
-    }
-  }, [])
+  const { language } = useProgressStore()
 
   React.useEffect(() => {
     const controller = new AbortController()
-    fetchData(language, controller.signal)
+    setIsLoading(true)
+    setError(null)
+
+    fetch(`/data/curriculum-${language}.json`, { signal: controller.signal })
+      .then(res => {
+        if (!res.ok) throw new Error(`Failed to fetch curriculum: ${res.status}`)
+        return res.json()
+      })
+      .then(data => {
+        setTopics(data)
+        setIsLoading(false)
+      })
+      .catch(err => {
+        if (err.name !== 'AbortError') {
+          console.error("Failed to fetch curriculum", err)
+          setError(err.message)
+          setIsLoading(false)
+        }
+      })
+
     return () => controller.abort()
-  }, [language, fetchData, retryCount])
+  }, [language])
 
   return (
     <DashboardShell>
-      <div className="space-y-24 pb-24">
-        <section id="curriculum">
-          {error ? (
-            <Alert variant="destructive">
-              <AlertCircle className="h-4 w-4" />
-              <AlertTitle>Error</AlertTitle>
-              <AlertDescription className="flex items-center justify-between">
-                <span>{error}</span>
-                <Button variant="outline" size="sm" onClick={() => setRetryCount(c => c + 1)}>
-                  <RefreshCcw className="mr-2 h-4 w-4" />
-                  Retry
-                </Button>
-              </AlertDescription>
-            </Alert>
-          ) : isLoading ? (
-            <div className="flex items-center justify-center py-24">
-              <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+      <div className="grid gap-12 pb-16">
+        <section id="roadmap">
+          {isLoading ? (
+            <div className="space-y-4">
+              <Skeleton className="h-12 w-1/4" />
+              <div className="grid gap-4">
+                <Skeleton className="h-24 w-full" />
+                <Skeleton className="h-24 w-full" />
+                <Skeleton className="h-24 w-full" />
+              </div>
+            </div>
+          ) : error ? (
+            <div className="p-8 text-center bg-destructive/10 rounded-xl border border-destructive/20">
+              <p className="text-destructive font-semibold">Error Loading Content</p>
+              <p className="text-sm text-muted-foreground">{error}</p>
             </div>
           ) : (
-            <Roadmap topics={topics.slice(0, TOPIC_LIMIT)} />
+            <Roadmap topics={topics} />
           )}
         </section>
 
         <section id="whiteboard">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold tracking-tight">Practice Arena</h2>
-            <p className="text-muted-foreground">Sharpen your logic with the Sofa Whiteboard.</p>
+            <h2 className="text-3xl font-bold tracking-tight">{ARENA_LABELS[language].title}</h2>
+            <p className="text-muted-foreground">{ARENA_LABELS[language].subtitle}</p>
           </div>
           <div className="h-[600px]">
             <SofaWhiteboard />
@@ -129,7 +147,10 @@ export default function Home() {
         </section>
 
         <section id="flashcards">
-          <Flashcards labels={FLASHCARD_LABELS[language]} />
+          <Flashcards
+            cards={FLASHCARDS[language]}
+            labels={FLASHCARD_LABELS[language]}
+          />
         </section>
       </div>
     </DashboardShell>
