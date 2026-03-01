@@ -18,7 +18,7 @@ export default defineConfig({
         statements: 100,
       },
       include: ['src/**/*.{ts,tsx}'],
-      exclude: ['src/components/ui/**', 'src/app/layout.tsx', 'src/app/favicon.ico'],
+      exclude: ['src/types/**', 'src/components/ui/**', 'src/app/layout.tsx', 'src/app/favicon.ico'],
     },
   },
   resolve: {

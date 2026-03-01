@@ -5,7 +5,7 @@ import { vi } from 'vitest'
 const localStorageMock = (() => {
   let store: Record<string, string> = {}
   return {
-    getItem: (key: string) => store[key] || null,
+    getItem: (key: string) => store[key] ?? null,
     setItem: (key: string, value: string) => {
       store[key] = value.toString()
     },
@@ -16,7 +16,9 @@ const localStorageMock = (() => {
       store = {}
     },
     key: (index: number) => Object.keys(store)[index] || null,
-    length: Object.keys(store).length,
+    get length() {
+      return Object.keys(store).length
+    }
   }
 })()
 

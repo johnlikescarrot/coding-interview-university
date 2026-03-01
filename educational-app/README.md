@@ -11,7 +11,7 @@ The best educational app for mastering Coding Interview fundamentals.
 - Automated CI/CD deployment to GitHub Pages.
 
 ## Tech Stack
-- Next.js 14+ (App Router)
+- Next.js 15 (App Router)
 - TypeScript
 - Tailwind CSS
 - Shadcn UI

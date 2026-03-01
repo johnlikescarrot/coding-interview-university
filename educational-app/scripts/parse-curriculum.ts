@@ -1,20 +1,20 @@
 import fs from 'fs';
 import path from 'path';
 
-interface Resource {
+export interface Resource {
   title: string;
   url: string;
   type: 'video' | 'article' | 'book' | 'other';
 }
 
-interface SubTopic {
+export interface SubTopic {
   title: string;
   slug: string;
   items: string[];
   resources: Resource[];
 }
 
-interface Topic {
+export interface Topic {
   title: string;
   slug: string;
   subtopics: SubTopic[];
@@ -48,7 +48,8 @@ function parseMarkdown(filePath: string): Topic[] {
     if (h2Match) {
       const title = h2Match[1].trim();
       if (title === 'Final Review' || title === 'Getting the Job') {
-        // We can stop or continue, let's continue for now but mark end later if needed
+        // Skip these sections as major topics
+        continue;
       }
       currentTopic = {
         title,
@@ -61,7 +62,7 @@ function parseMarkdown(filePath: string): Topic[] {
     }
 
     // Matches H3 subtopics (e.g., - ### Arrays)
-    const h3Match = line.match(/^- ### (.+)/) || line.match(/^### (.+)/) || line.match(/^ - ### (.+)/);
+    const h3Match = line.match(/^- ### (.+)/) || line.match(/^### (.+)/) || line.match(/^\s+- ### (.+)/);
     if (h3Match && currentTopic) {
       const title = h3Match[1].trim();
       currentSubTopic = {
@@ -77,16 +78,27 @@ function parseMarkdown(filePath: string): Topic[] {
     // Matches list items with links
     const linkMatch = line.match(/\[([^\]]+)\]\(([^)]+)\)/);
     if (linkMatch && currentSubTopic) {
-      const title = linkMatch[1];
-      const url = linkMatch[2];
+      const title = linkMatch[1].trim();
+      let url = linkMatch[2].trim();
+
+      // Filter out navigation artifacts
+      if (url.startsWith('#') || title.toLowerCase().includes('back to top')) {
+        continue;
+      }
+
+      // Fix Wikipedia URLs (markdown parser might strip trailing paren)
+      if (url.includes('wikipedia.org') && url.includes('(') && !url.endsWith(')')) {
+        url += ')';
+      }
+
       let type: Resource['type'] = 'article';
       if (url.includes('youtube.com') || url.includes('youtu.be')) type = 'video';
-      else if (url.includes('amazon.com')) type = 'book';
+      else if (url.includes('amazon.')) type = 'book';
 
       currentSubTopic.resources.push({ title, url, type });
     } else if (line.trim().startsWith('- [ ]') || line.trim().startsWith('-')) {
       if (currentSubTopic) {
-        const itemText = line.replace(/^- \[ \] |^- /, '').trim();
+        const itemText = line.trim().replace(/^- \[ \] |^- /, '').trim();
         if (itemText && !itemText.startsWith('#')) {
             currentSubTopic.items.push(itemText);
         }
@@ -94,7 +106,9 @@ function parseMarkdown(filePath: string): Topic[] {
     }
   }
 
-  return topics.filter(t => t.subtopics.length > 0 || ['algorithmic-complexity--big-o--asymptotic-analysis'].includes(t.slug));
+  // Use the correct slugify output for the filter
+  const bigOSlug = slugify('Algorithmic complexity / Big-O / Asymptotic analysis');
+  return topics.filter(t => t.subtopics.length > 0 || t.slug === bigOSlug);
 }
 
 const readmePath = path.join(__dirname, '../../README.md');

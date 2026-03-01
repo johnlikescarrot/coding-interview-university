@@ -2,6 +2,7 @@ import Link from "next/link";
 import curriculum from "@/data/curriculum.json";
 import { TopicContent } from "@/components/curriculum/topic-content";
 import { Metadata } from "next";
+import { Topic } from "@/types/curriculum";
 
 export async function generateStaticParams() {
   return curriculum.map((topic) => ({
@@ -30,5 +31,5 @@ export default async function TopicPage({ params }: { params: Promise<{ slug: st
     );
   }
 
-  return <TopicContent topic={topic as any} />;
+  return <TopicContent topic={topic as unknown as Topic} />;
 }

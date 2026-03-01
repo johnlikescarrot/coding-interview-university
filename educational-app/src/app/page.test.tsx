@@ -1,11 +1,7 @@
 import { render, screen } from '@testing-library/react'
 import Dashboard from './page'
 import { ProgressProvider } from '@/context/ProgressContext'
-import { expect, it, describe, vi } from 'vitest'
-
-vi.mock('next/navigation', () => ({
-  useParams: () => ({ slug: '' }),
-}))
+import { expect, it, describe } from 'vitest'
 
 describe('Dashboard Page', () => {
   it('renders the mastery journey title', () => {

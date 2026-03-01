@@ -19,7 +19,13 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     const saved = localStorage.getItem('ciu-progress');
     if (saved) {
       try {
-        setCompletedSubTopics(JSON.parse(saved));
+        const parsed = JSON.parse(saved);
+        if (Array.isArray(parsed) && parsed.every(item => typeof item === 'string')) {
+          setCompletedSubTopics(parsed);
+        } else {
+          console.warn('Invalid progress data found in localStorage, resetting.');
+          localStorage.removeItem('ciu-progress');
+        }
       } catch (e) {
         console.error('Failed to parse progress', e);
       }

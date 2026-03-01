@@ -6,25 +6,15 @@ import { ScrollArea } from "@/components/ui/scroll-area";
 import { Button } from "@/components/ui/button";
 import { CheckCircle2, ExternalLink, PlayCircle, FileText, Book, Circle } from "lucide-react";
 import { useProgress } from "@/context/ProgressContext";
+import { Topic } from "@/types/curriculum";
 
-interface Resource {
-  title: string;
-  url: string;
-  type: 'video' | 'article' | 'book' | 'other';
-}
-
-interface SubTopic {
-  title: string;
-  slug: string;
-  items: string[];
-  resources: Resource[];
-}
-
-interface Topic {
-  title: string;
-  slug: string;
-  subtopics: SubTopic[];
-}
+const sanitizeUrl = (url: string) => {
+  const trimmed = url.trim();
+  if (trimmed.toLowerCase().startsWith('javascript:')) {
+    return '#';
+  }
+  return trimmed;
+};
 
 export function TopicContent({ topic }: { topic: Topic }) {
   const { isSubTopicCompleted, toggleSubTopic, getProgressForTopic } = useProgress();
@@ -105,7 +95,7 @@ export function TopicContent({ topic }: { topic: Topic }) {
                       {subtopic.resources.map((res, i) => (
                         <a
                           key={i}
-                          href={res.url}
+                          href={sanitizeUrl(res.url)}
                           target="_blank"
                           rel="noreferrer"
                           className="group flex items-center justify-between p-3 rounded-lg border bg-background hover:bg-primary/5 hover:border-primary/50 transition-all"

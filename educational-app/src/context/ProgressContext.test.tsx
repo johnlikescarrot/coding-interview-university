@@ -1,4 +1,4 @@
-import { render, screen, act } from '@testing-library/react'
+import { render, screen, act, fireEvent } from '@testing-library/react'
 import { ProgressProvider, useProgress } from './ProgressContext'
 import { expect, it, describe, beforeEach, vi } from 'vitest'
 
@@ -29,17 +29,13 @@ describe('ProgressContext', () => {
 
     expect(screen.getByTestId('completed-count').textContent).toBe('0')
 
-    await act(async () => {
-      screen.getByText('Toggle').click()
-    })
+    fireEvent.click(screen.getByText('Toggle'))
 
     expect(screen.getByTestId('completed-count').textContent).toBe('1')
     expect(screen.getByTestId('is-completed').textContent).toBe('yes')
     expect(screen.getByTestId('progress').textContent).toBe('50')
 
-    await act(async () => {
-      screen.getByText('Toggle').click()
-    })
+    fireEvent.click(screen.getByText('Toggle'))
 
     expect(screen.getByTestId('completed-count').textContent).toBe('0')
   })
@@ -56,7 +52,7 @@ describe('ProgressContext', () => {
     expect(screen.getByTestId('completed-count').textContent).toBe('1')
   })
 
-  it('handles corrupted localStorage data', () => {
+  it('handles corrupted localStorage data (invalid JSON)', () => {
     window.localStorage.setItem('ciu-progress', 'invalid-json')
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {})
 
@@ -68,6 +64,24 @@ describe('ProgressContext', () => {
 
     expect(screen.getByTestId('completed-count').textContent).toBe('0')
     expect(consoleSpy).toHaveBeenCalled()
+    consoleSpy.mockRestore()
+  })
+
+  it('handles invalid localStorage data (not an array of strings)', () => {
+    window.localStorage.setItem('ciu-progress', JSON.stringify({ not: "an-array" }))
+    const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {})
+
+    render(
+      <ProgressProvider>
+        <TestComponent />
+      </ProgressProvider>
+    )
+
+    expect(screen.getByTestId('completed-count').textContent).toBe('0')
+    // It should log a warning and reset state.
+    // Note: useEffect might trigger a save of the initial empty array immediately after.
+    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('Invalid progress data'))
+    consoleSpy.mockRestore()
   })
 
   it('handles empty subtopics for progress calculation', () => {
