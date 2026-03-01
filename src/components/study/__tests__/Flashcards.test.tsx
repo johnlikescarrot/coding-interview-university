@@ -6,15 +6,25 @@ import Flashcards from '../Flashcards';
 // Comprehensive Mocks
 vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, className, ...props }: any) => (
-      <div
-        className={className}
-        data-testid="motion-div"
-        {...props}
-      >
-        {children}
-      </div>
-    ),
+    div: ({ children, onClick, className, onKeyDown, ...props }: any) => {
+      // Omit motion-specific props to avoid DOM warnings
+      const domProps = Object.fromEntries(
+        Object.entries(props).filter(([key]) => !['initial', 'animate', 'exit', 'transition'].includes(key))
+      );
+      return (
+        <div
+          role="button"
+          tabIndex={0}
+          onClick={onClick}
+          onKeyDown={onKeyDown}
+          className={className}
+          data-testid="motion-div"
+          {...domProps}
+        >
+          {children}
+        </div>
+      );
+    },
   },
   AnimatePresence: ({ children }: any) => <div data-testid="animate-presence">{children}</div>,
 }));

@@ -133,12 +133,14 @@ export default function SofaWhiteboard() {
       <CardContent className="p-0 bg-white cursor-crosshair relative aspect-video overflow-hidden">
         <canvas
           ref={canvasRef}
-          className="w-full h-full block touch-none"
+          className="w-full h-full block touch-none focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
           width={WHITEBOARD_CONSTANTS.INTERNAL_WIDTH}
           height={WHITEBOARD_CONSTANTS.INTERNAL_HEIGHT}
           onMouseDown={startDrawing}
           onMouseUp={() => stopDrawing()}
           onMouseOut={() => stopDrawing()}
+          onBlur={() => stopDrawing()}
+          tabIndex={0}
           onMouseMove={(e) => draw(e)}
           onTouchStart={startDrawing}
           onTouchEnd={() => stopDrawing()}

@@ -20,7 +20,10 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
   const [index, setIndex] = React.useState(0)
   const [flipped, setFlipped] = React.useState(false)
 
-  // Guard against array length changes from parent
+  // Derive stable clamped index for all UI reads
+  const clampedIndex = cards.length > 0 ? Math.min(index, cards.length - 1) : 0
+
+  // Sync index if cards shrink
   React.useEffect(() => {
     if (cards.length > 0 && index >= cards.length) {
       setIndex(0)
@@ -37,7 +40,7 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
     )
   }
 
-  const currentCard = cards[Math.min(index, cards.length - 1)]
+  const currentCard = cards[clampedIndex]
 
   const next = () => {
     setFlipped(false)
@@ -74,7 +77,7 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
        >
           <AnimatePresence mode="wait">
             <motion.div
-              key={index + (flipped ? '-back' : '-front')}
+              key={clampedIndex + (flipped ? '-back' : '-front')}
               initial={{ rotateY: flipped ? -90 : 90, opacity: 0 }}
               animate={{ rotateY: 0, opacity: 1 }}
               exit={{ rotateY: flipped ? 90 : -90, opacity: 0 }}
@@ -106,7 +109,7 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
            <ChevronLeft className="h-4 w-4" />
          </Button>
          <div className="text-sm font-medium text-muted-foreground">
-           Card {index + 1} of {cards.length}
+           Card {clampedIndex + 1} of {cards.length}
          </div>
          <Button
            type="button"

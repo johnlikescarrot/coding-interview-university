@@ -11,7 +11,6 @@ export interface CurriculumTopic {
 
 export function sanitizeUrl(url: string): string {
   const forbiddenProtocols = ['javascript:', 'data:', 'vbscript:']
-  // Strip control characters from the URL string itself to prevent XSS bypass
   const sanitized = url.replace(/[\x00-\x1F\x7F]/g, "").trim()
   const normalized = sanitized.toLowerCase()
 
@@ -28,14 +27,24 @@ export function createSlug(text: string): string {
     .replace(/^-+|-+$/g, '') || 'topic'
 }
 
-export function generateCheckboxId(topicId: string, text: string): string {
+export function generateCheckboxId(topicId: string, text: string, existingIds: Set<string>): string {
   let hash = 0
   const str = `${topicId}:${text}`
   for (let i = 0; i < str.length; i++) {
     hash = (hash << 5) - hash + str.charCodeAt(i)
     hash |= 0
   }
-  return `check-${Math.abs(hash).toString(36)}`
+  let id = `check-${Math.abs(hash).toString(36)}`
+
+  if (existingIds.has(id)) {
+    let counter = 1
+    while (existingIds.has(`${id}-${counter}`)) {
+      counter++
+    }
+    id = `${id}-${counter}`
+  }
+  existingIds.add(id)
+  return id
 }
 
 export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
@@ -43,7 +52,8 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
   const lines = content.split('\n')
   const root: CurriculumTopic[] = []
   const stack: { level: number; topic: CurriculumTopic }[] = []
-  const usedIds = new Set<string>()
+  const usedTopicIds = new Set<string>()
+  const usedCheckboxIds = new Set<string>()
 
   let currentTopic: CurriculumTopic | null = null
 
@@ -56,14 +66,14 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
       const title = headerMatch[2].trim()
       let id = createSlug(title)
 
-      if (usedIds.has(id)) {
+      if (usedTopicIds.has(id)) {
         let counter = 1
-        while (usedIds.has(`${id}-${counter}`)) {
+        while (usedTopicIds.has(`${id}-${counter}`)) {
           counter++
         }
         id = `${id}-${counter}`
       }
-      usedIds.add(id)
+      usedTopicIds.add(id)
 
       const newTopic: CurriculumTopic = {
         id,
@@ -93,7 +103,7 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
         if (!currentTopic.checkboxes) currentTopic.checkboxes = []
         const text = checkboxMatch[2].trim()
         currentTopic.checkboxes.push({
-          id: generateCheckboxId(currentTopic.id, text),
+          id: generateCheckboxId(currentTopic.id, text, usedCheckboxIds),
           text,
           completed: checkboxMatch[1].toLowerCase() === 'x',
         })
