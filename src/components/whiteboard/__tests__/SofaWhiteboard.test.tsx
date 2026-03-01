@@ -5,8 +5,8 @@ import SofaWhiteboard from '../SofaWhiteboard';
 
 // Mock shadcn components
 vi.mock('@/components/ui/button', () => ({
-  Button: ({ children, onClick, 'aria-label': ariaLabel }: any) => (
-    <button onClick={onClick} aria-label={ariaLabel}>{children}</button>
+  Button: ({ children, onClick, 'aria-label': ariaLabel, type = "button" }: any) => (
+    <button type={type} onClick={onClick} aria-label={ariaLabel}>{children}</button>
   ),
 }));
 
@@ -42,6 +42,7 @@ const mockContext = {
 describe('SofaWhiteboard', () => {
   beforeEach(() => {
     vi.restoreAllMocks();
+    vi.clearAllMocks();
     HTMLCanvasElement.prototype.getContext = vi.fn().mockReturnValue(mockContext);
     HTMLCanvasElement.prototype.toDataURL = vi.fn().mockReturnValue('data:image/png;base64,test');
     HTMLCanvasElement.prototype.getBoundingClientRect = vi.fn().mockReturnValue({

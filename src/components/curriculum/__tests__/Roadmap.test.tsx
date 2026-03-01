@@ -14,20 +14,20 @@ vi.mock('../../../store/useProgressStore', () => ({
 }));
 
 vi.mock('@/components/ui/accordion', () => ({
-  Accordion: vi.fn(({ children }: any) => <div>{children}</div>),
-  AccordionItem: vi.fn(({ children }: any) => <div>{children}</div>),
-  AccordionTrigger: vi.fn(({ children, onClick }: any) => <button onClick={onClick}>{children}</button>),
-  AccordionContent: vi.fn(({ children }: any) => <div>{children}</div>),
+  Accordion: ({ children }: any) => <div>{children}</div>,
+  AccordionItem: ({ children }: any) => <div>{children}</div>,
+  AccordionTrigger: ({ children, onClick }: any) => <button type="button" onClick={onClick}>{children}</button>,
+  AccordionContent: ({ children }: any) => <div>{children}</div>,
 }));
 
 vi.mock('@/components/ui/checkbox', () => ({
-  Checkbox: vi.fn(({ checked, onCheckedChange }: any) => (
+  Checkbox: ({ checked, onCheckedChange }: any) => (
     <input type="checkbox" checked={checked} onChange={(e) => onCheckedChange(e.target.checked)} />
-  )),
+  ),
 }));
 
 vi.mock('@/components/ui/badge', () => ({
-  Badge: vi.fn(({ children }: any) => <span>{children}</span>),
+  Badge: ({ children }: any) => <span>{children}</span>,
 }));
 
 describe('Roadmap', () => {

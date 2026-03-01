@@ -20,6 +20,14 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
   const [index, setIndex] = React.useState(0)
   const [flipped, setFlipped] = React.useState(false)
 
+  // Guard against array length changes from parent
+  React.useEffect(() => {
+    if (cards.length > 0 && index >= cards.length) {
+      setIndex(0)
+      setFlipped(false)
+    }
+  }, [cards, index])
+
   if (!cards || cards.length === 0) {
     return (
       <div className="max-w-md mx-auto py-12 text-center">
@@ -28,6 +36,8 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
       </div>
     )
   }
+
+  const currentCard = cards[Math.min(index, cards.length - 1)]
 
   const next = () => {
     setFlipped(false)
@@ -77,7 +87,7 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
                     {flipped ? 'Answer' : 'Question'}
                   </div>
                   <div className="text-xl font-semibold">
-                    {flipped ? cards[index].a : cards[index].q}
+                    {flipped ? currentCard.a : currentCard.q}
                   </div>
                 </CardContent>
               </Card>
@@ -87,6 +97,7 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
 
        <div className="flex items-center justify-between px-4">
          <Button
+           type="button"
            variant="outline"
            size="icon"
            onClick={prev}
@@ -98,6 +109,7 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
            Card {index + 1} of {cards.length}
          </div>
          <Button
+           type="button"
            variant="outline"
            size="icon"
            onClick={next}
@@ -108,7 +120,7 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
        </div>
 
        <div className="flex justify-center">
-         <Button variant="ghost" onClick={() => { setIndex(0); setFlipped(false); }} aria-label="Restart deck">
+         <Button type="button" variant="ghost" onClick={() => { setIndex(0); setFlipped(false); }} aria-label="Restart deck">
            <RotateCcw className="mr-2 h-4 w-4" />
            Restart Deck
          </Button>

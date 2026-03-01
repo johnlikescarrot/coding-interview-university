@@ -47,3 +47,7 @@ next_dev.log
 # Refine .env pattern
 !.env.example
 !.env.template
+
+# Vitest
+.vitest
+node_modules/.vitest

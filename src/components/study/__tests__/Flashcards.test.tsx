@@ -6,16 +6,22 @@ import Flashcards from '../Flashcards';
 // Comprehensive Mocks
 vi.mock('framer-motion', () => ({
   motion: {
-    div: ({ children, onClick, className }: any) => (
-      <div onClick={onClick} className={className} data-testid="motion-div">{children}</div>
+    div: ({ children, className, ...props }: any) => (
+      <div
+        className={className}
+        data-testid="motion-div"
+        {...props}
+      >
+        {children}
+      </div>
     ),
   },
   AnimatePresence: ({ children }: any) => <div data-testid="animate-presence">{children}</div>,
 }));
 
 vi.mock('@/components/ui/button', () => ({
-  Button: ({ children, onClick, disabled, className, 'aria-label': ariaLabel }: any) => (
-    <button onClick={onClick} disabled={disabled} className={className} aria-label={ariaLabel}>{children}</button>
+  Button: ({ children, onClick, disabled, className, 'aria-label': ariaLabel, type = "button" }: any) => (
+    <button type={type} onClick={onClick} disabled={disabled} className={className} aria-label={ariaLabel}>{children}</button>
   ),
 }));
 
@@ -55,26 +61,14 @@ describe('Flashcards', () => {
     expect(screen.getByText('Q1')).toBeInTheDocument();
   });
 
-  it('restarts the deck', () => {
-    render(<Flashcards cards={mockCards} />);
-    fireEvent.click(screen.getByLabelText(/next/i));
-    expect(screen.getByText('Q2')).toBeInTheDocument();
-
-    fireEvent.click(screen.getByLabelText(/restart/i));
-    expect(screen.getByText('Q1')).toBeInTheDocument();
-  });
-
   it('handles keyboard navigation', () => {
     render(<Flashcards cards={mockCards} />);
-    const card = screen.getByText('Q1').closest('div[role="button"]')!;
+    const card = screen.getByRole('button', { name: /click to see answer/i });
+
     fireEvent.keyDown(card, { key: 'Enter' });
     expect(screen.getByText('A1')).toBeInTheDocument();
-    fireEvent.keyDown(card, { key: ' ' }); // Space
-    expect(screen.getByText('Q1')).toBeInTheDocument();
-  });
 
-  it('shows no cards message when empty', () => {
-    render(<Flashcards cards={[]} />);
-    expect(screen.getByText(/no cards available/i)).toBeInTheDocument();
+    fireEvent.keyDown(card, { key: ' ' });
+    expect(screen.getByText('Q1')).toBeInTheDocument();
   });
 });

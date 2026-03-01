@@ -11,12 +11,14 @@ export interface CurriculumTopic {
 
 export function sanitizeUrl(url: string): string {
   const forbiddenProtocols = ['javascript:', 'data:', 'vbscript:']
-  // Strip control characters before checking the protocol to prevent XSS bypass
-  const normalizedUrl = url.replace(/[\x00-\x1F\x7F]/g, "").trim().toLowerCase()
-  if (forbiddenProtocols.some(proto => normalizedUrl.startsWith(proto))) {
+  // Strip control characters from the URL string itself to prevent XSS bypass
+  const sanitized = url.replace(/[\x00-\x1F\x7F]/g, "").trim()
+  const normalized = sanitized.toLowerCase()
+
+  if (forbiddenProtocols.some(proto => normalized.startsWith(proto))) {
     return '#'
   }
-  return url
+  return sanitized
 }
 
 export function createSlug(text: string): string {
@@ -41,6 +43,7 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
   const lines = content.split('\n')
   const root: CurriculumTopic[] = []
   const stack: { level: number; topic: CurriculumTopic }[] = []
+  const usedIds = new Set<string>()
 
   let currentTopic: CurriculumTopic | null = null
 
@@ -51,7 +54,16 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
     if (headerMatch) {
       const level = headerMatch[1].length
       const title = headerMatch[2].trim()
-      const id = createSlug(title)
+      let id = createSlug(title)
+
+      if (usedIds.has(id)) {
+        let counter = 1
+        while (usedIds.has(`${id}-${counter}`)) {
+          counter++
+        }
+        id = `${id}-${counter}`
+      }
+      usedIds.add(id)
 
       const newTopic: CurriculumTopic = {
         id,

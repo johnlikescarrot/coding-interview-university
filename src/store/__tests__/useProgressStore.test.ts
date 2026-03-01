@@ -28,12 +28,12 @@ describe('useProgressStore', () => {
   });
 
   it('should toggle a checkbox', () => {
-    const topicId = 'test-topic';
+
     const checkboxId = 'check-1';
-    useProgressStore.getState().toggleCheckbox(topicId, checkboxId);
+    useProgressStore.getState().toggleCheckbox(checkboxId);
     expect(useProgressStore.getState().completedCheckboxes[checkboxId]).toBe(true);
 
-    useProgressStore.getState().toggleCheckbox(topicId, checkboxId);
+    useProgressStore.getState().toggleCheckbox(checkboxId);
     expect(useProgressStore.getState().completedCheckboxes[checkboxId]).toBe(false);
   });
 

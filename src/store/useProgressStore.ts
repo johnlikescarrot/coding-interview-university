@@ -1,13 +1,14 @@
 import { create } from 'zustand'
 import { persist } from 'zustand/middleware'
+import { LanguageCode } from '@/lib/constants'
 
 interface ProgressState {
   completedTopics: Record<string, boolean>
   toggleTopic: (topicId: string) => void
   completedCheckboxes: Record<string, boolean>
-  toggleCheckbox: (topicId: string, checkboxId: string) => void
-  language: string
-  setLanguage: (lang: string) => void
+  toggleCheckbox: (checkboxId: string) => void
+  language: LanguageCode
+  setLanguage: (lang: LanguageCode) => void
 }
 
 export const useProgressStore = create<ProgressState>()(
@@ -22,7 +23,7 @@ export const useProgressStore = create<ProgressState>()(
           }
         })),
       completedCheckboxes: {},
-      toggleCheckbox: (topicId, checkboxId) =>
+      toggleCheckbox: (checkboxId) =>
         set((state) => {
           return {
             completedCheckboxes: {

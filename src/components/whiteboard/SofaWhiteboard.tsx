@@ -38,6 +38,7 @@ export default function SofaWhiteboard() {
   }
 
   const startDrawing = (e: React.MouseEvent | React.TouchEvent) => {
+    if ('touches' in e) e.preventDefault()
     isDrawingRef.current = true
     const { x, y } = getCoordinates(e)
     const ctx = canvasRef.current?.getContext('2d')
@@ -48,7 +49,8 @@ export default function SofaWhiteboard() {
     }
   }
 
-  const stopDrawing = () => {
+  const stopDrawing = (e?: React.MouseEvent | React.TouchEvent) => {
+    if (e && 'touches' in e) e.preventDefault()
     isDrawingRef.current = false
     const ctx = canvasRef.current?.getContext('2d')
     if (ctx) {
@@ -58,6 +60,8 @@ export default function SofaWhiteboard() {
 
   const draw = (e: React.MouseEvent | React.TouchEvent, force = false) => {
     if (!isDrawingRef.current && !force) return
+    if ('touches' in e) e.preventDefault()
+
     const canvas = canvasRef.current
     const ctx = canvas?.getContext('2d')
     if (!canvas || !ctx) return
@@ -101,6 +105,7 @@ export default function SofaWhiteboard() {
         </div>
         <div className="flex gap-2">
           <Button
+            type="button"
             variant={tool === 'pen' ? 'default' : 'outline'}
             size="icon"
             onClick={() => setTool('pen')}
@@ -109,6 +114,7 @@ export default function SofaWhiteboard() {
             <Pen className="h-4 w-4" />
           </Button>
           <Button
+            type="button"
             variant={tool === 'eraser' ? 'default' : 'outline'}
             size="icon"
             onClick={() => setTool('eraser')}
@@ -116,10 +122,10 @@ export default function SofaWhiteboard() {
           >
             <Eraser className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="icon" onClick={clear} aria-label="Clear Whiteboard">
+          <Button type="button" variant="outline" size="icon" onClick={clear} aria-label="Clear Whiteboard">
             <Trash2 className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="icon" onClick={download} aria-label="Download as PNG">
+          <Button type="button" variant="outline" size="icon" onClick={download} aria-label="Download as PNG">
             <Download className="h-4 w-4" />
           </Button>
         </div>
@@ -127,15 +133,15 @@ export default function SofaWhiteboard() {
       <CardContent className="p-0 bg-white cursor-crosshair relative aspect-video overflow-hidden">
         <canvas
           ref={canvasRef}
-          className="w-full h-full block"
+          className="w-full h-full block touch-none"
           width={WHITEBOARD_CONSTANTS.INTERNAL_WIDTH}
           height={WHITEBOARD_CONSTANTS.INTERNAL_HEIGHT}
           onMouseDown={startDrawing}
-          onMouseUp={stopDrawing}
-          onMouseOut={stopDrawing}
+          onMouseUp={() => stopDrawing()}
+          onMouseOut={() => stopDrawing()}
           onMouseMove={(e) => draw(e)}
           onTouchStart={startDrawing}
-          onTouchEnd={stopDrawing}
+          onTouchEnd={() => stopDrawing()}
           onTouchMove={(e) => draw(e)}
         />
       </CardContent>
