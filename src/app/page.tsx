@@ -13,6 +13,49 @@ import { Button } from "@/components/ui/button"
 
 const TOPIC_LIMIT = 20
 
+const FLASHCARD_LABELS: Record<string, { title: string; subtitle: string; question: string; answer: string; next: string; prev: string; reset: string; flip: string }> = {
+  en: {
+    title: "Active Recall",
+    subtitle: "Test your knowledge with randomized flashcards.",
+    question: "Question",
+    answer: "Answer",
+    next: "Next card",
+    prev: "Previous card",
+    reset: "Reset deck",
+    flip: "click to see answer"
+  },
+  es: {
+    title: "Recuerdo Activo",
+    subtitle: "Pon a prueba tus conocimientos con tarjetas aleatorias.",
+    question: "Pregunta",
+    answer: "Respuesta",
+    next: "Siguiente tarjeta",
+    prev: "Tarjeta anterior",
+    reset: "Reiniciar mazo",
+    flip: "clic para ver respuesta"
+  },
+  cn: {
+    title: "主动回想",
+    subtitle: "通过随机闪卡测试您的知识。",
+    question: "问题",
+    answer: "答案",
+    next: "下一张",
+    prev: "上一张",
+    reset: "重置卡组",
+    flip: "点击查看答案"
+  },
+  ja: {
+    title: "アクティブリコール",
+    subtitle: "ランダムなフラッシュカードで知識をテストしましょう。",
+    question: "問題",
+    answer: "解答",
+    next: "次のカード",
+    prev: "前のカード",
+    reset: "デッキをリセット",
+    flip: "クリックして回答を表示"
+  }
+}
+
 export default function Home() {
   const { language } = useProgressStore()
   const [topics, setTopics] = React.useState<CurriculumTopic[]>([])
@@ -86,7 +129,7 @@ export default function Home() {
         </section>
 
         <section id="flashcards">
-          <Flashcards />
+          <Flashcards labels={FLASHCARD_LABELS[language]} />
         </section>
       </div>
     </DashboardShell>

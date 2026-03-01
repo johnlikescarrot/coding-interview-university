@@ -70,21 +70,22 @@ const SidebarProvider = React.forwardRef<
     const isMobile = useIsMobile()
     const [openMobile, setOpenMobile] = React.useState(false)
 
+    // Internal state
     const [_open, _setOpen] = React.useState(defaultOpen)
     const open = openProp ?? _open
 
+    // PURE side-effect for cookie management
+    React.useEffect(() => {
+      document.cookie = `${SIDEBAR_COOKIE_NAME}=${open}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+    }, [open])
+
     const setOpen = React.useCallback(
       (value: boolean | ((value: boolean) => boolean)) => {
+        const next = typeof value === "function" ? value(open) : value
         if (setOpenProp) {
-          const next = typeof value === "function" ? value(open) : value
           setOpenProp(next)
-          document.cookie = `${SIDEBAR_COOKIE_NAME}=${next}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
         } else {
-          _setOpen((prev) => {
-            const next = typeof value === "function" ? value(prev) : value
-            document.cookie = `${SIDEBAR_COOKIE_NAME}=${next}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
-            return next
-          })
+          _setOpen(next)
         }
       },
       [setOpenProp, open]
@@ -99,9 +100,10 @@ const SidebarProvider = React.forwardRef<
     React.useEffect(() => {
       const handleKeyDown = (event: KeyboardEvent) => {
         if (
-          event.key === SIDEBAR_KEYBOARD_SHORTCUT &&
+          event.key.toLowerCase() === SIDEBAR_KEYBOARD_SHORTCUT &&
           (event.metaKey || event.ctrlKey)
         ) {
+          // Ignore if focused on an editable element
           const target = event.target as HTMLElement
           if (
             target?.isContentEditable ||

@@ -6,48 +6,70 @@ import { Button } from "@/components/ui/button"
 import { Card, CardContent } from "@/components/ui/card"
 import { ChevronLeft, ChevronRight, RotateCcw } from "lucide-react"
 
-const SAMPLE_CARDS = [
-  { q: "What is the time complexity of binary search?", a: "O(log n)" },
-  { q: "What data structure is used in Breadth-First Search (BFS)?", a: "Queue" },
-  { q: "What are the four pillars of OOP?", a: "Encapsulation, Abstraction, Inheritance, Polymorphism" },
-]
-
-interface FlashcardsProps {
-  cards?: { q: string; a: string }[]
+interface Flashcard {
+  q: string
+  a: string
 }
 
-export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
+interface FlashcardsProps {
+  cards: Flashcard[]
+  labels: {
+    title: string
+    subtitle: string
+    question: string
+    answer: string
+    next: string
+    prev: string
+    reset: string
+    flip: string
+  }
+}
+
+export default function Flashcards({
+  cards,
+  labels
+}: FlashcardsProps) {
+  const [shuffledCards, setShuffledCards] = React.useState<Flashcard[]>([])
   const [currentIdx, setCurrentIdx] = React.useState(0)
   const [isFlipped, setIsFlipped] = React.useState(false)
 
+  const shuffle = React.useCallback((deck: Flashcard[]) => {
+    const newDeck = [...deck]
+    for (let i = newDeck.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [newDeck[i], newDeck[j]] = [newDeck[j], newDeck[i]]
+    }
+    return newDeck
+  }, [])
+
+  // Sync and shuffle
+  React.useEffect(() => {
+    setShuffledCards(shuffle(cards))
+    setCurrentIdx(0)
+    setIsFlipped(false)
+  }, [cards, shuffle])
+
   // Bounds-safe index calculation
   const safeIdx = React.useMemo(() => {
-    if (cards.length === 0) return 0
-    return Math.max(0, Math.min(currentIdx, cards.length - 1))
-  }, [currentIdx, cards.length])
-
-  // Sync index if cards shrink
-  React.useEffect(() => {
-    if (currentIdx >= cards.length && cards.length > 0) {
-      setCurrentIdx(cards.length - 1)
-      setIsFlipped(false)
-    }
-  }, [cards.length, currentIdx])
+    if (shuffledCards.length === 0) return 0
+    return Math.max(0, Math.min(currentIdx, shuffledCards.length - 1))
+  }, [currentIdx, shuffledCards.length])
 
   const next = () => {
-    if (cards.length === 0) return
+    if (shuffledCards.length === 0) return
     setIsFlipped(false)
-    setCurrentIdx((prev) => (prev + 1) % cards.length)
+    setCurrentIdx((prev) => (prev + 1) % shuffledCards.length)
   }
 
   const prev = () => {
-    if (cards.length === 0) return
+    if (shuffledCards.length === 0) return
     setIsFlipped(false)
-    setCurrentIdx((prev) => (prev - 1 + cards.length) % cards.length)
+    setCurrentIdx((prev) => (prev - 1 + shuffledCards.length) % shuffledCards.length)
   }
 
   const reset = () => {
     setIsFlipped(false)
+    setShuffledCards(shuffle(cards))
     setCurrentIdx(0)
   }
 
@@ -60,13 +82,13 @@ export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
     }
   }
 
-  if (cards.length === 0) return null
+  if (shuffledCards.length === 0) return null
 
   return (
     <div className="flex flex-col items-center justify-center space-y-8 py-12">
       <div className="text-center space-y-2">
-        <h2 className="text-3xl font-bold tracking-tight">Active Recall</h2>
-        <p className="text-muted-foreground">Test your knowledge with randomized flashcards.</p>
+        <h2 className="text-3xl font-bold tracking-tight">{labels.title}</h2>
+        <p className="text-muted-foreground">{labels.subtitle}</p>
       </div>
 
       <div className="relative w-full max-w-md h-64 perspective-1000">
@@ -82,15 +104,15 @@ export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
             onKeyDown={handleKeyDown}
             role="button"
             tabIndex={0}
-            aria-label={isFlipped ? "Answer side" : "Question side, click to see answer"}
+            aria-label={isFlipped ? labels.answer : `${labels.question}, ${labels.flip}`}
           >
             <Card className="w-full h-full flex items-center justify-center text-center p-8 bg-card/50 backdrop-blur border-primary/20">
               <CardContent className="p-0">
                 <p className="text-xl font-medium leading-relaxed">
-                  {isFlipped ? cards[safeIdx].a : cards[safeIdx].q}
+                  {isFlipped ? shuffledCards[safeIdx].a : shuffledCards[safeIdx].q}
                 </p>
                 <p className="mt-4 text-xs text-muted-foreground uppercase tracking-widest">
-                  {isFlipped ? "Answer" : "Question"}
+                  {isFlipped ? labels.answer : labels.question}
                 </p>
               </CardContent>
             </Card>
@@ -103,24 +125,24 @@ export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
           variant="outline"
           size="icon"
           onClick={prev}
-          disabled={cards.length <= 1}
-          aria-label="Previous card"
+          disabled={shuffledCards.length <= 1}
+          aria-label={labels.prev}
         >
           <ChevronLeft className="h-4 w-4" />
         </Button>
         <div className="text-sm font-medium tabular-nums">
-          {safeIdx + 1} / {cards.length}
+          {safeIdx + 1} / {shuffledCards.length}
         </div>
         <Button
           variant="outline"
           size="icon"
           onClick={next}
-          disabled={cards.length <= 1}
-          aria-label="Next card"
+          disabled={shuffledCards.length <= 1}
+          aria-label={labels.next}
         >
           <ChevronRight className="h-4 w-4" />
         </Button>
-        <Button variant="ghost" size="icon" onClick={reset} aria-label="Reset deck">
+        <Button variant="ghost" size="icon" onClick={reset} aria-label={labels.reset}>
           <RotateCcw className="h-4 w-4" />
         </Button>
       </div>

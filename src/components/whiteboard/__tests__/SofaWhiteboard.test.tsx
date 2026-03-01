@@ -69,18 +69,20 @@ describe('SofaWhiteboard', () => {
     expect(mockContext.globalCompositeOperation).toBe('destination-out');
   });
 
-  it('handles touch events and cancellation', () => {
+  it('handles touch events and cancellation correctly', () => {
     render(<SofaWhiteboard />);
     const canvas = document.querySelector('canvas')!;
 
     fireEvent.touchStart(canvas, { touches: [{ clientX: 10, clientY: 10 }] });
     fireEvent.touchMove(canvas, { touches: [{ clientX: 20, clientY: 20 }] });
-    expect(mockContext.lineTo).toHaveBeenCalled();
+    const countBeforeCancel = mockContext.lineTo.mock.calls.length;
+    expect(countBeforeCancel).toBeGreaterThan(0);
 
     fireEvent.touchCancel(canvas);
     fireEvent.touchMove(canvas, { touches: [{ clientX: 30, clientY: 30 }] });
-    // Should not call lineTo after cancel
-    expect(mockContext.lineTo).not.toHaveBeenCalledWith(30, 30);
+
+    // Call count should not increase after cancel
+    expect(mockContext.lineTo.mock.calls.length).toBe(countBeforeCancel);
   });
 
   it('clears based on real dimensions', () => {
