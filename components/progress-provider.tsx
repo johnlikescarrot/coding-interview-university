@@ -25,11 +25,11 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     if (saved) {
       try {
         const parsed = JSON.parse(saved)
-        // Runtime validation: Ensure it's a string array
-        if (Array.isArray(parsed) && parsed.every(i => typeof i === "string")) {
+        // Runtime validation
+        if (Array.isArray(parsed) && parsed.every(item => typeof item === "string")) {
           setCompleted(parsed)
         } else {
-          console.warn("Invalid data format in localStorage: ciu-progress")
+          console.warn("Invalid progress data in localStorage")
         }
       } catch (e) {
         console.error("Failed to parse progress from localStorage", e)
@@ -44,7 +44,7 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
       try {
         localStorage.setItem("ciu-progress", JSON.stringify(completed))
       } catch (err) {
-        console.error("Failed to save ciu-progress to localStorage", err)
+        console.error("Failed to save progress to localStorage", err)
       }
     }
   }, [completed, isMounted])

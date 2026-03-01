@@ -18,12 +18,11 @@ interface CurriculumViewProps {
 export function CurriculumView({ sections }: CurriculumViewProps) {
   const { completed, toggleTopic, setTotalTopics } = useProgress()
 
-  // Only render sections that have topics
   const validSections = React.useMemo(() =>
     sections.filter(s => s.topics.length > 0),
   [sections])
 
-  // Calculate total topics once on mount or when sections change
+  // Calculate total topics
   React.useEffect(() => {
     const total = validSections.reduce((acc, section) => acc + section.topics.length, 0)
     setTotalTopics(total)
@@ -32,7 +31,7 @@ export function CurriculumView({ sections }: CurriculumViewProps) {
   return (
     <div className="space-y-12">
       {validSections.map((section, sidx) => (
-        <section key={section.title || sidx} className="space-y-6">
+        <section key={`${section.title}-${sidx}`} className="space-y-6">
           <div className="space-y-2">
             <h2 className="text-3xl font-extrabold tracking-tight">{section.title}</h2>
             <div className="h-1 w-20 bg-primary rounded-full" />

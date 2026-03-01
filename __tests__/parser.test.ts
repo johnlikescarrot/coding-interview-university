@@ -20,6 +20,15 @@ describe('Parser logic', () => {
     consoleSpy.mockRestore();
   });
 
+  it('should return empty array for content without sections', () => {
+    const mockMd = '# Title\nSome paragraph without sections';
+    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
+    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+
+    const result = parseCurriculum('dummy.md');
+    expect(result).toEqual([]);
+  });
+
   it('should parse curriculum sections and topics', () => {
     const mockMd = '## Section 1\n### Topic 1\n- [Link](url)';
     vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
@@ -42,13 +51,14 @@ describe('Parser logic', () => {
     expect(result[0].topics[0].title).toBe('Topic Italic');
   });
 
-  it('should detect resource types correctly', () => {
-    const mockMd = '## Section\n### Topic\n- [Video](https://youtube.com/watch?v=123)\n- [Book](https://amazon.com/dp/123)\n- [Interactive](https://exercism.org/tracks/python)\n- [Article](https://blog.com/post)';
+  it('should detect resource types correctly and deduplicate', () => {
+    const mockMd = '## Section\n### Topic\n- [Video](https://youtube.com/watch?v=123)\n- [Link](https://youtube.com/watch?v=123)\n- [Book](https://amazon.com/dp/123)\n- [Interactive](https://exercism.org/tracks/python)\n- [Article](https://blog.com/post)';
     vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
     vi.spyOn(fs, 'existsSync').mockReturnValue(true);
 
     const result = parseCurriculum('dummy.md');
     const resources = result[0].topics[0].resources;
+    expect(resources).toHaveLength(4); // Video/Link deduplicated
     expect(resources[0].type).toBe('video');
     expect(resources[1].type).toBe('book');
     expect(resources[2].type).toBe('interactive');
@@ -63,15 +73,6 @@ describe('Parser logic', () => {
     const result = parseCurriculum('dummy.md');
     expect(result[0].topics[0].id).toBe('same-title');
     expect(result[1].topics[0].id).toBe('same-title-2');
-  });
-
-  it('should handle headings without sections (edge case)', () => {
-    const mockMd = '# Title\nSome paragraph without sections';
-    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
-    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
-
-    const result = parseCurriculum('dummy.md');
-    expect(result).toEqual([]);
   });
 
   it('should parse language resources correctly and prevent duplicates', () => {

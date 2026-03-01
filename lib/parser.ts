@@ -39,7 +39,7 @@ const getResourceType = (url: string): Resource['type'] => {
   const u = url.toLowerCase();
   if (u.includes('youtube.com') || u.includes('youtu.be') || u.includes('vimeo.com')) return 'video';
   if (u.includes('amazon.com') || u.includes('books.google') || u.includes('oreilly.com')) return 'book';
-  // Restrict interactive to specific known domains to avoid broad word matches
+  // Specific domains only for interactive type
   if (u.includes('labex.io') || u.includes('exercism.org') || u.includes('codewars.com') || u.includes('leetcode.com')) return 'interactive';
   return 'article';
 };
@@ -93,7 +93,7 @@ export function parseCurriculum(filePath: string): Section[] {
           if (paragraph) {
             const link = paragraph.children?.find((c) => c.type === 'link');
             if (link && link.url) {
-               // Prevent duplicates by checking URL
+               // Deduplicate by URL
                if (!currentTopic?.resources.some(r => r.url === link.url)) {
                  currentTopic?.resources.push({
                    title: extractText(link) || extractText(paragraph),
@@ -127,7 +127,7 @@ export function parseLanguageResources(filePath: string): Record<string, Resourc
             if (t.startsWith('- [')) {
                 const match = t.match(/\[(.*?)\]\((.*?)\)/);
                 if (match && currentLang) {
-                    // Prevent duplicates
+                    // Deduplicate by URL
                     if (!sections[currentLang].some(r => r.url === match[2])) {
                       sections[currentLang].push({
                           title: match[1],

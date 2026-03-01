@@ -10,7 +10,7 @@ function Progress({
   value,
   ...props
 }: React.ComponentProps<typeof ProgressPrimitive.Root>) {
-  const safeValue = Math.min(Math.max(value || 0, 0), 100)
+  const clampedValue = Math.min(100, Math.max(0, value || 0))
 
   return (
     <ProgressPrimitive.Root
@@ -19,13 +19,13 @@ function Progress({
         "bg-primary/20 relative h-2 w-full overflow-hidden rounded-full",
         className
       )}
-      value={safeValue}
+      value={clampedValue}
       {...props}
     >
       <ProgressPrimitive.Indicator
         data-slot="progress-indicator"
         className="bg-primary h-full w-full flex-1 transition-all"
-        style={{ transform: `translateX(-${100 - safeValue}%)` }}
+        style={{ transform: `translateX(-${100 - clampedValue}%)` }}
       />
     </ProgressPrimitive.Root>
   )
