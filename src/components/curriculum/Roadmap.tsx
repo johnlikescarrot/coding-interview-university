@@ -74,7 +74,7 @@ export default function Roadmap({ topics }: RoadmapProps) {
                   </div>
                   <div className="space-y-1">
                     <div className="font-bold text-lg leading-none">{topic.title}</div>
-                    {topic.checkboxes && (
+                    {topic.checkboxes && topic.checkboxes.length > 0 && (
                       <div className="text-xs text-muted-foreground font-medium">
                         {topic.checkboxes.filter(c => completedCheckboxes[c.id]).length} / {topic.checkboxes.length} Tasks
                       </div>
