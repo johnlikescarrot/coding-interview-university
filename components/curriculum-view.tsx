@@ -46,9 +46,9 @@ export function CurriculumView({ sections }: { sections: Section[] }) {
                 </div>
                 <AccordionContent className="px-4 pt-2 pb-4 space-y-4 bg-muted/20">
                   <div className="grid gap-2">
-                    {topic.resources.map((res) => (
+                    {topic.resources.map((res, ridx) => (
                       <a
-                        key={res.url}
+                        key={`${res.url}-${ridx}`}
                         href={res.url}
                         target="_blank"
                         rel="noopener noreferrer"

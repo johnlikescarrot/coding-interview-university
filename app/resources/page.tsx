@@ -42,9 +42,9 @@ export default function ResourcesPage() {
             </CardHeader>
             <CardContent className="p-0 flex-1">
               <div className="divide-y divide-muted/50">
-                {resources.slice(0, 6).map((res) => (
+                {resources.slice(0, 6).map((res, ridx) => (
                   <a
-                    key={res.url}
+                    key={`${res.url}-${ridx}`}
                     href={res.url}
                     target="_blank"
                     rel="noopener noreferrer"

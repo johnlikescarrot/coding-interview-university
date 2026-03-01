@@ -50,6 +50,7 @@
     "shadcn": "^2.1.7",
     "tailwindcss": "^4.0.0",
     "typescript": "^5.7.2",
-    "vitest": "^2.1.8"
+    "vitest": "^2.1.8",
+    "serve": "^14.2.4"
   }
 }

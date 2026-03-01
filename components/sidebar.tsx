@@ -11,7 +11,6 @@ import {
   CheckCircle2,
   Code2,
   Layers,
-
   Zap,
   SquareStack
 } from "lucide-react"
@@ -40,7 +39,7 @@ export function Sidebar() {
   }
 
   return (
-    <div className="flex flex-col h-full border-r bg-card w-64 fixed left-0 top-0 pt-16">
+    <div className="hidden md:flex flex-col h-full border-r bg-card w-64 pt-16">
       <ScrollArea className="flex-1 px-3">
         <div className="space-y-4 py-4">
           <div className="px-3 py-2">
