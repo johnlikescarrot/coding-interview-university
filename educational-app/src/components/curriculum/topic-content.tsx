@@ -10,7 +10,9 @@ import { Topic } from "@/types/curriculum";
 
 const sanitizeUrl = (url: string) => {
   const trimmed = url.trim();
-  if (trimmed.toLowerCase().startsWith('javascript:')) {
+  if (trimmed.toLowerCase().startsWith('javascript:') ||
+      trimmed.toLowerCase().startsWith('data:') ||
+      trimmed.toLowerCase().startsWith('vbscript:')) {
     return '#';
   }
   return trimmed;

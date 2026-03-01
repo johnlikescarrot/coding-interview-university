@@ -48,7 +48,6 @@ function parseMarkdown(filePath: string): Topic[] {
     if (h2Match) {
       const title = h2Match[1].trim();
       if (title === 'Final Review' || title === 'Getting the Job') {
-        // Skip these sections as major topics
         continue;
       }
       currentTopic = {
@@ -86,7 +85,7 @@ function parseMarkdown(filePath: string): Topic[] {
         continue;
       }
 
-      // Fix Wikipedia URLs (markdown parser might strip trailing paren)
+      // Fix Wikipedia URLs
       if (url.includes('wikipedia.org') && url.includes('(') && !url.endsWith(')')) {
         url += ')';
       }
@@ -106,9 +105,8 @@ function parseMarkdown(filePath: string): Topic[] {
     }
   }
 
-  // Use the correct slugify output for the filter
-  const bigOSlug = slugify('Algorithmic complexity / Big-O / Asymptotic analysis');
-  return topics.filter(t => t.subtopics.length > 0 || t.slug === bigOSlug);
+  // Filter out topics with 0 subtopics to ensure high quality dashboard
+  return topics.filter(t => t.subtopics.length > 0);
 }
 
 const readmePath = path.join(__dirname, '../../README.md');
@@ -119,4 +117,4 @@ fs.writeFileSync(
   JSON.stringify(curriculum, null, 2)
 );
 
-console.log(`Successfully parsed ${curriculum.length} major topics into curriculum.json`);
+console.log(`Successfully parsed ${curriculum.length} high-quality topics into curriculum.json`);

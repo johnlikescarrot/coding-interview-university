@@ -1,10 +1,5 @@
 [
   {
-    "title": "Algorithmic complexity / Big-O / Asymptotic analysis",
-    "slug": "algorithmic-complexity-bigo-asymptotic-analysis",
-    "subtopics": []
-  },
-  {
     "title": "Data Structures",
     "slug": "data-structures",
     "subtopics": [
