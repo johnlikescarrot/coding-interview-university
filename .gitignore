@@ -39,3 +39,11 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# Dev logs
+next_dev.log
+*.log
+
+# Refine .env pattern
+!.env.example
+!.env.template

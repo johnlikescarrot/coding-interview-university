@@ -5,7 +5,7 @@ interface ProgressState {
   completedTopics: Record<string, boolean>
   toggleTopic: (topicId: string) => void
   completedCheckboxes: Record<string, boolean>
-  toggleCheckbox: (topicId: string, checkboxIdx: number) => void
+  toggleCheckbox: (topicId: string, checkboxId: string) => void
   language: string
   setLanguage: (lang: string) => void
 }
@@ -22,13 +22,12 @@ export const useProgressStore = create<ProgressState>()(
           }
         })),
       completedCheckboxes: {},
-      toggleCheckbox: (topicId, checkboxIdx) =>
+      toggleCheckbox: (topicId, checkboxId) =>
         set((state) => {
-          const key = `${topicId}-${checkboxIdx}`
           return {
             completedCheckboxes: {
               ...state.completedCheckboxes,
-              [key]: !state.completedCheckboxes[key]
+              [checkboxId]: !state.completedCheckboxes[checkboxId]
             }
           }
         }),

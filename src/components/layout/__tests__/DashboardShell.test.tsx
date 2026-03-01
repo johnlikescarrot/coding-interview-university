@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { render, screen } from '@testing-library/react'
 import DashboardShell from '../DashboardShell'
 import { SidebarProvider } from '@/components/ui/sidebar'

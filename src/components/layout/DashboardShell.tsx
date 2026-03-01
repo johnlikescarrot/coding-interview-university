@@ -7,8 +7,7 @@ import {
   CreditCard,
   LayoutDashboard,
   PenTool,
-  Settings,
-  Menu
+  Settings
 } from "lucide-react"
 
 import {

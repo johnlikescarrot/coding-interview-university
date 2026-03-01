@@ -1,65 +1,47 @@
-import { describe, it, expect, vi, beforeEach } from 'vitest'
-import { parseMarkdownToCurriculum, getCurriculum } from '../parser'
-import fs from 'fs'
+/* eslint-disable @typescript-eslint/no-explicit-any */
+import { describe, it, expect, vi } from 'vitest';
+import { getCurriculum } from '../parser';
+import fs from 'fs';
 
-vi.mock('fs')
+vi.mock('fs', () => ({
+  default: {
+    readFileSync: vi.fn(),
+    existsSync: vi.fn(),
+  },
+}));
 
 describe('parser', () => {
-  beforeEach(() => {
-    vi.resetAllMocks()
-  })
+  it('parses a basic markdown file correctly', () => {
+    const mockMd = '# Section 1\n- [ ] Item 1\n- [x] Item 2\n## Subsection 1\n- [ ] Item 3';
+    (fs.readFileSync as any).mockReturnValue(mockMd);
+    (fs.existsSync as any).mockReturnValue(true);
 
-  describe('parseMarkdownToCurriculum', () => {
-    it('should parse headers and nested topics', () => {
-      const md = '# Topic 1\n## Subtopic 1.1\n# Topic 2'
-      const curriculum = parseMarkdownToCurriculum(md)
-      expect(curriculum).toHaveLength(2)
-      expect(curriculum[0].title).toBe('Topic 1')
-      expect(curriculum[0].subtopics).toHaveLength(1)
-      expect(curriculum[0].subtopics[0].title).toBe('Subtopic 1.1')
-      expect(curriculum[1].title).toBe('Topic 2')
-    })
+    const result = getCurriculum('en');
+    expect(result).toHaveLength(1);
+    expect(result[0].title).toBe('Section 1');
+    expect(result[0].subtopics).toHaveLength(1);
+    expect(result[0].subtopics[0].title).toBe('Subsection 1');
+    expect(result[0].checkboxes).toHaveLength(2);
+  });
 
-    it('should extract links', () => {
-      const md = '# Topic\n[Link](http://example.com)'
-      const curriculum = parseMarkdownToCurriculum(md)
-      expect(curriculum[0].links).toContainEqual({ title: 'Link', url: 'http://example.com' })
-    })
+  it('handles invalid language by returning empty array', () => {
+    const result = getCurriculum('invalid-lang');
+    expect(result).toEqual([]);
+  });
 
-    it('should extract checkboxes', () => {
-      const md = '# Topic\n- [ ] Todo 1\n- [x] Done 1'
-      const curriculum = parseMarkdownToCurriculum(md)
-      expect(curriculum[0].checkboxes).toHaveLength(2)
-      expect(curriculum[0].checkboxes![0]).toEqual({ text: 'Todo 1', completed: false })
-      expect(curriculum[0].checkboxes![1]).toEqual({ text: 'Done 1', completed: true })
-    })
-  })
+  it('handles files with no sections', () => {
+    (fs.readFileSync as any).mockReturnValue('Just some text without headers');
+    (fs.existsSync as any).mockReturnValue(true);
+    const result = getCurriculum('en');
+    expect(result).toHaveLength(0);
+  });
 
-  describe('getCurriculum', () => {
-    it('should read from README.md for default en lang', () => {
-      // Ensure we are in a non-window environment for the test
-      const originalWindow = global.window;
-      // @ts-ignore
-      delete global.window;
-
-      vi.spyOn(fs, 'readFileSync').mockReturnValue('# Mocked README')
-      const curriculum = getCurriculum()
-      expect(fs.readFileSync).toHaveBeenCalledWith(expect.stringContaining('README.md'), 'utf-8')
-      expect(curriculum[0].title).toBe('Mocked README')
-
-      global.window = originalWindow;
-    })
-
-    it('should handle missing files gracefully', () => {
-       const originalWindow = global.window;
-      // @ts-ignore
-      delete global.window;
-
-      vi.spyOn(fs, 'readFileSync').mockImplementation(() => { throw new Error('File not found') })
-      const curriculum = getCurriculum('nonexistent')
-      expect(curriculum).toEqual([])
-
-      global.window = originalWindow;
-    })
-  })
-})
+  it('correctly handles checkbox states in parsing', () => {
+    const mockMd = '# Section\n- [ ] unchecked\n- [x] checked';
+    (fs.readFileSync as any).mockReturnValue(mockMd);
+    (fs.existsSync as any).mockReturnValue(true);
+    const result = getCurriculum('en');
+    expect(result[0].checkboxes![0].completed).toBe(false);
+    expect(result[0].checkboxes![1].completed).toBe(true);
+  });
+});

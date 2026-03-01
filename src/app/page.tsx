@@ -1,45 +1,72 @@
 "use client"
 
 import * as React from "react"
-import DashboardShell from "@/components/layout/DashboardShell";
-import Roadmap from "@/components/curriculum/Roadmap";
-import SofaWhiteboard from "@/components/whiteboard/SofaWhiteboard";
-import Flashcards from "@/components/study/Flashcards";
-import { CurriculumTopic } from "@/lib/parser";
-import { useProgressStore } from "@/store/useProgressStore";
+import DashboardShell from "@/components/layout/DashboardShell"
+import Roadmap from "@/components/curriculum/Roadmap"
+import SofaWhiteboard from "@/components/whiteboard/SofaWhiteboard"
+import Flashcards from "@/components/study/Flashcards"
+import { CurriculumTopic } from "@/lib/parser"
+import { useProgressStore } from "@/store/useProgressStore"
+import { Alert, AlertDescription, AlertTitle } from "@/components/ui/alert"
+import { AlertCircle, RefreshCcw } from "lucide-react"
+import { Button } from "@/components/ui/button"
+
+const TOPIC_LIMIT = 20
 
 export default function Home() {
-  const { language } = useProgressStore();
-  const [topics, setTopics] = React.useState<CurriculumTopic[]>([]);
-  const [isLoading, setIsLoading] = React.useState(true);
+  const { language } = useProgressStore()
+  const [topics, setTopics] = React.useState<CurriculumTopic[]>([])
+  const [isLoading, setIsLoading] = React.useState(true)
+  const [error, setError] = React.useState<string | null>(null)
+
+  const fetchData = React.useCallback(async (lang: string, signal: AbortSignal) => {
+    setIsLoading(true)
+    setError(null)
+    try {
+      const res = await fetch(`/data/curriculum-${lang}.json`, { signal })
+      if (!res.ok) {
+        throw new Error(`Failed to load curriculum: ${res.status} ${res.statusText}`)
+      }
+      const data = await res.json()
+      setTopics(data)
+    } catch (err) {
+      if (err instanceof Error && err.name !== 'AbortError') {
+        console.error("Failed to fetch curriculum", err)
+        setError(err.message || "An unexpected error occurred while loading the curriculum.")
+      }
+    } finally {
+      setIsLoading(false)
+    }
+  }, [])
 
   React.useEffect(() => {
-    setIsLoading(true);
-    // Use the route for pre-generated JSON if it existed, or use a placeholder for now
-    // Since we can't easily run ts in node above without ts-node, we'll fetch from a path
-    // that will be populated during build.
-    fetch(`/data/curriculum-${language}.json`)
-      .then(res => res.json())
-      .then(data => {
-        setTopics(data);
-        setIsLoading(false);
-      })
-      .catch(err => {
-        console.error("Failed to fetch curriculum", err);
-        setIsLoading(false);
-      });
-  }, [language]);
+    const controller = new AbortController()
+    fetchData(language, controller.signal)
+    return () => controller.abort()
+  }, [language, fetchData])
 
   return (
     <DashboardShell>
       <div className="space-y-24 pb-24">
         <section id="curriculum">
-          {isLoading ? (
+          {error ? (
+            <Alert variant="destructive">
+              <AlertCircle className="h-4 w-4" />
+              <AlertTitle>Error</AlertTitle>
+              <AlertDescription className="flex items-center justify-between">
+                <span>{error}</span>
+                <Button variant="outline" size="sm" onClick={() => fetchData(language, new AbortController().signal)}>
+                  <RefreshCcw className="mr-2 h-4 w-4" />
+                  Retry
+                </Button>
+              </AlertDescription>
+            </Alert>
+          ) : isLoading ? (
             <div className="flex items-center justify-center py-24">
               <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
             </div>
           ) : (
-            <Roadmap topics={topics.slice(0, 20)} />
+            <Roadmap topics={topics.slice(0, TOPIC_LIMIT)} />
           )}
         </section>
 
@@ -58,5 +85,5 @@ export default function Home() {
         </section>
       </div>
     </DashboardShell>
-  );
+  )
 }
