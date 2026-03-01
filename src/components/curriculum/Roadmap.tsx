@@ -20,7 +20,7 @@ interface RoadmapProps {
 export default function Roadmap({ topics }: RoadmapProps) {
   const { completedCheckboxes, toggleCheckbox } = useProgressStore()
 
-  // Calculate dynamic progress scoped ONLY to current topics
+  // Mathematically accurate scoped progress calculation
   const { totalTasks, completedTasks } = React.useMemo(() => {
     let total = 0
     let completed = 0
@@ -30,7 +30,9 @@ export default function Roadmap({ topics }: RoadmapProps) {
         if (item.checkboxes) {
           item.checkboxes.forEach(cb => {
             total++
-            if (completedCheckboxes[cb.id]) completed++
+            if (completedCheckboxes[cb.id]) {
+              completed++
+            }
           })
         }
         traverse(item.subtopics)

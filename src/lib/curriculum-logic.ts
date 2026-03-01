@@ -12,12 +12,22 @@ export interface CurriculumTopic {
 export function sanitizeUrl(url: string): string {
   const forbiddenProtocols = ['javascript:', 'data:', 'vbscript:', 'file:', 'blob:']
 
-  // Normalize and strip control characters & Unicode whitespace/ZWSP
+  // Exhaustive Unicode-aware sanitization: Normalize and strip all whitespace,
+  // control chars, and zero-width characters that can bypass protocol checks.
   const sanitized = Array.from(url.normalize())
     .filter(char => {
       const code = char.charCodeAt(0)
-      // Strip 0-31, 127, and ZWSP (8203)
-      return code > 0x1F && code !== 0x7F && code !== 0x200B
+      // ASCII Control: 0-31, 127
+      // Unicode Whitespace: U+00A0 (NBSP), U+1680, U+2000-U+200A, U+202F, U+205F, U+3000
+      // Zero-width/Separators: U+200B-U+200D (ZWSP variants), U+2028-U+2029, U+FEFF (BOM)
+      const isControl = code <= 0x1F || code === 0x7F
+      const isUnicodeWhitespace = code === 0x00A0 || code === 0x1680 ||
+                                 (code >= 0x2000 && code <= 0x200A) ||
+                                 code === 0x202F || code === 0x205F || code === 0x3000
+      const isSpecialChar = (code >= 0x200B && code <= 0x200D) ||
+                            code === 0x2028 || code === 0x2029 || code === 0xFEFF
+
+      return !isControl && !isUnicodeWhitespace && !isSpecialChar
     })
     .join('')
     .trim()

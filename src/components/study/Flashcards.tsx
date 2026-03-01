@@ -20,9 +20,13 @@ export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
   const [currentIdx, setCurrentIdx] = React.useState(0)
   const [isFlipped, setIsFlipped] = React.useState(false)
 
-  // Derive a safe index to prevent crashes when cards shrink
-  const safeIdx = cards.length > 0 ? Math.max(0, Math.min(currentIdx, cards.length - 1)) : 0
+  // Bounds-safe index calculation
+  const safeIdx = React.useMemo(() => {
+    if (cards.length === 0) return 0
+    return Math.max(0, Math.min(currentIdx, cards.length - 1))
+  }, [currentIdx, cards.length])
 
+  // Sync index if cards shrink
   React.useEffect(() => {
     if (currentIdx >= cards.length && cards.length > 0) {
       setCurrentIdx(cards.length - 1)
@@ -47,10 +51,12 @@ export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
     setCurrentIdx(0)
   }
 
+  const toggleFlip = () => setIsFlipped((prev) => !prev)
+
   const handleKeyDown = (e: React.KeyboardEvent) => {
     if (e.key === "Enter" || e.key === " ") {
       e.preventDefault()
-      setIsFlipped(!isFlipped)
+      toggleFlip()
     }
   }
 
@@ -72,7 +78,7 @@ export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
             exit={{ opacity: 0, rotateY: isFlipped ? 90 : -90 }}
             transition={{ duration: 0.3 }}
             className="w-full h-full cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
-            onClick={() => setIsFlipped(!isFlipped)}
+            onClick={toggleFlip}
             onKeyDown={handleKeyDown}
             role="button"
             tabIndex={0}

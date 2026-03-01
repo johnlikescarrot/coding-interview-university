@@ -55,7 +55,7 @@ export default function SofaWhiteboard() {
       ctx.lineTo(x, y)
       ctx.stroke()
 
-      // Reset path to prevent accumulation artifacts
+      // Start a new sub-path to avoid stacking strokes and thickening
       ctx.beginPath()
       ctx.moveTo(x, y)
     }
@@ -65,7 +65,7 @@ export default function SofaWhiteboard() {
     isDrawingRef.current = false
     const ctx = canvasRef.current?.getContext("2d")
     if (ctx) {
-      ctx.globalCompositeOperation = "source-over" // Restore to default
+      ctx.globalCompositeOperation = "source-over"
     }
   }
 

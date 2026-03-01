@@ -26,8 +26,7 @@ vi.mock('lucide-react', () => ({
   Pen: () => <span>Pen</span>,
 }));
 
-// Mock Canvas API
-const mockContext = {
+const createMockContext = () => ({
   beginPath: vi.fn(),
   moveTo: vi.fn(),
   lineTo: vi.fn(),
@@ -38,12 +37,15 @@ const mockContext = {
   lineCap: '',
   lineJoin: '',
   globalCompositeOperation: 'source-over',
-};
+});
 
 describe('SofaWhiteboard', () => {
+  let mockContext: any;
+
   beforeEach(() => {
     vi.restoreAllMocks();
     vi.clearAllMocks();
+    mockContext = createMockContext();
     HTMLCanvasElement.prototype.getContext = vi.fn().mockReturnValue(mockContext);
     HTMLCanvasElement.prototype.toDataURL = vi.fn().mockReturnValue('data:image/png;base64,test');
     HTMLCanvasElement.prototype.getBoundingClientRect = vi.fn().mockReturnValue({

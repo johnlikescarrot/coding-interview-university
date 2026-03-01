@@ -6,6 +6,8 @@
 
 # testing
 /coverage
+node_modules/.vitest
+.vitest
 
 # next.js
 /.next/
@@ -28,6 +30,7 @@ next_dev.log
 
 # local env files
 .env*.local
+.env
 
 # vercel
 .vercel
@@ -35,4 +38,3 @@ next_dev.log
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-.env

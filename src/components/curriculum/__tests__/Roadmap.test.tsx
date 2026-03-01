@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Roadmap from '../Roadmap';
 import { useProgressStore } from '../../../store/useProgressStore';
@@ -26,9 +26,11 @@ vi.mock('@/components/ui/badge', () => ({
 }));
 
 describe('Roadmap', () => {
-  const toggleCheckbox = vi.fn();
+  let toggleCheckbox: any;
 
   beforeEach(() => {
+    vi.clearAllMocks();
+    toggleCheckbox = vi.fn();
     (useProgressStore as any).mockReturnValue({
       completedCheckboxes: {},
       toggleCheckbox,
