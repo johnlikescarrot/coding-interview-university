@@ -579,7 +579,7 @@
             ]
           },
           {
-            "id": "c",
+            "id": "c-1",
             "title": "C++",
             "subtopics": [],
             "links": [
@@ -1022,7 +1022,7 @@
             "completed": false
           },
           {
-            "id": "check-c5at8t",
+            "id": "check-c5at8t-1",
             "text": "介绍：",
             "completed": false
           },

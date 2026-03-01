@@ -34,12 +34,14 @@ describe('Roadmap', () => {
   const mockTopics = [{
     id: 's1',
     title: 'Section 1',
-    checkboxes: [{ id: 'i1', text: 'Item 1', completed: false }],
+    checkboxes: [{ id: 'check-1', text: 'Task 1', completed: false }],
     subtopics: []
   }];
 
-  it('renders section', () => {
+  it('renders section and tasks', () => {
     render(<Roadmap topics={mockTopics} />);
     expect(screen.getByText('Section 1')).toBeInTheDocument();
+    // Task 1 should be in the document (it's inside AccordionContent which we mock to always show children)
+    expect(screen.getByText('Task 1')).toBeInTheDocument();
   });
 });

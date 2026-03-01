@@ -1,133 +1,111 @@
 "use client"
 
 import * as React from "react"
-import { Card, CardContent } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { ChevronLeft, ChevronRight, RotateCcw } from "lucide-react"
 import { motion, AnimatePresence } from "framer-motion"
+import { Button } from "@/components/ui/button"
+import { Card, CardContent } from "@/components/ui/card"
+import { ChevronLeft, ChevronRight, RotateCcw } from "lucide-react"
 
-const DEFAULT_CARDS = [
-  { q: "What is the time complexity of a binary search?", a: "O(log n)" },
-  { q: "What are the four basic ways to represent a graph in memory?", a: "Objects and pointers, adjacency matrix, adjacency list, and adjacency map." },
-  { q: "What is the difference between a process and a thread?", a: "A process is an instance of a program in execution, whereas a thread is a unit of execution within a process. Threads share the process's memory space." }
+const SAMPLE_CARDS = [
+  { q: "What is the time complexity of binary search?", a: "O(log n)" },
+  { q: "What data structure is used in Breadth-First Search (BFS)?", a: "Queue" },
+  { q: "What are the four pillars of OOP?", a: "Encapsulation, Abstraction, Inheritance, Polymorphism" },
 ]
 
 interface FlashcardsProps {
   cards?: { q: string; a: string }[]
 }
 
-export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
-  const [index, setIndex] = React.useState(0)
-  const [flipped, setFlipped] = React.useState(false)
-
-  // Derive stable clamped index for all UI reads
-  const clampedIndex = cards.length > 0 ? Math.min(index, cards.length - 1) : 0
-
-  // Sync index if cards shrink
-  React.useEffect(() => {
-    if (cards.length > 0 && index >= cards.length) {
-      setIndex(0)
-      setFlipped(false)
-    }
-  }, [cards, index])
-
-  if (!cards || cards.length === 0) {
-    return (
-      <div className="max-w-md mx-auto py-12 text-center">
-        <h2 className="text-xl font-semibold mb-2">No cards available</h2>
-        <p className="text-muted-foreground">Try selecting another topic.</p>
-      </div>
-    )
-  }
-
-  const currentCard = cards[clampedIndex]
+export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
+  const [currentIdx, setCurrentIdx] = React.useState(0)
+  const [isFlipped, setIsFlipped] = React.useState(false)
 
   const next = () => {
-    setFlipped(false)
-    setIndex((prev) => (prev + 1) % cards.length)
+    setIsFlipped(false)
+    setCurrentIdx((prev) => (prev + 1) % cards.length)
   }
 
   const prev = () => {
-    setFlipped(false)
-    setIndex((prev) => (prev - 1 + cards.length) % cards.length)
+    setIsFlipped(false)
+    setCurrentIdx((prev) => (prev - 1 + cards.length) % cards.length)
+  }
+
+  const reset = () => {
+    setIsFlipped(false)
+    setCurrentIdx(0)
   }
 
   const handleKeyDown = (e: React.KeyboardEvent) => {
-    if (e.key === 'Enter' || e.key === ' ') {
+    if (e.key === "Enter" || e.key === " ") {
       e.preventDefault()
-      setFlipped(!flipped)
+      setIsFlipped(!isFlipped)
     }
   }
 
+  if (cards.length === 0) return null
+
   return (
-    <div className="max-w-md mx-auto space-y-8 py-12">
-       <div className="text-center">
-          <h2 className="text-3xl font-bold tracking-tight mb-2">Active Recall</h2>
-          <p className="text-muted-foreground">Master CS fundamentals with interactive flashcards.</p>
-       </div>
+    <div className="flex flex-col items-center justify-center space-y-8 py-12">
+      <div className="text-center space-y-2">
+        <h2 className="text-3xl font-bold tracking-tight">Active Recall</h2>
+        <p className="text-muted-foreground">Test your knowledge with randomized flashcards.</p>
+      </div>
 
-       <div
-         role="button"
-         tabIndex={0}
-         aria-label={flipped ? "Flipped to answer. Click to see question." : "Click to see answer."}
-         aria-pressed={flipped}
-         onKeyDown={handleKeyDown}
-         className="relative h-[300px] w-full perspective-1000 cursor-pointer focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary focus-visible:ring-offset-2 rounded-xl"
-         onClick={() => setFlipped(!flipped)}
-       >
-          <AnimatePresence mode="wait">
-            <motion.div
-              key={clampedIndex + (flipped ? '-back' : '-front')}
-              initial={{ rotateY: flipped ? -90 : 90, opacity: 0 }}
-              animate={{ rotateY: 0, opacity: 1 }}
-              exit={{ rotateY: flipped ? 90 : -90, opacity: 0 }}
-              transition={{ duration: 0.4 }}
-              className="w-full h-full"
-            >
-              <Card className="w-full h-full flex items-center justify-center p-8 text-center shadow-xl border-2 border-primary/20">
-                <CardContent className="p-0">
-                  <div className="text-sm font-medium uppercase tracking-widest text-primary/60 mb-4">
-                    {flipped ? 'Answer' : 'Question'}
-                  </div>
-                  <div className="text-xl font-semibold">
-                    {flipped ? currentCard.a : currentCard.q}
-                  </div>
-                </CardContent>
-              </Card>
-            </motion.div>
-          </AnimatePresence>
-       </div>
+      <div className="relative w-full max-w-md h-64 perspective-1000">
+        <AnimatePresence mode="wait">
+          <motion.div
+            key={`${currentIdx}-${isFlipped}`}
+            initial={{ opacity: 0, rotateY: isFlipped ? -90 : 90 }}
+            animate={{ opacity: 1, rotateY: 0 }}
+            exit={{ opacity: 0, rotateY: isFlipped ? 90 : -90 }}
+            transition={{ duration: 0.3 }}
+            className="w-full h-full cursor-pointer outline-none focus-visible:ring-2 focus-visible:ring-primary rounded-xl"
+            onClick={() => setIsFlipped(!isFlipped)}
+            onKeyDown={handleKeyDown}
+            role="button"
+            tabIndex={0}
+            aria-label={isFlipped ? "Answer side" : "Question side, click to see answer"}
+          >
+            <Card className="w-full h-full flex items-center justify-center text-center p-8 bg-card/50 backdrop-blur border-primary/20">
+              <CardContent className="p-0">
+                <p className="text-xl font-medium leading-relaxed">
+                  {isFlipped ? cards[currentIdx].a : cards[currentIdx].q}
+                </p>
+                <p className="mt-4 text-xs text-muted-foreground uppercase tracking-widest">
+                  {isFlipped ? "Answer" : "Question"}
+                </p>
+              </CardContent>
+            </Card>
+          </motion.div>
+        </AnimatePresence>
+      </div>
 
-       <div className="flex items-center justify-between px-4">
-         <Button
-           type="button"
-           variant="outline"
-           size="icon"
-           onClick={prev}
-           aria-label="Previous card"
-         >
-           <ChevronLeft className="h-4 w-4" />
-         </Button>
-         <div className="text-sm font-medium text-muted-foreground">
-           Card {clampedIndex + 1} of {cards.length}
-         </div>
-         <Button
-           type="button"
-           variant="outline"
-           size="icon"
-           onClick={next}
-           aria-label="Next card"
-         >
-           <ChevronRight className="h-4 w-4" />
-         </Button>
-       </div>
-
-       <div className="flex justify-center">
-         <Button type="button" variant="ghost" onClick={() => { setIndex(0); setFlipped(false); }} aria-label="Restart deck">
-           <RotateCcw className="mr-2 h-4 w-4" />
-           Restart Deck
-         </Button>
-       </div>
+      <div className="flex items-center space-x-4">
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={prev}
+          disabled={cards.length <= 1}
+          aria-label="Previous card"
+        >
+          <ChevronLeft className="h-4 w-4" />
+        </Button>
+        <div className="text-sm font-medium tabular-nums">
+          {currentIdx + 1} / {cards.length}
+        </div>
+        <Button
+          variant="outline"
+          size="icon"
+          onClick={next}
+          disabled={cards.length <= 1}
+          aria-label="Next card"
+        >
+          <ChevronRight className="h-4 w-4" />
+        </Button>
+        <Button variant="ghost" size="icon" onClick={reset} aria-label="Reset deck">
+          <RotateCcw className="h-4 w-4" />
+        </Button>
+      </div>
     </div>
   )
 }

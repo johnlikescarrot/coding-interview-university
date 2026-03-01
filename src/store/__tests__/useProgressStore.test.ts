@@ -4,42 +4,29 @@ import { useProgressStore } from '../useProgressStore';
 describe('useProgressStore', () => {
   it('should initialize with default values', () => {
     const state = useProgressStore.getState();
-    expect(state.completedTopics).toEqual({});
     expect(state.completedCheckboxes).toEqual({});
     expect(state.language).toBe('en');
   });
 
   describe('mutations', () => {
     beforeEach(() => {
-      // Reset store for mutation tests
-      useProgressStore.setState({
-        completedTopics: {},
-        completedCheckboxes: {},
-        language: 'en',
-      });
-    });
-
-    it('should toggle completion of a topic', () => {
-      const topicId = 'test-topic-1';
-      useProgressStore.getState().toggleTopic(topicId);
-      expect(useProgressStore.getState().completedTopics[topicId]).toBe(true);
-
-      useProgressStore.getState().toggleTopic(topicId);
-      expect(useProgressStore.getState().completedTopics[topicId]).toBe(false);
-    });
-
-    it('should toggle a checkbox', () => {
-      const checkboxId = 'check-1';
-      useProgressStore.getState().toggleCheckbox(checkboxId);
-      expect(useProgressStore.getState().completedCheckboxes[checkboxId]).toBe(true);
-
-      useProgressStore.getState().toggleCheckbox(checkboxId);
-      expect(useProgressStore.getState().completedCheckboxes[checkboxId]).toBe(false);
+      useProgressStore.getState().resetProgress();
     });
 
     it('should set language', () => {
       useProgressStore.getState().setLanguage('es');
       expect(useProgressStore.getState().language).toBe('es');
+    });
+
+    it('should toggle a checkbox', () => {
+      const topicId = 'topic-1';
+      const checkboxId = 'check-1';
+
+      useProgressStore.getState().toggleCheckbox(topicId, checkboxId);
+      expect(useProgressStore.getState().completedCheckboxes[checkboxId]).toBe(true);
+
+      useProgressStore.getState().toggleCheckbox(topicId, checkboxId);
+      expect(useProgressStore.getState().completedCheckboxes[checkboxId]).toBe(false);
     });
   });
 });

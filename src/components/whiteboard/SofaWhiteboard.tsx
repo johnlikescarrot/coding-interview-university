@@ -2,149 +2,119 @@
 
 import * as React from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Trash2, Download, Eraser, Pen } from "lucide-react"
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
+import { Download, Eraser, Pen, Trash2 } from "lucide-react"
 
-const WHITEBOARD_CONSTANTS = {
-  PEN_COLOR: '#000000',
-  ERASER_COLOR: '#ffffff',
-  PEN_WIDTH: 3,
-  ERASER_WIDTH: 20,
-  INTERNAL_WIDTH: 1000,
-  INTERNAL_HEIGHT: 600
-}
+const CANVAS_WIDTH = 1000
+const CANVAS_HEIGHT = 600
 
 export default function SofaWhiteboard() {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
   const isDrawingRef = React.useRef(false)
-  const [tool, setTool] = React.useState<'pen' | 'eraser'>('pen')
+  const [tool, setTool] = React.useState<"pen" | "eraser">("pen")
 
-  const getCoordinates = (e: React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent) => {
+  const getCoordinates = (e: React.MouseEvent | React.TouchEvent) => {
     const canvas = canvasRef.current
     if (!canvas) return { x: 0, y: 0 }
 
     const rect = canvas.getBoundingClientRect()
-    const clientX = 'touches' in e ? e.touches[0].clientX : (e as MouseEvent).clientX
-    const clientY = 'touches' in e ? e.touches[0].clientY : (e as MouseEvent).clientY
-
-    // Scale CSS pixels to Canvas internal resolution
-    const scaleX = canvas.width / rect.width
-    const scaleY = canvas.height / rect.height
+    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
+    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY
 
     return {
-      x: (clientX - rect.left) * scaleX,
-      y: (clientY - rect.top) * scaleY
+      x: (clientX - rect.left) * (canvas.width / rect.width),
+      y: (clientY - rect.top) * (canvas.height / rect.height)
     }
   }
 
   const startDrawing = (e: React.MouseEvent | React.TouchEvent) => {
-    if ('touches' in e) e.preventDefault()
     isDrawingRef.current = true
     const { x, y } = getCoordinates(e)
-    const ctx = canvasRef.current?.getContext('2d')
+    const ctx = canvasRef.current?.getContext("2d")
     if (ctx) {
       ctx.beginPath()
       ctx.moveTo(x, y)
-      draw(e, true)
     }
   }
 
-  const stopDrawing = (e?: React.MouseEvent | React.TouchEvent) => {
-    if (e && 'touches' in e) e.preventDefault()
-    isDrawingRef.current = false
-    const ctx = canvasRef.current?.getContext('2d')
-    if (ctx) {
-      ctx.beginPath()
-    }
-  }
-
-  const draw = (e: React.MouseEvent | React.TouchEvent, force = false) => {
-    if (!isDrawingRef.current && !force) return
-    if ('touches' in e) e.preventDefault()
-
-    const canvas = canvasRef.current
-    const ctx = canvas?.getContext('2d')
-    if (!canvas || !ctx) return
-
+  const draw = (e: React.MouseEvent | React.TouchEvent) => {
+    if (!isDrawingRef.current) return
     const { x, y } = getCoordinates(e)
+    const ctx = canvasRef.current?.getContext("2d")
+    if (ctx) {
+      ctx.strokeStyle = tool === "pen" ? "#3b82f6" : "#0f172a"
+      ctx.lineWidth = tool === "pen" ? 3 : 20
+      ctx.lineCap = "round"
+      ctx.lineJoin = "round"
+      ctx.lineTo(x, y)
+      ctx.stroke()
+    }
+  }
 
-    ctx.strokeStyle = tool === 'eraser' ? WHITEBOARD_CONSTANTS.ERASER_COLOR : WHITEBOARD_CONSTANTS.PEN_COLOR
-    ctx.lineWidth = tool === 'eraser' ? WHITEBOARD_CONSTANTS.ERASER_WIDTH : WHITEBOARD_CONSTANTS.PEN_WIDTH
-    ctx.lineCap = 'round'
-    ctx.lineJoin = 'round'
-
-    ctx.lineTo(x, y)
-    ctx.stroke()
-    ctx.beginPath()
-    ctx.moveTo(x, y)
+  const stopDrawing = () => {
+    isDrawingRef.current = false
   }
 
   const clear = () => {
-    const canvas = canvasRef.current
-    const ctx = canvas?.getContext('2d')
-    if (canvas && ctx) {
-      ctx.clearRect(0, 0, canvas.width, canvas.height)
-    }
+    const ctx = canvasRef.current?.getContext("2d")
+    if (ctx) ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
   }
 
   const download = () => {
     const canvas = canvasRef.current
     if (!canvas) return
-    const link = document.createElement('a')
-    link.download = 'whiteboard-practice.png'
-    link.href = canvas.toDataURL('image/png')
+    const dataUrl = canvas.toDataURL("image/png")
+    const link = document.createElement("a")
+    link.download = "sofa-whiteboard.png"
+    link.href = dataUrl
     link.click()
   }
 
   return (
-    <Card className="w-full h-full shadow-lg border-2">
-      <CardHeader className="flex flex-row items-center justify-between border-b bg-muted/50">
+    <Card className="w-full h-full flex flex-col overflow-hidden">
+      <CardHeader className="flex-row items-center justify-between space-y-0 py-4">
         <div>
           <CardTitle>The Sofa Whiteboard</CardTitle>
-          <CardDescription>Practice coding interview questions on paper (digitally).</CardDescription>
+          <CardDescription>Draw your solutions during your study session.</CardDescription>
         </div>
-        <div className="flex gap-2">
+        <div className="flex items-center space-x-2">
           <Button
-            type="button"
-            variant={tool === 'pen' ? 'default' : 'outline'}
+            variant={tool === "pen" ? "default" : "outline"}
             size="icon"
-            onClick={() => setTool('pen')}
-            aria-label="Pen Tool"
+            onClick={() => setTool("pen")}
+            aria-label="Pen tool"
           >
             <Pen className="h-4 w-4" />
           </Button>
           <Button
-            type="button"
-            variant={tool === 'eraser' ? 'default' : 'outline'}
+            variant={tool === "eraser" ? "default" : "outline"}
             size="icon"
-            onClick={() => setTool('eraser')}
-            aria-label="Eraser Tool"
+            onClick={() => setTool("eraser")}
+            aria-label="Eraser tool"
           >
             <Eraser className="h-4 w-4" />
           </Button>
-          <Button type="button" variant="outline" size="icon" onClick={clear} aria-label="Clear Whiteboard">
+          <Button variant="outline" size="icon" onClick={clear} aria-label="Clear canvas">
             <Trash2 className="h-4 w-4" />
           </Button>
-          <Button type="button" variant="outline" size="icon" onClick={download} aria-label="Download as PNG">
+          <Button variant="outline" size="icon" onClick={download} aria-label="Download drawing">
             <Download className="h-4 w-4" />
           </Button>
         </div>
       </CardHeader>
-      <CardContent className="p-0 bg-white cursor-crosshair relative aspect-video overflow-hidden">
+      <CardContent className="flex-1 p-0 bg-[#0f172a] relative cursor-crosshair">
         <canvas
           ref={canvasRef}
-          className="w-full h-full block touch-none focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-          width={WHITEBOARD_CONSTANTS.INTERNAL_WIDTH}
-          height={WHITEBOARD_CONSTANTS.INTERNAL_HEIGHT}
+          width={CANVAS_WIDTH}
+          height={CANVAS_HEIGHT}
+          className="w-full h-full touch-none"
           onMouseDown={startDrawing}
-          onMouseUp={() => stopDrawing()}
-          onMouseOut={() => stopDrawing()}
-          onBlur={() => stopDrawing()}
-          tabIndex={0}
-          onMouseMove={(e) => draw(e)}
+          onMouseMove={draw}
+          onMouseUp={stopDrawing}
+          onMouseLeave={stopDrawing}
           onTouchStart={startDrawing}
-          onTouchEnd={() => stopDrawing()}
-          onTouchMove={(e) => draw(e)}
+          onTouchMove={draw}
+          onTouchEnd={stopDrawing}
         />
       </CardContent>
     </Card>

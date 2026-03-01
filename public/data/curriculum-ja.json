@@ -383,7 +383,7 @@
             ]
           },
           {
-            "id": "c",
+            "id": "c-1",
             "title": "C++",
             "subtopics": [],
             "links": [
@@ -526,7 +526,7 @@
           },
           {
             "title": "Python",
-            "url": " https://github.com/jwasham/practice-python"
+            "url": "https://github.com/jwasham/practice-python"
           }
         ]
       },

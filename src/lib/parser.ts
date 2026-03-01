@@ -15,9 +15,11 @@ export function getCurriculum(lang: string = 'en'): CurriculumTopic[] {
       return []
     }
 
-    const filePath = lang === 'en'
+    // Sanitize lang to prevent path traversal
+    const safeLang = lang.replace(/[^a-z0-9-]/gi, '')
+    const filePath = safeLang === 'en'
       ? path.join(process.cwd(), 'README.md')
-      : path.join(process.cwd(), 'translations', `README-${lang}.md`)
+      : path.join(process.cwd(), 'translations', `README-${safeLang}.md`)
 
     try {
       const content = fs.readFileSync(filePath, 'utf-8')

@@ -55,9 +55,10 @@ describe('SofaWhiteboard', () => {
 
   it('renders the canvas and controls', () => {
     render(<SofaWhiteboard />);
-    expect(screen.getByRole('button', { name: /pen/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /eraser/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /clear/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /pen tool/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /eraser tool/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /clear canvas/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /download drawing/i })).toBeInTheDocument();
   });
 
   it('starts drawing on mouse down', () => {
@@ -82,7 +83,7 @@ describe('SofaWhiteboard', () => {
 
   it('clears the canvas', () => {
     render(<SofaWhiteboard />);
-    const clearButton = screen.getByRole('button', { name: /clear/i });
+    const clearButton = screen.getByRole('button', { name: /clear canvas/i });
 
     fireEvent.click(clearButton);
     expect(mockContext.clearRect).toHaveBeenCalled();
@@ -91,7 +92,7 @@ describe('SofaWhiteboard', () => {
   it('downloads the canvas as image', () => {
     const linkClickSpy = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
     render(<SofaWhiteboard />);
-    const downloadButton = screen.getByRole('button', { name: /download/i });
+    const downloadButton = screen.getByRole('button', { name: /download drawing/i });
 
     fireEvent.click(downloadButton);
     expect(HTMLCanvasElement.prototype.toDataURL).toHaveBeenCalledWith('image/png');

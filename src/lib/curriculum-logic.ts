@@ -11,9 +11,16 @@ export interface CurriculumTopic {
 
 export function sanitizeUrl(url: string): string {
   const forbiddenProtocols = ['javascript:', 'data:', 'vbscript:', 'file:', 'blob:']
-  // Strip control characters from the URL string itself to prevent XSS bypass
-  // Use Unicode escape sequences for static analysis compliance
-  const sanitized = url.replace(/[\u0000-\u001F\u007F]/g, "").trim()
+
+  // Strip control characters (0-31 and 127) to avoid lint issues with control chars in regex
+  const sanitized = Array.from(url)
+    .filter(char => {
+      const code = char.charCodeAt(0)
+      return code > 0x1F && code !== 0x7F
+    })
+    .join('')
+    .trim()
+
   const normalized = sanitized.toLowerCase()
 
   if (forbiddenProtocols.some(proto => normalized.startsWith(proto))) {
@@ -62,8 +69,8 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim()
-    // Support ATX headings with up to 3 leading spaces/tabs
-    const headerMatch = lines[i].match(/^[ \t]{0,3}(#{1,6})\s+(.*)$/)
+    // Support ATX headings with up to 3 leading spaces (removing \t per spec)
+    const headerMatch = lines[i].match(/^[ ]{0,3}(#{1,6})\s+(.*)$/)
 
     if (headerMatch) {
       const level = headerMatch[1].length

@@ -17,10 +17,7 @@ vi.mock('framer-motion', () => ({
 
       return (
         <div
-          role={isInteractive ? "button" : undefined}
-          tabIndex={isInteractive ? 0 : undefined}
-          onClick={onClick}
-          onKeyDown={onKeyDown}
+          {...(isInteractive ? { role: "button", tabIndex: 0, onClick, onKeyDown } : {})}
           className={className}
           data-testid="motion-div"
           {...domProps}
@@ -52,39 +49,40 @@ vi.mock('lucide-react', () => ({
 
 describe('Flashcards', () => {
   const mockCards = [
-    { q: 'Q1', a: 'A1' },
-    { q: 'Q2', a: 'A2' },
+    { q: 'Question 1', a: 'Answer 1' },
+    { q: 'Question 2', a: 'Answer 2' },
   ];
 
   it('renders correctly and flips', () => {
     render(<Flashcards cards={mockCards} />);
-    expect(screen.getByText('Q1')).toBeInTheDocument();
-    fireEvent.click(screen.getByText('Q1'));
-    expect(screen.getByText('A1')).toBeInTheDocument();
+    expect(screen.getByText('Question 1')).toBeInTheDocument();
+    fireEvent.click(screen.getByRole('button', { name: /question side/i }));
+    expect(screen.getByText('Answer 1')).toBeInTheDocument();
   });
 
   it('navigates to next and prev', () => {
     render(<Flashcards cards={mockCards} />);
-    const nextBtn = screen.getByLabelText(/next/i);
-    const prevBtn = screen.getByLabelText(/prev/i);
+    const nextBtn = screen.getByLabelText(/next card/i);
+    const prevBtn = screen.getByLabelText(/previous card/i);
 
     fireEvent.click(nextBtn);
-    expect(screen.getByText('Q2')).toBeInTheDocument();
+    expect(screen.getByText('Question 2')).toBeInTheDocument();
 
     fireEvent.click(prevBtn);
-    expect(screen.getByText('Q1')).toBeInTheDocument();
+    expect(screen.getByText('Question 1')).toBeInTheDocument();
   });
 
   it('handles keyboard navigation', () => {
     render(<Flashcards cards={mockCards} />);
-    const card = screen.getByLabelText(/click to see answer/i);
+    const card = screen.getByLabelText(/question side/i);
 
     // Flip to answer
     fireEvent.keyDown(card, { key: 'Enter' });
-    expect(screen.getByText('A1')).toBeInTheDocument();
+    expect(screen.getByText('Answer 1')).toBeInTheDocument();
 
     // Flip back to question
-    fireEvent.keyDown(card, { key: ' ' });
-    expect(screen.getByText('Q1')).toBeInTheDocument();
+    const answerCard = screen.getByLabelText(/answer side/i);
+    fireEvent.keyDown(answerCard, { key: ' ' });
+    expect(screen.getByText('Question 1')).toBeInTheDocument();
   });
 });

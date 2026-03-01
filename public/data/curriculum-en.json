@@ -595,7 +595,7 @@
             ]
           },
           {
-            "id": "c",
+            "id": "c-1",
             "title": "C++",
             "subtopics": [],
             "links": [
@@ -4684,7 +4684,7 @@
           },
           {
             "title": "2004: MapReduce: Simplified Data Processing on Large Clusters",
-            "url": " http://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf"
+            "url": "http://static.googleusercontent.com/media/research.google.com/en//archive/mapreduce-osdi04.pdf"
           },
           {
             "title": "2006: Bigtable: A Distributed Storage System for Structured Data",
