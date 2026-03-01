@@ -93,4 +93,16 @@ describe('Parser logic', () => {
       type: 'video'
     });
   });
+
+  it('should handle non-contiguous language resource blocks', () => {
+    const mockMd = '- Python\n  - [P1](u1)\n- C++\n  - [C1](v1)\n- Python\n  - [P2](u2)';
+    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
+    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+
+    const result = parseLanguageResources('lang.md');
+    expect(result['Python']).toHaveLength(2);
+    expect(result['Python'][0].title).toBe('P1');
+    expect(result['Python'][1].title).toBe('P2');
+    expect(result['C++']).toHaveLength(1);
+  });
 });
