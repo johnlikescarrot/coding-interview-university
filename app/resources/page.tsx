@@ -2,9 +2,9 @@ import path from "path";
 import { parseLanguageResources, Resource } from "@/lib/parser";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Video, FileText, Code2, Book, Zap, HelpCircle } from "lucide-react";
+import { ExternalLink, Video, FileText, Code2, Book, Zap, HelpCircle, type LucideIcon } from "lucide-react";
 
-interface IconEntry { icon: React.ComponentType<{ className?: string }>; color: string; }
+interface IconEntry { icon: LucideIcon; color: string; }
 
 const IconMap: Record<Resource["type"], IconEntry> = {
   video: { icon: Video, color: "text-red-500" },

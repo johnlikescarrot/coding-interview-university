@@ -143,7 +143,6 @@ export function parseLanguageResources(filePath: string): Record<string, Resourc
                 const lang = t.replace('- ', '').trim();
                 if (!lang.includes('[')) {
                     currentLang = lang;
-                    sections[currentLang] = [];
                 }
             }
         });
