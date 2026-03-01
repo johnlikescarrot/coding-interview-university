@@ -20,6 +20,15 @@ export default function Flashcards({ cards = DEFAULT_CARDS }: FlashcardsProps) {
   const [index, setIndex] = React.useState(0)
   const [flipped, setFlipped] = React.useState(false)
 
+  if (!cards || cards.length === 0) {
+    return (
+      <div className="max-w-md mx-auto py-12 text-center">
+        <h2 className="text-xl font-semibold mb-2">No cards available</h2>
+        <p className="text-muted-foreground">Try selecting another topic.</p>
+      </div>
+    )
+  }
+
   const next = () => {
     setFlipped(false)
     setIndex((prev) => (prev + 1) % cards.length)

@@ -50,7 +50,10 @@ export default function SofaWhiteboard() {
 
   const stopDrawing = () => {
     isDrawingRef.current = false
-    canvasRef.current?.getContext('2d')?.beginPath()
+    const ctx = canvasRef.current?.getContext('2d')
+    if (ctx) {
+      ctx.beginPath()
+    }
   }
 
   const draw = (e: React.MouseEvent | React.TouchEvent, force = false) => {
@@ -63,6 +66,8 @@ export default function SofaWhiteboard() {
 
     ctx.strokeStyle = tool === 'eraser' ? WHITEBOARD_CONSTANTS.ERASER_COLOR : WHITEBOARD_CONSTANTS.PEN_COLOR
     ctx.lineWidth = tool === 'eraser' ? WHITEBOARD_CONSTANTS.ERASER_WIDTH : WHITEBOARD_CONSTANTS.PEN_WIDTH
+    ctx.lineCap = 'round'
+    ctx.lineJoin = 'round'
 
     ctx.lineTo(x, y)
     ctx.stroke()

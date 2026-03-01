@@ -14,20 +14,20 @@ vi.mock('../../../store/useProgressStore', () => ({
 }));
 
 vi.mock('@/components/ui/accordion', () => ({
-  Accordion: ({ children }: any) => <div>{children}</div>,
-  AccordionItem: ({ children }: any) => <div>{children}</div>,
-  AccordionTrigger: ({ children, onClick }: any) => <button onClick={onClick}>{children}</button>,
-  AccordionContent: ({ children }: any) => <div>{children}</div>,
+  Accordion: vi.fn(({ children }: any) => <div>{children}</div>),
+  AccordionItem: vi.fn(({ children }: any) => <div>{children}</div>),
+  AccordionTrigger: vi.fn(({ children, onClick }: any) => <button onClick={onClick}>{children}</button>),
+  AccordionContent: vi.fn(({ children }: any) => <div>{children}</div>),
 }));
 
 vi.mock('@/components/ui/checkbox', () => ({
-  Checkbox: ({ checked, onCheckedChange }: any) => (
+  Checkbox: vi.fn(({ checked, onCheckedChange }: any) => (
     <input type="checkbox" checked={checked} onChange={(e) => onCheckedChange(e.target.checked)} />
-  ),
+  )),
 }));
 
 vi.mock('@/components/ui/badge', () => ({
-  Badge: ({ children }: any) => <span>{children}</span>,
+  Badge: vi.fn(({ children }: any) => <span>{children}</span>),
 }));
 
 describe('Roadmap', () => {
@@ -40,6 +40,6 @@ describe('Roadmap', () => {
 
   it('renders section', () => {
     render(<Roadmap topics={mockTopics} />);
-    expect(screen.getByText('Section 1')).toBeDefined();
+    expect(screen.getByText('Section 1')).toBeInTheDocument();
   });
 });

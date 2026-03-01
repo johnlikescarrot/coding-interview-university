@@ -11,7 +11,8 @@ export interface CurriculumTopic {
 
 export function sanitizeUrl(url: string): string {
   const forbiddenProtocols = ['javascript:', 'data:', 'vbscript:']
-  const normalizedUrl = url.trim().toLowerCase()
+  // Strip control characters before checking the protocol to prevent XSS bypass
+  const normalizedUrl = url.replace(/[\x00-\x1F\x7F]/g, "").trim().toLowerCase()
   if (forbiddenProtocols.some(proto => normalizedUrl.startsWith(proto))) {
     return '#'
   }

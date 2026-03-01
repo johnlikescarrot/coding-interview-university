@@ -6,7 +6,6 @@ import fs from 'fs';
 vi.mock('fs', () => ({
   default: {
     readFileSync: vi.fn(),
-    existsSync: vi.fn(),
   },
 }));
 
@@ -14,7 +13,6 @@ describe('parser', () => {
   it('parses a basic markdown file correctly', () => {
     const mockMd = '# Section 1\n- [ ] Item 1\n- [x] Item 2\n## Subsection 1\n- [ ] Item 3';
     (fs.readFileSync as any).mockReturnValue(mockMd);
-    (fs.existsSync as any).mockReturnValue(true);
 
     const result = getCurriculum('en');
     expect(result).toHaveLength(1);
@@ -31,7 +29,6 @@ describe('parser', () => {
 
   it('handles files with no sections', () => {
     (fs.readFileSync as any).mockReturnValue('Just some text without headers');
-    (fs.existsSync as any).mockReturnValue(true);
     const result = getCurriculum('en');
     expect(result).toHaveLength(0);
   });
@@ -39,7 +36,6 @@ describe('parser', () => {
   it('correctly handles checkbox states in parsing', () => {
     const mockMd = '# Section\n- [ ] unchecked\n- [x] checked';
     (fs.readFileSync as any).mockReturnValue(mockMd);
-    (fs.existsSync as any).mockReturnValue(true);
     const result = getCurriculum('en');
     expect(result[0].checkboxes![0].completed).toBe(false);
     expect(result[0].checkboxes![1].completed).toBe(true);

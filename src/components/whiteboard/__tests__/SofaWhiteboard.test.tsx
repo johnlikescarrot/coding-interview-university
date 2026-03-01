@@ -3,23 +3,6 @@ import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import SofaWhiteboard from '../SofaWhiteboard';
 
-// Mock the store - although SofaWhiteboard doesn't use it yet,
-// other tests might fail if we don't handle it globally or properly
-vi.mock('../../../store/useProgressStore', () => ({
-  useProgressStore: Object.assign(vi.fn(), {
-    getState: vi.fn(() => ({
-      completedTopics: {},
-      toggleTopic: vi.fn(),
-      completedCheckboxes: {},
-      toggleCheckbox: vi.fn(),
-      language: 'en',
-      setLanguage: vi.fn(),
-    })),
-    setState: vi.fn(),
-    subscribe: vi.fn(),
-  }),
-}));
-
 // Mock shadcn components
 vi.mock('@/components/ui/button', () => ({
   Button: ({ children, onClick, 'aria-label': ariaLabel }: any) => (
@@ -53,14 +36,14 @@ const mockContext = {
   strokeStyle: '',
   lineWidth: 0,
   lineCap: '',
+  lineJoin: '',
 };
 
 describe('SofaWhiteboard', () => {
   beforeEach(() => {
-    vi.clearAllMocks();
+    vi.restoreAllMocks();
     HTMLCanvasElement.prototype.getContext = vi.fn().mockReturnValue(mockContext);
     HTMLCanvasElement.prototype.toDataURL = vi.fn().mockReturnValue('data:image/png;base64,test');
-    // Mock getBoundingClientRect
     HTMLCanvasElement.prototype.getBoundingClientRect = vi.fn().mockReturnValue({
         left: 0,
         top: 0,
@@ -71,9 +54,9 @@ describe('SofaWhiteboard', () => {
 
   it('renders the canvas and controls', () => {
     render(<SofaWhiteboard />);
-    expect(screen.getByRole('button', { name: /pen/i })).toBeDefined();
-    expect(screen.getByRole('button', { name: /eraser/i })).toBeDefined();
-    expect(screen.getByRole('button', { name: /clear/i })).toBeDefined();
+    expect(screen.getByRole('button', { name: /pen/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /eraser/i })).toBeInTheDocument();
+    expect(screen.getByRole('button', { name: /clear/i })).toBeInTheDocument();
   });
 
   it('starts drawing on mouse down', () => {
@@ -82,7 +65,6 @@ describe('SofaWhiteboard', () => {
 
     fireEvent.mouseDown(canvas, { clientX: 10, clientY: 10 });
     expect(mockContext.beginPath).toHaveBeenCalled();
-    // Offset calculation: (10 - 0) * (1000/1000) = 10
     expect(mockContext.moveTo).toHaveBeenCalledWith(10, 10);
   });
 

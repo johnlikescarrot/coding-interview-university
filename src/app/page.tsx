@@ -18,6 +18,7 @@ export default function Home() {
   const [topics, setTopics] = React.useState<CurriculumTopic[]>([])
   const [isLoading, setIsLoading] = React.useState(true)
   const [error, setError] = React.useState<string | null>(null)
+  const [retryCount, setRetryCount] = React.useState(0)
 
   const fetchData = React.useCallback(async (lang: string, signal: AbortSignal) => {
     setIsLoading(true)
@@ -28,14 +29,18 @@ export default function Home() {
         throw new Error(`Failed to load curriculum: ${res.status} ${res.statusText}`)
       }
       const data = await res.json()
-      setTopics(data)
+      if (!signal.aborted) {
+        setTopics(data)
+      }
     } catch (err) {
-      if (err instanceof Error && err.name !== 'AbortError') {
+      if (err instanceof Error && err.name !== 'AbortError' && !signal.aborted) {
         console.error("Failed to fetch curriculum", err)
         setError(err.message || "An unexpected error occurred while loading the curriculum.")
       }
     } finally {
-      setIsLoading(false)
+      if (!signal.aborted) {
+        setIsLoading(false)
+      }
     }
   }, [])
 
@@ -43,7 +48,7 @@ export default function Home() {
     const controller = new AbortController()
     fetchData(language, controller.signal)
     return () => controller.abort()
-  }, [language, fetchData])
+  }, [language, fetchData, retryCount])
 
   return (
     <DashboardShell>
@@ -55,7 +60,7 @@ export default function Home() {
               <AlertTitle>Error</AlertTitle>
               <AlertDescription className="flex items-center justify-between">
                 <span>{error}</span>
-                <Button variant="outline" size="sm" onClick={() => fetchData(language, new AbortController().signal)}>
+                <Button variant="outline" size="sm" onClick={() => setRetryCount(c => c + 1)}>
                   <RefreshCcw className="mr-2 h-4 w-4" />
                   Retry
                 </Button>

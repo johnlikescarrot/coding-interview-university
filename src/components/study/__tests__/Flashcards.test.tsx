@@ -38,9 +38,9 @@ describe('Flashcards', () => {
 
   it('renders correctly and flips', () => {
     render(<Flashcards cards={mockCards} />);
-    expect(screen.getByText('Q1')).toBeDefined();
+    expect(screen.getByText('Q1')).toBeInTheDocument();
     fireEvent.click(screen.getByText('Q1'));
-    expect(screen.getByText('A1')).toBeDefined();
+    expect(screen.getByText('A1')).toBeInTheDocument();
   });
 
   it('navigates to next and prev', () => {
@@ -49,27 +49,32 @@ describe('Flashcards', () => {
     const prevBtn = screen.getByLabelText(/prev/i);
 
     fireEvent.click(nextBtn);
-    expect(screen.getByText('Q2')).toBeDefined();
+    expect(screen.getByText('Q2')).toBeInTheDocument();
 
     fireEvent.click(prevBtn);
-    expect(screen.getByText('Q1')).toBeDefined();
+    expect(screen.getByText('Q1')).toBeInTheDocument();
   });
 
   it('restarts the deck', () => {
     render(<Flashcards cards={mockCards} />);
     fireEvent.click(screen.getByLabelText(/next/i));
-    expect(screen.getByText('Q2')).toBeDefined();
+    expect(screen.getByText('Q2')).toBeInTheDocument();
 
     fireEvent.click(screen.getByLabelText(/restart/i));
-    expect(screen.getByText('Q1')).toBeDefined();
+    expect(screen.getByText('Q1')).toBeInTheDocument();
   });
 
   it('handles keyboard navigation', () => {
     render(<Flashcards cards={mockCards} />);
     const card = screen.getByText('Q1').closest('div[role="button"]')!;
     fireEvent.keyDown(card, { key: 'Enter' });
-    expect(screen.getByText('A1')).toBeDefined();
+    expect(screen.getByText('A1')).toBeInTheDocument();
     fireEvent.keyDown(card, { key: ' ' }); // Space
-    expect(screen.getByText('Q1')).toBeDefined();
+    expect(screen.getByText('Q1')).toBeInTheDocument();
+  });
+
+  it('shows no cards message when empty', () => {
+    render(<Flashcards cards={[]} />);
+    expect(screen.getByText(/no cards available/i)).toBeInTheDocument();
   });
 });
