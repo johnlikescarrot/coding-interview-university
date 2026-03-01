@@ -5,13 +5,8 @@ import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Video, FileText, Code2 } from "lucide-react";
 
 export default function ResourcesPage() {
-  const filePath = path.join(process.cwd(), "programming-language-resources.md");
-  let languages = {};
-  try {
-    languages = parseLanguageResources(filePath);
-  } catch (e) {
-    console.error("Error parsing resources:", e);
-  }
+  const filePath = path.join(process.cwd(), "content/programming-language-resources.md");
+  const languages = parseLanguageResources(filePath);
 
   if (Object.keys(languages).length === 0) {
     return (
@@ -19,7 +14,7 @@ export default function ResourcesPage() {
         <div className="p-12 border-2 border-dashed rounded-2xl border-muted/50 bg-muted/5">
           <h1 className="text-3xl font-extrabold tracking-tight mb-4">No Resources Found</h1>
           <p className="text-muted-foreground text-lg max-w-md mx-auto">
-            Language-specific resources could not be loaded. Check &quot;programming-language-resources.md&quot; for content.
+            Language-specific resources could not be loaded. Check &quot;content/programming-language-resources.md&quot; for content.
           </p>
         </div>
       </div>

@@ -4,12 +4,7 @@ import { CurriculumView } from "@/components/curriculum-view";
 
 export default function Home() {
   const filePath = path.join(process.cwd(), "content/README.md");
-  let curriculum = [];
-  try {
-    curriculum = parseCurriculum(filePath);
-  } catch (e) {
-    console.error("Error parsing curriculum:", e);
-  }
+  const curriculum = parseCurriculum(filePath);
 
   if (curriculum.length === 0) {
     return (

@@ -10,7 +10,8 @@
 # debug
 *.log
 
-# local env files
+# secrets
+*.pem
 .env
 .env.*
 !.env.example

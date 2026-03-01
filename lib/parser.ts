@@ -49,7 +49,7 @@ export function parseCurriculum(filePath: string): Section[] {
     let currentSection: Section | null = null;
     let currentTopic: Topic | null = null;
 
-    const idCounts: Record<string, number> = {};
+    const usedIds = new Set<string>();
 
     tree.children?.forEach((node) => {
       if (node.type === 'heading') {
@@ -59,14 +59,15 @@ export function parseCurriculum(filePath: string): Section[] {
           sections.push(currentSection);
           currentTopic = null;
         } else if (node.depth === 3 && currentSection) {
-          let id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+          const baseId = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+          let id = baseId;
+          let counter = 1;
 
-          if (idCounts[id]) {
-             idCounts[id]++;
-             id = `${id}-${idCounts[id]}`;
-          } else {
-             idCounts[id] = 1;
+          while (usedIds.has(id)) {
+            counter++;
+            id = `${baseId}-${counter}`;
           }
+          usedIds.add(id);
 
           currentTopic = {
             id,
