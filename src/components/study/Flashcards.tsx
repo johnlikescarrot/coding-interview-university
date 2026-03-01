@@ -20,12 +20,24 @@ export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
   const [currentIdx, setCurrentIdx] = React.useState(0)
   const [isFlipped, setIsFlipped] = React.useState(false)
 
+  // Derive a safe index to prevent crashes when cards shrink
+  const safeIdx = cards.length > 0 ? Math.max(0, Math.min(currentIdx, cards.length - 1)) : 0
+
+  React.useEffect(() => {
+    if (currentIdx >= cards.length && cards.length > 0) {
+      setCurrentIdx(cards.length - 1)
+      setIsFlipped(false)
+    }
+  }, [cards.length, currentIdx])
+
   const next = () => {
+    if (cards.length === 0) return
     setIsFlipped(false)
     setCurrentIdx((prev) => (prev + 1) % cards.length)
   }
 
   const prev = () => {
+    if (cards.length === 0) return
     setIsFlipped(false)
     setCurrentIdx((prev) => (prev - 1 + cards.length) % cards.length)
   }
@@ -54,7 +66,7 @@ export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
       <div className="relative w-full max-w-md h-64 perspective-1000">
         <AnimatePresence mode="wait">
           <motion.div
-            key={`${currentIdx}-${isFlipped}`}
+            key={`${safeIdx}-${isFlipped}`}
             initial={{ opacity: 0, rotateY: isFlipped ? -90 : 90 }}
             animate={{ opacity: 1, rotateY: 0 }}
             exit={{ opacity: 0, rotateY: isFlipped ? 90 : -90 }}
@@ -69,7 +81,7 @@ export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
             <Card className="w-full h-full flex items-center justify-center text-center p-8 bg-card/50 backdrop-blur border-primary/20">
               <CardContent className="p-0">
                 <p className="text-xl font-medium leading-relaxed">
-                  {isFlipped ? cards[currentIdx].a : cards[currentIdx].q}
+                  {isFlipped ? cards[safeIdx].a : cards[safeIdx].q}
                 </p>
                 <p className="mt-4 text-xs text-muted-foreground uppercase tracking-widest">
                   {isFlipped ? "Answer" : "Question"}
@@ -91,7 +103,7 @@ export default function Flashcards({ cards = SAMPLE_CARDS }: FlashcardsProps) {
           <ChevronLeft className="h-4 w-4" />
         </Button>
         <div className="text-sm font-medium tabular-nums">
-          {currentIdx + 1} / {cards.length}
+          {safeIdx + 1} / {cards.length}
         </div>
         <Button
           variant="outline"

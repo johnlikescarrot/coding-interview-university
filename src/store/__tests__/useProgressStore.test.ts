@@ -11,6 +11,7 @@ describe('useProgressStore', () => {
   describe('mutations', () => {
     beforeEach(() => {
       useProgressStore.getState().resetProgress();
+      useProgressStore.getState().setLanguage('en');
     });
 
     it('should set language', () => {

@@ -1,16 +1,11 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { render, screen, fireEvent } from '@testing-library/react';
 import Roadmap from '../Roadmap';
+import { useProgressStore } from '../../../store/useProgressStore';
 
 vi.mock('../../../store/useProgressStore', () => ({
-  useProgressStore: vi.fn((selector) => {
-    const mockState = {
-      completedCheckboxes: {},
-      toggleCheckbox: vi.fn(),
-    };
-    return selector ? selector(mockState) : mockState;
-  }),
+  useProgressStore: vi.fn(),
 }));
 
 vi.mock('@/components/ui/accordion', () => ({
@@ -21,8 +16,8 @@ vi.mock('@/components/ui/accordion', () => ({
 }));
 
 vi.mock('@/components/ui/checkbox', () => ({
-  Checkbox: ({ checked, onCheckedChange }: any) => (
-    <input type="checkbox" checked={checked} onChange={(e) => onCheckedChange(e.target.checked)} />
+  Checkbox: ({ checked, onCheckedChange, id }: any) => (
+    <input type="checkbox" checked={checked} onChange={(e) => onCheckedChange(e.target.checked)} id={id} />
   ),
 }));
 
@@ -31,17 +26,50 @@ vi.mock('@/components/ui/badge', () => ({
 }));
 
 describe('Roadmap', () => {
+  const toggleCheckbox = vi.fn();
+
+  beforeEach(() => {
+    (useProgressStore as any).mockReturnValue({
+      completedCheckboxes: {},
+      toggleCheckbox,
+    });
+  });
+
   const mockTopics = [{
     id: 's1',
     title: 'Section 1',
     checkboxes: [{ id: 'check-1', text: 'Task 1', completed: false }],
-    subtopics: []
+    subtopics: [
+      {
+        id: 'sub1',
+        title: 'Subtopic 1',
+        links: [{ title: 'Link 1', url: 'https://test.com' }],
+        subtopics: [],
+        checkboxes: [{ id: 'sub-check-1', text: 'Sub Task 1', completed: false }]
+      }
+    ]
   }];
 
-  it('renders section and tasks', () => {
+  it('renders complex curriculum and handles interactions', () => {
     render(<Roadmap topics={mockTopics} />);
+
     expect(screen.getByText('Section 1')).toBeInTheDocument();
-    // Task 1 should be in the document (it's inside AccordionContent which we mock to always show children)
-    expect(screen.getByText('Task 1')).toBeInTheDocument();
+    expect(screen.getByText('Subtopic 1')).toBeInTheDocument();
+    expect(screen.getByText('Link 1')).toBeInTheDocument();
+
+    const checkbox = screen.getByLabelText('Task 1');
+    fireEvent.click(checkbox);
+    expect(toggleCheckbox).toHaveBeenCalledWith('s1', 'check-1');
+  });
+
+  it('calculates progress correctly', () => {
+    (useProgressStore as any).mockReturnValue({
+      completedCheckboxes: { 'check-1': true },
+      toggleCheckbox,
+    });
+
+    render(<Roadmap topics={mockTopics} />);
+    // 1 completed out of 2 total (Task 1 and Sub Task 1)
+    expect(screen.getByText(/50% Complete/i)).toBeInTheDocument();
   });
 });

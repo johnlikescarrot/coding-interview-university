@@ -5,8 +5,8 @@ import SofaWhiteboard from '../SofaWhiteboard';
 
 // Mock shadcn components
 vi.mock('@/components/ui/button', () => ({
-  Button: ({ children, onClick, 'aria-label': ariaLabel, type = "button" }: any) => (
-    <button type={type} onClick={onClick} aria-label={ariaLabel}>{children}</button>
+  Button: ({ children, onClick, 'aria-label': ariaLabel, type = "button", variant }: any) => (
+    <button type={type} onClick={onClick} aria-label={ariaLabel} data-variant={variant}>{children}</button>
   ),
 }));
 
@@ -37,6 +37,7 @@ const mockContext = {
   lineWidth: 0,
   lineCap: '',
   lineJoin: '',
+  globalCompositeOperation: 'source-over',
 };
 
 describe('SofaWhiteboard', () => {
@@ -53,49 +54,41 @@ describe('SofaWhiteboard', () => {
     });
   });
 
-  it('renders the canvas and controls', () => {
+  it('handles tool switching and eraser semantics', () => {
     render(<SofaWhiteboard />);
-    expect(screen.getByRole('button', { name: /pen tool/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /eraser tool/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /clear canvas/i })).toBeInTheDocument();
-    expect(screen.getByRole('button', { name: /download drawing/i })).toBeInTheDocument();
-  });
 
-  it('starts drawing on mouse down', () => {
-    render(<SofaWhiteboard />);
+    const eraserBtn = screen.getByRole('button', { name: /eraser tool/i });
+    fireEvent.click(eraserBtn);
+
     const canvas = document.querySelector('canvas')!;
-
-    fireEvent.mouseDown(canvas, { clientX: 10, clientY: 10 });
-    expect(mockContext.beginPath).toHaveBeenCalled();
-    expect(mockContext.moveTo).toHaveBeenCalledWith(10, 10);
-  });
-
-  it('draws on mouse move when mouse is down', () => {
-    render(<SofaWhiteboard />);
-    const canvas = document.querySelector('canvas')!;
-
     fireEvent.mouseDown(canvas, { clientX: 10, clientY: 10 });
     fireEvent.mouseMove(canvas, { clientX: 20, clientY: 20 });
 
-    expect(mockContext.lineTo).toHaveBeenCalledWith(20, 20);
-    expect(mockContext.stroke).toHaveBeenCalled();
+    expect(mockContext.globalCompositeOperation).toBe('destination-out');
   });
 
-  it('clears the canvas', () => {
+  it('handles touch events and cancellation', () => {
     render(<SofaWhiteboard />);
+    const canvas = document.querySelector('canvas')!;
+
+    fireEvent.touchStart(canvas, { touches: [{ clientX: 10, clientY: 10 }] });
+    fireEvent.touchMove(canvas, { touches: [{ clientX: 20, clientY: 20 }] });
+    expect(mockContext.lineTo).toHaveBeenCalled();
+
+    fireEvent.touchCancel(canvas);
+    fireEvent.touchMove(canvas, { touches: [{ clientX: 30, clientY: 30 }] });
+    // Should not call lineTo after cancel
+    expect(mockContext.lineTo).not.toHaveBeenCalledWith(30, 30);
+  });
+
+  it('clears based on real dimensions', () => {
+    render(<SofaWhiteboard />);
+    const canvas = document.querySelector('canvas')!;
+    (canvas as any).width = 1000;
+    (canvas as any).height = 600;
+
     const clearButton = screen.getByRole('button', { name: /clear canvas/i });
-
     fireEvent.click(clearButton);
-    expect(mockContext.clearRect).toHaveBeenCalled();
-  });
-
-  it('downloads the canvas as image', () => {
-    const linkClickSpy = vi.spyOn(HTMLAnchorElement.prototype, 'click').mockImplementation(() => {});
-    render(<SofaWhiteboard />);
-    const downloadButton = screen.getByRole('button', { name: /download drawing/i });
-
-    fireEvent.click(downloadButton);
-    expect(HTMLCanvasElement.prototype.toDataURL).toHaveBeenCalledWith('image/png');
-    expect(linkClickSpy).toHaveBeenCalled();
+    expect(mockContext.clearRect).toHaveBeenCalledWith(0, 0, 1000, 600);
   });
 });

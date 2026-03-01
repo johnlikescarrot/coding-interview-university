@@ -12,11 +12,12 @@ export interface CurriculumTopic {
 export function sanitizeUrl(url: string): string {
   const forbiddenProtocols = ['javascript:', 'data:', 'vbscript:', 'file:', 'blob:']
 
-  // Strip control characters (0-31 and 127) to avoid lint issues with control chars in regex
-  const sanitized = Array.from(url)
+  // Normalize and strip control characters & Unicode whitespace/ZWSP
+  const sanitized = Array.from(url.normalize())
     .filter(char => {
       const code = char.charCodeAt(0)
-      return code > 0x1F && code !== 0x7F
+      // Strip 0-31, 127, and ZWSP (8203)
+      return code > 0x1F && code !== 0x7F && code !== 0x200B
     })
     .join('')
     .trim()
@@ -45,7 +46,6 @@ export function generateCheckboxId(topicId: string, text: string, existingIds: S
   }
   let id = `check-${Math.abs(hash).toString(36)}`
 
-  // Collision detection with disambiguation
   if (existingIds.has(id)) {
     let counter = 1
     while (existingIds.has(`${id}-${counter}`)) {
@@ -69,7 +69,6 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim()
-    // Support ATX headings with up to 3 leading spaces (removing \t per spec)
     const headerMatch = lines[i].match(/^[ ]{0,3}(#{1,6})\s+(.*)$/)
 
     if (headerMatch) {
@@ -77,7 +76,6 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
       const title = headerMatch[2].trim()
       let id = createSlug(title)
 
-      // Disambiguate topic ID
       if (usedTopicIds.has(id)) {
         let counter = 1
         while (usedTopicIds.has(`${id}-${counter}`)) {

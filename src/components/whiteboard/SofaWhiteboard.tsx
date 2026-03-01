@@ -42,22 +42,38 @@ export default function SofaWhiteboard() {
     const { x, y } = getCoordinates(e)
     const ctx = canvasRef.current?.getContext("2d")
     if (ctx) {
-      ctx.strokeStyle = tool === "pen" ? "#3b82f6" : "#0f172a"
-      ctx.lineWidth = tool === "pen" ? 3 : 20
+      if (tool === "eraser") {
+        ctx.globalCompositeOperation = "destination-out"
+        ctx.lineWidth = 25
+      } else {
+        ctx.globalCompositeOperation = "source-over"
+        ctx.strokeStyle = "#3b82f6"
+        ctx.lineWidth = 3
+      }
       ctx.lineCap = "round"
       ctx.lineJoin = "round"
       ctx.lineTo(x, y)
       ctx.stroke()
+
+      // Reset path to prevent accumulation artifacts
+      ctx.beginPath()
+      ctx.moveTo(x, y)
     }
   }
 
   const stopDrawing = () => {
     isDrawingRef.current = false
+    const ctx = canvasRef.current?.getContext("2d")
+    if (ctx) {
+      ctx.globalCompositeOperation = "source-over" // Restore to default
+    }
   }
 
   const clear = () => {
-    const ctx = canvasRef.current?.getContext("2d")
-    if (ctx) ctx.clearRect(0, 0, CANVAS_WIDTH, CANVAS_HEIGHT)
+    const canvas = canvasRef.current
+    if (!canvas) return
+    const ctx = canvas.getContext("2d")
+    if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height)
   }
 
   const download = () => {
@@ -115,6 +131,7 @@ export default function SofaWhiteboard() {
           onTouchStart={startDrawing}
           onTouchMove={draw}
           onTouchEnd={stopDrawing}
+          onTouchCancel={stopDrawing}
         />
       </CardContent>
     </Card>
