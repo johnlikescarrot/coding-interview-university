@@ -11,10 +11,14 @@ vi.mock('framer-motion', () => ({
       const domProps = Object.fromEntries(
         Object.entries(props).filter(([key]) => !['initial', 'animate', 'exit', 'transition'].includes(key))
       );
+
+      // Only apply role/tabIndex when handlers are present to match real behavior
+      const isInteractive = !!onClick || !!onKeyDown;
+
       return (
         <div
-          role="button"
-          tabIndex={0}
+          role={isInteractive ? "button" : undefined}
+          tabIndex={isInteractive ? 0 : undefined}
           onClick={onClick}
           onKeyDown={onKeyDown}
           className={className}
@@ -73,7 +77,7 @@ describe('Flashcards', () => {
 
   it('handles keyboard navigation', () => {
     render(<Flashcards cards={mockCards} />);
-    const card = screen.getByRole('button', { name: /click to see answer/i });
+    const card = screen.getByLabelText(/click to see answer/i);
 
     // Flip to answer
     fireEvent.keyDown(card, { key: 'Enter' });

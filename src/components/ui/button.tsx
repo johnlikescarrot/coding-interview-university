@@ -47,7 +47,7 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
     return (
       <Comp
         ref={ref}
-        type={asChild ? type : (type ?? "button")}
+        type={type ?? (asChild ? undefined : "button")}
         data-slot="button"
         data-variant={variant}
         data-size={size}

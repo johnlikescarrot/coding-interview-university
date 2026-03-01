@@ -62,7 +62,8 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
 
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i].trim()
-    const headerMatch = lines[i].match(/^(#{1,6})\s+(.*)$/)
+    // Support ATX headings with up to 3 leading spaces/tabs
+    const headerMatch = lines[i].match(/^[ \t]{0,3}(#{1,6})\s+(.*)$/)
 
     if (headerMatch) {
       const level = headerMatch[1].length

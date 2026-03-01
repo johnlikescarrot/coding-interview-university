@@ -73,14 +73,17 @@ const SidebarProvider = React.forwardRef<
     const open = openProp ?? _open
     const setOpen = React.useCallback(
       (value: boolean | ((value: boolean) => boolean)) => {
-        const nextState = typeof value === "function" ? value(open) : value
         if (setOpenProp) {
+          const nextState = typeof value === "function" ? value(open) : value
           setOpenProp(nextState)
+          document.cookie = `${SIDEBAR_COOKIE_NAME}=${nextState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
         } else {
-          _setOpen(value)
+          _setOpen((prev) => {
+             const next = typeof value === "function" ? value(prev) : value
+             document.cookie = `${SIDEBAR_COOKIE_NAME}=${next}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
+             return next
+          })
         }
-
-        document.cookie = `${SIDEBAR_COOKIE_NAME}=${nextState}; path=/; max-age=${SIDEBAR_COOKIE_MAX_AGE}`
       },
       [setOpenProp, open]
     )
@@ -151,9 +154,9 @@ SidebarProvider.displayName = "SidebarProvider"
 const Sidebar = React.forwardRef<
   HTMLDivElement,
   React.ComponentProps<"div"> & {
-    side?: "left" | "right"
-    variant?: "sidebar" | "floating" | "inset"
-    collapsible?: "offcanvas" | "icon" | "none"
+    side?: "left" | "right" | undefined
+    variant?: "sidebar" | "floating" | "inset" | undefined
+    collapsible?: "offcanvas" | "icon" | "none" | undefined
   }
 >(
   (
