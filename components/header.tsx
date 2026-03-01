@@ -3,7 +3,7 @@
 import * as React from "react"
 import { useRouter } from "next/navigation"
 import { ModeToggle } from "@/components/mode-toggle";
-import { Search } from "lucide-react";
+import { Search, Menu } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import {
   CommandDialog,
@@ -13,9 +13,12 @@ import {
   CommandItem,
   CommandList,
 } from "@/components/ui/command";
+import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
+import { NavLinks } from "./nav-links";
 
 export function Header() {
   const [open, setOpen] = React.useState(false)
+  const [mobileMenuOpen, setMobileMenuOpen] = React.useState(false)
   const router = useRouter()
 
   const navigate = React.useCallback((href: string) => {
@@ -38,6 +41,24 @@ export function Header() {
     <header className="sticky top-0 z-40 border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between py-4">
         <div className="flex items-center gap-4 flex-1">
+          {/* Mobile Menu */}
+          <Sheet open={mobileMenuOpen} onOpenChange={setMobileMenuOpen}>
+            <SheetTrigger asChild>
+              <Button variant="ghost" size="icon" className="md:hidden">
+                <Menu className="h-5 w-5" />
+                <span className="sr-only">Toggle menu</span>
+              </Button>
+            </SheetTrigger>
+            <SheetContent side="left" className="w-64">
+              <SheetHeader>
+                <SheetTitle className="text-left">Navigation</SheetTitle>
+              </SheetHeader>
+              <div className="mt-8">
+                <NavLinks onItemClick={() => setMobileMenuOpen(false)} />
+              </div>
+            </SheetContent>
+          </Sheet>
+
           <Button
             variant="outline"
             className="relative h-9 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64"
@@ -62,15 +83,9 @@ export function Header() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Quick Navigation">
-            <CommandItem onSelect={() => navigate("/")}>
-              Syllabus
-            </CommandItem>
-            <CommandItem onSelect={() => navigate("/resources")}>
-              Language Resources
-            </CommandItem>
-            <CommandItem onSelect={() => navigate("/flashcards")}>
-              Flashcards
-            </CommandItem>
+            <CommandItem onSelect={() => navigate("/")}>Syllabus</CommandItem>
+            <CommandItem onSelect={() => navigate("/resources")}>Language Resources</CommandItem>
+            <CommandItem onSelect={() => navigate("/flashcards")}>Flashcards</CommandItem>
           </CommandGroup>
         </CommandList>
       </CommandDialog>

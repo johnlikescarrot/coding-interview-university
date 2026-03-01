@@ -14,7 +14,7 @@ export default function ResourcesPage() {
         <div className="p-12 border-2 border-dashed rounded-2xl border-muted/50 bg-muted/5">
           <h1 className="text-3xl font-extrabold tracking-tight mb-4">No Resources Found</h1>
           <p className="text-muted-foreground text-lg max-w-md mx-auto">
-            Language-specific resources could not be loaded. Check &quot;content/programming-language-resources.md&quot; for content.
+            Language-specific resources could not be loaded. Check "content/programming-language-resources.md" for content.
           </p>
         </div>
       </div>
@@ -42,9 +42,9 @@ export default function ResourcesPage() {
             </CardHeader>
             <CardContent className="p-0 flex-1">
               <div className="divide-y divide-muted/50">
-                {resources.slice(0, 6).map((res, ridx) => (
+                {resources.slice(0, 10).map((res) => (
                   <a
-                    key={`${res.url}-${ridx}`}
+                    key={res.url}
                     href={res.url}
                     target="_blank"
                     rel="noopener noreferrer"
@@ -62,9 +62,9 @@ export default function ResourcesPage() {
                   </a>
                 ))}
               </div>
-              {resources.length > 6 && (
+              {resources.length > 10 && (
                 <div className="p-3 text-center bg-muted/10">
-                  <p className="text-xs text-muted-foreground italic">+ {resources.length - 6} more resources</p>
+                  <p className="text-xs text-muted-foreground italic">+ {resources.length - 10} more resources</p>
                 </div>
               )}
             </CardContent>

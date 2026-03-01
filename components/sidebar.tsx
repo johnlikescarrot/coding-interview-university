@@ -1,92 +1,38 @@
 "use client"
 
-import Link from "next/link"
-import { usePathname } from "next/navigation"
-import { cn } from "@/lib/utils"
-import { Button } from "@/components/ui/button"
-import { ScrollArea } from "@/components/ui/scroll-area"
 import { useProgress } from "@/components/progress-provider"
-import {
-  BookOpen,
-  CheckCircle2,
-  Code2,
-  Layers,
-  Zap,
-  SquareStack
-} from "lucide-react"
-
-const menuItems = [
-  { title: "Syllabus", icon: BookOpen, href: "/" },
-  { title: "Study Plan", icon: Layers, href: "/plan" },
-  { title: "Data Structures", icon: Code2, href: "/data-structures" },
-  { title: "Algorithms", icon: Zap, href: "/algorithms" },
-  { title: "Resources", icon: CheckCircle2, href: "/resources" },
-  { title: "Flashcards", icon: SquareStack, href: "/flashcards" },
-]
+import { Progress } from "@/components/ui/progress"
+import { NavLinks } from "./nav-links"
 
 export function Sidebar() {
-  const pathname = usePathname()
   const { completed, totalTopics } = useProgress()
 
+  // Guard against division by zero
   const progressPercent = totalTopics > 0
-    ? Math.min(Math.max(Math.round((completed.length / totalTopics) * 100), 0), 100)
+    ? Math.min(Math.round((completed.length / totalTopics) * 100), 100)
     : 0
 
-  const isActive = (href: string) => {
-    if (href === "/" && pathname === "/") return true
-    if (href !== "/" && pathname.startsWith(href)) return true
-    return false
-  }
-
   return (
-    <div className="hidden md:flex flex-col h-full border-r bg-card w-64 pt-16">
-      <ScrollArea className="flex-1 px-3">
-        <div className="space-y-4 py-4">
-          <div className="px-3 py-2">
-            <h2 className="mb-2 px-4 text-xs font-semibold uppercase tracking-wider text-muted-foreground">
-              Main Menu
-            </h2>
-            <nav className="space-y-1">
-              {menuItems.map((item) => (
-                <Button
-                  key={item.href}
-                  variant={isActive(item.href) ? "secondary" : "ghost"}
-                  className={cn(
-                    "w-full justify-start gap-3",
-                    isActive(item.href) && "bg-secondary font-medium"
-                  )}
-                  asChild
-                >
-                  <Link href={item.href}>
-                    <item.icon className="h-4 w-4" />
-                    {item.title}
-                  </Link>
-                </Button>
-              ))}
-            </nav>
-          </div>
-        </div>
-      </ScrollArea>
-
-      <div className="mt-auto p-6 border-t bg-muted/20">
-        <div className="flex items-center justify-between mb-2">
-          <span className="text-xs font-semibold text-muted-foreground uppercase tracking-wider">Overall Mastery</span>
-          <span className="text-xs font-bold text-primary">{progressPercent}%</span>
-        </div>
-        <div
-          className="h-2 w-full rounded-full bg-primary/20 overflow-hidden"
-          role="progressbar"
-          aria-valuemin={0}
-          aria-valuemax={100}
-          aria-valuenow={progressPercent}
-          aria-label="Curriculum mastery progress"
-        >
-          <div
-            className="h-full bg-primary transition-all duration-500 ease-in-out"
-            style={{ width: `${progressPercent}%` }}
-          />
-        </div>
+    <aside className="hidden md:flex flex-col w-64 border-r bg-card h-screen shrink-0">
+      <div className="p-6 border-b">
+        <h1 className="text-xl font-bold tracking-tight">CIU Mastery</h1>
+        <p className="text-xs text-muted-foreground mt-1">Transcendental Education</p>
       </div>
-    </div>
+
+      <div className="flex-1 overflow-y-auto p-4">
+        <NavLinks />
+      </div>
+
+      <div className="p-6 border-t bg-muted/30">
+        <div className="flex justify-between text-sm mb-2">
+          <span className="text-muted-foreground font-medium">Overall Progress</span>
+          <span className="font-bold">{progressPercent}%</span>
+        </div>
+        <Progress value={progressPercent} className="h-2" />
+        <p className="text-[10px] text-muted-foreground mt-3 text-center">
+          {completed.length} of {totalTopics} topics mastered
+        </p>
+      </div>
+    </aside>
   )
 }

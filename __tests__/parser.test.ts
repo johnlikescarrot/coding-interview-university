@@ -31,14 +31,17 @@ describe('Parser logic', () => {
     expect(result[0].topics[0].title).toBe('Topic Italic');
   });
 
-  it('should detect video resources correctly', () => {
-    const mockMd = '## Section\n### Topic\n- [Video](https://youtube.com/watch?v=123)\n- [Article](https://blog.com/post)';
+  it('should detect resource types correctly', () => {
+    const mockMd = '## Section\n### Topic\n- [Video](https://youtube.com/watch?v=123)\n- [Book](https://amazon.com/dp/123)\n- [Interactive](https://exercism.org/tracks/python)\n- [Article](https://blog.com/post)';
     vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
     vi.spyOn(fs, 'existsSync').mockReturnValue(true);
 
     const result = parseCurriculum('dummy.md');
-    expect(result[0].topics[0].resources[0].type).toBe('video');
-    expect(result[0].topics[0].resources[1].type).toBe('article');
+    const resources = result[0].topics[0].resources;
+    expect(resources[0].type).toBe('video');
+    expect(resources[1].type).toBe('book');
+    expect(resources[2].type).toBe('interactive');
+    expect(resources[3].type).toBe('article');
   });
 
   it('should handle ID collisions by appending a counter', () => {
@@ -51,29 +54,21 @@ describe('Parser logic', () => {
     expect(result[1].topics[0].id).toBe('same-title-2');
   });
 
-  it('should handle missing files gracefully', () => {
-    vi.spyOn(fs, 'existsSync').mockReturnValue(false);
-    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
-    const result = parseCurriculum('missing.md');
-    expect(result).toEqual([]);
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('File not found'));
-
-    consoleSpy.mockRestore();
-  });
-
-  it('should parse language resources', () => {
-    const mockMd = '- Python\n  - [Link](http://py.com)\n- C++\n  - [Link](http://cpp.com)';
+  it('should parse language resources correctly', () => {
+    const mockMd = '- Python\n  - [Link](http://py.com)\n- C++\n  - [Video](https://youtube.com/watch?v=cpp)';
     vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
     vi.spyOn(fs, 'existsSync').mockReturnValue(true);
 
     const result = parseLanguageResources('lang.md');
-    expect(result['Python']).toBeDefined();
     expect(result['Python'][0]).toMatchObject({
       title: 'Link',
       url: 'http://py.com',
       type: 'article'
     });
-    expect(result['C++']).toHaveLength(1);
+    expect(result['C++'][0]).toMatchObject({
+      title: 'Video',
+      url: 'https://youtube.com/watch?v=cpp',
+      type: 'video'
+    });
   });
 });

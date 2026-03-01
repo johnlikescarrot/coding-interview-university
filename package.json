@@ -1,12 +1,12 @@
 {
-  "name": "coding-interview-university-ultimate",
+  "name": "coding-interview-university-pro",
   "version": "0.1.0",
   "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
     "start": "npx serve out",
-    "lint": "next lint .",
+    "lint": "eslint .",
     "test": "vitest run --coverage"
   },
   "dependencies": {

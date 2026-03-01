@@ -1,5 +1,5 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, act, waitFor } from '@testing-library/react';
+import { render, screen, act, waitFor, renderHook } from '@testing-library/react';
 import { ProgressProvider, useProgress } from '../components/progress-provider';
 import * as React from 'react';
 
@@ -46,9 +46,6 @@ describe('ProgressProvider', () => {
       </ProgressProvider>
     );
 
-    // Initial render is [] for hydration safety, then useEffect updates it
-    // In some environments this might be 0 or 1 depending on microtask timing
-    // so we use waitFor to ensure it reaches the expected state
     await waitFor(() => {
         expect(screen.getByTestId('completed-count').textContent).toBe('1');
     });
@@ -74,7 +71,26 @@ describe('ProgressProvider', () => {
 
   it('should throw error when used outside provider', () => {
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-    expect(() => render(<TestComponent />)).toThrow('useProgress must be used within ProgressProvider');
+    expect(() => render(<TestComponent />)).toThrow('useProgress must be used within a ProgressProvider');
     consoleSpy.mockRestore();
+  });
+
+  it('should handle rapid successive toggle calls correctly', async () => {
+    const wrapper = ({ children }: { children: React.ReactNode }) => (
+      <ProgressProvider>{children}</ProgressProvider>
+    );
+    const { result } = renderHook(() => useProgress(), { wrapper });
+
+    await act(async () => {
+      result.current.toggleTopic('a');
+      result.current.toggleTopic('b');
+      result.current.toggleTopic('c');
+    });
+
+    await waitFor(() => {
+      expect(result.current.completed).toEqual(['a', 'b', 'c']);
+    });
+
+    expect(JSON.parse(localStorage.getItem('ciu-progress') || '[]')).toEqual(['a', 'b', 'c']);
   });
 });

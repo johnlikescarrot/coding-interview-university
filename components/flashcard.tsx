@@ -3,6 +3,7 @@
 import { useState } from "react"
 import { motion } from "framer-motion"
 import { Card, CardContent } from "@/components/ui/card"
+import { cn } from "@/lib/utils"
 
 interface FlashcardProps {
   front: string
@@ -15,7 +16,7 @@ export function Flashcard({ front, back }: FlashcardProps) {
   return (
     <button
       type="button"
-      className="perspective-1000 w-full h-64 cursor-pointer text-left block"
+      className="perspective-1000 w-full h-64 cursor-pointer text-left block focus:outline-hidden focus:ring-2 focus:ring-primary rounded-xl"
       onClick={() => setIsFlipped(!isFlipped)}
       aria-pressed={isFlipped}
       aria-label={isFlipped ? "Show front of card" : "Show back of card"}
@@ -28,18 +29,24 @@ export function Flashcard({ front, back }: FlashcardProps) {
         {/* Front */}
         <Card
           aria-hidden={isFlipped}
-          className="absolute inset-0 backface-hidden flex items-center justify-center p-6 text-center border-2 border-primary/20"
+          className={cn(
+            "absolute inset-0 backface-hidden flex items-center justify-center p-6 text-center border-2 border-primary/20 transition-colors",
+            isFlipped ? "pointer-events-none" : ""
+          )}
         >
           <CardContent className="p-0">
             <h3 className="text-xl font-bold">{front}</h3>
-            <p className="text-sm text-muted-foreground mt-2">Click to reveal answer</p>
+            <p className="text-sm text-muted-foreground mt-2">Click or press space to reveal</p>
           </CardContent>
         </Card>
 
         {/* Back */}
         <Card
           aria-hidden={!isFlipped}
-          className="absolute inset-0 backface-hidden flex items-center justify-center p-6 text-center border-2 border-primary bg-primary/5 [transform:rotateY(180deg)]"
+          className={cn(
+            "absolute inset-0 backface-hidden flex items-center justify-center p-6 text-center border-2 border-primary bg-primary/5 [transform:rotateY(180deg)] transition-colors",
+            !isFlipped ? "pointer-events-none" : ""
+          )}
         >
           <CardContent className="p-0">
             <p className="text-lg font-medium">{back}</p>

@@ -12,8 +12,8 @@ const inter = Inter({
 });
 
 export const metadata: Metadata = {
-  title: "Coding Interview University | Ultimate Edition",
-  description: "A transcendent study plan for software engineering mastery.",
+  title: "CIU Mastery | Ultimate Coding Interview Prep",
+  description: "A transcendent, world-class study plan for software engineering mastery.",
 };
 
 export default function RootLayout({
@@ -36,7 +36,9 @@ export default function RootLayout({
               <div className="flex flex-col flex-1 overflow-hidden">
                 <Header />
                 <main className="flex-1 overflow-y-auto p-6 md:p-10">
-                  {children}
+                  <div className="max-w-7xl mx-auto w-full">
+                    {children}
+                  </div>
                 </main>
               </div>
             </div>

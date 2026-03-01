@@ -7,13 +7,13 @@ export default function FlashcardsPage() {
   const filePath = path.join(process.cwd(), "content/README.md");
   const curriculum = parseCurriculum(filePath);
 
-  const validSections = curriculum.filter(s => s.topics.length > 0).slice(0, 5);
+  const validSections = curriculum.filter(s => s.topics.length > 0).slice(0, 8);
 
   if (validSections.length === 0) {
     return (
-      <div className="max-w-4xl mx-auto text-center py-20">
-        <h1 className="text-3xl font-bold">No flashcard content available.</h1>
-        <p className="text-muted-foreground mt-2">Check back later once the syllabus is parsed.</p>
+      <div className="max-w-4xl mx-auto text-center py-20 space-y-4">
+        <h1 className="text-3xl font-extrabold tracking-tight">No Flashcards Available</h1>
+        <p className="text-muted-foreground">Master core concepts once the syllabus is fully parsed and loaded.</p>
       </div>
     );
   }
@@ -38,7 +38,7 @@ export default function FlashcardsPage() {
 
         {validSections.map((section) => (
             <TabsContent key={section.title} value={section.title} className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-                {section.topics.slice(0, 6).map((topic) => (
+                {section.topics.slice(0, 10).map((topic) => (
                     <Flashcard
                         key={topic.id}
                         front={topic.title}

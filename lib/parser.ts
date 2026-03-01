@@ -35,6 +35,14 @@ const extractText = (node: MdNode): string => {
   return '';
 };
 
+const getResourceType = (url: string): Resource['type'] => {
+  const u = url.toLowerCase();
+  if (u.includes('youtube.com') || u.includes('youtu.be') || u.includes('vimeo.com')) return 'video';
+  if (u.includes('amazon.com') || u.includes('books.google') || u.includes('oreilly.com')) return 'book';
+  if (u.includes('interactive') || u.includes('labex.io') || u.includes('exercism.org')) return 'interactive';
+  return 'article';
+};
+
 export function parseCurriculum(filePath: string): Section[] {
   try {
     if (!fs.existsSync(filePath)) {
@@ -80,16 +88,15 @@ export function parseCurriculum(filePath: string): Section[] {
         }
       } else if (node.type === 'list' && currentTopic) {
         node.children?.forEach((listItem) => {
+          // Standard pattern: listItem -> paragraph -> link
           const paragraph = listItem.children?.find((c) => c.type === 'paragraph');
           if (paragraph) {
             const link = paragraph.children?.find((c) => c.type === 'link');
-            const text = extractText(paragraph);
-
             if (link && link.url) {
                currentTopic?.resources.push({
-                 title: text || extractText(link),
+                 title: extractText(link) || extractText(paragraph),
                  url: link.url,
-                 type: link.url.includes('youtube') || link.url.includes('vimeo') ? 'video' : 'article'
+                 type: getResourceType(link.url)
                });
             }
           }
@@ -120,7 +127,7 @@ export function parseLanguageResources(filePath: string): Record<string, Resourc
                     sections[currentLang].push({
                         title: match[1],
                         url: match[2],
-                        type: match[2].includes('youtube') || match[2].includes('vimeo') ? 'video' : 'article'
+                        type: getResourceType(match[2])
                     });
                 }
             } else if (t.startsWith('- ')) {
