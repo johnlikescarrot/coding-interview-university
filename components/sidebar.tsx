@@ -13,7 +13,7 @@ const menuItems = [
   { title: "Data Structures", icon: Code2, href: "/data-structures" },
   { title: "Algorithms", icon: Zap, href: "/algorithms" },
   { title: "Resources", icon: CheckCircle2, href: "/resources" },
-  { title: "Flashcards", icon: Zap, href: "/flashcards" },
+  { title: "Flashcards", icon: SquareStack, href: "/flashcards" },
 ]
 
 export function Sidebar() {

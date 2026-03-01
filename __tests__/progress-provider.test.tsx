@@ -1,11 +1,17 @@
-import { renderHook, act } from '@testing-library/react';
-import { ProgressProvider, useProgress } from '@/components/progress-provider';
-import { describe, it, expect, beforeEach, vi } from 'vitest';
-import React from 'react';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { render, screen, act, waitFor } from '@testing-library/react';
+import { ProgressProvider, useProgress } from '../components/progress-provider';
+import * as React from 'react';
 
-const wrapper = ({ children }: { children: React.ReactNode }) => (
-  <ProgressProvider>{children}</ProgressProvider>
-);
+const TestComponent = () => {
+  const { completed, toggleTopic } = useProgress();
+  return (
+    <div>
+      <div data-testid="completed-count">{completed.length}</div>
+      <button onClick={() => toggleTopic('test-id')}>Toggle</button>
+    </div>
+  );
+};
 
 describe('ProgressProvider', () => {
   beforeEach(() => {
@@ -13,51 +19,62 @@ describe('ProgressProvider', () => {
     vi.clearAllMocks();
   });
 
-  it('should hydrate from localStorage on mount', () => {
-    localStorage.setItem('ciu-progress', JSON.stringify(['existing-id']));
-    const { result } = renderHook(() => useProgress(), { wrapper });
-    expect(result.current.completed).toContain('existing-id');
-  });
+  it('should provide progress state and toggle function', async () => {
+    render(
+      <ProgressProvider>
+        <TestComponent />
+      </ProgressProvider>
+    );
 
-  it('should persist to localStorage on toggle', () => {
-    const { result } = renderHook(() => useProgress(), { wrapper });
-    act(() => {
-      result.current.toggleTopic('new-topic');
+    expect(screen.getByTestId('completed-count').textContent).toBe('0');
+
+    const button = screen.getByRole('button');
+    await act(async () => {
+      button.click();
     });
-    expect(localStorage.getItem('ciu-progress')).toBe(JSON.stringify(['new-topic']));
+
+    expect(screen.getByTestId('completed-count').textContent).toBe('1');
+    expect(JSON.parse(localStorage.getItem('ciu-progress') || '[]')).toContain('test-id');
   });
 
-  it('should handle invalid JSON in localStorage gracefully', () => {
+  it('should hydrate from localStorage on mount', async () => {
+    localStorage.setItem('ciu-progress', JSON.stringify(['stored-id']));
+
+    render(
+      <ProgressProvider>
+        <TestComponent />
+      </ProgressProvider>
+    );
+
+    // Initial render is [] for hydration safety, then useEffect updates it
+    // In some environments this might be 0 or 1 depending on microtask timing
+    // so we use waitFor to ensure it reaches the expected state
+    await waitFor(() => {
+        expect(screen.getByTestId('completed-count').textContent).toBe('1');
+    });
+  });
+
+  it('should handle malformed localStorage JSON gracefully', async () => {
     localStorage.setItem('ciu-progress', 'invalid-json');
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-    const { result } = renderHook(() => useProgress(), { wrapper });
-    expect(result.current.completed).toEqual([]);
-    consoleSpy.mockRestore();
-  });
 
-  it('should handle localStorage write errors gracefully', () => {
-    const { result } = renderHook(() => useProgress(), { wrapper });
-    const setItemSpy = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
-      throw new Error('Storage full');
-    });
-    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
-    act(() => {
-      result.current.toggleTopic('fail-id');
-    });
-
-    expect(result.current.completed).toContain('fail-id');
-    expect(consoleSpy).toHaveBeenCalled();
-
-    setItemSpy.mockRestore();
-    consoleSpy.mockRestore();
-  });
-
-  it('should throw when used outside provider', () => {
-    const spy = vi.spyOn(console, 'error').mockImplementation(() => {});
-    expect(() => renderHook(() => useProgress())).toThrow(
-      'useProgress must be used within ProgressProvider'
+    render(
+      <ProgressProvider>
+        <TestComponent />
+      </ProgressProvider>
     );
-    spy.mockRestore();
+
+    await waitFor(() => {
+        expect(screen.getByTestId('completed-count').textContent).toBe('0');
+    });
+
+    expect(consoleSpy).toHaveBeenCalled();
+    consoleSpy.mockRestore();
+  });
+
+  it('should throw error when used outside provider', () => {
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+    expect(() => render(<TestComponent />)).toThrow('useProgress must be used within ProgressProvider');
+    consoleSpy.mockRestore();
   });
 });

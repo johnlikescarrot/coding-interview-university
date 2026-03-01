@@ -13,25 +13,24 @@ interface ProgressContextType {
 
 const ProgressContext = createContext<ProgressContextType | undefined>(undefined)
 
-const getInitialProgress = () => {
-  if (typeof window === "undefined") return []
-  try {
-    const saved = localStorage.getItem("ciu-progress")
-    if (saved) {
-      const parsed = JSON.parse(saved)
-      if (Array.isArray(parsed) && parsed.every(x => typeof x === "string")) {
-        return parsed
-      }
-    }
-  } catch (e) {
-    console.error("Failed to load progress from localStorage", e)
-  }
-  return []
-}
-
 export function ProgressProvider({ children }: { children: React.ReactNode }) {
-  const [completed, setCompleted] = useState<string[]>(getInitialProgress)
+  const [completed, setCompleted] = useState<string[]>([])
   const [totalTopics, setTotalTopics] = useState(DEFAULT_TOTAL_TOPICS)
+
+  // Resolve hydration mismatch by loading from localStorage after mount
+  useEffect(() => {
+    try {
+      const saved = localStorage.getItem("ciu-progress")
+      if (saved) {
+        const parsed = JSON.parse(saved)
+        if (Array.isArray(parsed) && parsed.every(x => typeof x === "string")) {
+          setCompleted(parsed)
+        }
+      }
+    } catch (e) {
+      console.error("Failed to load progress from localStorage", e)
+    }
+  }, [])
 
   const toggleTopic = (id: string) => {
     setCompleted((prev) => {

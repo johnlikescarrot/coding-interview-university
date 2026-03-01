@@ -1,6 +1,7 @@
 "use client"
 
 import * as React from "react"
+import { useRouter } from "next/navigation"
 import { ModeToggle } from "@/components/mode-toggle";
 import { Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -15,6 +16,7 @@ import {
 
 export function Header() {
   const [open, setOpen] = React.useState(false)
+  const router = useRouter()
 
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
@@ -35,8 +37,9 @@ export function Header() {
             variant="outline"
             className="relative h-9 w-full justify-start rounded-[0.5rem] bg-muted/50 text-sm font-normal text-muted-foreground shadow-none sm:pr-12 md:w-40 lg:w-64"
             onClick={() => setOpen(true)}
+            aria-label="Search topics"
           >
-            <Search className="mr-2 h-4 w-4" />
+            <Search aria-hidden="true" className="mr-2 h-4 w-4" />
             <span className="hidden lg:inline-flex">Search topics...</span>
             <span className="inline-flex lg:hidden">Search...</span>
             <kbd className="pointer-events-none absolute right-[0.3rem] top-[0.3rem] hidden h-6 select-none items-center gap-1 rounded border bg-muted px-1.5 font-mono text-[10px] font-medium opacity-100 sm:flex">
@@ -54,13 +57,13 @@ export function Header() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Quick Navigation">
-            <CommandItem onSelect={() => { window.location.href = "/"; setOpen(false) }}>
+            <CommandItem onSelect={() => { router.push("/"); setOpen(false) }}>
               Syllabus
             </CommandItem>
-            <CommandItem onSelect={() => { window.location.href = "/resources"; setOpen(false) }}>
+            <CommandItem onSelect={() => { router.push("/resources"); setOpen(false) }}>
               Language Resources
             </CommandItem>
-            <CommandItem onSelect={() => { window.location.href = "/flashcards"; setOpen(false) }}>
+            <CommandItem onSelect={() => { router.push("/flashcards"); setOpen(false) }}>
               Flashcards
             </CommandItem>
           </CommandGroup>

@@ -21,7 +21,15 @@ export interface Section {
   topics: Topic[];
 }
 
-const extractText = (node: any): string => {
+interface MdNode {
+  type: string;
+  value?: string;
+  depth?: number;
+  children?: MdNode[];
+  url?: string;
+}
+
+const extractText = (node: MdNode): string => {
   if (node.value) return node.value;
   if (node.children) return node.children.map(extractText).join('');
   return '';
@@ -35,21 +43,33 @@ export function parseCurriculum(filePath: string): Section[] {
     }
     const content = fs.readFileSync(filePath, 'utf-8');
     const processor = unified().use(remarkParse).use(remarkGfm);
-    const tree: any = processor.parse(content);
+    const tree = processor.parse(content) as unknown as MdNode;
 
     const sections: Section[] = [];
     let currentSection: Section | null = null;
     let currentTopic: Topic | null = null;
 
-    tree.children.forEach((node: any) => {
+    const idCounts: Record<string, number> = {};
+
+    tree.children?.forEach((node) => {
       if (node.type === 'heading') {
         const text = extractText(node);
         if (node.depth === 2) {
           currentSection = { title: text, topics: [] };
           sections.push(currentSection);
+          currentTopic = null;
         } else if (node.depth === 3 && currentSection) {
+          let id = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+
+          if (idCounts[id]) {
+             idCounts[id]++;
+             id = `${id}-${idCounts[id]}`;
+          } else {
+             idCounts[id] = 1;
+          }
+
           currentTopic = {
-            id: text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-'),
+            id,
             title: text,
             completed: false,
             resources: []
@@ -57,13 +77,13 @@ export function parseCurriculum(filePath: string): Section[] {
           currentSection.topics.push(currentTopic);
         }
       } else if (node.type === 'list' && currentTopic) {
-        node.children.forEach((listItem: any) => {
-          const paragraph = listItem.children.find((c: any) => c.type === 'paragraph');
+        node.children?.forEach((listItem) => {
+          const paragraph = listItem.children?.find((c) => c.type === 'paragraph');
           if (paragraph) {
-            const link = paragraph.children.find((c: any) => c.type === 'link');
+            const link = paragraph.children?.find((c) => c.type === 'link');
             const text = extractText(paragraph);
 
-            if (link) {
+            if (link && link.url) {
                currentTopic?.resources.push({
                  title: text || extractText(link),
                  url: link.url,

@@ -23,7 +23,7 @@ export function CurriculumView({ sections }: { sections: Section[] }) {
 
   return (
     <div className="space-y-6 pb-20">
-      {sections.filter(s => s.topics.length > 0).map((section, idx) => (
+      {sections.filter(s => s.topics.length > 0).map((section) => (
         <Card key={section.title} className="border-none shadow-none bg-transparent">
           <h2 className="text-2xl font-bold mb-4 px-2">{section.title}</h2>
           <Accordion type="single" collapsible className="w-full space-y-2">
