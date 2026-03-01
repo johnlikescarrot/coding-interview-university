@@ -14,7 +14,7 @@ vi.mock('@/components/ui/sidebar', () => ({
   SidebarMenuItem: ({ children }: any) => <div>{children}</div>,
   SidebarMenuButton: ({ children }: any) => <div>{children}</div>,
   SidebarRail: () => null,
-  SidebarTrigger: () => <button>Trigger</button>,
+  SidebarTrigger: () => <button type="button">Trigger</button>,
   useSidebar: () => ({ state: 'expanded', open: true, setOpen: vi.fn() }),
 }));
 

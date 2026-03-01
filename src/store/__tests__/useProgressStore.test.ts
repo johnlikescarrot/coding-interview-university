@@ -14,6 +14,7 @@ describe('useProgressStore', () => {
   it('should initialize with default values', () => {
     const state = useProgressStore.getState();
     expect(state.completedTopics).toEqual({});
+    expect(state.completedCheckboxes).toEqual({});
     expect(state.language).toBe('en');
   });
 
@@ -27,7 +28,6 @@ describe('useProgressStore', () => {
   });
 
   it('should toggle a checkbox', () => {
-
     const checkboxId = 'check-1';
     useProgressStore.getState().toggleCheckbox(checkboxId);
     expect(useProgressStore.getState().completedCheckboxes[checkboxId]).toBe(true);

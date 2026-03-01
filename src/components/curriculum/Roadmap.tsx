@@ -74,7 +74,7 @@ export default function Roadmap({ topics }: RoadmapProps) {
                   </div>
                   <div className="space-y-1">
                     <div className="font-bold text-lg leading-none">{topic.title}</div>
-                    {topic.checkboxes && topic.checkboxes.length > 0 && (
+                    {topic.checkboxes && (
                       <div className="text-xs text-muted-foreground font-medium">
                         {topic.checkboxes.filter(c => completedCheckboxes[c.id]).length} / {topic.checkboxes.length} Tasks
                       </div>
@@ -130,9 +130,9 @@ export default function Roadmap({ topics }: RoadmapProps) {
                               </div>
                             )}
                             <div className="flex flex-wrap gap-x-4 gap-y-2 text-xs">
-                              {sub.links.map((link) => (
+                              {sub.links.map((link, lIdx) => (
                                 <a
-                                  key={link.url}
+                                  key={`${sub.id}-${lIdx}-${link.url}`}
                                   href={link.url}
                                   className="hover:text-primary underline underline-offset-4"
                                   target="_blank"

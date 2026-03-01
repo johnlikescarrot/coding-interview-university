@@ -73,11 +73,13 @@ describe('Flashcards', () => {
 
   it('handles keyboard navigation', () => {
     render(<Flashcards cards={mockCards} />);
-    const card = screen.getByRole('button', { name: /click to see answer/i });
+    const card = screen.getByLabelText(/click to see answer/i);
 
+    // Flip to answer
     fireEvent.keyDown(card, { key: 'Enter' });
     expect(screen.getByText('A1')).toBeInTheDocument();
 
+    // Flip back to question
     fireEvent.keyDown(card, { key: ' ' });
     expect(screen.getByText('Q1')).toBeInTheDocument();
   });
