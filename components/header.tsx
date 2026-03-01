@@ -18,6 +18,11 @@ export function Header() {
   const [open, setOpen] = React.useState(false)
   const router = useRouter()
 
+  const navigate = React.useCallback((href: string) => {
+    router.push(href)
+    setOpen(false)
+  }, [router])
+
   React.useEffect(() => {
     const down = (e: KeyboardEvent) => {
       if (e.key === "k" && (e.metaKey || e.ctrlKey)) {
@@ -57,13 +62,13 @@ export function Header() {
         <CommandList>
           <CommandEmpty>No results found.</CommandEmpty>
           <CommandGroup heading="Quick Navigation">
-            <CommandItem onSelect={() => { router.push("/"); setOpen(false) }}>
+            <CommandItem onSelect={() => navigate("/")}>
               Syllabus
             </CommandItem>
-            <CommandItem onSelect={() => { router.push("/resources"); setOpen(false) }}>
+            <CommandItem onSelect={() => navigate("/resources")}>
               Language Resources
             </CommandItem>
-            <CommandItem onSelect={() => { router.push("/flashcards"); setOpen(false) }}>
+            <CommandItem onSelect={() => navigate("/flashcards")}>
               Flashcards
             </CommandItem>
           </CommandGroup>

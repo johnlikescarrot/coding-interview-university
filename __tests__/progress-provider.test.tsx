@@ -8,7 +8,7 @@ const TestComponent = () => {
   return (
     <div>
       <div data-testid="completed-count">{completed.length}</div>
-      <button onClick={() => toggleTopic('test-id')}>Toggle</button>
+      <button type="button" onClick={() => toggleTopic('test-id')}>Toggle</button>
     </div>
   );
 };

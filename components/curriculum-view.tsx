@@ -23,8 +23,8 @@ export function CurriculumView({ sections }: { sections: Section[] }) {
 
   return (
     <div className="space-y-6 pb-20">
-      {sections.filter(s => s.topics.length > 0).map((section) => (
-        <Card key={section.title} className="border-none shadow-none bg-transparent">
+      {sections.filter(s => s.topics.length > 0).map((section, sidx) => (
+        <Card key={`${section.title}-${sidx}`} className="border-none shadow-none bg-transparent">
           <h2 className="text-2xl font-bold mb-4 px-2">{section.title}</h2>
           <Accordion type="single" collapsible className="w-full space-y-2">
             {section.topics.map((topic) => (
@@ -46,9 +46,9 @@ export function CurriculumView({ sections }: { sections: Section[] }) {
                 </div>
                 <AccordionContent className="px-4 pt-2 pb-4 space-y-4 bg-muted/20">
                   <div className="grid gap-2">
-                    {topic.resources.map((res, ridx) => (
+                    {topic.resources.map((res) => (
                       <a
-                        key={ridx}
+                        key={res.url}
                         href={res.url}
                         target="_blank"
                         rel="noopener noreferrer"

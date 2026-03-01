@@ -59,7 +59,8 @@ export function parseCurriculum(filePath: string): Section[] {
           sections.push(currentSection);
           currentTopic = null;
         } else if (node.depth === 3 && currentSection) {
-          const baseId = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+          const rawBaseId = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+          const baseId = rawBaseId || 'heading';
           let id = baseId;
           let counter = 1;
 
@@ -112,20 +113,21 @@ export function parseLanguageResources(filePath: string): Record<string, Resourc
         let currentLang = '';
 
         lines.forEach(line => {
-            if (line.startsWith('- ')) {
-                const lang = line.replace('- ', '').trim();
-                if (!lang.includes('[')) {
-                    currentLang = lang;
-                    sections[currentLang] = [];
-                }
-            } else if (line.trim().startsWith('- [') && currentLang) {
-                const match = line.match(/\[(.*?)\]\((.*?)\)/);
-                if (match) {
+            const t = line.trim();
+            if (t.startsWith('- [')) {
+                const match = t.match(/\[(.*?)\]\((.*?)\)/);
+                if (match && currentLang) {
                     sections[currentLang].push({
                         title: match[1],
                         url: match[2],
                         type: match[2].includes('youtube') || match[2].includes('vimeo') ? 'video' : 'article'
                     });
+                }
+            } else if (t.startsWith('- ')) {
+                const lang = t.replace('- ', '').trim();
+                if (!lang.includes('[')) {
+                    currentLang = lang;
+                    sections[currentLang] = [];
                 }
             }
         });
