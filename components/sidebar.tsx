@@ -13,13 +13,21 @@ const menuItems = [
   { title: "Data Structures", icon: Code2, href: "/data-structures" },
   { title: "Algorithms", icon: Zap, href: "/algorithms" },
   { title: "Resources", icon: CheckCircle2, href: "/resources" },
+  { title: "Flashcards", icon: Zap, href: "/flashcards" },
 ]
 
 export function Sidebar() {
   const pathname = usePathname()
   const { completed, totalTopics } = useProgress()
 
-  const progressPercent = Math.min(Math.round((completed.length / totalTopics) * 100), 100)
+  const progressPercent = totalTopics > 0
+    ? Math.min(Math.round((completed.length / totalTopics) * 100), 100)
+    : 0
+
+  const isActive = (href: string) => {
+    if (href === "/") return pathname === "/"
+    return pathname.startsWith(href)
+  }
 
   return (
     <div className="hidden border-r bg-muted/20 md:block md:w-64 lg:w-72">
@@ -43,7 +51,7 @@ export function Sidebar() {
                     href={item.href}
                     className={cn(
                       "flex items-center gap-3 rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-muted hover:text-primary",
-                      pathname === item.href ? "bg-muted text-primary" : "text-muted-foreground"
+                      isActive(item.href) ? "bg-muted text-primary" : "text-muted-foreground"
                     )}
                   >
                     <item.icon className="h-4 w-4" />

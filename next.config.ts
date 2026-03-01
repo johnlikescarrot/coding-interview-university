@@ -5,8 +5,8 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  // Ensure base path is correct for GitHub Pages if needed
-  // basePath: '/repository-name',
+  basePath: '/coding-interview-university',
+  assetPrefix: '/coding-interview-university',
 };
 
 export default nextConfig;

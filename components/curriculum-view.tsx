@@ -24,25 +24,27 @@ export function CurriculumView({ sections }: { sections: Section[] }) {
   return (
     <div className="space-y-6 pb-20">
       {sections.filter(s => s.topics.length > 0).map((section, idx) => (
-        <Card key={idx} className="border-none shadow-none bg-transparent">
+        <Card key={section.title} className="border-none shadow-none bg-transparent">
           <h2 className="text-2xl font-bold mb-4 px-2">{section.title}</h2>
           <Accordion type="single" collapsible className="w-full space-y-2">
             {section.topics.map((topic) => (
-              <AccordionItem key={topic.id} value={topic.id} className="border rounded-lg px-4 bg-card">
-                <AccordionTrigger className="hover:no-underline">
-                  <div className="flex items-center gap-3">
-                    <div onClick={(e) => {
-                        e.stopPropagation();
-                        toggleTopic(topic.id);
-                    }}>
-                        <Checkbox checked={completed.includes(topic.id)} />
-                    </div>
+              <AccordionItem key={topic.id} value={topic.id} className="border rounded-lg bg-card overflow-hidden">
+                <div className="flex items-center px-4 hover:bg-muted/50 transition-colors">
+                  <Checkbox
+                    id={`check-${topic.id}`}
+                    checked={completed.includes(topic.id)}
+                    onCheckedChange={() => toggleTopic(topic.id)}
+                    onClick={(e) => e.stopPropagation()}
+                    aria-label={`Mark ${topic.title} as completed`}
+                    className="mr-3"
+                  />
+                  <AccordionTrigger className="hover:no-underline py-4 flex-1 justify-start">
                     <span className={completed.includes(topic.id) ? "line-through text-muted-foreground" : ""}>
                         {topic.title}
                     </span>
-                  </div>
-                </AccordionTrigger>
-                <AccordionContent className="pt-2 pb-4 space-y-4">
+                  </AccordionTrigger>
+                </div>
+                <AccordionContent className="px-4 pt-2 pb-4 space-y-4 bg-muted/20">
                   <div className="grid gap-2">
                     {topic.resources.map((res, ridx) => (
                       <a
@@ -50,7 +52,7 @@ export function CurriculumView({ sections }: { sections: Section[] }) {
                         href={res.url}
                         target="_blank"
                         rel="noopener noreferrer"
-                        className="flex items-center justify-between p-2 rounded-md hover:bg-muted transition-colors group"
+                        className="flex items-center justify-between p-2 rounded-md hover:bg-card transition-colors group"
                       >
                         <div className="flex items-center gap-2">
                           {res.type === 'video' ? <Video className="h-4 w-4 text-red-500" /> : <FileText className="h-4 w-4 text-blue-500" />}

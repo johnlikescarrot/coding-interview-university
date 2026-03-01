@@ -2,6 +2,8 @@
 
 import React, { createContext, useContext, useState, useEffect } from 'react'
 
+const DEFAULT_TOTAL_TOPICS = 180 // Approximate count from curriculum
+
 interface ProgressContextType {
   completed: string[]
   totalTopics: number
@@ -11,28 +13,39 @@ interface ProgressContextType {
 
 const ProgressContext = createContext<ProgressContextType | undefined>(undefined)
 
-export function ProgressProvider({ children }: { children: React.ReactNode }) {
-  const [completed, setCompleted] = useState<string[]>([])
-  const [totalTopics, setTotalTopics] = useState(180) // Default fallback
-
-  useEffect(() => {
+const getInitialProgress = () => {
+  if (typeof window === "undefined") return []
+  try {
     const saved = localStorage.getItem("ciu-progress")
     if (saved) {
-      try {
-        setCompleted(JSON.parse(saved))
-      } catch (e) {
-        console.error("Failed to parse progress", e)
+      const parsed = JSON.parse(saved)
+      if (Array.isArray(parsed) && parsed.every(x => typeof x === "string")) {
+        return parsed
       }
     }
-  }, [])
+  } catch (e) {
+    console.error("Failed to load progress from localStorage", e)
+  }
+  return []
+}
+
+export function ProgressProvider({ children }: { children: React.ReactNode }) {
+  const [completed, setCompleted] = useState<string[]>(getInitialProgress)
+  const [totalTopics, setTotalTopics] = useState(DEFAULT_TOTAL_TOPICS)
 
   const toggleTopic = (id: string) => {
-    const next = completed.includes(id)
-      ? completed.filter((i) => i !== id)
-      : [...completed, id]
+    setCompleted((prev) => {
+      const next = prev.includes(id)
+        ? prev.filter((i) => i !== id)
+        : [...prev, id]
 
-    setCompleted(next)
-    localStorage.setItem("ciu-progress", JSON.stringify(next))
+      try {
+        localStorage.setItem("ciu-progress", JSON.stringify(next))
+      } catch (e) {
+        console.error("Failed to save progress to localStorage", e)
+      }
+      return next
+    })
   }
 
   return (

@@ -7,8 +7,16 @@ export default function FlashcardsPage() {
   const filePath = path.join(process.cwd(), "content/README.md");
   const curriculum = parseCurriculum(filePath);
 
-  // Filter for sections that have actual topics
   const validSections = curriculum.filter(s => s.topics.length > 0).slice(0, 5);
+
+  if (validSections.length === 0) {
+    return (
+      <div className="max-w-4xl mx-auto text-center py-20">
+        <h1 className="text-3xl font-bold">No flashcard content available.</h1>
+        <p className="text-muted-foreground mt-2">Check back later once the syllabus is parsed.</p>
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
@@ -17,22 +25,22 @@ export default function FlashcardsPage() {
         <p className="text-xl text-muted-foreground">Master core concepts through interactive flashcards.</p>
       </div>
 
-      <Tabs defaultValue={validSections[0]?.title} className="w-full">
+      <Tabs defaultValue={validSections[0].title} className="w-full">
         <div className="flex justify-center mb-8">
-            <TabsList className="bg-muted/50">
-                {validSections.map((section, idx) => (
-                    <TabsTrigger key={idx} value={section.title} className="text-xs sm:text-sm">
+            <TabsList className="bg-muted/50 h-auto p-1 flex-wrap justify-center">
+                {validSections.map((section) => (
+                    <TabsTrigger key={section.title} value={section.title} className="text-xs sm:text-sm">
                         {section.title}
                     </TabsTrigger>
                 ))}
             </TabsList>
         </div>
 
-        {validSections.map((section, idx) => (
-            <TabsContent key={idx} value={section.title} className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
-                {section.topics.slice(0, 6).map((topic, tidx) => (
+        {validSections.map((section) => (
+            <TabsContent key={section.title} value={section.title} className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-4">
+                {section.topics.slice(0, 6).map((topic) => (
                     <Flashcard
-                        key={tidx}
+                        key={topic.id}
                         front={topic.title}
                         back={`Deep dive into ${topic.title} by reviewing its resources in the syllabus. Focus on complexity, implementation, and edge cases.`}
                     />

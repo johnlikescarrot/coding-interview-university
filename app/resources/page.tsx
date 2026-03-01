@@ -2,7 +2,7 @@ import { parseLanguageResources } from "@/lib/parser";
 import path from "path";
 import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
-import { ExternalLink, Book, Video, FileText, Code2 } from "lucide-react";
+import { ExternalLink, Video, FileText, Code2 } from "lucide-react";
 
 export default function ResourcesPage() {
   const filePath = path.join(process.cwd(), "content/programming-language-resources.md");
@@ -16,8 +16,8 @@ export default function ResourcesPage() {
       </div>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {Object.entries(languages).map(([lang, resources], idx) => (
-          <Card key={idx} className="flex flex-col h-full hover:shadow-lg transition-all border-muted/50 overflow-hidden">
+        {Object.entries(languages).map(([lang, resources]) => (
+          <Card key={lang} className="flex flex-col h-full hover:shadow-lg transition-all border-muted/50 overflow-hidden">
             <CardHeader className="bg-muted/30 pb-4">
               <div className="flex items-center justify-between">
                 <CardTitle className="flex items-center gap-2">
@@ -30,7 +30,7 @@ export default function ResourcesPage() {
             <CardContent className="pt-6 flex-1">
               <ul className="space-y-3">
                 {resources.slice(0, 6).map((res, ridx) => (
-                  <li key={ridx}>
+                  <li key={`${lang}-res-${ridx}`}>
                     <a
                       href={res.url}
                       target="_blank"

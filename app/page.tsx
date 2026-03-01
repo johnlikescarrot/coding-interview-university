@@ -1,10 +1,15 @@
 import { parseCurriculum } from "@/lib/parser";
 import path from "path";
 import { CurriculumView } from "@/components/curriculum-view";
+import { notFound } from "next/navigation";
 
 export default function Home() {
   const filePath = path.join(process.cwd(), "content/README.md");
   const curriculum = parseCurriculum(filePath);
+
+  if (!curriculum || curriculum.length === 0) {
+    notFound();
+  }
 
   return (
     <div className="max-w-4xl mx-auto space-y-8">
