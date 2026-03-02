@@ -41,3 +41,39 @@ describe('parser', () => {
     expect(result[0].checkboxes![1].completed).toBe(true);
   });
 });
+
+describe('curriculum-logic refinements', () => {
+  it('deduplicates IDs correctly', () => {
+    const mockMd = '# Duplicate\n## Duplicate\n# Duplicate';
+    (fs.readFileSync as any).mockReturnValue(mockMd);
+    const result = getCurriculum('en');
+    expect(result[0].id).toBe('duplicate');
+    expect(result[0].subtopics[0].id).toBe('duplicate-1');
+    expect(result[1].id).toBe('duplicate-2');
+  });
+
+  it('handles indented ATX headings', () => {
+    const mockMd = '  # Indented';
+    (fs.readFileSync as any).mockReturnValue(mockMd);
+    const result = getCurriculum('en');
+    expect(result).toHaveLength(1);
+    expect(result[0].title).toBe('Indented');
+  });
+
+  it('normalizes CRLF and strips BOM', () => {
+    const mockMd = '\uFEFF# BOM\r\n## CRLF';
+    (fs.readFileSync as any).mockReturnValue(mockMd);
+    const result = getCurriculum('en');
+    expect(result).toHaveLength(1);
+    expect(result[0].title).toBe('BOM');
+    expect(result[0].subtopics[0].title).toBe('CRLF');
+  });
+
+  it('attaches to nearest ancestor on skipped levels', () => {
+    const mockMd = '# Root\n### Skipped Level 2';
+    (fs.readFileSync as any).mockReturnValue(mockMd);
+    const result = getCurriculum('en');
+    expect(result[0].subtopics).toHaveLength(1);
+    expect(result[0].subtopics[0].title).toBe('Skipped Level 2');
+  });
+});

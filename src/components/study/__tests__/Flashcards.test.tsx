@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { describe, it, expect, vi } from 'vitest';
+import { describe, it, expect, vi, beforeEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Flashcards from '../Flashcards';
 
@@ -60,24 +60,39 @@ describe('Flashcards', () => {
     flip: "Flip"
   };
 
+  beforeEach(() => {
+    // Force a deterministic shuffle (no swap)
+    vi.spyOn(Math, 'random').mockReturnValue(0.999);
+  });
+
   it('renders correctly and flips', () => {
     render(<Flashcards cards={mockCards} labels={mockLabels} />);
     const card = screen.getByLabelText(new RegExp(`${mockLabels.question}, ${mockLabels.flip}`, 'i'));
     expect(card).toBeInTheDocument();
+    expect(screen.getByText(mockCards[0].q)).toBeInTheDocument();
 
     fireEvent.click(card);
     expect(screen.getByLabelText(new RegExp(mockLabels.answer, 'i'))).toBeInTheDocument();
+    expect(screen.getByText(mockCards[0].a)).toBeInTheDocument();
   });
 
   it('navigates through the deck', () => {
     render(<Flashcards cards={mockCards} labels={mockLabels} />);
+
+    // Check first card (Question 1 due to mockReturnValue)
+    expect(screen.getByText(mockCards[0].q)).toBeInTheDocument();
+
     const nextBtn = screen.getByLabelText(new RegExp(mockLabels.next, 'i'));
     fireEvent.click(nextBtn);
-    expect(screen.getByText(/Question [12]/)).toBeInTheDocument();
+
+    // Check second card
+    expect(screen.getByText(mockCards[1].q)).toBeInTheDocument();
 
     const prevBtn = screen.getByLabelText(new RegExp(mockLabels.prev, 'i'));
     fireEvent.click(prevBtn);
-    expect(screen.getByText(/Question [12]/)).toBeInTheDocument();
+
+    // Returns to first card
+    expect(screen.getByText(mockCards[0].q)).toBeInTheDocument();
   });
 
   it('handles keyboard flip', () => {

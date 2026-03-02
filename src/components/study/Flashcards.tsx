@@ -111,7 +111,7 @@ export default function Flashcards({ cards, labels }: FlashcardsProps) {
         <p className="text-muted-foreground">{labels.subtitle}</p>
       </div>
 
-      <div className="relative w-full aspect-video perspective-1000">
+      <div className="relative w-full aspect-video perspective-[1000px]">
         <AnimatePresence initial={false} custom={direction}>
           <motion.div
             key={currentIndex}
@@ -125,7 +125,7 @@ export default function Flashcards({ cards, labels }: FlashcardsProps) {
               opacity: { duration: 0.2 },
               rotateY: { duration: 0.4 },
             }}
-            className="absolute inset-0 preserve-3d cursor-pointer"
+            className="absolute inset-0 transform-3d cursor-pointer"
             onClick={toggleFlip}
             onKeyDown={handleKeyDown}
             tabIndex={0}

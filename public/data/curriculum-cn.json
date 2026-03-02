@@ -254,7 +254,7 @@
             "subtopics": []
           },
           {
-            "id": "c",
+            "id": "c-1",
             "title": "C++",
             "links": [
               {
@@ -799,7 +799,7 @@
             "completed": false
           },
           {
-            "id": "介绍-数据结构",
+            "id": "介绍-数据结构-1",
             "text": "介绍：",
             "completed": false
           },

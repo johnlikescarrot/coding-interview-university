@@ -9,7 +9,7 @@ import Flashcards from "@/components/study/Flashcards"
 import { useProgressStore } from "@/store/useProgressStore"
 import { CurriculumTopic } from "@/lib/parser"
 
-const FLASHCARD_LABELS = {
+const FLASHCARD_LABELS: Record<string, any> = {
   en: {
     title: "Active Recall",
     subtitle: "Quick-fire conceptual challenges to solidify your understanding.",
@@ -52,14 +52,14 @@ const FLASHCARD_LABELS = {
   },
 }
 
-const ARENA_LABELS = {
+const ARENA_LABELS: Record<string, any> = {
   en: { title: "Practice Arena", subtitle: "Sharpen your logic with the Sofa Whiteboard." },
   es: { title: "Campo de Práctica", subtitle: "Afina tu lógica con la Pizarra Sofa." },
   cn: { title: "演武场", subtitle: "使用 Sofa 白板磨练你的逻辑。" },
   ja: { title: "演習場", subtitle: "Sofa ホワイトボードで論理を磨きましょう。" },
 }
 
-const FLASHCARDS = {
+const FLASHCARDS: Record<string, any[]> = {
   en: [
     { q: "What is Big O notation used for?", a: "To describe the upper bound of an algorithm's time or space complexity." },
     { q: "What is the average time complexity of Quick Sort?", a: "O(n log n)" },
@@ -88,22 +88,29 @@ export default function HomePage() {
   const [error, setError] = React.useState<string | null>(null)
   const { language } = useProgressStore()
 
+  // Validate locale and fallback
+  const locale = ARENA_LABELS[language] ? language : 'en'
+
   React.useEffect(() => {
     const controller = new AbortController()
+    const { signal } = controller
+
     setIsLoading(true)
     setError(null)
 
-    fetch(`/data/curriculum-${language}.json`, { signal: controller.signal })
+    fetch(`/data/curriculum-${locale}.json`, { signal })
       .then(res => {
         if (!res.ok) throw new Error(`Failed to fetch curriculum: ${res.status}`)
         return res.json()
       })
       .then(data => {
-        setTopics(data)
-        setIsLoading(false)
+        if (!signal.aborted) {
+          setTopics(data)
+          setIsLoading(false)
+        }
       })
       .catch(err => {
-        if (err.name !== 'AbortError') {
+        if (!signal.aborted) {
           console.error("Failed to fetch curriculum", err)
           setError(err.message)
           setIsLoading(false)
@@ -111,7 +118,7 @@ export default function HomePage() {
       })
 
     return () => controller.abort()
-  }, [language])
+  }, [locale])
 
   return (
     <DashboardShell>
@@ -138,8 +145,8 @@ export default function HomePage() {
 
         <section id="whiteboard">
           <div className="mb-8">
-            <h2 className="text-3xl font-bold tracking-tight">{ARENA_LABELS[language].title}</h2>
-            <p className="text-muted-foreground">{ARENA_LABELS[language].subtitle}</p>
+            <h2 className="text-3xl font-bold tracking-tight">{ARENA_LABELS[locale].title}</h2>
+            <p className="text-muted-foreground">{ARENA_LABELS[locale].subtitle}</p>
           </div>
           <div className="h-[600px]">
             <SofaWhiteboard />
@@ -148,8 +155,8 @@ export default function HomePage() {
 
         <section id="flashcards">
           <Flashcards
-            cards={FLASHCARDS[language]}
-            labels={FLASHCARD_LABELS[language]}
+            cards={FLASHCARDS[locale] || FLASHCARDS.en}
+            labels={FLASHCARD_LABELS[locale] || FLASHCARD_LABELS.en}
           />
         </section>
       </div>

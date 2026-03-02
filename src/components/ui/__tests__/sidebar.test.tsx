@@ -13,7 +13,7 @@ const TestComponent = () => {
   return (
     <div>
       <span data-testid="open-state">{open ? 'open' : 'closed'}</span>
-      <button onClick={() => setOpen((prev) => !prev)}>Toggle State</button>
+      <button type="button" onClick={() => setOpen((prev) => !prev)}>Toggle State</button>
     </div>
   )
 }
