@@ -22,7 +22,7 @@ export function Sidebar() {
           transition={{ duration: 0.5 }}
         >
           <h1 className="text-xl font-black tracking-tighter uppercase text-primary">CIU Mastery</h1>
-          <p className="text-[10px] text-muted-foreground mt-1 uppercase tracking-[0.2em] font-bold opacity-60">Transcendent Education</p>
+          <p className="text-[10px] text-muted-foreground mt-1 uppercase tracking-[0.2em] font-bold">Transcendent Education</p>
         </motion.div>
       </div>
 
@@ -45,7 +45,7 @@ export function Sidebar() {
           className="h-1.5"
           aria-label="Curriculum mastery progress"
         />
-        <p className="text-[9px] text-muted-foreground mt-4 text-center font-medium opacity-70 italic">
+        <p className="text-[11px] text-muted-foreground mt-4 text-center font-semibold italic">
           {completed.length} of {totalTopics} nodes decoded
         </p>
       </motion.div>

@@ -7,7 +7,15 @@ import { Resource, Topic, Section } from './types';
  * approach that handles headers, indented headers, and nested list structures.
  */
 
-const slugify = (text: string) => text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-');
+// Unicode-aware slugify that preserves international letters and numbers
+const slugify = (text: string) =>
+  text
+    .toLocaleLowerCase()
+    .normalize('NFD')
+    .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
+    .replace(/[^\p{L}\p{N}\s-]/gu, '') // Keep Unicode letters, numbers, spaces, hyphens
+    .trim()
+    .replace(/\s+/g, '-');
 
 export const getResourceType = (url: string): Resource['type'] => {
   const u = url.toLowerCase();
@@ -19,7 +27,10 @@ export const getResourceType = (url: string): Resource['type'] => {
 
 export function parseCurriculum(filePath: string): Section[] {
   try {
-    if (!fs.existsSync(filePath)) return [];
+    if (!fs.existsSync(filePath)) {
+      console.warn(`Curriculum file not found at ${filePath}`);
+      return [];
+    }
     const content = fs.readFileSync(filePath, 'utf-8');
     const lines = content.split('\n');
 
@@ -32,11 +43,8 @@ export function parseCurriculum(filePath: string): Section[] {
       const trimmed = line.trim();
       if (!trimmed) return;
 
-      // Check for headings (including indented ones)
       const h2Match = trimmed.match(/^(?:-\s+)?##\s+(.*)/);
       const h3Match = trimmed.match(/^(?:-\s+)?###\s+(.*)/);
-
-      // Also check for bolded list items which often act as sub-sections/topics
       const boldListMatch = trimmed.match(/^-\s+\*\*(.*)\*\*/);
 
       if (h2Match) {
@@ -59,7 +67,7 @@ export function parseCurriculum(filePath: string): Section[] {
 
          const baseId = slugify(title) || 'topic';
          let id = baseId;
-         let counter = 1;
+         let counter = 0; // Initialize at 0 so first collision is foo-1
          while (usedIds.has(id)) {
            id = `${baseId}-${++counter}`;
          }
@@ -68,6 +76,7 @@ export function parseCurriculum(filePath: string): Section[] {
          currentTopic = { id, title, completed: false, resources: [] };
          currentSection.topics.push(currentTopic);
       } else if (currentTopic) {
+        // Validation: only capture http(s) links to prevent javascript: XSS
         const linkMatch = trimmed.match(/\[(.*?)\]\((http.*?)\)/);
         if (linkMatch && !linkMatch[2].includes('#')) {
            if (!currentTopic.resources.some(r => r.url === linkMatch[2])) {
@@ -81,7 +90,6 @@ export function parseCurriculum(filePath: string): Section[] {
       }
     });
 
-    // Cleanup: remove auto-generated Overview if it's empty
     sections.forEach(s => {
        if (s.topics.length > 1 && s.topics[0].title === "Overview" && s.topics[0].resources.length === 0) {
           s.topics.shift();
@@ -97,7 +105,10 @@ export function parseCurriculum(filePath: string): Section[] {
 
 export function parseLanguageResources(filePath: string): Record<string, Resource[]> {
   try {
-    if (!fs.existsSync(filePath)) return {};
+    if (!fs.existsSync(filePath)) {
+      console.warn(`Language resources file not found at ${filePath}`);
+      return {};
+    }
     const content = fs.readFileSync(filePath, 'utf-8');
     const sections: Record<string, Resource[]> = {};
     const lines = content.split('\n');
@@ -105,8 +116,9 @@ export function parseLanguageResources(filePath: string): Record<string, Resourc
 
     lines.forEach(line => {
       const t = line.trim();
+      // Security fix: explicitly check for http protocol in links
       if (t.startsWith('- [')) {
-        const match = t.match(/\[(.*?)\]\((.*?)\)/);
+        const match = t.match(/\[(.*?)\]\((http.*?)\)/);
         if (match && currentLang) {
           if (!sections[currentLang].some(r => r.url === match[2])) {
             sections[currentLang].push({

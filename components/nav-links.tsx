@@ -26,7 +26,7 @@ export function NavLinks({ onItemClick }: { onItemClick?: () => void }) {
             href={link.href}
             onClick={onItemClick}
             className={cn(
-              "group relative flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200",
+              "group relative isolate flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200",
               isActive
                 ? "text-primary"
                 : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
