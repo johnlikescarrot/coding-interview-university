@@ -77,7 +77,7 @@ const FLASHCARDS: Record<string, any[]> = {
   ],
   ja: [
     { q: "Big O 記法は何のために使われますか？", a: "アルゴリズムの時間または空間計算量の上限を記述するため。" },
-    { q: "クイックソートの平均時間計算量は？", a: "O(n log n)" },
+    { q: "クイックソートの平均时间計算量は？", a: "O(n log n)" },
     { q: "スタックにおける LIFO の原則を説明してください。", a: "後入れ先出し：最後に追加された要素が最初に削除されます。" },
   ],
 }
@@ -98,7 +98,11 @@ export default function HomePage() {
     setIsLoading(true)
     setError(null)
 
-    fetch(`/data/curriculum-${locale}.json`, { signal })
+    // Robust basePath construction
+    const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
+    const url = `${basePath}/data/curriculum-${locale}.json`.replace(/\/+/g, '/')
+
+    fetch(url, { signal })
       .then(res => {
         if (!res.ok) throw new Error(`Failed to fetch curriculum: ${res.status}`)
         return res.json()

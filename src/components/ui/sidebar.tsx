@@ -70,10 +70,9 @@ const SidebarProvider = React.forwardRef<
     const [_open, _setOpen] = React.useState(defaultOpen)
     const open = openProp ?? _open
 
+    // SYNC ref immediately during render for synchronous functional updaters
     const openRef = React.useRef(open)
-    React.useEffect(() => {
-      openRef.current = open
-    }, [open])
+    openRef.current = open
 
     // PURE side-effect for cookie management
     React.useEffect(() => {
