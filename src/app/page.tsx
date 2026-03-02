@@ -89,7 +89,7 @@ export default function HomePage() {
   const { language } = useProgressStore()
 
   // Validate locale and fallback
-  const locale = ARENA_LABELS[language] ? language : 'en'
+  const locale = Object.prototype.hasOwnProperty.call(ARENA_LABELS, language) ? language : 'en'
 
   React.useEffect(() => {
     const controller = new AbortController()

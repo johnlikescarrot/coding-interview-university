@@ -1,5 +1,5 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
-import { describe, it, expect, vi, beforeEach } from 'vitest';
+import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { render, screen, fireEvent } from '@testing-library/react';
 import Flashcards from '../Flashcards';
 
@@ -59,6 +59,10 @@ describe('Flashcards', () => {
     reset: "Reset",
     flip: "Flip"
   };
+
+afterEach(() => {
+    vi.restoreAllMocks();
+  });
 
   beforeEach(() => {
     // Force a deterministic shuffle (no swap)

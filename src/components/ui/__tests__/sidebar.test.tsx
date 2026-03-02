@@ -48,5 +48,7 @@ describe('SidebarProvider', () => {
     fireEvent.click(button)
 
     expect(onOpenChange).toHaveBeenCalledWith(false)
+    // In controlled mode, the internal state should not change if prop is fixed
+    expect(screen.getByTestId('open-state').textContent).toBe('open')
   })
 })

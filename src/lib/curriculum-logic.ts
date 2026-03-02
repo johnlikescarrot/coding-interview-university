@@ -51,7 +51,8 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
 
   const root: CurriculumTopic[] = []
   const stack: (CurriculumTopic | null)[] = []
-  const usedIds = new Set<string>()
+  const usedTopicIds = new Set<string>()
+  const usedCheckboxIds = new Set<string>()
 
   lines.forEach((line) => {
     // ATX headings allow up to 3 leading spaces
@@ -61,7 +62,7 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
       const title = headingMatch[2].trim()
 
       const topic: CurriculumTopic = {
-        id: generateId(title, usedIds),
+        id: generateId(title, usedTopicIds),
         title,
         links: [],
         checkboxes: [],
@@ -111,7 +112,7 @@ export function parseMarkdownToCurriculum(markdown: string): CurriculumTopic[] {
       if (checkboxMatch) {
         const text = checkboxMatch[2].trim()
         currentTopic.checkboxes.push({
-          id: generateId(`${text}-${currentTopic.id}`, usedIds),
+          id: generateId(`${text}-${currentTopic.id}`, usedCheckboxIds),
           text,
           completed: checkboxMatch[1].toLowerCase() === 'x',
         })

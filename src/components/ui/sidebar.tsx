@@ -648,7 +648,7 @@ const SidebarMenuSkeleton = React.forwardRef<
     showIcon?: boolean
   }
 >(({ className, showIcon = false, ...props }, ref) => {
-  const [width, setWidth] = React.useState("0%")
+  const [width, setWidth] = React.useState("70%")
 
   React.useEffect(() => {
     setWidth(`${Math.floor(Math.random() * 40) + 50}%`)
