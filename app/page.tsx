@@ -1,5 +1,5 @@
 import path from "path";
-import { parseCurriculum } from "@/lib/parser";
+import { parseCurriculum } from "@/lib/parser.server";
 import { CurriculumView } from "@/components/curriculum-view";
 import { notFound } from "next/navigation";
 

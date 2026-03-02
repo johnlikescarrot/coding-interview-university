@@ -4,6 +4,7 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 import { LayoutDashboard, BookOpen, BrainCircuit } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { motion } from "framer-motion"
 
 const links = [
   { name: "Study Plan", href: "/", icon: LayoutDashboard },
@@ -15,20 +16,33 @@ export function NavLinks({ onItemClick }: { onItemClick?: () => void }) {
   const pathname = usePathname()
 
   return (
-    <nav className="flex flex-col gap-2">
+    <nav className="flex flex-col gap-1">
       {links.map((link) => {
         const Icon = link.icon
+        const isActive = pathname === link.href
         return (
           <Link
             key={link.href}
             href={link.href}
             onClick={onItemClick}
             className={cn(
-              "flex items-center gap-3 rounded-lg px-3 py-2 text-sm font-medium transition-colors hover:bg-accent hover:text-accent-foreground",
-              pathname === link.href ? "bg-accent text-accent-foreground" : "text-muted-foreground"
+              "group relative flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200",
+              isActive
+                ? "text-primary"
+                : "text-muted-foreground hover:text-foreground hover:bg-muted/50"
             )}
           >
-            <Icon className="h-4 w-4" />
+            {isActive && (
+              <motion.div
+                layoutId="active-nav"
+                className="absolute inset-0 bg-primary/5 border border-primary/10 rounded-xl -z-10"
+                transition={{ type: "spring", bounce: 0.2, duration: 0.6 }}
+              />
+            )}
+            <Icon className={cn(
+              "h-4 w-4 transition-transform group-hover:scale-110",
+              isActive ? "text-primary" : "opacity-70"
+            )} />
             {link.name}
           </Link>
         )

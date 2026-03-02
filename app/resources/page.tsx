@@ -1,5 +1,6 @@
 import path from "path";
-import { parseLanguageResources, Resource } from "@/lib/parser";
+import { parseLanguageResources } from "@/lib/parser.server";
+import { Resource } from "@/lib/types";
 import { Card, CardHeader, CardTitle, CardContent } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { ExternalLink, Video, FileText, Code2, Book, Zap, HelpCircle, type LucideIcon } from "lucide-react";
