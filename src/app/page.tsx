@@ -114,6 +114,18 @@ const FLASHCARDS: Record<string, CardItem[]> = {
   ],
 }
 
+/**
+ * Type guard to validate the shape of curriculum data.
+ */
+function isCurriculumArray(data: any): data is CurriculumTopic[] {
+  return Array.isArray(data) && data.every(item =>
+    typeof item === 'object' &&
+    'id' in item &&
+    'title' in item &&
+    Array.isArray(item.subtopics)
+  );
+}
+
 export default function HomePage() {
   const [topics, setTopics] = React.useState<CurriculumTopic[]>([])
   const [isLoading, setIsLoading] = React.useState(true)
@@ -136,7 +148,9 @@ export default function HomePage() {
 
     let fetchUrl = ''
     if (basePath.includes('://')) {
-      const [protocol, rest] = basePath.split('://')
+      const parts = basePath.split('://', 2)
+      const protocol = parts[0]
+      const rest = parts[1]
       const joinedRest = `${rest}/${dataPath}`.replace(/\/+/g, '/')
       fetchUrl = `${protocol}://${joinedRest}`
     } else {
@@ -149,15 +163,21 @@ export default function HomePage() {
         return res.json()
       })
       .then(data => {
-        if (!signal.aborted) {
+        if (signal.aborted) return;
+
+        if (isCurriculumArray(data)) {
           setTopics(data)
-          setIsLoading(false)
+          setError(null)
+        } else {
+          console.error("Malformed curriculum data received", data)
+          setError("Malformed data structure received from server.")
         }
+        setIsLoading(false)
       })
       .catch(err => {
         if (!signal.aborted) {
           console.error("Failed to fetch curriculum", err)
-          setError(err.message)
+          setError(err.message || "An unexpected error occurred.")
           setIsLoading(false)
         }
       })
@@ -179,9 +199,15 @@ export default function HomePage() {
               </div>
             </div>
           ) : error ? (
-            <div className="p-8 text-center bg-destructive/10 rounded-xl border border-destructive/20">
-              <p className="text-destructive font-semibold">{UI_LABELS[locale]?.errorTitle || UI_LABELS.en.errorTitle}</p>
+            <div className="p-8 text-center bg-destructive/10 rounded-xl border border-destructive/20 shadow-sm">
+              <p className="text-destructive font-bold text-lg mb-1">{UI_LABELS[locale]?.errorTitle || UI_LABELS.en.errorTitle}</p>
               <p className="text-sm text-muted-foreground">{error}</p>
+              <button
+                onClick={() => window.location.reload()}
+                className="mt-4 text-xs font-semibold underline underline-offset-4 hover:text-primary transition-colors"
+              >
+                Try reloading the page
+              </button>
             </div>
           ) : (
             <Roadmap topics={topics} />

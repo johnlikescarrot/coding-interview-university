@@ -2,9 +2,12 @@ import fs from 'fs'
 import path from 'path'
 import {
   CurriculumTopic,
-  parseMarkdownToCurriculum,
   isValidLanguage
 } from './curriculum-logic'
+import {
+  parseMarkdownToCurriculum,
+  sanitizeLang
+} from './curriculum-utils'
 
 export type { CurriculumTopic }
 
@@ -15,8 +18,7 @@ export function getCurriculum(lang: string = 'en'): CurriculumTopic[] {
       return []
     }
 
-    // Sanitize lang to prevent path traversal
-    const safeLang = lang.replace(/[^a-z0-9-]/gi, '')
+    const safeLang = sanitizeLang(lang)
     const filePath = safeLang === 'en'
       ? path.join(process.cwd(), 'README.md')
       : path.join(process.cwd(), 'translations', `README-${safeLang}.md`)

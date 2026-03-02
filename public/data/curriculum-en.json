@@ -581,47 +581,47 @@
         ],
         "checkboxes": [
           {
-            "id": "harvard-cs50-asymptotic-notation-videohttpswwwyoutubecomwatchvioq5kskqer4-algorithmic-complexity-big-o-asymptotic-analysis",
+            "id": "harvard-cs50-asymptotic-notation-videohttpswwwyoutubecomwatchvioq5kskqer4-bo00mi",
             "text": "[Harvard CS50 - Asymptotic Notation (video)](https://www.youtube.com/watch?v=iOq5kSKqeR4)",
             "completed": false
           },
           {
-            "id": "big-o-notations-general-quick-tutorial-videohttpswwwyoutubecomwatchvv6mkvru1evu-algorithmic-complexity-big-o-asymptotic-analysis",
+            "id": "big-o-notations-general-quick-tutorial-videohttpswwwyoutubecomwatchvv6mkvru1evu-bo00mi",
             "text": "[Big O Notations (general quick tutorial) (video)](https://www.youtube.com/watch?v=V6mKVRU1evU)",
             "completed": false
           },
           {
-            "id": "big-o-notation-and-omega-and-theta-best-mathematical-explanation-videohttpswwwyoutubecomwatchvei-awy5yxwindex2listpl1bagv1cih4uhkl8a9bjgg356covj76qn-algorithmic-complexity-big-o-asymptotic-analysis",
+            "id": "big-o-notation-and-omega-and-theta-best-mathematical-explanation-videohttpswwwyoutubecomwatchvei-awy5yxwindex2listpl1bagv1cih4uhkl8a9bjgg356covj76qn-bo00mi",
             "text": "[Big O Notation (and Omega and Theta) - best mathematical explanation (video)](https://www.youtube.com/watch?v=ei-A_wy5Yxw&index=2&list=PL1BaGV1cIH4UhkL8a9bJGG356covJ76qN)",
             "completed": false
           },
           {
-            "id": "skiena-videohttpswwwyoutubecomwatchvz1mkce3kvua-algorithmic-complexity-big-o-asymptotic-analysis",
+            "id": "skiena-videohttpswwwyoutubecomwatchvz1mkce3kvua-bo00mi",
             "text": "[Skiena (video)](https://www.youtube.com/watch?v=z1mkCe3kVUA)",
             "completed": false
           },
           {
-            "id": "uc-berkeley-big-o-videohttpsarchiveorgdetailsucberkeleywebcastvis4ydpup98-algorithmic-complexity-big-o-asymptotic-analysis",
+            "id": "uc-berkeley-big-o-videohttpsarchiveorgdetailsucberkeleywebcastvis4ydpup98-bo00mi",
             "text": "[UC Berkeley Big O (video)](https://archive.org/details/ucberkeley_webcast_VIS4YDpuP98)",
             "completed": false
           },
           {
-            "id": "amortized-analysis-videohttpswwwyoutubecomwatchvb3spqzaazp4index10listpl1bagv1cih4uhkl8a9bjgg356covj76qn-algorithmic-complexity-big-o-asymptotic-analysis",
+            "id": "amortized-analysis-videohttpswwwyoutubecomwatchvb3spqzaazp4index10listpl1bagv1cih4uhkl8a9bjgg356covj76qn-bo00mi",
             "text": "[Amortized Analysis (video)](https://www.youtube.com/watch?v=B3SpQZaAZP4&index=10&list=PL1BaGV1cIH4UhkL8a9bJGG356covJ76qN)",
             "completed": false
           },
           {
-            "id": "topcoder-includes-recurrence-relations-and-master-theorem-algorithmic-complexity-big-o-asymptotic-analysis",
+            "id": "topcoder-includes-recurrence-relations-and-master-theorem-bo00mi",
             "text": "TopCoder (includes recurrence relations and master theorem):",
             "completed": false
           },
           {
-            "id": "cheat-sheethttpbigocheatsheetcom-algorithmic-complexity-big-o-asymptotic-analysis",
+            "id": "cheat-sheethttpbigocheatsheetcom-bo00mi",
             "text": "[Cheat sheet](http://bigocheatsheet.com/)",
             "completed": false
           },
           {
-            "id": "review-analyzing-algorithms-playlist-in-18-minutes-videohttpswwwyoutubecomplaylistlistpl9xmbv5yozmxejjiyfhwa-4nkg6sdoiv-algorithmic-complexity-big-o-asymptotic-analysis",
+            "id": "review-analyzing-algorithms-playlist-in-18-minutes-videohttpswwwyoutubecomplaylistlistpl9xmbv5yozmxejjiyfhwa-4nkg6sdoiv-bo00mi",
             "text": "[[Review] Analyzing Algorithms (playlist) in 18 minutes (video)](https://www.youtube.com/playlist?list=PL9xmBV_5YoZMxejjIyFHWa-4nKg6sdoIv)",
             "completed": false
           }
@@ -755,342 +755,342 @@
         ],
         "checkboxes": [
           {
-            "id": "about-arrays-data-structures",
+            "id": "about-arrays-7v284d",
             "text": "About Arrays:",
             "completed": false
           },
           {
-            "id": "implement-a-vector-mutable-array-with-automatic-resizing-data-structures",
+            "id": "implement-a-vector-mutable-array-with-automatic-resizing-7v284d",
             "text": "Implement a vector (mutable array with automatic resizing):",
             "completed": false
           },
           {
-            "id": "practice-coding-using-arrays-and-pointers-and-pointer-math-to-jump-to-an-index-instead-of-using-indexing-data-structures",
+            "id": "practice-coding-using-arrays-and-pointers-and-pointer-math-to-jump-to-an-index-instead-of-using-indexing-7v284d",
             "text": "Practice coding using arrays and pointers, and pointer math to jump to an index instead of using indexing.",
             "completed": false
           },
           {
-            "id": "new-raw-data-array-with-allocated-memory-data-structures",
+            "id": "new-raw-data-array-with-allocated-memory-7v284d",
             "text": "New raw data array with allocated memory",
             "completed": false
           },
           {
-            "id": "size-number-of-items-data-structures",
+            "id": "size-number-of-items-7v284d",
             "text": "size() - number of items",
             "completed": false
           },
           {
-            "id": "capacity-number-of-items-it-can-hold-data-structures",
+            "id": "capacity-number-of-items-it-can-hold-7v284d",
             "text": "capacity() - number of items it can hold",
             "completed": false
           },
           {
-            "id": "isempty-data-structures",
+            "id": "isempty-7v284d",
             "text": "is_empty()",
             "completed": false
           },
           {
-            "id": "atindex-returns-the-item-at-a-given-index-blows-up-if-index-out-of-bounds-data-structures",
+            "id": "atindex-returns-the-item-at-a-given-index-blows-up-if-index-out-of-bounds-7v284d",
             "text": "at(index) - returns the item at a given index, blows up if index out of bounds",
             "completed": false
           },
           {
-            "id": "pushitem-data-structures",
+            "id": "pushitem-7v284d",
             "text": "push(item)",
             "completed": false
           },
           {
-            "id": "insertindex-item-inserts-item-at-index-shifts-that-indexs-value-and-trailing-elements-to-the-right-data-structures",
+            "id": "insertindex-item-inserts-item-at-index-shifts-that-indexs-value-and-trailing-elements-to-the-right-7v284d",
             "text": "insert(index, item) - inserts item at index, shifts that index's value and trailing elements to the right",
             "completed": false
           },
           {
-            "id": "prependitem-can-use-insert-above-at-index-0-data-structures",
+            "id": "prependitem-can-use-insert-above-at-index-0-7v284d",
             "text": "prepend(item) - can use insert above at index 0",
             "completed": false
           },
           {
-            "id": "pop-remove-from-end-return-value-data-structures",
+            "id": "pop-remove-from-end-return-value-7v284d",
             "text": "pop() - remove from end, return value",
             "completed": false
           },
           {
-            "id": "deleteindex-delete-item-at-index-shifting-all-trailing-elements-left-data-structures",
+            "id": "deleteindex-delete-item-at-index-shifting-all-trailing-elements-left-7v284d",
             "text": "delete(index) - delete item at index, shifting all trailing elements left",
             "completed": false
           },
           {
-            "id": "removeitem-looks-for-value-and-removes-index-holding-it-even-if-in-multiple-places-data-structures",
+            "id": "removeitem-looks-for-value-and-removes-index-holding-it-even-if-in-multiple-places-7v284d",
             "text": "remove(item) - looks for value and removes index holding it (even if in multiple places)",
             "completed": false
           },
           {
-            "id": "finditem-looks-for-value-and-returns-first-index-with-that-value-1-if-not-found-data-structures",
+            "id": "finditem-looks-for-value-and-returns-first-index-with-that-value-1-if-not-found-7v284d",
             "text": "find(item) - looks for value and returns first index with that value, -1 if not found",
             "completed": false
           },
           {
-            "id": "resizenewcapacity-private-function-data-structures",
+            "id": "resizenewcapacity-private-function-7v284d",
             "text": "resize(new_capacity) // private function",
             "completed": false
           },
           {
-            "id": "time-data-structures",
+            "id": "time-7v284d",
             "text": "Time",
             "completed": false
           },
           {
-            "id": "space-data-structures",
+            "id": "space-7v284d",
             "text": "Space",
             "completed": false
           },
           {
-            "id": "description-data-structures",
+            "id": "description-7v284d",
             "text": "Description:",
             "completed": false
           },
           {
-            "id": "linked-lists-cs50-harvard-universityhttpswwwyoutubecomwatchv2t-agfuotot650s-this-builds-the-intuition-data-structures",
+            "id": "linked-lists-cs50-harvard-universityhttpswwwyoutubecomwatchv2t-agfuotot650s-this-builds-the-intuition-7v284d",
             "text": "[Linked Lists CS50 Harvard University](https://www.youtube.com/watch?v=2T-A_GFuoTo&t=650s) - this builds the intuition.",
             "completed": false
           },
           {
-            "id": "singly-linked-lists-videohttpswwwcourseraorglecturedata-structuressingly-linked-lists-khhgk-data-structures",
+            "id": "singly-linked-lists-videohttpswwwcourseraorglecturedata-structuressingly-linked-lists-khhgk-7v284d",
             "text": "[Singly Linked Lists (video)](https://www.coursera.org/lecture/data-structures/singly-linked-lists-kHhgK)",
             "completed": false
           },
           {
-            "id": "cs-61b-linked-lists-1-videohttpsarchiveorgdetailsucberkeleywebcasthtzjdkoemo0-data-structures",
+            "id": "cs-61b-linked-lists-1-videohttpsarchiveorgdetailsucberkeleywebcasthtzjdkoemo0-7v284d",
             "text": "[CS 61B - Linked Lists 1 (video)](https://archive.org/details/ucberkeley_webcast_htzJdKoEmO0)",
             "completed": false
           },
           {
-            "id": "cs-61b-linked-lists-2-videohttpsarchiveorgdetailsucberkeleywebcast-c4i3gfye3w-data-structures",
+            "id": "cs-61b-linked-lists-2-videohttpsarchiveorgdetailsucberkeleywebcast-c4i3gfye3w-7v284d",
             "text": "[CS 61B - Linked Lists 2 (video)](https://archive.org/details/ucberkeley_webcast_-c4I3gFYe3w)",
             "completed": false
           },
           {
-            "id": "review-linked-lists-in-4-minutes-videohttpsyoutubef8abofqwl1c-data-structures",
+            "id": "review-linked-lists-in-4-minutes-videohttpsyoutubef8abofqwl1c-7v284d",
             "text": "[[Review] Linked lists in 4 minutes (video)](https://youtu.be/F8AbOfQwl1c)",
             "completed": false
           },
           {
-            "id": "c-code-videohttpswwwyoutubecomwatchvqn6fpid0gzo-data-structures",
+            "id": "c-code-videohttpswwwyoutubecomwatchvqn6fpid0gzo-7v284d",
             "text": "[C Code (video)](https://www.youtube.com/watch?v=QN6FPiD0Gzo)",
             "completed": false
           },
           {
-            "id": "linked-list-vs-arrays-data-structures",
+            "id": "linked-list-vs-arrays-7v284d",
             "text": "Linked List vs Arrays:",
             "completed": false
           },
           {
-            "id": "why-you-should-avoid-linked-lists-videohttpswwwyoutubecomwatchvyqs6ic-vgmo-data-structures",
+            "id": "why-you-should-avoid-linked-lists-videohttpswwwyoutubecomwatchvyqs6ic-vgmo-7v284d",
             "text": "[Why you should avoid linked lists (video)](https://www.youtube.com/watch?v=YQs6IC-vgmo)",
             "completed": false
           },
           {
-            "id": "gotcha-you-need-pointer-to-pointer-knowledge-data-structures",
+            "id": "gotcha-you-need-pointer-to-pointer-knowledge-7v284d",
             "text": "Gotcha: you need pointer to pointer knowledge:",
             "completed": false
           },
           {
-            "id": "implement-i-did-with-tail-pointer-without-data-structures",
+            "id": "implement-i-did-with-tail-pointer-without-7v284d",
             "text": "Implement (I did with tail pointer & without):",
             "completed": false
           },
           {
-            "id": "size-returns-the-number-of-data-elements-in-the-list-data-structures",
+            "id": "size-returns-the-number-of-data-elements-in-the-list-7v284d",
             "text": "size() - returns the number of data elements in the list",
             "completed": false
           },
           {
-            "id": "empty-bool-returns-true-if-empty-data-structures",
+            "id": "empty-bool-returns-true-if-empty-7v284d",
             "text": "empty() - bool returns true if empty",
             "completed": false
           },
           {
-            "id": "valueatindex-returns-the-value-of-the-nth-item-starting-at-0-for-first-data-structures",
+            "id": "valueatindex-returns-the-value-of-the-nth-item-starting-at-0-for-first-7v284d",
             "text": "value_at(index) - returns the value of the nth item (starting at 0 for first)",
             "completed": false
           },
           {
-            "id": "pushfrontvalue-adds-an-item-to-the-front-of-the-list-data-structures",
+            "id": "pushfrontvalue-adds-an-item-to-the-front-of-the-list-7v284d",
             "text": "push_front(value) - adds an item to the front of the list",
             "completed": false
           },
           {
-            "id": "popfront-remove-the-front-item-and-return-its-value-data-structures",
+            "id": "popfront-remove-the-front-item-and-return-its-value-7v284d",
             "text": "pop_front() - remove the front item and return its value",
             "completed": false
           },
           {
-            "id": "pushbackvalue-adds-an-item-at-the-end-data-structures",
+            "id": "pushbackvalue-adds-an-item-at-the-end-7v284d",
             "text": "push_back(value) - adds an item at the end",
             "completed": false
           },
           {
-            "id": "popback-removes-end-item-and-returns-its-value-data-structures",
+            "id": "popback-removes-end-item-and-returns-its-value-7v284d",
             "text": "pop_back() - removes end item and returns its value",
             "completed": false
           },
           {
-            "id": "front-get-the-value-of-the-front-item-data-structures",
+            "id": "front-get-the-value-of-the-front-item-7v284d",
             "text": "front() - get the value of the front item",
             "completed": false
           },
           {
-            "id": "back-get-the-value-of-the-end-item-data-structures",
+            "id": "back-get-the-value-of-the-end-item-7v284d",
             "text": "back() - get the value of the end item",
             "completed": false
           },
           {
-            "id": "insertindex-value-insert-value-at-index-so-the-current-item-at-that-index-is-pointed-to-by-the-new-item-at-the-index-data-structures",
+            "id": "insertindex-value-insert-value-at-index-so-the-current-item-at-that-index-is-pointed-to-by-the-new-item-at-the-index-7v284d",
             "text": "insert(index, value) - insert value at index, so the current item at that index is pointed to by the new item at the index",
             "completed": false
           },
           {
-            "id": "eraseindex-removes-node-at-given-index-data-structures",
+            "id": "eraseindex-removes-node-at-given-index-7v284d",
             "text": "erase(index) - removes node at given index",
             "completed": false
           },
           {
-            "id": "valuenfromendn-returns-the-value-of-the-node-at-the-nth-position-from-the-end-of-the-list-data-structures",
+            "id": "valuenfromendn-returns-the-value-of-the-node-at-the-nth-position-from-the-end-of-the-list-7v284d",
             "text": "value_n_from_end(n) - returns the value of the node at the nth position from the end of the list",
             "completed": false
           },
           {
-            "id": "reverse-reverses-the-list-data-structures",
+            "id": "reverse-reverses-the-list-7v284d",
             "text": "reverse() - reverses the list",
             "completed": false
           },
           {
-            "id": "removevaluevalue-removes-the-first-item-in-the-list-with-this-value-data-structures",
+            "id": "removevaluevalue-removes-the-first-item-in-the-list-with-this-value-7v284d",
             "text": "remove_value(value) - removes the first item in the list with this value",
             "completed": false
           },
           {
-            "id": "doubly-linked-list-data-structures",
+            "id": "doubly-linked-list-7v284d",
             "text": "Doubly-linked List",
             "completed": false
           },
           {
-            "id": "stacks-videohttpswwwcourseraorglecturedata-structuresstacks-udkzq-data-structures",
+            "id": "stacks-videohttpswwwcourseraorglecturedata-structuresstacks-udkzq-7v284d",
             "text": "[Stacks (video)](https://www.coursera.org/lecture/data-structures/stacks-UdKzQ)",
             "completed": false
           },
           {
-            "id": "review-stacks-in-3-minutes-videohttpsyoutubekct3avgrrpu-data-structures",
+            "id": "review-stacks-in-3-minutes-videohttpsyoutubekct3avgrrpu-7v284d",
             "text": "[[Review] Stacks in 3 minutes (video)](https://youtu.be/KcT3aVgrrpU)",
             "completed": false
           },
           {
-            "id": "will-not-implement-implementing-with-the-array-is-trivial-data-structures",
+            "id": "will-not-implement-implementing-with-the-array-is-trivial-7v284d",
             "text": "Will not implement. Implementing with the array is trivial",
             "completed": false
           },
           {
-            "id": "queue-videohttpswwwcourseraorglecturedata-structuresqueues-eshpq-data-structures",
+            "id": "queue-videohttpswwwcourseraorglecturedata-structuresqueues-eshpq-7v284d",
             "text": "[Queue (video)](https://www.coursera.org/lecture/data-structures/queues-EShpq)",
             "completed": false
           },
           {
-            "id": "circular-bufferfifohttpsenwikipediaorgwikicircularbuffer-data-structures",
+            "id": "circular-bufferfifohttpsenwikipediaorgwikicircularbuffer-7v284d",
             "text": "[Circular buffer/FIFO](https://en.wikipedia.org/wiki/Circular_buffer)",
             "completed": false
           },
           {
-            "id": "review-queues-in-3-minutes-videohttpsyoutubed6gu-tmepq-data-structures",
+            "id": "review-queues-in-3-minutes-videohttpsyoutubed6gu-tmepq-7v284d",
             "text": "[[Review] Queues in 3 minutes (video)](https://youtu.be/D6gu-_tmEpQ)",
             "completed": false
           },
           {
-            "id": "implement-using-linked-list-with-tail-pointer-data-structures",
+            "id": "implement-using-linked-list-with-tail-pointer-7v284d",
             "text": "Implement using linked-list, with tail pointer:",
             "completed": false
           },
           {
-            "id": "implement-using-a-fixed-sized-array-data-structures",
+            "id": "implement-using-a-fixed-sized-array-7v284d",
             "text": "Implement using a fixed-sized array:",
             "completed": false
           },
           {
-            "id": "cost-data-structures",
+            "id": "cost-7v284d",
             "text": "Cost:",
             "completed": false
           },
           {
-            "id": "videos-data-structures",
+            "id": "videos-7v284d",
             "text": "Videos:",
             "completed": false
           },
           {
-            "id": "hashing-with-chaining-videohttpswwwyoutubecomwatchv0mkiqhwbfolistplul4u3cngp61oq3twyp6vf-5jb5l2ihbindex8-data-structures",
+            "id": "hashing-with-chaining-videohttpswwwyoutubecomwatchv0mkiqhwbfolistplul4u3cngp61oq3twyp6vf-5jb5l2ihbindex8-7v284d",
             "text": "[Hashing with Chaining (video)](https://www.youtube.com/watch?v=0M_kIqhwbFo&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=8)",
             "completed": false
           },
           {
-            "id": "table-doubling-karp-rabin-videohttpswwwyoutubecomwatchvbro7mvift08index9listplul4u3cngp61oq3twyp6vf-5jb5l2ihb-data-structures",
+            "id": "table-doubling-karp-rabin-videohttpswwwyoutubecomwatchvbro7mvift08index9listplul4u3cngp61oq3twyp6vf-5jb5l2ihb-7v284d",
             "text": "[Table Doubling, Karp-Rabin (video)](https://www.youtube.com/watch?v=BRO7mVIFt08&index=9&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)",
             "completed": false
           },
           {
-            "id": "open-addressing-cryptographic-hashing-videohttpswwwyoutubecomwatchvrvdjdijo2roindex10listplul4u3cngp61oq3twyp6vf-5jb5l2ihb-data-structures",
+            "id": "open-addressing-cryptographic-hashing-videohttpswwwyoutubecomwatchvrvdjdijo2roindex10listplul4u3cngp61oq3twyp6vf-5jb5l2ihb-7v284d",
             "text": "[Open Addressing, Cryptographic Hashing (video)](https://www.youtube.com/watch?v=rvdJDijO2Ro&index=10&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)",
             "completed": false
           },
           {
-            "id": "pycon-2010-the-mighty-dictionary-videohttpswwwyoutubecomwatchvc4kc8xzca68-data-structures",
+            "id": "pycon-2010-the-mighty-dictionary-videohttpswwwyoutubecomwatchvc4kc8xzca68-7v284d",
             "text": "[PyCon 2010: The Mighty Dictionary (video)](https://www.youtube.com/watch?v=C4Kc8xzcA68)",
             "completed": false
           },
           {
-            "id": "pycon-2017-the-dictionary-even-mightier-videohttpswwwyoutubecomwatchv66p5fmkwovu-data-structures",
+            "id": "pycon-2017-the-dictionary-even-mightier-videohttpswwwyoutubecomwatchv66p5fmkwovu-7v284d",
             "text": "[PyCon 2017: The Dictionary Even Mightier (video)](https://www.youtube.com/watch?v=66P5FMkWoVU)",
             "completed": false
           },
           {
-            "id": "advanced-randomization-universal-perfect-hashing-videohttpswwwyoutubecomwatchvz0lj2k0sl1glistplul4u3cngp6317wasnfmcvgym2ucw3ogpindex11-data-structures",
+            "id": "advanced-randomization-universal-perfect-hashing-videohttpswwwyoutubecomwatchvz0lj2k0sl1glistplul4u3cngp6317wasnfmcvgym2ucw3ogpindex11-7v284d",
             "text": "[(Advanced) Randomization: Universal & Perfect Hashing (video)](https://www.youtube.com/watch?v=z0lJ2k0sl1g&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=11)",
             "completed": false
           },
           {
-            "id": "advanced-perfect-hashing-videohttpswwwyoutubecomwatchvn0cown14gt0listpl2b4eewhkd-nbwz4ezj7gyc3ynrojkm9index4-data-structures",
+            "id": "advanced-perfect-hashing-videohttpswwwyoutubecomwatchvn0cown14gt0listpl2b4eewhkd-nbwz4ezj7gyc3ynrojkm9index4-7v284d",
             "text": "[(Advanced) Perfect hashing (video)](https://www.youtube.com/watch?v=N0COwN14gt0&list=PL2B4EEwhKD-NbwZ4ezj7gyc_3yNrojKM9&index=4)",
             "completed": false
           },
           {
-            "id": "review-hash-tables-in-4-minutes-videohttpsyoutubeknv86flsxj8-data-structures",
+            "id": "review-hash-tables-in-4-minutes-videohttpsyoutubeknv86flsxj8-7v284d",
             "text": "[[Review] Hash tables in 4 minutes (video)](https://youtu.be/knV86FlSXJ8)",
             "completed": false
           },
           {
-            "id": "online-courses-data-structures",
+            "id": "online-courses-7v284d",
             "text": "Online Courses:",
             "completed": false
           },
           {
-            "id": "core-hash-tables-videohttpswwwcourseraorglecturedata-structures-optimizing-performancecore-hash-tables-m7uup-data-structures",
+            "id": "core-hash-tables-videohttpswwwcourseraorglecturedata-structures-optimizing-performancecore-hash-tables-m7uup-7v284d",
             "text": "[Core Hash Tables (video)](https://www.coursera.org/lecture/data-structures-optimizing-performance/core-hash-tables-m7UuP)",
             "completed": false
           },
           {
-            "id": "data-structures-videohttpswwwcourseraorglearndata-structureshomeweek4-data-structures",
+            "id": "data-structures-videohttpswwwcourseraorglearndata-structureshomeweek4-7v284d",
             "text": "[Data Structures (video)](https://www.coursera.org/learn/data-structures/home/week/4)",
             "completed": false
           },
           {
-            "id": "phone-book-problem-videohttpswwwcourseraorglecturedata-structuresphone-book-problem-nyzzp-data-structures",
+            "id": "phone-book-problem-videohttpswwwcourseraorglecturedata-structuresphone-book-problem-nyzzp-7v284d",
             "text": "[Phone Book Problem (video)](https://www.coursera.org/lecture/data-structures/phone-book-problem-NYZZP)",
             "completed": false
           },
           {
-            "id": "distributed-hash-tables-data-structures",
+            "id": "distributed-hash-tables-7v284d",
             "text": "distributed hash tables:",
             "completed": false
           },
           {
-            "id": "implement-with-array-using-linear-probing-data-structures",
+            "id": "implement-with-array-using-linear-probing-7v284d",
             "text": "Implement with array using linear probing",
             "completed": false
           }
@@ -1196,112 +1196,112 @@
         ],
         "checkboxes": [
           {
-            "id": "binary-search-videohttpswwwyoutubecomwatchvd5sraga1pno-more-knowledge",
+            "id": "binary-search-videohttpswwwyoutubecomwatchvd5sraga1pno-44jqbq",
             "text": "[Binary Search (video)](https://www.youtube.com/watch?v=D5SrAga1pno)",
             "completed": false
           },
           {
-            "id": "binary-search-videohttpswwwkhanacademyorgcomputingcomputer-sciencealgorithmsbinary-searchabinary-search-more-knowledge",
+            "id": "binary-search-videohttpswwwkhanacademyorgcomputingcomputer-sciencealgorithmsbinary-searchabinary-search-44jqbq",
             "text": "[Binary Search (video)](https://www.khanacademy.org/computing/computer-science/algorithms/binary-search/a/binary-search)",
             "completed": false
           },
           {
-            "id": "detailhttpswwwtopcodercomthrivearticlesbinary20search-more-knowledge",
+            "id": "detailhttpswwwtopcodercomthrivearticlesbinary20search-44jqbq",
             "text": "[detail](https://www.topcoder.com/thrive/articles/Binary%20Search)",
             "completed": false
           },
           {
-            "id": "blueprinthttpsleetcodecomdiscussgeneral-discussion786126python-powerful-ultimate-binary-search-template-solved-many-problems-more-knowledge",
+            "id": "blueprinthttpsleetcodecomdiscussgeneral-discussion786126python-powerful-ultimate-binary-search-template-solved-many-problems-44jqbq",
             "text": "[blueprint](https://leetcode.com/discuss/general-discussion/786126/python-powerful-ultimate-binary-search-template-solved-many-problems)",
             "completed": false
           },
           {
-            "id": "review-binary-search-in-4-minutes-videohttpsyoutubefdkipre8gw4-more-knowledge",
+            "id": "review-binary-search-in-4-minutes-videohttpsyoutubefdkipre8gw4-44jqbq",
             "text": "[[Review] Binary search in 4 minutes (video)](https://youtu.be/fDKIpRe8GW4)",
             "completed": false
           },
           {
-            "id": "implement-more-knowledge",
+            "id": "implement-44jqbq",
             "text": "Implement:",
             "completed": false
           },
           {
-            "id": "bits-cheat-sheethttpsgithubcomjwashamcoding-interview-universityblobmainextrascheat20sheetsbits-cheat-sheetpdf-more-knowledge",
+            "id": "bits-cheat-sheethttpsgithubcomjwashamcoding-interview-universityblobmainextrascheat20sheetsbits-cheat-sheetpdf-44jqbq",
             "text": "[Bits cheat sheet](https://github.com/jwasham/coding-interview-university/blob/main/extras/cheat%20sheets/bits-cheat-sheet.pdf)",
             "completed": false
           },
           {
-            "id": "get-a-really-good-understanding-of-manipulating-bits-with-more-knowledge",
+            "id": "get-a-really-good-understanding-of-manipulating-bits-with-44jqbq",
             "text": "Get a really good understanding of manipulating bits with: &, |, ^, ~, >>, <<",
             "completed": false
           },
           {
-            "id": "wordshttpsenwikipediaorgwikiwordcomputerarchitecture-more-knowledge",
+            "id": "wordshttpsenwikipediaorgwikiwordcomputerarchitecture-44jqbq",
             "text": "[words](https://en.wikipedia.org/wiki/Word_(computer_architecture))",
             "completed": false
           },
           {
-            "id": "good-intro-more-knowledge",
+            "id": "good-intro-44jqbq",
             "text": "Good intro:",
             "completed": false
           },
           {
-            "id": "c-programming-tutorial-2-10-bitwise-operators-videohttpswwwyoutubecomwatchvd0awjspnxr0-more-knowledge",
+            "id": "c-programming-tutorial-2-10-bitwise-operators-videohttpswwwyoutubecomwatchvd0awjspnxr0-44jqbq",
             "text": "[C Programming Tutorial 2-10: Bitwise Operators (video)](https://www.youtube.com/watch?v=d0AwjSpNXR0)",
             "completed": false
           },
           {
-            "id": "bit-manipulationhttpsenwikipediaorgwikibitmanipulation-more-knowledge",
+            "id": "bit-manipulationhttpsenwikipediaorgwikibitmanipulation-44jqbq",
             "text": "[Bit Manipulation](https://en.wikipedia.org/wiki/Bit_manipulation)",
             "completed": false
           },
           {
-            "id": "bitwise-operationhttpsenwikipediaorgwikibitwiseoperation-more-knowledge",
+            "id": "bitwise-operationhttpsenwikipediaorgwikibitwiseoperation-44jqbq",
             "text": "[Bitwise Operation](https://en.wikipedia.org/wiki/Bitwise_operation)",
             "completed": false
           },
           {
-            "id": "bithackshttpsgraphicsstanfordeduseanderbithackshtml-more-knowledge",
+            "id": "bithackshttpsgraphicsstanfordeduseanderbithackshtml-44jqbq",
             "text": "[Bithacks](https://graphics.stanford.edu/~seander/bithacks.html)",
             "completed": false
           },
           {
-            "id": "the-bit-twiddlerhttpsbitsstephan-brummecom-more-knowledge",
+            "id": "the-bit-twiddlerhttpsbitsstephan-brummecom-44jqbq",
             "text": "[The Bit Twiddler](https://bits.stephan-brumme.com/)",
             "completed": false
           },
           {
-            "id": "the-bit-twiddler-interactivehttpsbitsstephan-brummecominteractivehtml-more-knowledge",
+            "id": "the-bit-twiddler-interactivehttpsbitsstephan-brummecominteractivehtml-44jqbq",
             "text": "[The Bit Twiddler Interactive](https://bits.stephan-brumme.com/interactive.html)",
             "completed": false
           },
           {
-            "id": "bit-hacks-videohttpswwwyoutubecomwatchvzusikxczac-more-knowledge",
+            "id": "bit-hacks-videohttpswwwyoutubecomwatchvzusikxczac-44jqbq",
             "text": "[Bit Hacks (video)](https://www.youtube.com/watch?v=ZusiKXcz_ac)",
             "completed": false
           },
           {
-            "id": "practice-operationshttpspconradgithubiooldpconradcs16topicsbitops-more-knowledge",
+            "id": "practice-operationshttpspconradgithubiooldpconradcs16topicsbitops-44jqbq",
             "text": "[Practice Operations](https://pconrad.github.io/old_pconrad_cs16/topics/bitOps/)",
             "completed": false
           },
           {
-            "id": "2s-and-1s-complement-more-knowledge",
+            "id": "2s-and-1s-complement-44jqbq",
             "text": "2s and 1s complement",
             "completed": false
           },
           {
-            "id": "count-set-bits-more-knowledge",
+            "id": "count-set-bits-44jqbq",
             "text": "Count set bits",
             "completed": false
           },
           {
-            "id": "swap-values-more-knowledge",
+            "id": "swap-values-44jqbq",
             "text": "Swap values:",
             "completed": false
           },
           {
-            "id": "absolute-value-more-knowledge",
+            "id": "absolute-value-44jqbq",
             "text": "Absolute value:",
             "completed": false
           }
@@ -1443,282 +1443,282 @@
         ],
         "checkboxes": [
           {
-            "id": "intro-to-trees-videohttpswwwcourseraorglecturedata-structurestrees-95qda-trees",
+            "id": "intro-to-trees-videohttpswwwcourseraorglecturedata-structurestrees-95qda-1tv2qd",
             "text": "[Intro to Trees (video)](https://www.coursera.org/lecture/data-structures/trees-95qda)",
             "completed": false
           },
           {
-            "id": "tree-traversal-videohttpswwwcourseraorglecturedata-structurestree-traversal-fr51b-trees",
+            "id": "tree-traversal-videohttpswwwcourseraorglecturedata-structurestree-traversal-fr51b-1tv2qd",
             "text": "[Tree Traversal (video)](https://www.coursera.org/lecture/data-structures/tree-traversal-fr51b)",
             "completed": false
           },
           {
-            "id": "bfsbreadth-first-search-and-dfsdepth-first-search-videohttpswwwyoutubecomwatchvuwl6fjhq5fm-trees",
+            "id": "bfsbreadth-first-search-and-dfsdepth-first-search-videohttpswwwyoutubecomwatchvuwl6fjhq5fm-1tv2qd",
             "text": "[BFS(breadth-first search) and DFS(depth-first search) (video)](https://www.youtube.com/watch?v=uWL6FJhq5fM)",
             "completed": false
           },
           {
-            "id": "review-breadth-first-search-in-4-minutes-videohttpsyoutubehz5ytanv5qe-trees",
+            "id": "review-breadth-first-search-in-4-minutes-videohttpsyoutubehz5ytanv5qe-1tv2qd",
             "text": "[[Review] Breadth-first search in 4 minutes (video)](https://youtu.be/HZ5YTanv5QE)",
             "completed": false
           },
           {
-            "id": "review-depth-first-search-in-4-minutes-videohttpsyoutubeurx87-nmm6c-trees",
+            "id": "review-depth-first-search-in-4-minutes-videohttpsyoutubeurx87-nmm6c-1tv2qd",
             "text": "[[Review] Depth-first search in 4 minutes (video)](https://youtu.be/Urx87-NMm6c)",
             "completed": false
           },
           {
-            "id": "review-tree-traversal-playlist-in-11-minutes-videohttpswwwyoutubecomplaylistlistpl9xmbv5yozo1jc2rgei04nly6d-rkk6b-trees",
+            "id": "review-tree-traversal-playlist-in-11-minutes-videohttpswwwyoutubecomplaylistlistpl9xmbv5yozo1jc2rgei04nly6d-rkk6b-1tv2qd",
             "text": "[[Review] Tree Traversal (playlist) in 11 minutes (video)](https://www.youtube.com/playlist?list=PL9xmBV_5YoZO1JC2RgEi04nLy6D-rKk6b)",
             "completed": false
           },
           {
-            "id": "binary-search-tree-review-videohttpswwwyoutubecomwatchvx6at0nzx92oindex1listpla5lqm4uh9bbq-e0znqtia8lral77ica6-trees",
+            "id": "binary-search-tree-review-videohttpswwwyoutubecomwatchvx6at0nzx92oindex1listpla5lqm4uh9bbq-e0znqtia8lral77ica6-1tv2qd",
             "text": "[Binary Search Tree Review (video)](https://www.youtube.com/watch?v=x6At0nzX92o&index=1&list=PLA5Lqm4uh9Bbq-E0ZnqTIa8LRaL77ica6)",
             "completed": false
           },
           {
-            "id": "introduction-videohttpswwwcourseraorglearndata-structureslecturee7cxpintroduction-trees",
+            "id": "introduction-videohttpswwwcourseraorglearndata-structureslecturee7cxpintroduction-1tv2qd",
             "text": "[Introduction (video)](https://www.coursera.org/learn/data-structures/lecture/E7cXP/introduction)",
             "completed": false
           },
           {
-            "id": "mit-videohttpswwwyoutubecomwatchv76dhtgzt38aabchannelmitopencourseware-trees",
+            "id": "mit-videohttpswwwyoutubecomwatchv76dhtgzt38aabchannelmitopencourseware-1tv2qd",
             "text": "[MIT (video)](https://www.youtube.com/watch?v=76dhtgZt38A&ab_channel=MITOpenCourseWare)",
             "completed": false
           },
           {
-            "id": "binary-search-tree-implementation-in-cc-videohttpswwwyoutubecomwatchvcozk7nath4klistpl2awczgmawi3wjlcbbtytwiqssota6pindex28-trees",
+            "id": "binary-search-tree-implementation-in-cc-videohttpswwwyoutubecomwatchvcozk7nath4klistpl2awczgmawi3wjlcbbtytwiqssota6pindex28-1tv2qd",
             "text": "[Binary search tree - Implementation in C/C++ (video)](https://www.youtube.com/watch?v=COZK7NATh4k&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=28)",
             "completed": false
           },
           {
-            "id": "bst-implementation-memory-allocation-in-stack-and-heap-videohttpswwwyoutubecomwatchvhwokyboo0ailistpl2awczgmawi3wjlcbbtytwiqssota6pindex29-trees",
+            "id": "bst-implementation-memory-allocation-in-stack-and-heap-videohttpswwwyoutubecomwatchvhwokyboo0ailistpl2awczgmawi3wjlcbbtytwiqssota6pindex29-1tv2qd",
             "text": "[BST implementation - memory allocation in stack and heap (video)](https://www.youtube.com/watch?v=hWokyBoo0aI&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=29)",
             "completed": false
           },
           {
-            "id": "find-min-and-max-element-in-a-binary-search-tree-videohttpswwwyoutubecomwatchvut90klnn264index30listpl2awczgmawi3wjlcbbtytwiqssota6p-trees",
+            "id": "find-min-and-max-element-in-a-binary-search-tree-videohttpswwwyoutubecomwatchvut90klnn264index30listpl2awczgmawi3wjlcbbtytwiqssota6p-1tv2qd",
             "text": "[Find min and max element in a binary search tree (video)](https://www.youtube.com/watch?v=Ut90klNN264&index=30&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)",
             "completed": false
           },
           {
-            "id": "find-the-height-of-a-binary-tree-videohttpswwwyoutubecomwatchvpnqmz5nrrslistpl2awczgmawi3wjlcbbtytwiqssota6pindex31-trees",
+            "id": "find-the-height-of-a-binary-tree-videohttpswwwyoutubecomwatchvpnqmz5nrrslistpl2awczgmawi3wjlcbbtytwiqssota6pindex31-1tv2qd",
             "text": "[Find the height of a binary tree (video)](https://www.youtube.com/watch?v=_pnqMz5nrRs&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=31)",
             "completed": false
           },
           {
-            "id": "binary-tree-traversal-breadth-first-and-depth-first-strategies-videohttpswwwyoutubecomwatchv9rho6ju-gulistpl2awczgmawi3wjlcbbtytwiqssota6pindex32-trees",
+            "id": "binary-tree-traversal-breadth-first-and-depth-first-strategies-videohttpswwwyoutubecomwatchv9rho6ju-gulistpl2awczgmawi3wjlcbbtytwiqssota6pindex32-1tv2qd",
             "text": "[Binary tree traversal - breadth-first and depth-first strategies (video)](https://www.youtube.com/watch?v=9RHO6jU--GU&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=32)",
             "completed": false
           },
           {
-            "id": "binary-tree-level-order-traversal-videohttpswwwyoutubecomwatchv86g8jaqug04index33listpl2awczgmawi3wjlcbbtytwiqssota6p-trees",
+            "id": "binary-tree-level-order-traversal-videohttpswwwyoutubecomwatchv86g8jaqug04index33listpl2awczgmawi3wjlcbbtytwiqssota6p-1tv2qd",
             "text": "[Binary tree: Level Order Traversal (video)](https://www.youtube.com/watch?v=86g8jAQug04&index=33&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)",
             "completed": false
           },
           {
-            "id": "binary-tree-traversal-preorder-inorder-postorder-videohttpswwwyoutubecomwatchvgm8dujjhmy4index34listpl2awczgmawi3wjlcbbtytwiqssota6p-trees",
+            "id": "binary-tree-traversal-preorder-inorder-postorder-videohttpswwwyoutubecomwatchvgm8dujjhmy4index34listpl2awczgmawi3wjlcbbtytwiqssota6p-1tv2qd",
             "text": "[Binary tree traversal: Preorder, Inorder, Postorder (video)](https://www.youtube.com/watch?v=gm8DUJJhmY4&index=34&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)",
             "completed": false
           },
           {
-            "id": "check-if-a-binary-tree-is-a-binary-search-tree-or-not-videohttpswwwyoutubecomwatchvyewsghsst0uindex35listpl2awczgmawi3wjlcbbtytwiqssota6p-trees",
+            "id": "check-if-a-binary-tree-is-a-binary-search-tree-or-not-videohttpswwwyoutubecomwatchvyewsghsst0uindex35listpl2awczgmawi3wjlcbbtytwiqssota6p-1tv2qd",
             "text": "[Check if a binary tree is a binary search tree or not (video)](https://www.youtube.com/watch?v=yEwSGhSsT0U&index=35&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)",
             "completed": false
           },
           {
-            "id": "delete-a-node-from-binary-search-tree-videohttpswwwyoutubecomwatchvgculxe7vizwlistpl2awczgmawi3wjlcbbtytwiqssota6pindex36-trees",
+            "id": "delete-a-node-from-binary-search-tree-videohttpswwwyoutubecomwatchvgculxe7vizwlistpl2awczgmawi3wjlcbbtytwiqssota6pindex36-1tv2qd",
             "text": "[Delete a node from Binary Search Tree (video)](https://www.youtube.com/watch?v=gcULXE7ViZw&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P&index=36)",
             "completed": false
           },
           {
-            "id": "inorder-successor-in-a-binary-search-tree-videohttpswwwyoutubecomwatchv5cpbncrdotaindex37listpl2awczgmawi3wjlcbbtytwiqssota6p-trees",
+            "id": "inorder-successor-in-a-binary-search-tree-videohttpswwwyoutubecomwatchv5cpbncrdotaindex37listpl2awczgmawi3wjlcbbtytwiqssota6p-1tv2qd",
             "text": "[Inorder Successor in a binary search tree (video)](https://www.youtube.com/watch?v=5cPbNCrdotA&index=37&list=PL2_aWCzGMAwI3W_JlcBbtYTwiQSsOTa6P)",
             "completed": false
           },
           {
-            "id": "implement-trees",
+            "id": "implement-1tv2qd",
             "text": "Implement:",
             "completed": false
           },
           {
-            "id": "insert-insert-value-into-treehttpsleetcodecomproblemsinsert-into-a-binary-search-treesubmissions987660183-trees",
+            "id": "insert-insert-value-into-treehttpsleetcodecomproblemsinsert-into-a-binary-search-treesubmissions987660183-1tv2qd",
             "text": "[insert    // insert value into tree](https://leetcode.com/problems/insert-into-a-binary-search-tree/submissions/987660183/)",
             "completed": false
           },
           {
-            "id": "getnodecount-get-count-of-values-stored-trees",
+            "id": "getnodecount-get-count-of-values-stored-1tv2qd",
             "text": "get_node_count // get count of values stored",
             "completed": false
           },
           {
-            "id": "printvalues-prints-the-values-in-the-tree-from-min-to-max-trees",
+            "id": "printvalues-prints-the-values-in-the-tree-from-min-to-max-1tv2qd",
             "text": "print_values // prints the values in the tree, from min to max",
             "completed": false
           },
           {
-            "id": "deletetree-trees",
+            "id": "deletetree-1tv2qd",
             "text": "delete_tree",
             "completed": false
           },
           {
-            "id": "isintree-returns-true-if-a-given-value-exists-in-the-tree-trees",
+            "id": "isintree-returns-true-if-a-given-value-exists-in-the-tree-1tv2qd",
             "text": "is_in_tree // returns true if a given value exists in the tree",
             "completed": false
           },
           {
-            "id": "getheight-returns-the-height-in-nodes-single-nodes-height-is-1httpswwwgeeksforgeeksorgfind-the-maximum-depth-or-height-of-a-tree-trees",
+            "id": "getheight-returns-the-height-in-nodes-single-nodes-height-is-1httpswwwgeeksforgeeksorgfind-the-maximum-depth-or-height-of-a-tree-1tv2qd",
             "text": "[get_height // returns the height in nodes (single node's height is 1)](https://www.geeksforgeeks.org/find-the-maximum-depth-or-height-of-a-tree/)",
             "completed": false
           },
           {
-            "id": "getmin-returns-the-minimum-value-stored-in-the-tree-trees",
+            "id": "getmin-returns-the-minimum-value-stored-in-the-tree-1tv2qd",
             "text": "get_min   // returns the minimum value stored in the tree",
             "completed": false
           },
           {
-            "id": "getmax-returns-the-maximum-value-stored-in-the-tree-trees",
+            "id": "getmax-returns-the-maximum-value-stored-in-the-tree-1tv2qd",
             "text": "get_max   // returns the maximum value stored in the tree",
             "completed": false
           },
           {
-            "id": "isbinarysearchtreehttpsleetcodecomproblemsvalidate-binary-search-tree-trees",
+            "id": "isbinarysearchtreehttpsleetcodecomproblemsvalidate-binary-search-tree-1tv2qd",
             "text": "[is_binary_search_tree](https://leetcode.com/problems/validate-binary-search-tree/)",
             "completed": false
           },
           {
-            "id": "deletevalue-trees",
+            "id": "deletevalue-1tv2qd",
             "text": "delete_value",
             "completed": false
           },
           {
-            "id": "getsuccessor-returns-the-next-highest-value-in-the-tree-after-given-value-1-if-none-trees",
+            "id": "getsuccessor-returns-the-next-highest-value-in-the-tree-after-given-value-1-if-none-1tv2qd",
             "text": "get_successor // returns the next-highest value in the tree after given value, -1 if none",
             "completed": false
           },
           {
-            "id": "heaphttpsenwikipediaorgwikiheapdatastructure-trees",
+            "id": "heaphttpsenwikipediaorgwikiheapdatastructure-1tv2qd",
             "text": "[Heap](https://en.wikipedia.org/wiki/Heap_(data_structure))",
             "completed": false
           },
           {
-            "id": "introduction-videohttpswwwcourseraorglecturedata-structuresintroduction-2opts-trees",
+            "id": "introduction-videohttpswwwcourseraorglecturedata-structuresintroduction-2opts-1tv2qd",
             "text": "[Introduction (video)](https://www.coursera.org/lecture/data-structures/introduction-2OpTs)",
             "completed": false
           },
           {
-            "id": "binary-trees-videohttpswwwcourseraorglearndata-structureslecturegrv2qbinary-trees-trees",
+            "id": "binary-trees-videohttpswwwcourseraorglearndata-structureslecturegrv2qbinary-trees-1tv2qd",
             "text": "[Binary Trees (video)](https://www.coursera.org/learn/data-structures/lecture/GRV2q/binary-trees)",
             "completed": false
           },
           {
-            "id": "tree-height-remark-videohttpswwwcourseraorglearndata-structuressupplements5xxztree-height-remark-trees",
+            "id": "tree-height-remark-videohttpswwwcourseraorglearndata-structuressupplements5xxztree-height-remark-1tv2qd",
             "text": "[Tree Height Remark (video)](https://www.coursera.org/learn/data-structures/supplement/S5xxz/tree-height-remark)",
             "completed": false
           },
           {
-            "id": "basic-operations-videohttpswwwcourseraorglearndata-structureslecture0g1dlbasic-operations-trees",
+            "id": "basic-operations-videohttpswwwcourseraorglearndata-structureslecture0g1dlbasic-operations-1tv2qd",
             "text": "[Basic Operations (video)](https://www.coursera.org/learn/data-structures/lecture/0g1dl/basic-operations)",
             "completed": false
           },
           {
-            "id": "complete-binary-trees-videohttpswwwcourseraorglearndata-structureslecturegl5nicomplete-binary-trees-trees",
+            "id": "complete-binary-trees-videohttpswwwcourseraorglearndata-structureslecturegl5nicomplete-binary-trees-1tv2qd",
             "text": "[Complete Binary Trees (video)](https://www.coursera.org/learn/data-structures/lecture/gl5Ni/complete-binary-trees)",
             "completed": false
           },
           {
-            "id": "pseudocode-videohttpswwwcourseraorglearndata-structureslecturehxqo9pseudocode-trees",
+            "id": "pseudocode-videohttpswwwcourseraorglearndata-structureslecturehxqo9pseudocode-1tv2qd",
             "text": "[Pseudocode (video)](https://www.coursera.org/learn/data-structures/lecture/HxQo9/pseudocode)",
             "completed": false
           },
           {
-            "id": "heap-sort-jumps-to-start-videohttpsyoutubeodnjmw5toeelistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smt3291-trees",
+            "id": "heap-sort-jumps-to-start-videohttpsyoutubeodnjmw5toeelistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smt3291-1tv2qd",
             "text": "[Heap Sort - jumps to start (video)](https://youtu.be/odNJmw5TOEE?list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&t=3291)",
             "completed": false
           },
           {
-            "id": "heap-sort-videohttpswwwcourseraorglecturedata-structuresheap-sort-hszmo-trees",
+            "id": "heap-sort-videohttpswwwcourseraorglecturedata-structuresheap-sort-hszmo-1tv2qd",
             "text": "[Heap Sort (video)](https://www.coursera.org/lecture/data-structures/heap-sort-hSzMO)",
             "completed": false
           },
           {
-            "id": "building-a-heap-videohttpswwwcourseraorglecturedata-structuresbuilding-a-heap-dwros-trees",
+            "id": "building-a-heap-videohttpswwwcourseraorglecturedata-structuresbuilding-a-heap-dwros-1tv2qd",
             "text": "[Building a heap (video)](https://www.coursera.org/lecture/data-structures/building-a-heap-dwrOS)",
             "completed": false
           },
           {
-            "id": "mit-6006-introduction-to-algorithms-binary-heapshttpswwwyoutubecomwatchvxnpo1atn-iwlistplul4u3cngp63edvpnlg3tom6laeuusteyindex12-trees",
+            "id": "mit-6006-introduction-to-algorithms-binary-heapshttpswwwyoutubecomwatchvxnpo1atn-iwlistplul4u3cngp63edvpnlg3tom6laeuusteyindex12-1tv2qd",
             "text": "[MIT 6.006 Introduction to Algorithms: Binary Heaps](https://www.youtube.com/watch?v=Xnpo1atN-Iw&list=PLUl4u3cNGP63EdVPNLG3ToM6LaEUuStEY&index=12)",
             "completed": false
           },
           {
-            "id": "cs-61b-lecture-24-priority-queues-videohttpsarchiveorgdetailsucberkeleywebcastyiuft6akbge-trees",
+            "id": "cs-61b-lecture-24-priority-queues-videohttpsarchiveorgdetailsucberkeleywebcastyiuft6akbge-1tv2qd",
             "text": "[CS 61B Lecture 24: Priority Queues (video)](https://archive.org/details/ucberkeley_webcast_yIUFT6AKBGE)",
             "completed": false
           },
           {
-            "id": "linear-time-buildheap-max-heaphttpswwwyoutubecomwatchvmiylo8adrww-trees",
+            "id": "linear-time-buildheap-max-heaphttpswwwyoutubecomwatchvmiylo8adrww-1tv2qd",
             "text": "[Linear Time BuildHeap (max-heap)](https://www.youtube.com/watch?v=MiyLo8adrWw)",
             "completed": false
           },
           {
-            "id": "review-heap-playlist-in-13-minutes-videohttpswwwyoutubecomplaylistlistpl9xmbv5yoznsyqgpw-dnwuet8f8uhwc6-trees",
+            "id": "review-heap-playlist-in-13-minutes-videohttpswwwyoutubecomplaylistlistpl9xmbv5yoznsyqgpw-dnwuet8f8uhwc6-1tv2qd",
             "text": "[[Review] Heap (playlist) in 13 minutes (video)](https://www.youtube.com/playlist?list=PL9xmBV_5YoZNsyqgPW-DNwUeT8F8uhWc6)",
             "completed": false
           },
           {
-            "id": "implement-a-max-heap-trees",
+            "id": "implement-a-max-heap-1tv2qd",
             "text": "Implement a max-heap:",
             "completed": false
           },
           {
-            "id": "insert-trees",
+            "id": "insert-1tv2qd",
             "text": "insert",
             "completed": false
           },
           {
-            "id": "siftup-needed-for-insert-trees",
+            "id": "siftup-needed-for-insert-1tv2qd",
             "text": "sift_up - needed for insert",
             "completed": false
           },
           {
-            "id": "getmax-returns-the-max-item-without-removing-it-trees",
+            "id": "getmax-returns-the-max-item-without-removing-it-1tv2qd",
             "text": "get_max - returns the max item, without removing it",
             "completed": false
           },
           {
-            "id": "getsize-return-number-of-elements-stored-trees",
+            "id": "getsize-return-number-of-elements-stored-1tv2qd",
             "text": "get_size() - return number of elements stored",
             "completed": false
           },
           {
-            "id": "isempty-returns-true-if-the-heap-contains-no-elements-trees",
+            "id": "isempty-returns-true-if-the-heap-contains-no-elements-1tv2qd",
             "text": "is_empty() - returns true if the heap contains no elements",
             "completed": false
           },
           {
-            "id": "extractmax-returns-the-max-item-removing-it-trees",
+            "id": "extractmax-returns-the-max-item-removing-it-1tv2qd",
             "text": "extract_max - returns the max item, removing it",
             "completed": false
           },
           {
-            "id": "siftdown-needed-for-extractmax-trees",
+            "id": "siftdown-needed-for-extractmax-1tv2qd",
             "text": "sift_down - needed for extract_max",
             "completed": false
           },
           {
-            "id": "removex-removes-item-at-index-x-trees",
+            "id": "removex-removes-item-at-index-x-1tv2qd",
             "text": "remove(x) - removes item at index x",
             "completed": false
           },
           {
-            "id": "heapify-create-a-heap-from-an-array-of-elements-needed-for-heapsort-trees",
+            "id": "heapify-create-a-heap-from-an-array-of-elements-needed-for-heapsort-1tv2qd",
             "text": "heapify - create a heap from an array of elements, needed for heap_sort",
             "completed": false
           },
           {
-            "id": "heapsort-take-an-unsorted-array-and-turn-it-into-a-sorted-array-in-place-using-a-max-heap-or-min-heap-trees",
+            "id": "heapsort-take-an-unsorted-array-and-turn-it-into-a-sorted-array-in-place-using-a-max-heap-or-min-heap-1tv2qd",
             "text": "heap_sort() - take an unsorted array and turn it into a sorted array in place using a max heap or min heap",
             "completed": false
           }
@@ -1944,292 +1944,292 @@
         ],
         "checkboxes": [
           {
-            "id": "notes-sorting",
+            "id": "notes-xhdta4",
             "text": "Notes:",
             "completed": false
           },
           {
-            "id": "stability-in-sorting-algorithms-is-quicksort-stable-sorting",
+            "id": "stability-in-sorting-algorithms-is-quicksort-stable-xhdta4",
             "text": "Stability in sorting algorithms (\"Is Quicksort stable?\")",
             "completed": false
           },
           {
-            "id": "which-algorithms-can-be-used-on-linked-lists-which-on-arrays-which-of-both-sorting",
+            "id": "which-algorithms-can-be-used-on-linked-lists-which-on-arrays-which-of-both-xhdta4",
             "text": "Which algorithms can be used on linked lists? Which on arrays? Which of both?",
             "completed": false
           },
           {
-            "id": "sedgewick-mergesort-5-videoshttpswwwcourseraorglearnalgorithms-part1homeweek3-sorting",
+            "id": "sedgewick-mergesort-5-videoshttpswwwcourseraorglearnalgorithms-part1homeweek3-xhdta4",
             "text": "[Sedgewick - Mergesort (5 videos)](https://www.coursera.org/learn/algorithms-part1/home/week/3)",
             "completed": false
           },
           {
-            "id": "1-mergesorthttpswwwcourseraorglecturealgorithms-part1mergesort-arwdq-sorting",
+            "id": "1-mergesorthttpswwwcourseraorglecturealgorithms-part1mergesort-arwdq-xhdta4",
             "text": "[1. Mergesort](https://www.coursera.org/lecture/algorithms-part1/mergesort-ARWDq)",
             "completed": false
           },
           {
-            "id": "2-bottom-up-mergesorthttpswwwcourseraorglearnalgorithms-part1lecturepwnelbottom-up-mergesort-sorting",
+            "id": "2-bottom-up-mergesorthttpswwwcourseraorglearnalgorithms-part1lecturepwnelbottom-up-mergesort-xhdta4",
             "text": "[2. Bottom-up Mergesort](https://www.coursera.org/learn/algorithms-part1/lecture/PWNEl/bottom-up-mergesort)",
             "completed": false
           },
           {
-            "id": "3-sorting-complexityhttpswwwcourseraorglecturealgorithms-part1sorting-complexity-xaltf-sorting",
+            "id": "3-sorting-complexityhttpswwwcourseraorglecturealgorithms-part1sorting-complexity-xaltf-xhdta4",
             "text": "[3. Sorting Complexity](https://www.coursera.org/lecture/algorithms-part1/sorting-complexity-xAltF)",
             "completed": false
           },
           {
-            "id": "4-comparatorshttpswwwcourseraorglecturealgorithms-part1comparators-9fyhs-sorting",
+            "id": "4-comparatorshttpswwwcourseraorglecturealgorithms-part1comparators-9fyhs-xhdta4",
             "text": "[4. Comparators](https://www.coursera.org/lecture/algorithms-part1/comparators-9FYhS)",
             "completed": false
           },
           {
-            "id": "5-stabilityhttpswwwcourseraorglearnalgorithms-part1lecturepvvlzstability-sorting",
+            "id": "5-stabilityhttpswwwcourseraorglearnalgorithms-part1lecturepvvlzstability-xhdta4",
             "text": "[5. Stability](https://www.coursera.org/learn/algorithms-part1/lecture/pvvLZ/stability)",
             "completed": false
           },
           {
-            "id": "sedgewick-quicksort-4-videoshttpswwwcourseraorglearnalgorithms-part1homeweek3-sorting",
+            "id": "sedgewick-quicksort-4-videoshttpswwwcourseraorglearnalgorithms-part1homeweek3-xhdta4",
             "text": "[Sedgewick - Quicksort (4 videos)](https://www.coursera.org/learn/algorithms-part1/home/week/3)",
             "completed": false
           },
           {
-            "id": "1-quicksorthttpswwwcourseraorglecturealgorithms-part1quicksort-vjvnc-sorting",
+            "id": "1-quicksorthttpswwwcourseraorglecturealgorithms-part1quicksort-vjvnc-xhdta4",
             "text": "[1. Quicksort](https://www.coursera.org/lecture/algorithms-part1/quicksort-vjvnC)",
             "completed": false
           },
           {
-            "id": "2-selectionhttpswwwcourseraorglecturealgorithms-part1selection-uqxft-sorting",
+            "id": "2-selectionhttpswwwcourseraorglecturealgorithms-part1selection-uqxft-xhdta4",
             "text": "[2. Selection](https://www.coursera.org/lecture/algorithms-part1/selection-UQxFT)",
             "completed": false
           },
           {
-            "id": "3-duplicate-keyshttpswwwcourseraorglecturealgorithms-part1duplicate-keys-xvjpd-sorting",
+            "id": "3-duplicate-keyshttpswwwcourseraorglecturealgorithms-part1duplicate-keys-xvjpd-xhdta4",
             "text": "[3. Duplicate Keys](https://www.coursera.org/lecture/algorithms-part1/duplicate-keys-XvjPd)",
             "completed": false
           },
           {
-            "id": "4-system-sortshttpswwwcourseraorglecturealgorithms-part1system-sorts-qbnz7-sorting",
+            "id": "4-system-sortshttpswwwcourseraorglecturealgorithms-part1system-sorts-qbnz7-xhdta4",
             "text": "[4. System Sorts](https://www.coursera.org/lecture/algorithms-part1/system-sorts-QBNZ7)",
             "completed": false
           },
           {
-            "id": "uc-berkeley-sorting",
+            "id": "uc-berkeley-xhdta4",
             "text": "UC Berkeley:",
             "completed": false
           },
           {
-            "id": "cs-61b-lecture-29-sorting-i-videohttpsarchiveorgdetailsucberkeleywebcasteiuvys2dt6i-sorting",
+            "id": "cs-61b-lecture-29-sorting-i-videohttpsarchiveorgdetailsucberkeleywebcasteiuvys2dt6i-xhdta4",
             "text": "[CS 61B Lecture 29: Sorting I (video)](https://archive.org/details/ucberkeley_webcast_EiUvYS2DT6I)",
             "completed": false
           },
           {
-            "id": "cs-61b-lecture-30-sorting-ii-videohttpsarchiveorgdetailsucberkeleywebcast2hty3t80qsk-sorting",
+            "id": "cs-61b-lecture-30-sorting-ii-videohttpsarchiveorgdetailsucberkeleywebcast2hty3t80qsk-xhdta4",
             "text": "[CS 61B Lecture 30: Sorting II (video)](https://archive.org/details/ucberkeley_webcast_2hTY3t80Qsk)",
             "completed": false
           },
           {
-            "id": "cs-61b-lecture-32-sorting-iii-videohttpsarchiveorgdetailsucberkeleywebcasty6lolpxg6dc-sorting",
+            "id": "cs-61b-lecture-32-sorting-iii-videohttpsarchiveorgdetailsucberkeleywebcasty6lolpxg6dc-xhdta4",
             "text": "[CS 61B Lecture 32: Sorting III (video)](https://archive.org/details/ucberkeley_webcast_Y6LOLpxg6Dc)",
             "completed": false
           },
           {
-            "id": "cs-61b-lecture-33-sorting-v-videohttpsarchiveorgdetailsucberkeleywebcastqnmq4ly43p4-sorting",
+            "id": "cs-61b-lecture-33-sorting-v-videohttpsarchiveorgdetailsucberkeleywebcastqnmq4ly43p4-xhdta4",
             "text": "[CS 61B Lecture 33: Sorting V (video)](https://archive.org/details/ucberkeley_webcast_qNMQ4ly43p4)",
             "completed": false
           },
           {
-            "id": "cs-61b-2014-04-21-radix-sortvideohttpsarchiveorgdetailsucberkeleywebcastpvbbmd-3noi-sorting",
+            "id": "cs-61b-2014-04-21-radix-sortvideohttpsarchiveorgdetailsucberkeleywebcastpvbbmd-3noi-xhdta4",
             "text": "[CS 61B 2014-04-21: Radix Sort(video)](https://archive.org/details/ucberkeley_webcast_pvbBMd-3NoI)",
             "completed": false
           },
           {
-            "id": "bubble-sort-videohttpswwwyoutubecomwatchvp00xjgwzz2cindex1listpl89b61f78b552c1ab-sorting",
+            "id": "bubble-sort-videohttpswwwyoutubecomwatchvp00xjgwzz2cindex1listpl89b61f78b552c1ab-xhdta4",
             "text": "[Bubble Sort (video)](https://www.youtube.com/watch?v=P00xJgWzz2c&index=1&list=PL89B61F78B552C1AB)",
             "completed": false
           },
           {
-            "id": "analyzing-bubble-sort-videohttpswwwyoutubecomwatchvnizk257nqoindex7listpl89b61f78b552c1ab-sorting",
+            "id": "analyzing-bubble-sort-videohttpswwwyoutubecomwatchvnizk257nqoindex7listpl89b61f78b552c1ab-xhdta4",
             "text": "[Analyzing Bubble Sort (video)](https://www.youtube.com/watch?v=ni_zk257Nqo&index=7&list=PL89B61F78B552C1AB)",
             "completed": false
           },
           {
-            "id": "insertion-sort-merge-sort-videohttpswwwyoutubecomwatchvkg4bqzaqrbmindex3listplul4u3cngp61oq3twyp6vf-5jb5l2ihb-sorting",
+            "id": "insertion-sort-merge-sort-videohttpswwwyoutubecomwatchvkg4bqzaqrbmindex3listplul4u3cngp61oq3twyp6vf-5jb5l2ihb-xhdta4",
             "text": "[Insertion Sort, Merge Sort (video)](https://www.youtube.com/watch?v=Kg4bqzAqRBM&index=3&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)",
             "completed": false
           },
           {
-            "id": "insertion-sort-videohttpswwwyoutubecomwatchvc4brhc7ktaqindex2listpl89b61f78b552c1ab-sorting",
+            "id": "insertion-sort-videohttpswwwyoutubecomwatchvc4brhc7ktaqindex2listpl89b61f78b552c1ab-xhdta4",
             "text": "[Insertion Sort (video)](https://www.youtube.com/watch?v=c4BRHC7kTaQ&index=2&list=PL89B61F78B552C1AB)",
             "completed": false
           },
           {
-            "id": "merge-sort-videohttpswwwyoutubecomwatchvgcae1wnvnzmindex3listpl89b61f78b552c1ab-sorting",
+            "id": "merge-sort-videohttpswwwyoutubecomwatchvgcae1wnvnzmindex3listpl89b61f78b552c1ab-xhdta4",
             "text": "[Merge Sort (video)](https://www.youtube.com/watch?v=GCae1WNvnZM&index=3&list=PL89B61F78B552C1AB)",
             "completed": false
           },
           {
-            "id": "quicksort-videohttpswwwyoutubecomwatchvyg9bkam6b8index4listpl89b61f78b552c1ab-sorting",
+            "id": "quicksort-videohttpswwwyoutubecomwatchvyg9bkam6b8index4listpl89b61f78b552c1ab-xhdta4",
             "text": "[Quicksort (video)](https://www.youtube.com/watch?v=y_G9BkAm6B8&index=4&list=PL89B61F78B552C1AB)",
             "completed": false
           },
           {
-            "id": "selection-sort-videohttpswwwyoutubecomwatchv6ndmgr0-yyoindex8listpl89b61f78b552c1ab-sorting",
+            "id": "selection-sort-videohttpswwwyoutubecomwatchv6ndmgr0-yyoindex8listpl89b61f78b552c1ab-xhdta4",
             "text": "[Selection Sort (video)](https://www.youtube.com/watch?v=6nDMgr0-Yyo&index=8&list=PL89B61F78B552C1AB)",
             "completed": false
           },
           {
-            "id": "merge-sort-code-sorting",
+            "id": "merge-sort-code-xhdta4",
             "text": "Merge sort code:",
             "completed": false
           },
           {
-            "id": "using-output-array-chttpwwwcsyaleeduhomesaspnesclasses223examplessortingmergesortc-sorting",
+            "id": "using-output-array-chttpwwwcsyaleeduhomesaspnesclasses223examplessortingmergesortc-xhdta4",
             "text": "[Using output array (C)](http://www.cs.yale.edu/homes/aspnes/classes/223/examples/sorting/mergesort.c)",
             "completed": false
           },
           {
-            "id": "using-output-array-pythonhttpsgithubcomjwashampractice-pythonblobmastermergesortmergesortpy-sorting",
+            "id": "using-output-array-pythonhttpsgithubcomjwashampractice-pythonblobmastermergesortmergesortpy-xhdta4",
             "text": "[Using output array (Python)](https://github.com/jwasham/practice-python/blob/master/merge_sort/merge_sort.py)",
             "completed": false
           },
           {
-            "id": "in-place-chttpsgithubcomjwashampractice-cppblobmastermergesortmergesortcc-sorting",
+            "id": "in-place-chttpsgithubcomjwashampractice-cppblobmastermergesortmergesortcc-xhdta4",
             "text": "[In-place (C++)](https://github.com/jwasham/practice-cpp/blob/master/merge_sort/merge_sort.cc)",
             "completed": false
           },
           {
-            "id": "quick-sort-code-sorting",
+            "id": "quick-sort-code-xhdta4",
             "text": "Quick sort code:",
             "completed": false
           },
           {
-            "id": "implementation-chttpwwwcsyaleeduhomesaspnesclasses223examplesrandomizationquickc-sorting",
+            "id": "implementation-chttpwwwcsyaleeduhomesaspnesclasses223examplesrandomizationquickc-xhdta4",
             "text": "[Implementation (C)](http://www.cs.yale.edu/homes/aspnes/classes/223/examples/randomization/quick.c)",
             "completed": false
           },
           {
-            "id": "implementation-chttpsgithubcomjwashampractice-cblobmasterquicksortquicksortc-sorting",
+            "id": "implementation-chttpsgithubcomjwashampractice-cblobmasterquicksortquicksortc-xhdta4",
             "text": "[Implementation (C)](https://github.com/jwasham/practice-c/blob/master/quick_sort/quick_sort.c)",
             "completed": false
           },
           {
-            "id": "implementation-pythonhttpsgithubcomjwashampractice-pythonblobmasterquicksortquicksortpy-sorting",
+            "id": "implementation-pythonhttpsgithubcomjwashampractice-pythonblobmasterquicksortquicksortpy-xhdta4",
             "text": "[Implementation (Python)](https://github.com/jwasham/practice-python/blob/master/quick_sort/quick_sort.py)",
             "completed": false
           },
           {
-            "id": "review-sorting-playlist-in-18-minuteshttpswwwyoutubecomplaylistlistpl9xmbv5yozozsbgaxapiq1beuf4j20pl-sorting",
+            "id": "review-sorting-playlist-in-18-minuteshttpswwwyoutubecomplaylistlistpl9xmbv5yozozsbgaxapiq1beuf4j20pl-xhdta4",
             "text": "[[Review] Sorting (playlist) in 18 minutes](https://www.youtube.com/playlist?list=PL9xmBV_5YoZOZSbGAXAPIq1BeUf4j20pl)",
             "completed": false
           },
           {
-            "id": "quick-sort-in-4-minutes-videohttpsyoutubehoixgm4-p4m-sorting",
+            "id": "quick-sort-in-4-minutes-videohttpsyoutubehoixgm4-p4m-xhdta4",
             "text": "[Quick sort in 4 minutes (video)](https://youtu.be/Hoixgm4-P4M)",
             "completed": false
           },
           {
-            "id": "heap-sort-in-4-minutes-videohttpsyoutube2dmkh7idto-sorting",
+            "id": "heap-sort-in-4-minutes-videohttpsyoutube2dmkh7idto-xhdta4",
             "text": "[Heap sort in 4 minutes (video)](https://youtu.be/2DmK_H7IdTo)",
             "completed": false
           },
           {
-            "id": "merge-sort-in-3-minutes-videohttpsyoutube4vqmgxwplqc-sorting",
+            "id": "merge-sort-in-3-minutes-videohttpsyoutube4vqmgxwplqc-xhdta4",
             "text": "[Merge sort in 3 minutes (video)](https://youtu.be/4VqmGXwpLqc)",
             "completed": false
           },
           {
-            "id": "bubble-sort-in-2-minutes-videohttpsyoutubexlifi7cuza-sorting",
+            "id": "bubble-sort-in-2-minutes-videohttpsyoutubexlifi7cuza-xhdta4",
             "text": "[Bubble sort in 2 minutes (video)](https://youtu.be/xli_FI7CuzA)",
             "completed": false
           },
           {
-            "id": "selection-sort-in-3-minutes-videohttpsyoutubeg-pglbmthg-sorting",
+            "id": "selection-sort-in-3-minutes-videohttpsyoutubeg-pglbmthg-xhdta4",
             "text": "[Selection sort in 3 minutes (video)](https://youtu.be/g-PGLbMth_g)",
             "completed": false
           },
           {
-            "id": "insertion-sort-in-2-minutes-videohttpsyoutubeju767sdmdva-sorting",
+            "id": "insertion-sort-in-2-minutes-videohttpsyoutubeju767sdmdva-xhdta4",
             "text": "[Insertion sort in 2 minutes (video)](https://youtu.be/JU767SDMDvA)",
             "completed": false
           },
           {
-            "id": "implement-sorting",
+            "id": "implement-xhdta4",
             "text": "Implement:",
             "completed": false
           },
           {
-            "id": "mergesort-on-log-n-average-and-worst-case-sorting",
+            "id": "mergesort-on-log-n-average-and-worst-case-xhdta4",
             "text": "Mergesort: O(n log n) average and worst case",
             "completed": false
           },
           {
-            "id": "quicksort-on-log-n-average-case-sorting",
+            "id": "quicksort-on-log-n-average-case-xhdta4",
             "text": "Quicksort O(n log n) average case",
             "completed": false
           },
           {
-            "id": "not-required-but-i-recommended-them-sorting",
+            "id": "not-required-but-i-recommended-them-xhdta4",
             "text": "Not required, but I recommended them:",
             "completed": false
           },
           {
-            "id": "sedgewick-radix-sorts-6-videoshttpswwwcourseraorglearnalgorithms-part2homeweek3-sorting",
+            "id": "sedgewick-radix-sorts-6-videoshttpswwwcourseraorglearnalgorithms-part2homeweek3-xhdta4",
             "text": "[Sedgewick - Radix Sorts (6 videos)](https://www.coursera.org/learn/algorithms-part2/home/week/3)",
             "completed": false
           },
           {
-            "id": "1-strings-in-javahttpswwwcourseraorglearnalgorithms-part2lecturevghvbstrings-in-java-sorting",
+            "id": "1-strings-in-javahttpswwwcourseraorglearnalgorithms-part2lecturevghvbstrings-in-java-xhdta4",
             "text": "[1. Strings in Java](https://www.coursera.org/learn/algorithms-part2/lecture/vGHvb/strings-in-java)",
             "completed": false
           },
           {
-            "id": "2-key-indexed-countinghttpswwwcourseraorglecturealgorithms-part2key-indexed-counting-2pi1z-sorting",
+            "id": "2-key-indexed-countinghttpswwwcourseraorglecturealgorithms-part2key-indexed-counting-2pi1z-xhdta4",
             "text": "[2. Key Indexed Counting](https://www.coursera.org/lecture/algorithms-part2/key-indexed-counting-2pi1Z)",
             "completed": false
           },
           {
-            "id": "3-least-significant-digit-first-string-radix-sorthttpswwwcourseraorglearnalgorithms-part2lecturec1u7llsd-radix-sort-sorting",
+            "id": "3-least-significant-digit-first-string-radix-sorthttpswwwcourseraorglearnalgorithms-part2lecturec1u7llsd-radix-sort-xhdta4",
             "text": "[3. Least Significant Digit First String Radix Sort](https://www.coursera.org/learn/algorithms-part2/lecture/c1U7L/lsd-radix-sort)",
             "completed": false
           },
           {
-            "id": "4-most-significant-digit-first-string-radix-sorthttpswwwcourseraorglearnalgorithms-part2lecturegfxwgmsd-radix-sort-sorting",
+            "id": "4-most-significant-digit-first-string-radix-sorthttpswwwcourseraorglearnalgorithms-part2lecturegfxwgmsd-radix-sort-xhdta4",
             "text": "[4. Most Significant Digit First String Radix Sort](https://www.coursera.org/learn/algorithms-part2/lecture/gFxwG/msd-radix-sort)",
             "completed": false
           },
           {
-            "id": "5-3-way-radix-quicksorthttpswwwcourseraorglecturealgorithms-part23-way-radix-quicksort-crkd5-sorting",
+            "id": "5-3-way-radix-quicksorthttpswwwcourseraorglecturealgorithms-part23-way-radix-quicksort-crkd5-xhdta4",
             "text": "[5. 3 Way Radix Quicksort](https://www.coursera.org/lecture/algorithms-part2/3-way-radix-quicksort-crkd5)",
             "completed": false
           },
           {
-            "id": "6-suffix-arrayshttpswwwcourseraorglearnalgorithms-part2lectureth18wsuffix-arrays-sorting",
+            "id": "6-suffix-arrayshttpswwwcourseraorglearnalgorithms-part2lectureth18wsuffix-arrays-xhdta4",
             "text": "[6. Suffix Arrays](https://www.coursera.org/learn/algorithms-part2/lecture/TH18W/suffix-arrays)",
             "completed": false
           },
           {
-            "id": "radix-sorthttpwwwcsyaleeduhomesaspnesclasses223noteshtmlradixsort-sorting",
+            "id": "radix-sorthttpwwwcsyaleeduhomesaspnesclasses223noteshtmlradixsort-xhdta4",
             "text": "[Radix Sort](http://www.cs.yale.edu/homes/aspnes/classes/223/notes.html#radixSort)",
             "completed": false
           },
           {
-            "id": "radix-sort-videohttpswwwyoutubecomwatchvxhr26ia4k38-sorting",
+            "id": "radix-sort-videohttpswwwyoutubecomwatchvxhr26ia4k38-xhdta4",
             "text": "[Radix Sort (video)](https://www.youtube.com/watch?v=xhr26ia4k38)",
             "completed": false
           },
           {
-            "id": "radix-sort-counting-sort-linear-time-given-constraints-videohttpswwwyoutubecomwatchvnz1kzxbghj8index7listplul4u3cngp61oq3twyp6vf-5jb5l2ihb-sorting",
+            "id": "radix-sort-counting-sort-linear-time-given-constraints-videohttpswwwyoutubecomwatchvnz1kzxbghj8index7listplul4u3cngp61oq3twyp6vf-5jb5l2ihb-xhdta4",
             "text": "[Radix Sort, Counting Sort (linear time given constraints) (video)](https://www.youtube.com/watch?v=Nz1KZXbghj8&index=7&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)",
             "completed": false
           },
           {
-            "id": "randomization-matrix-multiply-quicksort-freivalds-algorithm-videohttpswwwyoutubecomwatchvcnb2ladk3sindex8listplul4u3cngp6317wasnfmcvgym2ucw3ogp-sorting",
+            "id": "randomization-matrix-multiply-quicksort-freivalds-algorithm-videohttpswwwyoutubecomwatchvcnb2ladk3sindex8listplul4u3cngp6317wasnfmcvgym2ucw3ogp-xhdta4",
             "text": "[Randomization: Matrix Multiply, Quicksort, Freivalds' algorithm (video)](https://www.youtube.com/watch?v=cNB2lADK3_s&index=8&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp)",
             "completed": false
           },
           {
-            "id": "sorting-in-linear-time-videohttpswwwyoutubecomwatchvpoky3rzbswslistplul4u3cngp61hsjnduldudlrl493b-xzfindex14-sorting",
+            "id": "sorting-in-linear-time-videohttpswwwyoutubecomwatchvpoky3rzbswslistplul4u3cngp61hsjnduldudlrl493b-xzfindex14-xhdta4",
             "text": "[Sorting in Linear Time (video)](https://www.youtube.com/watch?v=pOKy3RZbSws&list=PLUl4u3cNGP61hsJNdULdudlRL493b-XZf&index=14)",
             "completed": false
           }
@@ -2315,192 +2315,192 @@
         ],
         "checkboxes": [
           {
-            "id": "mitvideos-graphs",
+            "id": "mitvideos-kh04d7",
             "text": "MIT(videos):",
             "completed": false
           },
           {
-            "id": "breadth-first-searchhttpswwwyoutubecomwatchvofvyvzlvk9ct14sabchannelmitopencourseware-graphs",
+            "id": "breadth-first-searchhttpswwwyoutubecomwatchvofvyvzlvk9ct14sabchannelmitopencourseware-kh04d7",
             "text": "[Breadth-First Search](https://www.youtube.com/watch?v=oFVYVzlvk9c&t=14s&ab_channel=MITOpenCourseWare)",
             "completed": false
           },
           {
-            "id": "depth-first-searchhttpswwwyoutubecomwatchvibfwdysffuut32sabchannelmitopencourseware-graphs",
+            "id": "depth-first-searchhttpswwwyoutubecomwatchvibfwdysffuut32sabchannelmitopencourseware-kh04d7",
             "text": "[Depth-First Search](https://www.youtube.com/watch?v=IBfWDYSffUU&t=32s&ab_channel=MITOpenCourseWare)",
             "completed": false
           },
           {
-            "id": "skiena-lectures-great-intro-graphs",
+            "id": "skiena-lectures-great-intro-kh04d7",
             "text": "Skiena Lectures - great intro:",
             "completed": false
           },
           {
-            "id": "cse373-2020-lecture-10-graph-data-structures-videohttpswwwyoutubecomwatchvsjk0xqwwpcclistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex10-graphs",
+            "id": "cse373-2020-lecture-10-graph-data-structures-videohttpswwwyoutubecomwatchvsjk0xqwwpcclistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex10-kh04d7",
             "text": "[CSE373 2020 - Lecture 10 - Graph Data Structures (video)](https://www.youtube.com/watch?v=Sjk0xqWWPCc&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=10)",
             "completed": false
           },
           {
-            "id": "cse373-2020-lecture-11-graph-traversal-videohttpswwwyoutubecomwatchvztwjxj81nvylistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex11-graphs",
+            "id": "cse373-2020-lecture-11-graph-traversal-videohttpswwwyoutubecomwatchvztwjxj81nvylistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex11-kh04d7",
             "text": "[CSE373 2020 - Lecture 11 - Graph Traversal (video)](https://www.youtube.com/watch?v=ZTwjXj81NVY&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=11)",
             "completed": false
           },
           {
-            "id": "cse373-2020-lecture-12-depth-first-search-videohttpswwwyoutubecomwatchvkyordyb3boslistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex12-graphs",
+            "id": "cse373-2020-lecture-12-depth-first-search-videohttpswwwyoutubecomwatchvkyordyb3boslistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex12-kh04d7",
             "text": "[CSE373 2020 - Lecture 12 - Depth First Search (video)](https://www.youtube.com/watch?v=KyordYB3BOs&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=12)",
             "completed": false
           },
           {
-            "id": "cse373-2020-lecture-13-minimum-spanning-trees-videohttpswwwyoutubecomwatchvoolm2vnjukwlistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex13-graphs",
+            "id": "cse373-2020-lecture-13-minimum-spanning-trees-videohttpswwwyoutubecomwatchvoolm2vnjukwlistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex13-kh04d7",
             "text": "[CSE373 2020 - Lecture 13 - Minimum Spanning Trees (video)](https://www.youtube.com/watch?v=oolm2VnJUKw&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=13)",
             "completed": false
           },
           {
-            "id": "cse373-2020-lecture-14-minimum-spanning-trees-cont-videohttpswwwyoutubecomwatchvrktgpx0marylistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex14-graphs",
+            "id": "cse373-2020-lecture-14-minimum-spanning-trees-cont-videohttpswwwyoutubecomwatchvrktgpx0marylistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex14-kh04d7",
             "text": "[CSE373 2020 - Lecture 14 - Minimum Spanning Trees (con't) (video)](https://www.youtube.com/watch?v=RktgPx0MarY&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=14)",
             "completed": false
           },
           {
-            "id": "cse373-2020-lecture-15-graph-algorithms-cont-2-videohttpswwwyoutubecomwatchvmue5dxrhyaolistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex15-graphs",
+            "id": "cse373-2020-lecture-15-graph-algorithms-cont-2-videohttpswwwyoutubecomwatchvmue5dxrhyaolistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex15-kh04d7",
             "text": "[CSE373 2020 - Lecture 15 - Graph Algorithms (con't 2) (video)](https://www.youtube.com/watch?v=MUe5DXRhyAo&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=15)",
             "completed": false
           },
           {
-            "id": "graphs-review-and-more-graphs",
+            "id": "graphs-review-and-more-kh04d7",
             "text": "Graphs (review and more):",
             "completed": false
           },
           {
-            "id": "6006-single-source-shortest-paths-problem-videohttpswwwyoutubecomwatchvaa2squhin-eindex15listplul4u3cngp61oq3twyp6vf-5jb5l2ihb-graphs",
+            "id": "6006-single-source-shortest-paths-problem-videohttpswwwyoutubecomwatchvaa2squhin-eindex15listplul4u3cngp61oq3twyp6vf-5jb5l2ihb-kh04d7",
             "text": "[6.006 Single-Source Shortest Paths Problem (video)](https://www.youtube.com/watch?v=Aa2sqUhIn-E&index=15&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb)",
             "completed": false
           },
           {
-            "id": "6006-dijkstra-videohttpswwwyoutubecomwatchvnshizbk9jd8t1731sabchannelmitopencourseware-graphs",
+            "id": "6006-dijkstra-videohttpswwwyoutubecomwatchvnshizbk9jd8t1731sabchannelmitopencourseware-kh04d7",
             "text": "[6.006 Dijkstra (video)](https://www.youtube.com/watch?v=NSHizBK9JD8&t=1731s&ab_channel=MITOpenCourseWare)",
             "completed": false
           },
           {
-            "id": "6006-bellman-ford-videohttpswwwyoutubecomwatchvf9cvsurpc0abchannelmitopencourseware-graphs",
+            "id": "6006-bellman-ford-videohttpswwwyoutubecomwatchvf9cvsurpc0abchannelmitopencourseware-kh04d7",
             "text": "[6.006 Bellman-Ford (video)](https://www.youtube.com/watch?v=f9cVS_URPc0&ab_channel=MITOpenCourseWare)",
             "completed": false
           },
           {
-            "id": "6006-speeding-up-dijkstra-videohttpswwwyoutubecomwatchvchvq3qgj7elistplul4u3cngp61oq3twyp6vf-5jb5l2ihbindex18-graphs",
+            "id": "6006-speeding-up-dijkstra-videohttpswwwyoutubecomwatchvchvq3qgj7elistplul4u3cngp61oq3twyp6vf-5jb5l2ihbindex18-kh04d7",
             "text": "[6.006 Speeding Up Dijkstra (video)](https://www.youtube.com/watch?v=CHvQ3q_gJ7E&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=18)",
             "completed": false
           },
           {
-            "id": "aduni-graph-algorithms-i-topological-sorting-minimum-spanning-trees-prims-algorithm-lecture-6-video-httpswwwyoutubecomwatchviaqtxfvd8index6listplfdnelg9dpvxqcxud-9bsy2e7bwy3t5sm-graphs",
+            "id": "aduni-graph-algorithms-i-topological-sorting-minimum-spanning-trees-prims-algorithm-lecture-6-video-httpswwwyoutubecomwatchviaqtxfvd8index6listplfdnelg9dpvxqcxud-9bsy2e7bwy3t5sm-kh04d7",
             "text": "[Aduni: Graph Algorithms I - Topological Sorting, Minimum Spanning Trees, Prim's Algorithm -  Lecture 6 (video)]( https://www.youtube.com/watch?v=i_AQT_XfvD8&index=6&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm)",
             "completed": false
           },
           {
-            "id": "aduni-graph-algorithms-ii-dfs-bfs-kruskals-algorithm-union-find-data-structure-lecture-7-video-httpswwwyoutubecomwatchvufj5bppbsalistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smindex7-graphs",
+            "id": "aduni-graph-algorithms-ii-dfs-bfs-kruskals-algorithm-union-find-data-structure-lecture-7-video-httpswwwyoutubecomwatchvufj5bppbsalistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smindex7-kh04d7",
             "text": "[Aduni: Graph Algorithms II - DFS, BFS, Kruskal's Algorithm, Union Find Data Structure - Lecture 7 (video)]( https://www.youtube.com/watch?v=ufj5_bppBsA&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=7)",
             "completed": false
           },
           {
-            "id": "aduni-graph-algorithms-iii-shortest-path-lecture-8-videohttpswwwyoutubecomwatchvdiedspsmkxclistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smindex8-graphs",
+            "id": "aduni-graph-algorithms-iii-shortest-path-lecture-8-videohttpswwwyoutubecomwatchvdiedspsmkxclistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smindex8-kh04d7",
             "text": "[Aduni: Graph Algorithms III: Shortest Path - Lecture 8 (video)](https://www.youtube.com/watch?v=DiedsPsMKXc&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=8)",
             "completed": false
           },
           {
-            "id": "aduni-graph-alg-iv-intro-to-geometric-algorithms-lecture-9-videohttpswwwyoutubecomwatchvxiaqrlnkjawlistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smindex9-graphs",
+            "id": "aduni-graph-alg-iv-intro-to-geometric-algorithms-lecture-9-videohttpswwwyoutubecomwatchvxiaqrlnkjawlistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smindex9-kh04d7",
             "text": "[Aduni: Graph Alg. IV: Intro to geometric algorithms - Lecture 9 (video)](https://www.youtube.com/watch?v=XIAQRlNkJAw&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=9)",
             "completed": false
           },
           {
-            "id": "cs-61b-2014-weighted-graphs-videohttpsarchiveorgdetailsucberkeleywebcastzfbq8voz0k-graphs",
+            "id": "cs-61b-2014-weighted-graphs-videohttpsarchiveorgdetailsucberkeleywebcastzfbq8voz0k-kh04d7",
             "text": "[CS 61B 2014: Weighted graphs (video)](https://archive.org/details/ucberkeley_webcast_zFbq8vOZ_0k)",
             "completed": false
           },
           {
-            "id": "greedy-algorithms-minimum-spanning-tree-videohttpswwwyoutubecomwatchvtkwnms5irbuindex16listplul4u3cngp6317wasnfmcvgym2ucw3ogp-graphs",
+            "id": "greedy-algorithms-minimum-spanning-tree-videohttpswwwyoutubecomwatchvtkwnms5irbuindex16listplul4u3cngp6317wasnfmcvgym2ucw3ogp-kh04d7",
             "text": "[Greedy Algorithms: Minimum Spanning Tree (video)](https://www.youtube.com/watch?v=tKwnms5iRBU&index=16&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp)",
             "completed": false
           },
           {
-            "id": "strongly-connected-components-kosarajus-algorithm-graph-algorithm-videohttpswwwyoutubecomwatchvrpgcyiky7uw-graphs",
+            "id": "strongly-connected-components-kosarajus-algorithm-graph-algorithm-videohttpswwwyoutubecomwatchvrpgcyiky7uw-kh04d7",
             "text": "[Strongly Connected Components Kosaraju's Algorithm Graph Algorithm (video)](https://www.youtube.com/watch?v=RpgcYiky7uw)",
             "completed": false
           },
           {
-            "id": "review-shortest-path-algorithms-playlist-in-16-minutes-videohttpswwwyoutubecomplaylistlistpl9xmbv5yozo-y-h3xic9dgsfvyjng9yw-graphs",
+            "id": "review-shortest-path-algorithms-playlist-in-16-minutes-videohttpswwwyoutubecomplaylistlistpl9xmbv5yozo-y-h3xic9dgsfvyjng9yw-kh04d7",
             "text": "[[Review] Shortest Path Algorithms (playlist) in 16 minutes (video)](https://www.youtube.com/playlist?list=PL9xmBV_5YoZO-Y-H3xIC9DGSfVYJng9Yw)",
             "completed": false
           },
           {
-            "id": "review-minimum-spanning-trees-playlist-in-4-minutes-videohttpswwwyoutubecomplaylistlistpl9xmbv5yozobei3hf6lmyw-cbfs7nkov-graphs",
+            "id": "review-minimum-spanning-trees-playlist-in-4-minutes-videohttpswwwyoutubecomplaylistlistpl9xmbv5yozobei3hf6lmyw-cbfs7nkov-kh04d7",
             "text": "[[Review] Minimum Spanning Trees (playlist) in 4 minutes (video)](https://www.youtube.com/playlist?list=PL9xmBV_5YoZObEi3Hf6lmyW-CBfs7nkOV)",
             "completed": false
           },
           {
-            "id": "algorithms-on-graphs-videohttpswwwcourseraorglearnalgorithms-on-graphshomewelcome-graphs",
+            "id": "algorithms-on-graphs-videohttpswwwcourseraorglearnalgorithms-on-graphshomewelcome-kh04d7",
             "text": "[Algorithms on Graphs (video)](https://www.coursera.org/learn/algorithms-on-graphs/home/welcome)",
             "completed": false
           },
           {
-            "id": "dfs-with-adjacency-list-recursive-graphs",
+            "id": "dfs-with-adjacency-list-recursive-kh04d7",
             "text": "DFS with adjacency list (recursive)",
             "completed": false
           },
           {
-            "id": "dfs-with-adjacency-list-iterative-with-stack-graphs",
+            "id": "dfs-with-adjacency-list-iterative-with-stack-kh04d7",
             "text": "DFS with adjacency list (iterative with stack)",
             "completed": false
           },
           {
-            "id": "dfs-with-adjacency-matrix-recursive-graphs",
+            "id": "dfs-with-adjacency-matrix-recursive-kh04d7",
             "text": "DFS with adjacency matrix (recursive)",
             "completed": false
           },
           {
-            "id": "dfs-with-adjacency-matrix-iterative-with-stack-graphs",
+            "id": "dfs-with-adjacency-matrix-iterative-with-stack-kh04d7",
             "text": "DFS with adjacency matrix (iterative with stack)",
             "completed": false
           },
           {
-            "id": "bfs-with-adjacency-list-graphs",
+            "id": "bfs-with-adjacency-list-kh04d7",
             "text": "BFS with adjacency list",
             "completed": false
           },
           {
-            "id": "bfs-with-adjacency-matrix-graphs",
+            "id": "bfs-with-adjacency-matrix-kh04d7",
             "text": "BFS with adjacency matrix",
             "completed": false
           },
           {
-            "id": "single-source-shortest-path-dijkstra-graphs",
+            "id": "single-source-shortest-path-dijkstra-kh04d7",
             "text": "single-source shortest path (Dijkstra)",
             "completed": false
           },
           {
-            "id": "minimum-spanning-tree-graphs",
+            "id": "minimum-spanning-tree-kh04d7",
             "text": "minimum spanning tree",
             "completed": false
           },
           {
-            "id": "check-for-a-cycle-needed-for-topological-sort-since-well-check-for-the-cycle-before-starting-graphs",
+            "id": "check-for-a-cycle-needed-for-topological-sort-since-well-check-for-the-cycle-before-starting-kh04d7",
             "text": "check for a cycle (needed for topological sort, since we'll check for the cycle before starting)",
             "completed": false
           },
           {
-            "id": "topological-sort-graphs",
+            "id": "topological-sort-kh04d7",
             "text": "topological sort",
             "completed": false
           },
           {
-            "id": "count-connected-components-in-a-graph-graphs",
+            "id": "count-connected-components-in-a-graph-kh04d7",
             "text": "count connected components in a graph",
             "completed": false
           },
           {
-            "id": "list-strongly-connected-components-graphs",
+            "id": "list-strongly-connected-components-kh04d7",
             "text": "list strongly connected components",
             "completed": false
           },
           {
-            "id": "check-for-bipartite-graph-graphs",
+            "id": "check-for-bipartite-graph-kh04d7",
             "text": "check for bipartite graph",
             "completed": false
           }
@@ -2978,692 +2978,692 @@
         ],
         "checkboxes": [
           {
-            "id": "stanford-lectures-on-recursion-backtracking-even-more-knowledge",
+            "id": "stanford-lectures-on-recursion-backtracking-ouzi8p",
             "text": "Stanford lectures on recursion & backtracking:",
             "completed": false
           },
           {
-            "id": "lecture-8-programming-abstractions-videohttpswwwyoutubecomwatchvgl3emqcuueqlistplfe6e58f856038c69index8-even-more-knowledge",
+            "id": "lecture-8-programming-abstractions-videohttpswwwyoutubecomwatchvgl3emqcuueqlistplfe6e58f856038c69index8-ouzi8p",
             "text": "[Lecture 8 | Programming Abstractions (video)](https://www.youtube.com/watch?v=gl3emqCuueQ&list=PLFE6E58F856038C69&index=8)",
             "completed": false
           },
           {
-            "id": "lecture-9-programming-abstractions-videohttpswwwyoutubecomwatchvufjheprbycqlistplfe6e58f856038c69index9-even-more-knowledge",
+            "id": "lecture-9-programming-abstractions-videohttpswwwyoutubecomwatchvufjheprbycqlistplfe6e58f856038c69index9-ouzi8p",
             "text": "[Lecture 9 | Programming Abstractions (video)](https://www.youtube.com/watch?v=uFJhEPrbycQ&list=PLFE6E58F856038C69&index=9)",
             "completed": false
           },
           {
-            "id": "lecture-10-programming-abstractions-videohttpswwwyoutubecomwatchvndf1qdtrkckindex10listplfe6e58f856038c69-even-more-knowledge",
+            "id": "lecture-10-programming-abstractions-videohttpswwwyoutubecomwatchvndf1qdtrkckindex10listplfe6e58f856038c69-ouzi8p",
             "text": "[Lecture 10 | Programming Abstractions (video)](https://www.youtube.com/watch?v=NdF1QDTRkck&index=10&list=PLFE6E58F856038C69)",
             "completed": false
           },
           {
-            "id": "lecture-11-programming-abstractions-videohttpswwwyoutubecomwatchvp-gpaigrcqilistplfe6e58f856038c69index11-even-more-knowledge",
+            "id": "lecture-11-programming-abstractions-videohttpswwwyoutubecomwatchvp-gpaigrcqilistplfe6e58f856038c69index11-ouzi8p",
             "text": "[Lecture 11 | Programming Abstractions (video)](https://www.youtube.com/watch?v=p-gpaIGRCQI&list=PLFE6E58F856038C69&index=11)",
             "completed": false
           },
           {
-            "id": "what-is-tail-recursion-why-is-it-so-badhttpswwwquoracomwhat-is-tail-recursion-why-is-it-so-bad-even-more-knowledge",
+            "id": "what-is-tail-recursion-why-is-it-so-badhttpswwwquoracomwhat-is-tail-recursion-why-is-it-so-bad-ouzi8p",
             "text": "[What Is Tail Recursion Why Is It So Bad?](https://www.quora.com/What-is-tail-recursion-Why-is-it-so-bad)",
             "completed": false
           },
           {
-            "id": "tail-recursion-videohttpswwwcourseraorglectureprogramming-languagestail-recursion-yzic1-even-more-knowledge",
+            "id": "tail-recursion-videohttpswwwcourseraorglectureprogramming-languagestail-recursion-yzic1-ouzi8p",
             "text": "[Tail Recursion (video)](https://www.coursera.org/lecture/programming-languages/tail-recursion-YZic1)",
             "completed": false
           },
           {
-            "id": "5-simple-steps-for-solving-any-recursive-problemvideohttpsyoutubengcos392w4w-even-more-knowledge",
+            "id": "5-simple-steps-for-solving-any-recursive-problemvideohttpsyoutubengcos392w4w-ouzi8p",
             "text": "[5 Simple Steps for Solving Any Recursive Problem(video)](https://youtu.be/ngCos392W4w)",
             "completed": false
           },
           {
-            "id": "videos-even-more-knowledge",
+            "id": "videos-ouzi8p",
             "text": "Videos:",
             "completed": false
           },
           {
-            "id": "skiena-cse373-2020-lecture-19-introduction-to-dynamic-programming-videohttpswwwyoutubecomwatchvwaa0amfcjhqlistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex18-even-more-knowledge",
+            "id": "skiena-cse373-2020-lecture-19-introduction-to-dynamic-programming-videohttpswwwyoutubecomwatchvwaa0amfcjhqlistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex18-ouzi8p",
             "text": "[Skiena: CSE373 2020 - Lecture 19 - Introduction to Dynamic Programming (video)](https://www.youtube.com/watch?v=wAA0AMfcJHQ&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=18)",
             "completed": false
           },
           {
-            "id": "skiena-cse373-2020-lecture-20-edit-distance-videohttpswwwyoutubecomwatchvt3a4jlhlhtalistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex19-even-more-knowledge",
+            "id": "skiena-cse373-2020-lecture-20-edit-distance-videohttpswwwyoutubecomwatchvt3a4jlhlhtalistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex19-ouzi8p",
             "text": "[Skiena: CSE373 2020 - Lecture 20 - Edit Distance (video)](https://www.youtube.com/watch?v=T3A4jlHlhtA&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=19)",
             "completed": false
           },
           {
-            "id": "skiena-cse373-2020-lecture-20-edit-distance-continued-videohttpswwwyoutubecomwatchvipnpvczmrbelistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex20-even-more-knowledge",
+            "id": "skiena-cse373-2020-lecture-20-edit-distance-continued-videohttpswwwyoutubecomwatchvipnpvczmrbelistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex20-ouzi8p",
             "text": "[Skiena: CSE373 2020 - Lecture 20 - Edit Distance (continued) (video)](https://www.youtube.com/watch?v=iPnPVcZmRbE&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=20)",
             "completed": false
           },
           {
-            "id": "skiena-cse373-2020-lecture-21-dynamic-programming-videohttpswwwyoutubecomwatchv2xpe4wq8coqlistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex21-even-more-knowledge",
+            "id": "skiena-cse373-2020-lecture-21-dynamic-programming-videohttpswwwyoutubecomwatchv2xpe4wq8coqlistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex21-ouzi8p",
             "text": "[Skiena: CSE373 2020 - Lecture 21 - Dynamic Programming (video)](https://www.youtube.com/watch?v=2xPE4Wq8coQ&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=21)",
             "completed": false
           },
           {
-            "id": "skiena-cse373-2020-lecture-22-dynamic-programming-and-review-videohttpswwwyoutubecomwatchvyh3rzqqgsyilistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex22-even-more-knowledge",
+            "id": "skiena-cse373-2020-lecture-22-dynamic-programming-and-review-videohttpswwwyoutubecomwatchvyh3rzqqgsyilistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex22-ouzi8p",
             "text": "[Skiena: CSE373 2020 - Lecture 22 - Dynamic Programming and Review (video)](https://www.youtube.com/watch?v=Yh3RzqQGsyI&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=22)",
             "completed": false
           },
           {
-            "id": "simonson-dynamic-programming-0-starts-at-5918-videohttpsyoutubej5ajecor6eolistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smt3558-even-more-knowledge",
+            "id": "simonson-dynamic-programming-0-starts-at-5918-videohttpsyoutubej5ajecor6eolistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smt3558-ouzi8p",
             "text": "[Simonson: Dynamic Programming 0 (starts at 59:18) (video)](https://youtu.be/J5aJEcOr6Eo?list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&t=3558)",
             "completed": false
           },
           {
-            "id": "simonson-dynamic-programming-i-lecture-11-videohttpswwwyoutubecomwatchv0ezhjqsoeuindex11listplfdnelg9dpvxqcxud-9bsy2e7bwy3t5sm-even-more-knowledge",
+            "id": "simonson-dynamic-programming-i-lecture-11-videohttpswwwyoutubecomwatchv0ezhjqsoeuindex11listplfdnelg9dpvxqcxud-9bsy2e7bwy3t5sm-ouzi8p",
             "text": "[Simonson: Dynamic Programming I - Lecture 11 (video)](https://www.youtube.com/watch?v=0EzHjQ_SOeU&index=11&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm)",
             "completed": false
           },
           {
-            "id": "simonson-dynamic-programming-ii-lecture-12-videohttpswwwyoutubecomwatchvv1qirwuju7glistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smindex12-even-more-knowledge",
+            "id": "simonson-dynamic-programming-ii-lecture-12-videohttpswwwyoutubecomwatchvv1qirwuju7glistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smindex12-ouzi8p",
             "text": "[Simonson: Dynamic programming II - Lecture 12 (video)](https://www.youtube.com/watch?v=v1qiRwuJU7g&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=12)",
             "completed": false
           },
           {
-            "id": "list-of-individual-dp-problems-each-is-short-even-more-knowledge",
+            "id": "list-of-individual-dp-problems-each-is-short-ouzi8p",
             "text": "List of individual DP problems (each is short):",
             "completed": false
           },
           {
-            "id": "yale-lecture-notes-even-more-knowledge",
+            "id": "yale-lecture-notes-ouzi8p",
             "text": "Yale Lecture notes:",
             "completed": false
           },
           {
-            "id": "dynamic-programminghttpwwwcsyaleeduhomesaspnesclasses223noteshtmldynamicprogramming-even-more-knowledge",
+            "id": "dynamic-programminghttpwwwcsyaleeduhomesaspnesclasses223noteshtmldynamicprogramming-ouzi8p",
             "text": "[Dynamic Programming](http://www.cs.yale.edu/homes/aspnes/classes/223/notes.html#dynamicProgramming)",
             "completed": false
           },
           {
-            "id": "coursera-even-more-knowledge",
+            "id": "coursera-ouzi8p",
             "text": "Coursera:",
             "completed": false
           },
           {
-            "id": "the-rna-secondary-structure-problem-videohttpswwwcourseraorglearnalgorithmic-thinking-2lecture80rrwthe-rna-secondary-structure-problem-even-more-knowledge",
+            "id": "the-rna-secondary-structure-problem-videohttpswwwcourseraorglearnalgorithmic-thinking-2lecture80rrwthe-rna-secondary-structure-problem-ouzi8p",
             "text": "[The RNA secondary structure problem (video)](https://www.coursera.org/learn/algorithmic-thinking-2/lecture/80RrW/the-rna-secondary-structure-problem)",
             "completed": false
           },
           {
-            "id": "a-dynamic-programming-algorithm-videohttpswwwcourseraorglecturealgorithmic-thinking-2a-dynamic-programming-algorithm-psonq-even-more-knowledge",
+            "id": "a-dynamic-programming-algorithm-videohttpswwwcourseraorglecturealgorithmic-thinking-2a-dynamic-programming-algorithm-psonq-ouzi8p",
             "text": "[A dynamic programming algorithm (video)](https://www.coursera.org/lecture/algorithmic-thinking-2/a-dynamic-programming-algorithm-PSonq)",
             "completed": false
           },
           {
-            "id": "illustrating-the-dp-algorithm-videohttpswwwcourseraorglecturealgorithmic-thinking-2illustrating-the-dp-algorithm-ouek2-even-more-knowledge",
+            "id": "illustrating-the-dp-algorithm-videohttpswwwcourseraorglecturealgorithmic-thinking-2illustrating-the-dp-algorithm-ouek2-ouzi8p",
             "text": "[Illustrating the DP algorithm (video)](https://www.coursera.org/lecture/algorithmic-thinking-2/illustrating-the-dp-algorithm-oUEK2)",
             "completed": false
           },
           {
-            "id": "running-time-of-the-dp-algorithm-videohttpswwwcourseraorglearnalgorithmic-thinking-2lecturenfk2rrunning-time-of-the-dp-algorithm-even-more-knowledge",
+            "id": "running-time-of-the-dp-algorithm-videohttpswwwcourseraorglearnalgorithmic-thinking-2lecturenfk2rrunning-time-of-the-dp-algorithm-ouzi8p",
             "text": "[Running time of the DP algorithm (video)](https://www.coursera.org/learn/algorithmic-thinking-2/lecture/nfK2r/running-time-of-the-dp-algorithm)",
             "completed": false
           },
           {
-            "id": "dp-vs-recursive-implementation-videohttpswwwcourseraorglearnalgorithmic-thinking-2lecturem999adp-vs-recursive-implementation-even-more-knowledge",
+            "id": "dp-vs-recursive-implementation-videohttpswwwcourseraorglearnalgorithmic-thinking-2lecturem999adp-vs-recursive-implementation-ouzi8p",
             "text": "[DP vs. recursive implementation (video)](https://www.coursera.org/learn/algorithmic-thinking-2/lecture/M999a/dp-vs-recursive-implementation)",
             "completed": false
           },
           {
-            "id": "global-pairwise-sequence-alignment-videohttpswwwcourseraorglecturealgorithmic-thinking-2global-pairwise-sequence-alignment-uz7o6-even-more-knowledge",
+            "id": "global-pairwise-sequence-alignment-videohttpswwwcourseraorglecturealgorithmic-thinking-2global-pairwise-sequence-alignment-uz7o6-ouzi8p",
             "text": "[Global pairwise sequence alignment (video)](https://www.coursera.org/lecture/algorithmic-thinking-2/global-pairwise-sequence-alignment-UZ7o6)",
             "completed": false
           },
           {
-            "id": "local-pairwise-sequence-alignment-videohttpswwwcourseraorglearnalgorithmic-thinking-2lecturewnnaulocal-pairwise-sequence-alignment-even-more-knowledge",
+            "id": "local-pairwise-sequence-alignment-videohttpswwwcourseraorglearnalgorithmic-thinking-2lecturewnnaulocal-pairwise-sequence-alignment-ouzi8p",
             "text": "[Local pairwise sequence alignment (video)](https://www.coursera.org/learn/algorithmic-thinking-2/lecture/WnNau/local-pairwise-sequence-alignment)",
             "completed": false
           },
           {
-            "id": "quick-uml-review-videohttpswwwyoutubecomwatchv3cmzqzzwndmlistplglfvvzlvvq5g-ldj8rlqe-ndo7qitycindex3-even-more-knowledge",
+            "id": "quick-uml-review-videohttpswwwyoutubecomwatchv3cmzqzzwndmlistplglfvvzlvvq5g-ldj8rlqe-ndo7qitycindex3-ouzi8p",
             "text": "[Quick UML review (video)](https://www.youtube.com/watch?v=3cmzqZzwNDM&list=PLGLfVvz_LVvQ5G-LdJ8RLqe-ndo7QITYc&index=3)",
             "completed": false
           },
           {
-            "id": "learn-these-patterns-even-more-knowledge",
+            "id": "learn-these-patterns-ouzi8p",
             "text": "Learn these patterns:",
             "completed": false
           },
           {
-            "id": "strategy-even-more-knowledge",
+            "id": "strategy-ouzi8p",
             "text": "strategy",
             "completed": false
           },
           {
-            "id": "singleton-even-more-knowledge",
+            "id": "singleton-ouzi8p",
             "text": "singleton",
             "completed": false
           },
           {
-            "id": "adapter-even-more-knowledge",
+            "id": "adapter-ouzi8p",
             "text": "adapter",
             "completed": false
           },
           {
-            "id": "prototype-even-more-knowledge",
+            "id": "prototype-ouzi8p",
             "text": "prototype",
             "completed": false
           },
           {
-            "id": "decorator-even-more-knowledge",
+            "id": "decorator-ouzi8p",
             "text": "decorator",
             "completed": false
           },
           {
-            "id": "visitor-even-more-knowledge",
+            "id": "visitor-ouzi8p",
             "text": "visitor",
             "completed": false
           },
           {
-            "id": "factory-abstract-factory-even-more-knowledge",
+            "id": "factory-abstract-factory-ouzi8p",
             "text": "factory, abstract factory",
             "completed": false
           },
           {
-            "id": "facade-even-more-knowledge",
+            "id": "facade-ouzi8p",
             "text": "facade",
             "completed": false
           },
           {
-            "id": "observer-even-more-knowledge",
+            "id": "observer-ouzi8p",
             "text": "observer",
             "completed": false
           },
           {
-            "id": "proxy-even-more-knowledge",
+            "id": "proxy-ouzi8p",
             "text": "proxy",
             "completed": false
           },
           {
-            "id": "delegate-even-more-knowledge",
+            "id": "delegate-ouzi8p",
             "text": "delegate",
             "completed": false
           },
           {
-            "id": "command-even-more-knowledge",
+            "id": "command-ouzi8p",
             "text": "command",
             "completed": false
           },
           {
-            "id": "state-even-more-knowledge",
+            "id": "state-ouzi8p",
             "text": "state",
             "completed": false
           },
           {
-            "id": "memento-even-more-knowledge",
+            "id": "memento-ouzi8p",
             "text": "memento",
             "completed": false
           },
           {
-            "id": "iterator-even-more-knowledge",
+            "id": "iterator-ouzi8p",
             "text": "iterator",
             "completed": false
           },
           {
-            "id": "composite-even-more-knowledge",
+            "id": "composite-ouzi8p",
             "text": "composite",
             "completed": false
           },
           {
-            "id": "flyweight-even-more-knowledge",
+            "id": "flyweight-ouzi8p",
             "text": "flyweight",
             "completed": false
           },
           {
-            "id": "series-of-videos-27-videoshttpswwwyoutubecomplaylistlistplf206e906175c7e07-even-more-knowledge",
+            "id": "series-of-videos-27-videoshttpswwwyoutubecomplaylistlistplf206e906175c7e07-ouzi8p",
             "text": "[Series of videos (27 videos)](https://www.youtube.com/playlist?list=PLF206E906175C7E07)",
             "completed": false
           },
           {
-            "id": "book-head-first-design-patternshttpswwwamazoncomhead-first-design-patterns-freemandp0596007124-even-more-knowledge",
+            "id": "book-head-first-design-patternshttpswwwamazoncomhead-first-design-patterns-freemandp0596007124-ouzi8p",
             "text": "[Book: Head First Design Patterns](https://www.amazon.com/Head-First-Design-Patterns-Freeman/dp/0596007124)",
             "completed": false
           },
           {
-            "id": "math-skills-how-to-find-factorial-permutation-and-combination-choose-videohttpswwwyoutubecomwatchv8rro6ti9d0u-even-more-knowledge",
+            "id": "math-skills-how-to-find-factorial-permutation-and-combination-choose-videohttpswwwyoutubecomwatchv8rro6ti9d0u-ouzi8p",
             "text": "[Math Skills: How to find Factorial, Permutation, and Combination (Choose) (video)](https://www.youtube.com/watch?v=8RRo6Ti9d0U)",
             "completed": false
           },
           {
-            "id": "make-school-probability-videohttpswwwyoutubecomwatchvszkaak9wwa4-even-more-knowledge",
+            "id": "make-school-probability-videohttpswwwyoutubecomwatchvszkaak9wwa4-ouzi8p",
             "text": "[Make School: Probability (video)](https://www.youtube.com/watch?v=sZkAAk9Wwa4)",
             "completed": false
           },
           {
-            "id": "make-school-more-probability-and-markov-chains-videohttpswwwyoutubecomwatchvdnajg-mlobq-even-more-knowledge",
+            "id": "make-school-more-probability-and-markov-chains-videohttpswwwyoutubecomwatchvdnajg-mlobq-ouzi8p",
             "text": "[Make School: More Probability and Markov Chains (video)](https://www.youtube.com/watch?v=dNaJg-mLobQ)",
             "completed": false
           },
           {
-            "id": "khan-academy-even-more-knowledge",
+            "id": "khan-academy-ouzi8p",
             "text": "Khan Academy:",
             "completed": false
           },
           {
-            "id": "basic-theoretical-probabilityhttpswwwkhanacademyorgmathprobabilityprobability-and-combinatorics-topic-even-more-knowledge",
+            "id": "basic-theoretical-probabilityhttpswwwkhanacademyorgmathprobabilityprobability-and-combinatorics-topic-ouzi8p",
             "text": "[Basic Theoretical Probability](https://www.khanacademy.org/math/probability/probability-and-combinatorics-topic)",
             "completed": false
           },
           {
-            "id": "probability-explained-videohttpswwwyoutubecomwatchvuzkc-qnvooklistplc58778f28211fa19-even-more-knowledge",
+            "id": "probability-explained-videohttpswwwyoutubecomwatchvuzkc-qnvooklistplc58778f28211fa19-ouzi8p",
             "text": "[Probability Explained (video)](https://www.youtube.com/watch?v=uzkc-qNVoOk&list=PLC58778F28211FA19)",
             "completed": false
           },
           {
-            "id": "computational-complexity-videohttpswwwyoutubecomwatchvmoptwqcvh8listplul4u3cngp61oq3twyp6vf-5jb5l2ihbindex23-even-more-knowledge",
+            "id": "computational-complexity-videohttpswwwyoutubecomwatchvmoptwqcvh8listplul4u3cngp61oq3twyp6vf-5jb5l2ihbindex23-ouzi8p",
             "text": "[Computational Complexity (video)](https://www.youtube.com/watch?v=moPtwq_cVH8&list=PLUl4u3cNGP61Oq3tWYp6V_F-5jb5L2iHb&index=23)",
             "completed": false
           },
           {
-            "id": "simonson-even-more-knowledge",
+            "id": "simonson-ouzi8p",
             "text": "Simonson:",
             "completed": false
           },
           {
-            "id": "greedy-algs-ii-intro-to-np-completeness-videohttpsyoutubeqcgnj47smlolistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smt2939-even-more-knowledge",
+            "id": "greedy-algs-ii-intro-to-np-completeness-videohttpsyoutubeqcgnj47smlolistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smt2939-ouzi8p",
             "text": "[Greedy Algs. II & Intro to NP-Completeness (video)](https://youtu.be/qcGnJ47Smlo?list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&t=2939)",
             "completed": false
           },
           {
-            "id": "np-completeness-ii-reductions-videohttpswwwyoutubecomwatchve0tgc6zqdqeindex16listplfdnelg9dpvxqcxud-9bsy2e7bwy3t5sm-even-more-knowledge",
+            "id": "np-completeness-ii-reductions-videohttpswwwyoutubecomwatchve0tgc6zqdqeindex16listplfdnelg9dpvxqcxud-9bsy2e7bwy3t5sm-ouzi8p",
             "text": "[NP Completeness II & Reductions (video)](https://www.youtube.com/watch?v=e0tGC6ZQdQE&index=16&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm)",
             "completed": false
           },
           {
-            "id": "np-completeness-iii-videohttpswwwyoutubecomwatchvfcx1bgt3wjeindex17listplfdnelg9dpvxqcxud-9bsy2e7bwy3t5sm-even-more-knowledge",
+            "id": "np-completeness-iii-videohttpswwwyoutubecomwatchvfcx1bgt3wjeindex17listplfdnelg9dpvxqcxud-9bsy2e7bwy3t5sm-ouzi8p",
             "text": "[NP Completeness III (Video)](https://www.youtube.com/watch?v=fCX1BGT3wjE&index=17&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm)",
             "completed": false
           },
           {
-            "id": "np-completeness-iv-videohttpswwwyoutubecomwatchvnkldp3rch3mlistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smindex18-even-more-knowledge",
+            "id": "np-completeness-iv-videohttpswwwyoutubecomwatchvnkldp3rch3mlistplfdnelg9dpvxqcxud-9bsy2e7bwy3t5smindex18-ouzi8p",
             "text": "[NP Completeness IV (video)](https://www.youtube.com/watch?v=NKLDp3Rch3M&list=PLFDnELG9dpVxQCxuD-9BSy2E7BWY3t5Sm&index=18)",
             "completed": false
           },
           {
-            "id": "skiena-even-more-knowledge",
+            "id": "skiena-ouzi8p",
             "text": "Skiena:",
             "completed": false
           },
           {
-            "id": "cse373-2020-lecture-23-np-completeness-videohttpswwwyoutubecomwatchvithp5lae1velistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex23-even-more-knowledge",
+            "id": "cse373-2020-lecture-23-np-completeness-videohttpswwwyoutubecomwatchvithp5lae1velistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex23-ouzi8p",
             "text": "[CSE373 2020 - Lecture 23 - NP-Completeness (video)](https://www.youtube.com/watch?v=ItHp5laE1VE&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=23)",
             "completed": false
           },
           {
-            "id": "cse373-2020-lecture-24-satisfiability-videohttpswwwyoutubecomwatchvinafjeczgxulistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex24-even-more-knowledge",
+            "id": "cse373-2020-lecture-24-satisfiability-videohttpswwwyoutubecomwatchvinafjeczgxulistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex24-ouzi8p",
             "text": "[CSE373 2020 - Lecture 24 - Satisfiability (video)](https://www.youtube.com/watch?v=inaFJeCzGxU&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=24)",
             "completed": false
           },
           {
-            "id": "cse373-2020-lecture-25-more-np-completeness-videohttpswwwyoutubecomwatchvb-bhkxjzllclistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex25-even-more-knowledge",
+            "id": "cse373-2020-lecture-25-more-np-completeness-videohttpswwwyoutubecomwatchvb-bhkxjzllclistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex25-ouzi8p",
             "text": "[CSE373 2020 - Lecture 25 - More NP-Completeness (video)](https://www.youtube.com/watch?v=B-bhKxjZLlc&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=25)",
             "completed": false
           },
           {
-            "id": "cse373-2020-lecture-26-np-completeness-challenge-videohttpswwwyoutubecomwatchvezettkgcclistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex26-even-more-knowledge",
+            "id": "cse373-2020-lecture-26-np-completeness-challenge-videohttpswwwyoutubecomwatchvezettkgcclistplotl7m3yp-dx6ic0hgt0puxwinmkwkxxindex26-ouzi8p",
             "text": "[CSE373 2020 - Lecture 26 - NP-Completeness Challenge (video)](https://www.youtube.com/watch?v=_EzetTkG_Cc&list=PLOtl7M3yp-DX6ic0HGT0PUX_wiNmkWkXx&index=26)",
             "completed": false
           },
           {
-            "id": "complexity-p-np-np-completeness-reductions-videohttpswwwyoutubecomwatchvehzifpgyh4listplul4u3cngp6317wasnfmcvgym2ucw3ogpindex22-even-more-knowledge",
+            "id": "complexity-p-np-np-completeness-reductions-videohttpswwwyoutubecomwatchvehzifpgyh4listplul4u3cngp6317wasnfmcvgym2ucw3ogpindex22-ouzi8p",
             "text": "[Complexity: P, NP, NP-completeness, Reductions (video)](https://www.youtube.com/watch?v=eHZifpgyH_4&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=22)",
             "completed": false
           },
           {
-            "id": "complexity-approximation-algorithms-videohttpswwwyoutubecomwatchvmez1j9wy2imlistplul4u3cngp6317wasnfmcvgym2ucw3ogpindex24-even-more-knowledge",
+            "id": "complexity-approximation-algorithms-videohttpswwwyoutubecomwatchvmez1j9wy2imlistplul4u3cngp6317wasnfmcvgym2ucw3ogpindex24-ouzi8p",
             "text": "[Complexity: Approximation Algorithms (video)](https://www.youtube.com/watch?v=MEz1J9wY2iM&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp&index=24)",
             "completed": false
           },
           {
-            "id": "complexity-fixed-parameter-algorithms-videohttpswwwyoutubecomwatchv4q-jmgrmxksindex25listplul4u3cngp6317wasnfmcvgym2ucw3ogp-even-more-knowledge",
+            "id": "complexity-fixed-parameter-algorithms-videohttpswwwyoutubecomwatchv4q-jmgrmxksindex25listplul4u3cngp6317wasnfmcvgym2ucw3ogp-ouzi8p",
             "text": "[Complexity: Fixed-Parameter Algorithms (video)](https://www.youtube.com/watch?v=4q-jmGrmxKs&index=25&list=PLUl4u3cNGP6317WaSNfmCvGym2ucw3oGp)",
             "completed": false
           },
           {
-            "id": "how-cpu-executes-a-program-videohttpswwwyoutubecomwatchvxm4lgflqfva-even-more-knowledge",
+            "id": "how-cpu-executes-a-program-videohttpswwwyoutubecomwatchvxm4lgflqfva-ouzi8p",
             "text": "[How CPU executes a program (video)](https://www.youtube.com/watch?v=XM4lGflQFvA)",
             "completed": false
           },
           {
-            "id": "how-computers-calculate-alu-videohttpsyoutube1i5zmmrofna-even-more-knowledge",
+            "id": "how-computers-calculate-alu-videohttpsyoutube1i5zmmrofna-ouzi8p",
             "text": "[How computers calculate - ALU (video)](https://youtu.be/1I5ZMmrOfnA)",
             "completed": false
           },
           {
-            "id": "registers-and-ram-videohttpsyoutubefpne6uafbtu-even-more-knowledge",
+            "id": "registers-and-ram-videohttpsyoutubefpne6uafbtu-ouzi8p",
             "text": "[Registers and RAM (video)](https://youtu.be/fpnE6UAfbtU)",
             "completed": false
           },
           {
-            "id": "the-central-processing-unit-cpu-videohttpsyoutubefzgugfqdr60-even-more-knowledge",
+            "id": "the-central-processing-unit-cpu-videohttpsyoutubefzgugfqdr60-ouzi8p",
             "text": "[The Central Processing Unit (CPU) (video)](https://youtu.be/FZGugFqdr60)",
             "completed": false
           },
           {
-            "id": "instructions-and-programs-videohttpsyoutubezltgxvg6r3k-even-more-knowledge",
+            "id": "instructions-and-programs-videohttpsyoutubezltgxvg6r3k-ouzi8p",
             "text": "[Instructions and Programs (video)](https://youtu.be/zltgXvg6r3k)",
             "completed": false
           },
           {
-            "id": "lru-cache-even-more-knowledge",
+            "id": "lru-cache-ouzi8p",
             "text": "LRU cache:",
             "completed": false
           },
           {
-            "id": "the-magic-of-lru-cache-100-days-of-google-dev-videohttpswwwyoutubecomwatchvr5on3iwx78m-even-more-knowledge",
+            "id": "the-magic-of-lru-cache-100-days-of-google-dev-videohttpswwwyoutubecomwatchvr5on3iwx78m-ouzi8p",
             "text": "[The Magic of LRU Cache (100 Days of Google Dev) (video)](https://www.youtube.com/watch?v=R5ON3iwx78M)",
             "completed": false
           },
           {
-            "id": "implementing-lru-videohttpswwwyoutubecomwatchvbq6n7ym81ii-even-more-knowledge",
+            "id": "implementing-lru-videohttpswwwyoutubecomwatchvbq6n7ym81ii-ouzi8p",
             "text": "[Implementing LRU (video)](https://www.youtube.com/watch?v=bq6N7Ym81iI)",
             "completed": false
           },
           {
-            "id": "leetcode-146-lru-cache-c-videohttpswwwyoutubecomwatchv8-fzrajr7qu-even-more-knowledge",
+            "id": "leetcode-146-lru-cache-c-videohttpswwwyoutubecomwatchv8-fzrajr7qu-ouzi8p",
             "text": "[LeetCode - 146 LRU Cache (C++) (video)](https://www.youtube.com/watch?v=8-FZRAjR7qU)",
             "completed": false
           },
           {
-            "id": "cpu-cache-even-more-knowledge",
+            "id": "cpu-cache-ouzi8p",
             "text": "CPU cache:",
             "completed": false
           },
           {
-            "id": "mit-6004-l15-the-memory-hierarchy-videohttpswwwyoutubecomwatchvvjyffazi5elistplrrw1w6cgacxbmtdfj205valogmirc82-index24-even-more-knowledge",
+            "id": "mit-6004-l15-the-memory-hierarchy-videohttpswwwyoutubecomwatchvvjyffazi5elistplrrw1w6cgacxbmtdfj205valogmirc82-index24-ouzi8p",
             "text": "[MIT 6.004 L15: The Memory Hierarchy (video)](https://www.youtube.com/watch?v=vjYF_fAZI5E&list=PLrRW1w6CGAcXbMtDFj205vALOGmiRc82-&index=24)",
             "completed": false
           },
           {
-            "id": "mit-6004-l16-cache-issues-videohttpswwwyoutubecomwatchvajgc3-pyglkindex25listplrrw1w6cgacxbmtdfj205valogmirc82-even-more-knowledge",
+            "id": "mit-6004-l16-cache-issues-videohttpswwwyoutubecomwatchvajgc3-pyglkindex25listplrrw1w6cgacxbmtdfj205valogmirc82-ouzi8p",
             "text": "[MIT 6.004 L16: Cache Issues (video)](https://www.youtube.com/watch?v=ajgC3-pyGlk&index=25&list=PLrRW1w6CGAcXbMtDFj205vALOGmiRc82-)",
             "completed": false
           },
           {
-            "id": "computer-science-162-operating-systems-25-videos-even-more-knowledge",
+            "id": "computer-science-162-operating-systems-25-videos-ouzi8p",
             "text": "Computer Science 162 - Operating Systems (25 videos):",
             "completed": false
           },
           {
-            "id": "threads-in-c-series-10-videoshttpswwwyoutubecomplaylistlistpl5jc9xfgsl8e12so1wlms0r0htqojl74m-even-more-knowledge",
+            "id": "threads-in-c-series-10-videoshttpswwwyoutubecomplaylistlistpl5jc9xfgsl8e12so1wlms0r0htqojl74m-ouzi8p",
             "text": "[threads in C++ (series - 10 videos)](https://www.youtube.com/playlist?list=PL5jc9xFGsL8E12so1wlMS0r0hTQoJL74M)",
             "completed": false
           },
           {
-            "id": "cs-377-spring-14-operating-systems-from-university-of-massachusettshttpswwwyoutubecomplaylistlistplacug5pysfbdqu8kkxbuh4k5c1il5k7k-even-more-knowledge",
+            "id": "cs-377-spring-14-operating-systems-from-university-of-massachusettshttpswwwyoutubecomplaylistlistplacug5pysfbdqu8kkxbuh4k5c1il5k7k-ouzi8p",
             "text": "[CS 377 Spring '14: Operating Systems from University of Massachusetts](https://www.youtube.com/playlist?list=PLacuG5pysFbDQU8kKxbUh4K5c1iL5_k7k)",
             "completed": false
           },
           {
-            "id": "concurrency-in-python-videos-even-more-knowledge",
+            "id": "concurrency-in-python-videos-ouzi8p",
             "text": "concurrency in Python (videos):",
             "completed": false
           },
           {
-            "id": "short-series-on-threadshttpswwwyoutubecomplaylistlistpl1h1sbf1vakvmonjwjkmuh6p8g4f2oy1-even-more-knowledge",
+            "id": "short-series-on-threadshttpswwwyoutubecomplaylistlistpl1h1sbf1vakvmonjwjkmuh6p8g4f2oy1-ouzi8p",
             "text": "[Short series on threads](https://www.youtube.com/playlist?list=PL1H1sBF1VAKVMONJWJkmUh6_p8g4F2oy1)",
             "completed": false
           },
           {
-            "id": "python-threadshttpswwwyoutubecomwatchvbs7vpnbb9jm-even-more-knowledge",
+            "id": "python-threadshttpswwwyoutubecomwatchvbs7vpnbb9jm-ouzi8p",
             "text": "[Python Threads](https://www.youtube.com/watch?v=Bs7vPNbB9JM)",
             "completed": false
           },
           {
-            "id": "understanding-the-python-gil-2010httpswwwyoutubecomwatchvobt-vmvdm8s-even-more-knowledge",
+            "id": "understanding-the-python-gil-2010httpswwwyoutubecomwatchvobt-vmvdm8s-ouzi8p",
             "text": "[Understanding the Python GIL (2010)](https://www.youtube.com/watch?v=Obt-vMVdM8s)",
             "completed": false
           },
           {
-            "id": "david-beazley-python-concurrency-from-the-ground-up-live-pycon-2015httpswwwyoutubecomwatchvmcs5ovhv9s4-even-more-knowledge",
+            "id": "david-beazley-python-concurrency-from-the-ground-up-live-pycon-2015httpswwwyoutubecomwatchvmcs5ovhv9s4-ouzi8p",
             "text": "[David Beazley - Python Concurrency From the Ground Up LIVE! - PyCon 2015](https://www.youtube.com/watch?v=MCs5OvhV9S4)",
             "completed": false
           },
           {
-            "id": "keynote-david-beazley-topics-of-interest-python-asynciohttpswwwyoutubecomwatchvzzfhjytdceu-even-more-knowledge",
+            "id": "keynote-david-beazley-topics-of-interest-python-asynciohttpswwwyoutubecomwatchvzzfhjytdceu-ouzi8p",
             "text": "[Keynote David Beazley - Topics of Interest (Python Asyncio)](https://www.youtube.com/watch?v=ZzfHjytDceU)",
             "completed": false
           },
           {
-            "id": "mutex-in-pythonhttpswwwyoutubecomwatchv0zaps8otyky-even-more-knowledge",
+            "id": "mutex-in-pythonhttpswwwyoutubecomwatchv0zaps8otyky-ouzi8p",
             "text": "[Mutex in Python](https://www.youtube.com/watch?v=0zaPs8OtyKY)",
             "completed": false
           },
           {
-            "id": "agile-software-testing-with-james-bach-videohttpswwwyoutubecomwatchvsahjf36u5u-even-more-knowledge",
+            "id": "agile-software-testing-with-james-bach-videohttpswwwyoutubecomwatchvsahjf36u5u-ouzi8p",
             "text": "[Agile Software Testing with James Bach (video)](https://www.youtube.com/watch?v=SAhJf36_u5U)",
             "completed": false
           },
           {
-            "id": "open-lecture-by-james-bach-on-software-testing-videohttpswwwyoutubecomwatchvilkthv9dvu-even-more-knowledge",
+            "id": "open-lecture-by-james-bach-on-software-testing-videohttpswwwyoutubecomwatchvilkthv9dvu-ouzi8p",
             "text": "[Open Lecture by James Bach on Software Testing (video)](https://www.youtube.com/watch?v=ILkT_HV9DVU)",
             "completed": false
           },
           {
-            "id": "steve-freeman-test-driven-development-thats-not-what-we-meant-videohttpsvimeocom83960706-even-more-knowledge",
+            "id": "steve-freeman-test-driven-development-thats-not-what-we-meant-videohttpsvimeocom83960706-ouzi8p",
             "text": "[Steve Freeman - Test-Driven Development (that’s not what we meant) (video)](https://vimeo.com/83960706)",
             "completed": false
           },
           {
-            "id": "dependency-injection-even-more-knowledge",
+            "id": "dependency-injection-ouzi8p",
             "text": "Dependency injection:",
             "completed": false
           },
           {
-            "id": "videohttpswwwyoutubecomwatchvikd2-makxyq-even-more-knowledge",
+            "id": "videohttpswwwyoutubecomwatchvikd2-makxyq-ouzi8p",
             "text": "[video](https://www.youtube.com/watch?v=IKD2-MAkXyQ)",
             "completed": false
           },
           {
-            "id": "tao-of-testinghttpjasonpolitesgithubiotao-of-testingch3-11html-even-more-knowledge",
+            "id": "tao-of-testinghttpjasonpolitesgithubiotao-of-testingch3-11html-ouzi8p",
             "text": "[Tao Of Testing](http://jasonpolites.github.io/tao-of-testing/ch3-1.1.html)",
             "completed": false
           },
           {
-            "id": "how-to-write-testshttpjasonpolitesgithubiotao-of-testingch4-11html-even-more-knowledge",
+            "id": "how-to-write-testshttpjasonpolitesgithubiotao-of-testingch4-11html-ouzi8p",
             "text": "[How to write tests](http://jasonpolites.github.io/tao-of-testing/ch4-1.1.html)",
             "completed": false
           },
           {
-            "id": "sedgewick-suffix-arrays-videohttpswwwcourseraorglearnalgorithms-part2lectureth18wsuffix-arrays-even-more-knowledge",
+            "id": "sedgewick-suffix-arrays-videohttpswwwcourseraorglearnalgorithms-part2lectureth18wsuffix-arrays-ouzi8p",
             "text": "[Sedgewick - Suffix Arrays (video)](https://www.coursera.org/learn/algorithms-part2/lecture/TH18W/suffix-arrays)",
             "completed": false
           },
           {
-            "id": "sedgewick-substring-search-videoshttpswwwcourseraorglearnalgorithms-part2homeweek4-even-more-knowledge",
+            "id": "sedgewick-substring-search-videoshttpswwwcourseraorglearnalgorithms-part2homeweek4-ouzi8p",
             "text": "[Sedgewick - Substring Search (videos)](https://www.coursera.org/learn/algorithms-part2/home/week/4)",
             "completed": false
           },
           {
-            "id": "1-introduction-to-substring-searchhttpswwwcourseraorglecturealgorithms-part2introduction-to-substring-search-n3zpg-even-more-knowledge",
+            "id": "1-introduction-to-substring-searchhttpswwwcourseraorglecturealgorithms-part2introduction-to-substring-search-n3zpg-ouzi8p",
             "text": "[1. Introduction to Substring Search](https://www.coursera.org/lecture/algorithms-part2/introduction-to-substring-search-n3ZpG)",
             "completed": false
           },
           {
-            "id": "2-brute-force-substring-searchhttpswwwcourseraorglearnalgorithms-part2lecture2kn5ibrute-force-substring-search-even-more-knowledge",
+            "id": "2-brute-force-substring-searchhttpswwwcourseraorglearnalgorithms-part2lecture2kn5ibrute-force-substring-search-ouzi8p",
             "text": "[2. Brute-Force Substring Search](https://www.coursera.org/learn/algorithms-part2/lecture/2Kn5i/brute-force-substring-search)",
             "completed": false
           },
           {
-            "id": "3-knuth-morris-pratthttpswwwcourseraorglearnalgorithms-part2lecturetatdrknuth-morris-pratt-even-more-knowledge",
+            "id": "3-knuth-morris-pratthttpswwwcourseraorglearnalgorithms-part2lecturetatdrknuth-morris-pratt-ouzi8p",
             "text": "[3. Knuth-Morris Pratt](https://www.coursera.org/learn/algorithms-part2/lecture/TAtDr/knuth-morris-pratt)",
             "completed": false
           },
           {
-            "id": "4-boyer-moorehttpswwwcourseraorglearnalgorithms-part2lecturecyxotboyer-moore-even-more-knowledge",
+            "id": "4-boyer-moorehttpswwwcourseraorglearnalgorithms-part2lecturecyxotboyer-moore-ouzi8p",
             "text": "[4. Boyer-Moore](https://www.coursera.org/learn/algorithms-part2/lecture/CYxOT/boyer-moore)",
             "completed": false
           },
           {
-            "id": "5-rabin-karphttpswwwcourseraorglecturealgorithms-part2rabin-karp-3kiqt-even-more-knowledge",
+            "id": "5-rabin-karphttpswwwcourseraorglecturealgorithms-part2rabin-karp-3kiqt-ouzi8p",
             "text": "[5. Rabin-Karp](https://www.coursera.org/lecture/algorithms-part2/rabin-karp-3KiqT)",
             "completed": false
           },
           {
-            "id": "search-pattern-in-a-text-videohttpswwwcourseraorglearndata-structureslecturetafhisearch-pattern-in-text-even-more-knowledge",
+            "id": "search-pattern-in-a-text-videohttpswwwcourseraorglearndata-structureslecturetafhisearch-pattern-in-text-ouzi8p",
             "text": "[Search pattern in a text (video)](https://www.coursera.org/learn/data-structures/lecture/tAfHI/search-pattern-in-text)",
             "completed": false
           },
           {
-            "id": "sedgewick-tries-3-videoshttpswwwcourseraorglearnalgorithms-part2homeweek4-even-more-knowledge",
+            "id": "sedgewick-tries-3-videoshttpswwwcourseraorglearnalgorithms-part2homeweek4-ouzi8p",
             "text": "[Sedgewick - Tries (3 videos)](https://www.coursera.org/learn/algorithms-part2/home/week/4)",
             "completed": false
           },
           {
-            "id": "1-r-way-trieshttpswwwcourseraorglearnalgorithms-part2lecturecpvdrr-way-tries-even-more-knowledge",
+            "id": "1-r-way-trieshttpswwwcourseraorglearnalgorithms-part2lecturecpvdrr-way-tries-ouzi8p",
             "text": "[1. R Way Tries](https://www.coursera.org/learn/algorithms-part2/lecture/CPVdr/r-way-tries)",
             "completed": false
           },
           {
-            "id": "2-ternary-search-trieshttpswwwcourseraorglearnalgorithms-part2lectureyqm8kternary-search-tries-even-more-knowledge",
+            "id": "2-ternary-search-trieshttpswwwcourseraorglearnalgorithms-part2lectureyqm8kternary-search-tries-ouzi8p",
             "text": "[2. Ternary Search Tries](https://www.coursera.org/learn/algorithms-part2/lecture/yQM8K/ternary-search-tries)",
             "completed": false
           },
           {
-            "id": "3-character-based-operationshttpswwwcourseraorglearnalgorithms-part2lecturejwnmvcharacter-based-operations-even-more-knowledge",
+            "id": "3-character-based-operationshttpswwwcourseraorglearnalgorithms-part2lecturejwnmvcharacter-based-operations-ouzi8p",
             "text": "[3. Character Based Operations](https://www.coursera.org/learn/algorithms-part2/lecture/jwNmV/character-based-operations)",
             "completed": false
           },
           {
-            "id": "notes-on-data-structures-and-programming-techniqueshttpwwwcsyaleeduhomesaspnesclasses223noteshtmltries-even-more-knowledge",
+            "id": "notes-on-data-structures-and-programming-techniqueshttpwwwcsyaleeduhomesaspnesclasses223noteshtmltries-ouzi8p",
             "text": "[Notes on Data Structures and Programming Techniques](http://www.cs.yale.edu/homes/aspnes/classes/223/notes.html#Tries)",
             "completed": false
           },
           {
-            "id": "short-course-videos-even-more-knowledge",
+            "id": "short-course-videos-ouzi8p",
             "text": "Short course videos:",
             "completed": false
           },
           {
-            "id": "introduction-to-tries-videohttpswwwcourseraorglearndata-structures-optimizing-performancelecture08xyfcore-introduction-to-tries-even-more-knowledge",
+            "id": "introduction-to-tries-videohttpswwwcourseraorglearndata-structures-optimizing-performancelecture08xyfcore-introduction-to-tries-ouzi8p",
             "text": "[Introduction To Tries (video)](https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/08Xyf/core-introduction-to-tries)",
             "completed": false
           },
           {
-            "id": "performance-of-tries-videohttpswwwcourseraorglearndata-structures-optimizing-performancelecturepvlzwcore-performance-of-tries-even-more-knowledge",
+            "id": "performance-of-tries-videohttpswwwcourseraorglearndata-structures-optimizing-performancelecturepvlzwcore-performance-of-tries-ouzi8p",
             "text": "[Performance Of Tries (video)](https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/PvlZW/core-performance-of-tries)",
             "completed": false
           },
           {
-            "id": "implementing-a-trie-videohttpswwwcourseraorglearndata-structures-optimizing-performancelecturedfvd3core-implementing-a-trie-even-more-knowledge",
+            "id": "implementing-a-trie-videohttpswwwcourseraorglearndata-structures-optimizing-performancelecturedfvd3core-implementing-a-trie-ouzi8p",
             "text": "[Implementing A Trie (video)](https://www.coursera.org/learn/data-structures-optimizing-performance/lecture/DFvd3/core-implementing-a-trie)",
             "completed": false
           },
           {
-            "id": "the-trie-a-neglected-data-structurehttpswwwtoptalcomjavathe-trie-a-neglected-data-structure-even-more-knowledge",
+            "id": "the-trie-a-neglected-data-structurehttpswwwtoptalcomjavathe-trie-a-neglected-data-structure-ouzi8p",
             "text": "[The Trie: A Neglected Data Structure](https://www.toptal.com/java/the-trie-a-neglected-data-structure)",
             "completed": false
           },
           {
-            "id": "topcoder-using-trieshttpswwwtopcodercomthrivearticlesusing20tries-even-more-knowledge",
+            "id": "topcoder-using-trieshttpswwwtopcodercomthrivearticlesusing20tries-ouzi8p",
             "text": "[TopCoder - Using Tries](https://www.topcoder.com/thrive/articles/Using%20Tries)",
             "completed": false
           },
           {
-            "id": "stanford-lecture-real-world-use-case-videohttpswwwyoutubecomwatchvtj8skcusdbu-even-more-knowledge",
+            "id": "stanford-lecture-real-world-use-case-videohttpswwwyoutubecomwatchvtj8skcusdbu-ouzi8p",
             "text": "[Stanford Lecture (real-world use case) (video)](https://www.youtube.com/watch?v=TJ8SkcUSdbU)",
             "completed": false
           },
           {
-            "id": "mit-advanced-data-structures-strings-can-get-pretty-obscure-about-halfway-through-videohttpswwwyoutubecomwatchvninwepprkdqindex16listplul4u3cngp61hsjnduldudlrl493b-xzf-even-more-knowledge",
+            "id": "mit-advanced-data-structures-strings-can-get-pretty-obscure-about-halfway-through-videohttpswwwyoutubecomwatchvninwepprkdqindex16listplul4u3cngp61hsjnduldudlrl493b-xzf-ouzi8p",
             "text": "[MIT, Advanced Data Structures, Strings (can get pretty obscure about halfway through) (video)](https://www.youtube.com/watch?v=NinWEPPrkDQ&index=16&list=PLUl4u3cNGP61hsJNdULdudlRL493b-XZf)",
             "completed": false
           },
           {
-            "id": "simple-8-bit-representation-of-floating-point-numbers-1-video-there-is-an-error-in-calculations-see-video-descriptionhttpswwwyoutubecomwatchvji3sfclm8tu-even-more-knowledge",
+            "id": "simple-8-bit-representation-of-floating-point-numbers-1-video-there-is-an-error-in-calculations-see-video-descriptionhttpswwwyoutubecomwatchvji3sfclm8tu-ouzi8p",
             "text": "simple 8-bit: [Representation of Floating Point Numbers - 1 (video - there is an error in calculations - see video description)](https://www.youtube.com/watch?v=ji3SfClm8TU)",
             "completed": false
           },
           {
-            "id": "the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-httpwwwjoelonsoftwarecomarticlesunicodehtml-even-more-knowledge",
+            "id": "the-absolute-minimum-every-software-developer-absolutely-positively-must-know-about-unicode-and-character-sets-httpwwwjoelonsoftwarecomarticlesunicodehtml-ouzi8p",
             "text": "[The Absolute Minimum Every Software Developer Absolutely, Positively Must Know About Unicode and Character Sets]( http://www.joelonsoftware.com/articles/Unicode.html)",
             "completed": false
           },
           {
-            "id": "what-every-programmer-absolutely-positively-needs-to-know-about-encodings-and-character-sets-to-work-with-texthttpkunststubenetencoding-even-more-knowledge",
+            "id": "what-every-programmer-absolutely-positively-needs-to-know-about-encodings-and-character-sets-to-work-with-texthttpkunststubenetencoding-ouzi8p",
             "text": "[What Every Programmer Absolutely, Positively Needs To Know About Encodings And Character Sets To Work With Text](http://kunststube.net/encoding/)",
             "completed": false
           },
           {
-            "id": "big-and-little-endianhttpswebarchiveorgweb20180107141940httpwwwcsumdedu80classsum2003cmsc311notesdataendianhtml-even-more-knowledge",
+            "id": "big-and-little-endianhttpswebarchiveorgweb20180107141940httpwwwcsumdedu80classsum2003cmsc311notesdataendianhtml-ouzi8p",
             "text": "[Big And Little Endian](https://web.archive.org/web/20180107141940/http://www.cs.umd.edu:80/class/sum2003/cmsc311/Notes/Data/endian.html)",
             "completed": false
           },
           {
-            "id": "big-endian-vs-little-endian-videohttpswwwyoutubecomwatchvjrnf0kralyo-even-more-knowledge",
+            "id": "big-endian-vs-little-endian-videohttpswwwyoutubecomwatchvjrnf0kralyo-ouzi8p",
             "text": "[Big Endian Vs Little Endian (video)](https://www.youtube.com/watch?v=JrNF0KRAlyo)",
             "completed": false
           },
           {
-            "id": "big-and-little-endian-insideout-videohttpswwwyoutubecomwatchvobsuxp-1tc0-even-more-knowledge",
+            "id": "big-and-little-endian-insideout-videohttpswwwyoutubecomwatchvobsuxp-1tc0-ouzi8p",
             "text": "[Big And Little Endian Inside/Out (video)](https://www.youtube.com/watch?v=oBSuXP-1Tc0)",
             "completed": false
           },
           {
-            "id": "khan-academyhttpswwwkhanacademyorgcomputingcode-orgcomputers-and-the-internet-even-more-knowledge",
+            "id": "khan-academyhttpswwwkhanacademyorgcomputingcode-orgcomputers-and-the-internet-ouzi8p",
             "text": "[Khan Academy](https://www.khanacademy.org/computing/code-org/computers-and-the-internet)",
             "completed": false
           },
           {
-            "id": "udp-and-tcp-comparison-of-transport-protocols-videohttpswwwyoutubecomwatchvvdc8tcesig8-even-more-knowledge",
+            "id": "udp-and-tcp-comparison-of-transport-protocols-videohttpswwwyoutubecomwatchvvdc8tcesig8-ouzi8p",
             "text": "[UDP and TCP: Comparison of Transport Protocols (video)](https://www.youtube.com/watch?v=Vdc8TCESIg8)",
             "completed": false
           },
           {
-            "id": "tcpip-and-the-osi-model-explained-videohttpswwwyoutubecomwatchve5deva9esn0-even-more-knowledge",
+            "id": "tcpip-and-the-osi-model-explained-videohttpswwwyoutubecomwatchve5deva9esn0-ouzi8p",
             "text": "[TCP/IP and the OSI Model Explained! (video)](https://www.youtube.com/watch?v=e5DEVa9eSN0)",
             "completed": false
           },
           {
-            "id": "packet-transmission-across-the-internet-networking-tcpip-tutorial-videohttpswwwyoutubecomwatchvnomyrjehhnm-even-more-knowledge",
+            "id": "packet-transmission-across-the-internet-networking-tcpip-tutorial-videohttpswwwyoutubecomwatchvnomyrjehhnm-ouzi8p",
             "text": "[Packet Transmission across the Internet. Networking & TCP/IP tutorial. (video)](https://www.youtube.com/watch?v=nomyRJehhnM)",
             "completed": false
           },
           {
-            "id": "http-videohttpswwwyoutubecomwatchvwgjrlqtx7as-even-more-knowledge",
+            "id": "http-videohttpswwwyoutubecomwatchvwgjrlqtx7as-ouzi8p",
             "text": "[HTTP (video)](https://www.youtube.com/watch?v=WGJrLqtX7As)",
             "completed": false
           },
           {
-            "id": "ssl-and-https-videohttpswwwyoutubecomwatchvs2ibr2zlzf0-even-more-knowledge",
+            "id": "ssl-and-https-videohttpswwwyoutubecomwatchvs2ibr2zlzf0-ouzi8p",
             "text": "[SSL and HTTPS (video)](https://www.youtube.com/watch?v=S2iBR2ZlZf0)",
             "completed": false
           },
           {
-            "id": "ssltls-videohttpswwwyoutubecomwatchvrp3izuvxwlm-even-more-knowledge",
+            "id": "ssltls-videohttpswwwyoutubecomwatchvrp3izuvxwlm-ouzi8p",
             "text": "[SSL/TLS (video)](https://www.youtube.com/watch?v=Rp3iZUvXWlM)",
             "completed": false
           },
           {
-            "id": "http-20-videohttpswwwyoutubecomwatchve9fxnzv1tr8-even-more-knowledge",
+            "id": "http-20-videohttpswwwyoutubecomwatchve9fxnzv1tr8-ouzi8p",
             "text": "[HTTP 2.0 (video)](https://www.youtube.com/watch?v=E9FxNzv1Tr8)",
             "completed": false
           },
           {
-            "id": "video-series-21-videos-videohttpswwwyoutubecomplaylistlistplebntdjuriegfoqo4ipnpyqui46qqt0j-even-more-knowledge",
+            "id": "video-series-21-videos-videohttpswwwyoutubecomplaylistlistplebntdjuriegfoqo4ipnpyqui46qqt0j-ouzi8p",
             "text": "[Video Series (21 videos) (video)](https://www.youtube.com/playlist?list=PLEbnTDJUr_IegfoqO4iPnPYQui46QqT0j)",
             "completed": false
           },
           {
-            "id": "subnetting-demystified-part-5-cidr-notation-videohttpswwwyoutubecomwatchvt5xyi0jzof4-even-more-knowledge",
+            "id": "subnetting-demystified-part-5-cidr-notation-videohttpswwwyoutubecomwatchvt5xyi0jzof4-ouzi8p",
             "text": "[Subnetting Demystified - Part 5 CIDR Notation (video)](https://www.youtube.com/watch?v=t5xYI0jzOf4)",
             "completed": false
           },
           {
-            "id": "sockets-even-more-knowledge",
+            "id": "sockets-ouzi8p",
             "text": "Sockets:",
             "completed": false
           },
           {
-            "id": "java-sockets-introduction-videohttpswwwyoutubecomwatchv6gw54zuadgt6s-even-more-knowledge",
+            "id": "java-sockets-introduction-videohttpswwwyoutubecomwatchv6gw54zuadgt6s-ouzi8p",
             "text": "[Java - Sockets - Introduction (video)](https://www.youtube.com/watch?v=6G_W54zuadg&t=6s)",
             "completed": false
           },
           {
-            "id": "socket-programming-videohttpswwwyoutubecomwatchvg75vn2mnjeq-even-more-knowledge",
+            "id": "socket-programming-videohttpswwwyoutubecomwatchvg75vn2mnjeq-ouzi8p",
             "text": "[Socket Programming (video)](https://www.youtube.com/watch?v=G75vN2mnJeQ)",
             "completed": false
           }
@@ -3697,22 +3697,22 @@
         ],
         "checkboxes": [
           {
-            "id": "series-of-2-3-minutes-short-subject-videos-23-videos-final-review",
+            "id": "series-of-2-3-minutes-short-subject-videos-23-videos-d9wl1r",
             "text": "Series of 2-3 minutes short subject videos (23 videos)",
             "completed": false
           },
           {
-            "id": "series-of-2-5-minutes-short-subject-videos-michael-sambol-48-videos-final-review",
+            "id": "series-of-2-5-minutes-short-subject-videos-michael-sambol-48-videos-d9wl1r",
             "text": "Series of 2-5 minutes short subject videos - Michael Sambol (48 videos):",
             "completed": false
           },
           {
-            "id": "sedgewick-videos-algorithms-ihttpswwwcourseraorglearnalgorithms-part1-final-review",
+            "id": "sedgewick-videos-algorithms-ihttpswwwcourseraorglearnalgorithms-part1-d9wl1r",
             "text": "[Sedgewick Videos - Algorithms I](https://www.coursera.org/learn/algorithms-part1)",
             "completed": false
           },
           {
-            "id": "sedgewick-videos-algorithms-iihttpswwwcourseraorglearnalgorithms-part2-final-review",
+            "id": "sedgewick-videos-algorithms-iihttpswwwcourseraorglearnalgorithms-part2-d9wl1r",
             "text": "[Sedgewick Videos - Algorithms II](https://www.coursera.org/learn/algorithms-part2)",
             "completed": false
           }
@@ -3818,57 +3818,57 @@
         ],
         "checkboxes": [
           {
-            "id": "how-to-pass-the-engineering-interview-in-2021httpsdavidbyttowmediumcomhow-to-pass-the-engineering-interview-in-2021-45f1b389a1-interview-process-general-interview-prep",
+            "id": "how-to-pass-the-engineering-interview-in-2021httpsdavidbyttowmediumcomhow-to-pass-the-engineering-interview-in-2021-45f1b389a1-35nnu0",
             "text": "[How to Pass the Engineering Interview in 2021](https://davidbyttow.medium.com/how-to-pass-the-engineering-interview-in-2021-45f1b389a1)",
             "completed": false
           },
           {
-            "id": "demystifying-tech-recruitinghttpswwwyoutubecomwatchvn233t0epwts-interview-process-general-interview-prep",
+            "id": "demystifying-tech-recruitinghttpswwwyoutubecomwatchvn233t0epwts-35nnu0",
             "text": "[Demystifying Tech Recruiting](https://www.youtube.com/watch?v=N233T0epWTs)",
             "completed": false
           },
           {
-            "id": "how-to-get-a-job-at-the-big-4-interview-process-general-interview-prep",
+            "id": "how-to-get-a-job-at-the-big-4-35nnu0",
             "text": "How to Get a Job at the Big 4:",
             "completed": false
           },
           {
-            "id": "how-to-get-a-job-at-the-big-4-amazon-facebook-google-microsoft-videohttpswwwyoutubecomwatchvyjzcuhxncv8-interview-process-general-interview-prep",
+            "id": "how-to-get-a-job-at-the-big-4-amazon-facebook-google-microsoft-videohttpswwwyoutubecomwatchvyjzcuhxncv8-35nnu0",
             "text": "[How to Get a Job at the Big 4 - Amazon, Facebook, Google & Microsoft (video)](https://www.youtube.com/watch?v=YJZCUhxNCv8)",
             "completed": false
           },
           {
-            "id": "how-to-get-a-job-at-the-big-41-follow-up-videohttpswwwyoutubecomwatchv6790fvxwbw8featureyoutube-interview-process-general-interview-prep",
+            "id": "how-to-get-a-job-at-the-big-41-follow-up-videohttpswwwyoutubecomwatchv6790fvxwbw8featureyoutube-35nnu0",
             "text": "[How to Get a Job at the Big 4.1 (Follow-up video)](https://www.youtube.com/watch?v=6790FVXWBw8&feature=youtu.be)",
             "completed": false
           },
           {
-            "id": "cracking-the-coding-interview-set-1-interview-process-general-interview-prep",
+            "id": "cracking-the-coding-interview-set-1-35nnu0",
             "text": "Cracking The Coding Interview Set 1:",
             "completed": false
           },
           {
-            "id": "gayle-l-mcdowell-cracking-the-coding-interview-videohttpswwwyoutubecomwatchvrejzohc5ztq-interview-process-general-interview-prep",
+            "id": "gayle-l-mcdowell-cracking-the-coding-interview-videohttpswwwyoutubecomwatchvrejzohc5ztq-35nnu0",
             "text": "[Gayle L McDowell - Cracking The Coding Interview (video)](https://www.youtube.com/watch?v=rEJzOhC5ZtQ)",
             "completed": false
           },
           {
-            "id": "cracking-the-coding-interview-with-author-gayle-laakmann-mcdowell-videohttpswwwyoutubecomwatchvaclxtdcdpsq-interview-process-general-interview-prep",
+            "id": "cracking-the-coding-interview-with-author-gayle-laakmann-mcdowell-videohttpswwwyoutubecomwatchvaclxtdcdpsq-35nnu0",
             "text": "[Cracking the Coding Interview with Author Gayle Laakmann McDowell (video)](https://www.youtube.com/watch?v=aClxtDcdpsQ)",
             "completed": false
           },
           {
-            "id": "cracking-the-facebook-coding-interview-interview-process-general-interview-prep",
+            "id": "cracking-the-facebook-coding-interview-35nnu0",
             "text": "Cracking the Facebook Coding Interview:",
             "completed": false
           },
           {
-            "id": "the-approachhttpswwwyoutubecomwatchvwcl9kvqghpi-interview-process-general-interview-prep",
+            "id": "the-approachhttpswwwyoutubecomwatchvwcl9kvqghpi-35nnu0",
             "text": "[The Approach](https://www.youtube.com/watch?v=wCl9kvQGHPI)",
             "completed": false
           },
           {
-            "id": "problem-walkthroughhttpswwwyoutubecomwatchv4uwdyjq8jzg-interview-process-general-interview-prep",
+            "id": "problem-walkthroughhttpswwwyoutubecomwatchv4uwdyjq8jzg-35nnu0",
             "text": "[Problem Walkthrough](https://www.youtube.com/watch?v=4UWDyJq8jZg)",
             "completed": false
           }
@@ -4211,267 +4211,267 @@
         ],
         "checkboxes": [
           {
-            "id": "start-here-the-system-design-primerhttpsgithubcomdonnemartinsystem-design-primer-system-design-scalability-data-handling",
+            "id": "start-here-the-system-design-primerhttpsgithubcomdonnemartinsystem-design-primer-9q45yx",
             "text": "**START HERE**: [The System Design Primer](https://github.com/donnemartin/system-design-primer)",
             "completed": false
           },
           {
-            "id": "system-design-from-hiredintechhttpwwwhiredintechcomsystem-design-system-design-scalability-data-handling",
+            "id": "system-design-from-hiredintechhttpwwwhiredintechcomsystem-design-9q45yx",
             "text": "[System Design from HiredInTech](http://www.hiredintech.com/system-design/)",
             "completed": false
           },
           {
-            "id": "how-do-i-prepare-to-answer-design-questions-in-a-technical-interviewhttpswwwquoracomhow-do-i-prepare-to-answer-design-questions-in-a-technical-interviewredirectedqid1500023-system-design-scalability-data-handling",
+            "id": "how-do-i-prepare-to-answer-design-questions-in-a-technical-interviewhttpswwwquoracomhow-do-i-prepare-to-answer-design-questions-in-a-technical-interviewredirectedqid1500023-9q45yx",
             "text": "[How Do I Prepare To Answer Design Questions In A Technical Interview?](https://www.quora.com/How-do-I-prepare-to-answer-design-questions-in-a-technical-interview?redirected_qid=1500023)",
             "completed": false
           },
           {
-            "id": "8-steps-guide-to-ace-your-system-design-interviewhttpsjavascriptplainenglishio8-steps-guide-to-ace-a-system-design-interview-7a5a797f4d7d-system-design-scalability-data-handling",
+            "id": "8-steps-guide-to-ace-your-system-design-interviewhttpsjavascriptplainenglishio8-steps-guide-to-ace-a-system-design-interview-7a5a797f4d7d-9q45yx",
             "text": "[8 steps guide to ace your system design interview](https://javascript.plainenglish.io/8-steps-guide-to-ace-a-system-design-interview-7a5a797f4d7d)",
             "completed": false
           },
           {
-            "id": "database-normalization-1nf-2nf-3nf-and-4nf-videohttpswwwyoutubecomwatchvurylyv7wshm-system-design-scalability-data-handling",
+            "id": "database-normalization-1nf-2nf-3nf-and-4nf-videohttpswwwyoutubecomwatchvurylyv7wshm-9q45yx",
             "text": "[Database Normalization - 1NF, 2NF, 3NF and 4NF (video)](https://www.youtube.com/watch?v=UrYLYV7WSHM)",
             "completed": false
           },
           {
-            "id": "system-design-interviewhttpsgithubcomcheckcheckzzsystem-design-interview-there-are-a-lot-of-resources-in-this-one-look-through-the-articles-and-examples-i-put-some-of-them-below-system-design-scalability-data-handling",
+            "id": "system-design-interviewhttpsgithubcomcheckcheckzzsystem-design-interview-there-are-a-lot-of-resources-in-this-one-look-through-the-articles-and-examples-i-put-some-of-them-below-9q45yx",
             "text": "[System Design Interview](https://github.com/checkcheckzz/system-design-interview) - There are a lot of resources in this one. Look through the articles and examples. I put some of them below",
             "completed": false
           },
           {
-            "id": "how-to-ace-a-systems-design-interviewhttpswebarchiveorgweb20120716060051httpwwwpalantircom201110how-to-rock-a-systems-design-interview-system-design-scalability-data-handling",
+            "id": "how-to-ace-a-systems-design-interviewhttpswebarchiveorgweb20120716060051httpwwwpalantircom201110how-to-rock-a-systems-design-interview-9q45yx",
             "text": "[How to ace a systems design interview](https://web.archive.org/web/20120716060051/http://www.palantir.com/2011/10/how-to-rock-a-systems-design-interview/)",
             "completed": false
           },
           {
-            "id": "numbers-everyone-should-knowhttpeverythingisdatawordpresscom20091017numbers-everyone-should-know-system-design-scalability-data-handling",
+            "id": "numbers-everyone-should-knowhttpeverythingisdatawordpresscom20091017numbers-everyone-should-know-9q45yx",
             "text": "[Numbers Everyone Should Know](http://everythingisdata.wordpress.com/2009/10/17/numbers-everyone-should-know/)",
             "completed": false
           },
           {
-            "id": "how-long-does-it-take-to-make-a-context-switchhttpblogtsunanetnet201011how-long-does-it-take-to-make-contexthtml-system-design-scalability-data-handling",
+            "id": "how-long-does-it-take-to-make-a-context-switchhttpblogtsunanetnet201011how-long-does-it-take-to-make-contexthtml-9q45yx",
             "text": "[How long does it take to make a context switch?](http://blog.tsunanet.net/2010/11/how-long-does-it-take-to-make-context.html)",
             "completed": false
           },
           {
-            "id": "transactions-across-datacenters-videohttpswwwyoutubecomwatchvsrogpxecblk-system-design-scalability-data-handling",
+            "id": "transactions-across-datacenters-videohttpswwwyoutubecomwatchvsrogpxecblk-9q45yx",
             "text": "[Transactions Across Datacenters (video)](https://www.youtube.com/watch?v=srOgpXECblk)",
             "completed": false
           },
           {
-            "id": "a-plain-english-introduction-to-cap-theoremhttpksatmea-plain-english-introduction-to-cap-theorem-system-design-scalability-data-handling",
+            "id": "a-plain-english-introduction-to-cap-theoremhttpksatmea-plain-english-introduction-to-cap-theorem-9q45yx",
             "text": "[A plain English introduction to CAP Theorem](http://ksat.me/a-plain-english-introduction-to-cap-theorem)",
             "completed": false
           },
           {
-            "id": "mit-6824-distributed-systems-spring-2020-20-videoshttpswwwyoutubecomwatchvcqp8wapziqqlistplrw6a1we39tb2feri4-wkmbsvgqk9ub-system-design-scalability-data-handling",
+            "id": "mit-6824-distributed-systems-spring-2020-20-videoshttpswwwyoutubecomwatchvcqp8wapziqqlistplrw6a1we39tb2feri4-wkmbsvgqk9ub-9q45yx",
             "text": "[MIT 6.824: Distributed Systems, Spring 2020 (20 videos)](https://www.youtube.com/watch?v=cQP8WApzIQQ&list=PLrw6a1wE39_tb2fErI4-WkMbsvGQk9_UB)",
             "completed": false
           },
           {
-            "id": "consensus-algorithms-system-design-scalability-data-handling",
+            "id": "consensus-algorithms-9q45yx",
             "text": "Consensus Algorithms:",
             "completed": false
           },
           {
-            "id": "paxos-paxos-agreement-computerphile-videohttpswwwyoutubecomwatchvs8jqcztvnsm-system-design-scalability-data-handling",
+            "id": "paxos-paxos-agreement-computerphile-videohttpswwwyoutubecomwatchvs8jqcztvnsm-9q45yx",
             "text": "Paxos - [Paxos Agreement - Computerphile (video)](https://www.youtube.com/watch?v=s8JqcZtvnsM)",
             "completed": false
           },
           {
-            "id": "raft-an-introduction-to-the-raft-distributed-consensus-algorithm-videohttpswwwyoutubecomwatchvp9ydif5qve-system-design-scalability-data-handling",
+            "id": "raft-an-introduction-to-the-raft-distributed-consensus-algorithm-videohttpswwwyoutubecomwatchvp9ydif5qve-9q45yx",
             "text": "Raft - [An Introduction to the Raft Distributed Consensus Algorithm (video)](https://www.youtube.com/watch?v=P9Ydif5_qvE)",
             "completed": false
           },
           {
-            "id": "easy-to-read-paperhttpsraftgithubio-system-design-scalability-data-handling",
+            "id": "easy-to-read-paperhttpsraftgithubio-9q45yx",
             "text": "[Easy-to-read paper](https://raft.github.io/)",
             "completed": false
           },
           {
-            "id": "infographichttpthesecretlivesofdatacomraft-system-design-scalability-data-handling",
+            "id": "infographichttpthesecretlivesofdatacomraft-9q45yx",
             "text": "[Infographic](http://thesecretlivesofdata.com/raft/)",
             "completed": false
           },
           {
-            "id": "consistent-hashinghttpwwwtom-e-whitecom200711consistent-hashinghtml-system-design-scalability-data-handling",
+            "id": "consistent-hashinghttpwwwtom-e-whitecom200711consistent-hashinghtml-9q45yx",
             "text": "[Consistent Hashing](http://www.tom-e-white.com/2007/11/consistent-hashing.html)",
             "completed": false
           },
           {
-            "id": "nosql-patternshttphorickyblogspotcom200911nosql-patternshtml-system-design-scalability-data-handling",
+            "id": "nosql-patternshttphorickyblogspotcom200911nosql-patternshtml-9q45yx",
             "text": "[NoSQL Patterns](http://horicky.blogspot.com/2009/11/nosql-patterns.html)",
             "completed": false
           },
           {
-            "id": "scalability-system-design-scalability-data-handling",
+            "id": "scalability-9q45yx",
             "text": "Scalability:",
             "completed": false
           },
           {
-            "id": "great-overview-videohttpswwwyoutubecomwatchv-w9fd3oy4-system-design-scalability-data-handling",
+            "id": "great-overview-videohttpswwwyoutubecomwatchv-w9fd3oy4-9q45yx",
             "text": "[Great overview (video)](https://www.youtube.com/watch?v=-W9F__D3oY4)",
             "completed": false
           },
           {
-            "id": "short-series-system-design-scalability-data-handling",
+            "id": "short-series-9q45yx",
             "text": "Short series:",
             "completed": false
           },
           {
-            "id": "scalable-web-architecture-and-distributed-systemshttpwwwaosabookorgendistsyshtml-system-design-scalability-data-handling",
+            "id": "scalable-web-architecture-and-distributed-systemshttpwwwaosabookorgendistsyshtml-9q45yx",
             "text": "[Scalable Web Architecture and Distributed Systems](http://www.aosabook.org/en/distsys.html)",
             "completed": false
           },
           {
-            "id": "fallacies-of-distributed-computing-explainedhttpspagescswisceduzuyufilesfallaciespdf-system-design-scalability-data-handling",
+            "id": "fallacies-of-distributed-computing-explainedhttpspagescswisceduzuyufilesfallaciespdf-9q45yx",
             "text": "[Fallacies of Distributed Computing Explained](https://pages.cs.wisc.edu/~zuyu/files/fallacies.pdf)",
             "completed": false
           },
           {
-            "id": "jeff-dean-building-software-systems-at-google-and-lessons-learned-videohttpswwwyoutubecomwatchvmodxc5iwtji-system-design-scalability-data-handling",
+            "id": "jeff-dean-building-software-systems-at-google-and-lessons-learned-videohttpswwwyoutubecomwatchvmodxc5iwtji-9q45yx",
             "text": "[Jeff Dean - Building Software Systems At Google and Lessons Learned (video)](https://www.youtube.com/watch?v=modXC5IWTJI)",
             "completed": false
           },
           {
-            "id": "introduction-to-architecting-systems-for-scalehttplethaincomintroduction-to-architecting-systems-for-scale-system-design-scalability-data-handling",
+            "id": "introduction-to-architecting-systems-for-scalehttplethaincomintroduction-to-architecting-systems-for-scale-9q45yx",
             "text": "[Introduction to Architecting Systems for Scale](http://lethain.com/introduction-to-architecting-systems-for-scale/)",
             "completed": false
           },
           {
-            "id": "scaling-mobile-games-to-a-global-audience-using-app-engine-and-cloud-datastore-videohttpswwwyoutubecomwatchv9nwywwy2onc-system-design-scalability-data-handling",
+            "id": "scaling-mobile-games-to-a-global-audience-using-app-engine-and-cloud-datastore-videohttpswwwyoutubecomwatchv9nwywwy2onc-9q45yx",
             "text": "[Scaling mobile games to a global audience using App Engine and Cloud Datastore (video)](https://www.youtube.com/watch?v=9nWyWwY2Onc)",
             "completed": false
           },
           {
-            "id": "how-google-does-planet-scale-engineering-for-planet-scale-infra-videohttpswwwyoutubecomwatchvh4vmcd7zkm0-system-design-scalability-data-handling",
+            "id": "how-google-does-planet-scale-engineering-for-planet-scale-infra-videohttpswwwyoutubecomwatchvh4vmcd7zkm0-9q45yx",
             "text": "[How Google Does Planet-Scale Engineering for Planet-Scale Infra (video)](https://www.youtube.com/watch?v=H4vMcD7zKM0)",
             "completed": false
           },
           {
-            "id": "the-importance-of-algorithmshttpswwwtopcodercomthrivearticlesthe20importance20of20algorithms-system-design-scalability-data-handling",
+            "id": "the-importance-of-algorithmshttpswwwtopcodercomthrivearticlesthe20importance20of20algorithms-9q45yx",
             "text": "[The Importance of Algorithms](https://www.topcoder.com/thrive/articles/The%20Importance%20of%20Algorithms)",
             "completed": false
           },
           {
-            "id": "shardinghttphighscalabilitycomblog200986an-unorthodox-approach-to-database-design-the-coming-of-thehtml-system-design-scalability-data-handling",
+            "id": "shardinghttphighscalabilitycomblog200986an-unorthodox-approach-to-database-design-the-coming-of-thehtml-9q45yx",
             "text": "[Sharding](http://highscalability.com/blog/2009/8/6/an-unorthodox-approach-to-database-design-the-coming-of-the.html)",
             "completed": false
           },
           {
-            "id": "engineering-for-the-long-game-astrid-atkinson-keynotevideohttpswwwyoutubecomwatchvp0jgmgirfmlistplrxxvaym8gqvlexpc5dg3tgwjtabgqsaindex4-system-design-scalability-data-handling",
+            "id": "engineering-for-the-long-game-astrid-atkinson-keynotevideohttpswwwyoutubecomwatchvp0jgmgirfmlistplrxxvaym8gqvlexpc5dg3tgwjtabgqsaindex4-9q45yx",
             "text": "[Engineering for the Long Game - Astrid Atkinson Keynote(video)](https://www.youtube.com/watch?v=p0jGmgIrf_M&list=PLRXxvay_m8gqVlExPC5DG3TGWJTaBgqSA&index=4)",
             "completed": false
           },
           {
-            "id": "7-years-of-youtube-scalability-lessons-in-30-minuteshttphighscalabilitycomblog20123267-years-of-youtube-scalability-lessons-in-30-minuteshtml-system-design-scalability-data-handling",
+            "id": "7-years-of-youtube-scalability-lessons-in-30-minuteshttphighscalabilitycomblog20123267-years-of-youtube-scalability-lessons-in-30-minuteshtml-9q45yx",
             "text": "[7 Years Of YouTube Scalability Lessons In 30 Minutes](http://highscalability.com/blog/2012/3/26/7-years-of-youtube-scalability-lessons-in-30-minutes.html)",
             "completed": false
           },
           {
-            "id": "how-paypal-scaled-to-billions-of-transactions-daily-using-just-8vmshttphighscalabilitycomblog2016815how-paypal-scaled-to-billions-of-transactions-daily-using-juhtml-system-design-scalability-data-handling",
+            "id": "how-paypal-scaled-to-billions-of-transactions-daily-using-just-8vmshttphighscalabilitycomblog2016815how-paypal-scaled-to-billions-of-transactions-daily-using-juhtml-9q45yx",
             "text": "[How PayPal Scaled To Billions Of Transactions Daily Using Just 8VMs](http://highscalability.com/blog/2016/8/15/how-paypal-scaled-to-billions-of-transactions-daily-using-ju.html)",
             "completed": false
           },
           {
-            "id": "how-to-remove-duplicates-in-large-datasetshttpsblogclevertapcomhow-to-remove-duplicates-in-large-datasets-system-design-scalability-data-handling",
+            "id": "how-to-remove-duplicates-in-large-datasetshttpsblogclevertapcomhow-to-remove-duplicates-in-large-datasets-9q45yx",
             "text": "[How to Remove Duplicates in Large Datasets](https://blog.clevertap.com/how-to-remove-duplicates-in-large-datasets/)",
             "completed": false
           },
           {
-            "id": "a-look-inside-etsys-scale-and-engineering-culture-with-jon-cowie-videohttpswwwyoutubecomwatchv3vv4yiqkm1o-system-design-scalability-data-handling",
+            "id": "a-look-inside-etsys-scale-and-engineering-culture-with-jon-cowie-videohttpswwwyoutubecomwatchv3vv4yiqkm1o-9q45yx",
             "text": "[A look inside Etsy's scale and engineering culture with Jon Cowie (video)](https://www.youtube.com/watch?v=3vV4YiqKm1o)",
             "completed": false
           },
           {
-            "id": "what-led-amazon-to-its-own-microservices-architecturehttpthenewstackioled-amazon-microservices-architecture-system-design-scalability-data-handling",
+            "id": "what-led-amazon-to-its-own-microservices-architecturehttpthenewstackioled-amazon-microservices-architecture-9q45yx",
             "text": "[What Led Amazon to its Own Microservices Architecture](http://thenewstack.io/led-amazon-microservices-architecture/)",
             "completed": false
           },
           {
-            "id": "to-compress-or-not-to-compress-that-was-ubers-questionhttpsengubercomtrip-data-squeeze-system-design-scalability-data-handling",
+            "id": "to-compress-or-not-to-compress-that-was-ubers-questionhttpsengubercomtrip-data-squeeze-9q45yx",
             "text": "[To Compress Or Not To Compress, That Was Uber's Question](https://eng.uber.com/trip-data-squeeze/)",
             "completed": false
           },
           {
-            "id": "when-should-approximate-query-processing-be-usedhttphighscalabilitycomblog2016225when-should-approximate-query-processing-be-usedhtml-system-design-scalability-data-handling",
+            "id": "when-should-approximate-query-processing-be-usedhttphighscalabilitycomblog2016225when-should-approximate-query-processing-be-usedhtml-9q45yx",
             "text": "[When Should Approximate Query Processing Be Used?](http://highscalability.com/blog/2016/2/25/when-should-approximate-query-processing-be-used.html)",
             "completed": false
           },
           {
-            "id": "googles-transition-from-single-datacenter-to-failover-to-a-native-multihomed-architecture-httphighscalabilitycomblog2016223googles-transition-from-single-datacenter-to-failover-to-a-nhtml-system-design-scalability-data-handling",
+            "id": "googles-transition-from-single-datacenter-to-failover-to-a-native-multihomed-architecture-httphighscalabilitycomblog2016223googles-transition-from-single-datacenter-to-failover-to-a-nhtml-9q45yx",
             "text": "[Google's Transition From Single Datacenter To Failover, To A Native Multihomed Architecture]( http://highscalability.com/blog/2016/2/23/googles-transition-from-single-datacenter-to-failover-to-a-n.html)",
             "completed": false
           },
           {
-            "id": "the-image-optimization-technology-that-serves-millions-of-requests-per-dayhttphighscalabilitycomblog2016615the-image-optimization-technology-that-serves-millions-of-rehtml-system-design-scalability-data-handling",
+            "id": "the-image-optimization-technology-that-serves-millions-of-requests-per-dayhttphighscalabilitycomblog2016615the-image-optimization-technology-that-serves-millions-of-rehtml-9q45yx",
             "text": "[The Image Optimization Technology That Serves Millions Of Requests Per Day](http://highscalability.com/blog/2016/6/15/the-image-optimization-technology-that-serves-millions-of-re.html)",
             "completed": false
           },
           {
-            "id": "a-patreon-architecture-shorthttphighscalabilitycomblog201621a-patreon-architecture-shorthtml-system-design-scalability-data-handling",
+            "id": "a-patreon-architecture-shorthttphighscalabilitycomblog201621a-patreon-architecture-shorthtml-9q45yx",
             "text": "[A Patreon Architecture Short](http://highscalability.com/blog/2016/2/1/a-patreon-architecture-short.html)",
             "completed": false
           },
           {
-            "id": "tinder-how-does-one-of-the-largest-recommendation-engines-decide-who-youll-see-nexthttphighscalabilitycomblog2016127tinder-how-does-one-of-the-largest-recommendation-engines-dehtml-system-design-scalability-data-handling",
+            "id": "tinder-how-does-one-of-the-largest-recommendation-engines-decide-who-youll-see-nexthttphighscalabilitycomblog2016127tinder-how-does-one-of-the-largest-recommendation-engines-dehtml-9q45yx",
             "text": "[Tinder: How Does One Of The Largest Recommendation Engines Decide Who You'll See Next?](http://highscalability.com/blog/2016/1/27/tinder-how-does-one-of-the-largest-recommendation-engines-de.html)",
             "completed": false
           },
           {
-            "id": "design-of-a-modern-cachehttphighscalabilitycomblog2016125design-of-a-modern-cachehtml-system-design-scalability-data-handling",
+            "id": "design-of-a-modern-cachehttphighscalabilitycomblog2016125design-of-a-modern-cachehtml-9q45yx",
             "text": "[Design Of A Modern Cache](http://highscalability.com/blog/2016/1/25/design-of-a-modern-cache.html)",
             "completed": false
           },
           {
-            "id": "live-video-streaming-at-facebook-scalehttphighscalabilitycomblog2016113live-video-streaming-at-facebook-scalehtml-system-design-scalability-data-handling",
+            "id": "live-video-streaming-at-facebook-scalehttphighscalabilitycomblog2016113live-video-streaming-at-facebook-scalehtml-9q45yx",
             "text": "[Live Video Streaming At Facebook Scale](http://highscalability.com/blog/2016/1/13/live-video-streaming-at-facebook-scale.html)",
             "completed": false
           },
           {
-            "id": "a-beginners-guide-to-scaling-to-11-million-users-on-amazons-awshttphighscalabilitycomblog2016111a-beginners-guide-to-scaling-to-11-million-users-on-amazonshtml-system-design-scalability-data-handling",
+            "id": "a-beginners-guide-to-scaling-to-11-million-users-on-amazons-awshttphighscalabilitycomblog2016111a-beginners-guide-to-scaling-to-11-million-users-on-amazonshtml-9q45yx",
             "text": "[A Beginner's Guide To Scaling To 11 Million+ Users On Amazon's AWS](http://highscalability.com/blog/2016/1/11/a-beginners-guide-to-scaling-to-11-million-users-on-amazons.html)",
             "completed": false
           },
           {
-            "id": "a-360-degree-view-of-the-entire-netflix-stackhttphighscalabilitycomblog2015119a-360-degree-view-of-the-entire-netflix-stackhtml-system-design-scalability-data-handling",
+            "id": "a-360-degree-view-of-the-entire-netflix-stackhttphighscalabilitycomblog2015119a-360-degree-view-of-the-entire-netflix-stackhtml-9q45yx",
             "text": "[A 360 Degree View Of The Entire Netflix Stack](http://highscalability.com/blog/2015/11/9/a-360-degree-view-of-the-entire-netflix-stack.html)",
             "completed": false
           },
           {
-            "id": "latency-is-everywhere-and-it-costs-you-sales-how-to-crush-ithttphighscalabilitycomlatency-everywhere-and-it-costs-you-sales-how-crush-it-system-design-scalability-data-handling",
+            "id": "latency-is-everywhere-and-it-costs-you-sales-how-to-crush-ithttphighscalabilitycomlatency-everywhere-and-it-costs-you-sales-how-crush-it-9q45yx",
             "text": "[Latency Is Everywhere And It Costs You Sales - How To Crush It](http://highscalability.com/latency-everywhere-and-it-costs-you-sales-how-crush-it)",
             "completed": false
           },
           {
-            "id": "what-powers-instagram-hundreds-of-instances-dozens-of-technologieshttpinstagram-engineeringtumblrcompost13649370142what-powers-instagram-hundreds-of-instances-system-design-scalability-data-handling",
+            "id": "what-powers-instagram-hundreds-of-instances-dozens-of-technologieshttpinstagram-engineeringtumblrcompost13649370142what-powers-instagram-hundreds-of-instances-9q45yx",
             "text": "[What Powers Instagram: Hundreds of Instances, Dozens of Technologies](http://instagram-engineering.tumblr.com/post/13649370142/what-powers-instagram-hundreds-of-instances)",
             "completed": false
           },
           {
-            "id": "salesforce-architecture-how-they-handle-13-billion-transactions-a-dayhttphighscalabilitycomblog2013923salesforce-architecture-how-they-handle-13-billion-transactihtml-system-design-scalability-data-handling",
+            "id": "salesforce-architecture-how-they-handle-13-billion-transactions-a-dayhttphighscalabilitycomblog2013923salesforce-architecture-how-they-handle-13-billion-transactihtml-9q45yx",
             "text": "[Salesforce Architecture - How They Handle 1.3 Billion Transactions A Day](http://highscalability.com/blog/2013/9/23/salesforce-architecture-how-they-handle-13-billion-transacti.html)",
             "completed": false
           },
           {
-            "id": "espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhs-per-secondhttphighscalabilitycomblog2013114espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhshtml-system-design-scalability-data-handling",
+            "id": "espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhs-per-secondhttphighscalabilitycomblog2013114espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhshtml-9q45yx",
             "text": "[ESPN's Architecture At Scale - Operating At 100,000 Duh Nuh Nuhs Per Second](http://highscalability.com/blog/2013/11/4/espns-architecture-at-scale-operating-at-100000-duh-nuh-nuhs.html)",
             "completed": false
           },
           {
-            "id": "see-messaging-serialization-and-queueing-systems-way-below-for-info-on-some-of-the-technologies-that-can-glue-services-together-system-design-scalability-data-handling",
+            "id": "see-messaging-serialization-and-queueing-systems-way-below-for-info-on-some-of-the-technologies-that-can-glue-services-together-9q45yx",
             "text": "See \"Messaging, Serialization, and Queueing Systems\" way below for info on some of the technologies that can glue services together",
             "completed": false
           },
           {
-            "id": "twitter-system-design-scalability-data-handling",
+            "id": "twitter-9q45yx",
             "text": "Twitter:",
             "completed": false
           },
           {
-            "id": "practicing-the-system-design-process-here-are-some-ideas-to-try-working-through-on-paper-each-with-some-documentation-on-how-it-was-handled-in-the-real-world-system-design-scalability-data-handling",
+            "id": "practicing-the-system-design-process-here-are-some-ideas-to-try-working-through-on-paper-each-with-some-documentation-on-how-it-was-handled-in-the-real-world-9q45yx",
             "text": "Practicing the system design process: Here are some ideas to try working through on paper, each with some documentation on how it was handled in the real world:",
             "completed": false
           }
@@ -5297,32 +5297,32 @@
         ],
         "checkboxes": [
           {
-            "id": "bob-martin-solid-principles-of-object-oriented-and-agile-design-videohttpswwwyoutubecomwatchvtmuno5rznee-additional-detail-on-some-subjects",
+            "id": "bob-martin-solid-principles-of-object-oriented-and-agile-design-videohttpswwwyoutubecomwatchvtmuno5rznee-73btd4",
             "text": "[Bob Martin SOLID Principles of Object Oriented and Agile Design (video)](https://www.youtube.com/watch?v=TMuno5RZNeE)",
             "completed": false
           },
           {
-            "id": "s-single-responsibility-principlehttpwwwoodesigncomsingle-responsibility-principlehtml-single-responsibility-to-each-objecthttpwwwjavacodegeekscom201111solid-single-responsibility-principlehtml-additional-detail-on-some-subjects",
+            "id": "s-single-responsibility-principlehttpwwwoodesigncomsingle-responsibility-principlehtml-single-responsibility-to-each-objecthttpwwwjavacodegeekscom201111solid-single-responsibility-principlehtml-73btd4",
             "text": "S - [Single Responsibility Principle](http://www.oodesign.com/single-responsibility-principle.html) | [Single responsibility to each Object](http://www.javacodegeeks.com/2011/11/solid-single-responsibility-principle.html)",
             "completed": false
           },
           {
-            "id": "o-openclosed-principlehttpwwwoodesigncomopen-close-principlehtml-on-production-level-objects-are-ready-for-extension-but-not-for-modificationhttpsenwikipediaorgwikiopenclosedprinciple-additional-detail-on-some-subjects",
+            "id": "o-openclosed-principlehttpwwwoodesigncomopen-close-principlehtml-on-production-level-objects-are-ready-for-extension-but-not-for-modificationhttpsenwikipediaorgwikiopenclosedprinciple-73btd4",
             "text": "O - [Open/Closed Principle](http://www.oodesign.com/open-close-principle.html)  | [On production level Objects are ready for extension but not for modification](https://en.wikipedia.org/wiki/Open/closed_principle)",
             "completed": false
           },
           {
-            "id": "l-liskov-substitution-principlehttpwwwoodesigncomliskov-s-substitution-principlehtml-base-class-and-derived-class-follow-is-a-principlehttpstackoverflowcomquestions56860what-is-the-liskov-substitution-principle-additional-detail-on-some-subjects",
+            "id": "l-liskov-substitution-principlehttpwwwoodesigncomliskov-s-substitution-principlehtml-base-class-and-derived-class-follow-is-a-principlehttpstackoverflowcomquestions56860what-is-the-liskov-substitution-principle-73btd4",
             "text": "L - [Liskov Substitution Principle](http://www.oodesign.com/liskov-s-substitution-principle.html) | [Base Class and Derived class follow ‘IS A’ Principle](http://stackoverflow.com/questions/56860/what-is-the-liskov-substitution-principle)",
             "completed": false
           },
           {
-            "id": "i-interface-segregation-principlehttpwwwoodesigncominterface-segregation-principlehtml-clients-should-not-be-forced-to-implement-interfaces-they-dont-use-additional-detail-on-some-subjects",
+            "id": "i-interface-segregation-principlehttpwwwoodesigncominterface-segregation-principlehtml-clients-should-not-be-forced-to-implement-interfaces-they-dont-use-73btd4",
             "text": "I - [Interface segregation principle](http://www.oodesign.com/interface-segregation-principle.html) | Clients should not be forced to implement interfaces they don't use",
             "completed": false
           },
           {
-            "id": "d-dependency-inversion-principlehttpwwwoodesigncomdependency-inversion-principlehtml-reduce-the-dependency-in-composition-of-objects-additional-detail-on-some-subjects",
+            "id": "d-dependency-inversion-principlehttpwwwoodesigncomdependency-inversion-principlehtml-reduce-the-dependency-in-composition-of-objects-73btd4",
             "text": "D -[Dependency Inversion principle](http://www.oodesign.com/dependency-inversion-principle.html) | Reduce the dependency In composition of objects.",
             "completed": false
           }

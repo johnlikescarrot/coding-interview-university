@@ -1,6 +1,6 @@
 import fs from 'fs';
 import path from 'path';
-import { parseMarkdownToCurriculum } from './curriculum-logic';
+import { parseMarkdownToCurriculum } from './curriculum-utils';
 import { SUPPORTED_LANGUAGES } from './constants';
 
 const DATA_DIR = path.join(process.cwd(), 'public', 'data');
@@ -17,7 +17,9 @@ SUPPORTED_LANGUAGES.forEach((lang) => {
 
     if (fs.existsSync(filePath)) {
       const content = fs.readFileSync(filePath, 'utf-8');
+      // Shared logic between build generation and runtime parser
       const curriculum = parseMarkdownToCurriculum(content);
+
       fs.writeFileSync(
         path.join(DATA_DIR, `curriculum-${lang.code}.json`),
         JSON.stringify(curriculum, null, 2)

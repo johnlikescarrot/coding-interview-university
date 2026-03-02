@@ -19,15 +19,16 @@ describe('useProgressStore', () => {
       expect(useProgressStore.getState().language).toBe('es');
     });
 
-    it('should toggle a checkbox', () => {
+    it('should toggle a checkbox with namespacing', () => {
       const topicId = 'topic-1';
       const checkboxId = 'check-1';
+      const namespacedKey = `${topicId}:${checkboxId}`;
 
       useProgressStore.getState().toggleCheckbox(topicId, checkboxId);
-      expect(useProgressStore.getState().completedCheckboxes[checkboxId]).toBe(true);
+      expect(useProgressStore.getState().completedCheckboxes[namespacedKey]).toBe(true);
 
       useProgressStore.getState().toggleCheckbox(topicId, checkboxId);
-      expect(useProgressStore.getState().completedCheckboxes[checkboxId]).toBe(false);
+      expect(useProgressStore.getState().completedCheckboxes[namespacedKey]).toBe(false);
     });
   });
 });

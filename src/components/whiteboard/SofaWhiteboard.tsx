@@ -2,78 +2,104 @@
 
 import * as React from "react"
 import { Button } from "@/components/ui/button"
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
-import { Download, Eraser, Pen, Trash2 } from "lucide-react"
+import { Pen, Eraser, Trash2, Download } from "lucide-react"
+import { cn } from "@/lib/utils"
 
-const CANVAS_WIDTH = 1000
-const CANVAS_HEIGHT = 600
+const INTERNAL_WIDTH = 1000
+const INTERNAL_HEIGHT = 600
+
+const COLORS = [
+  { name: "Black", value: "#000000" },
+  { name: "Blue", value: "#2563eb" },
+  { name: "Red", value: "#dc2626" },
+  { name: "Green", value: "#16a34a" },
+]
 
 export default function SofaWhiteboard() {
   const canvasRef = React.useRef<HTMLCanvasElement>(null)
-  const isDrawingRef = React.useRef(false)
+  const ctxRef = React.useRef<CanvasRenderingContext2D | null>(null)
   const [tool, setTool] = React.useState<"pen" | "eraser">("pen")
+  const [color, setColor] = React.useState("#000000")
 
-  const getCoordinates = (e: React.MouseEvent | React.TouchEvent) => {
+  // Refs to avoid stale closures in event handlers
+  const isDrawing = React.useRef(false)
+  const lastPoint = React.useRef<{ x: number; y: number } | null>(null)
+
+  React.useEffect(() => {
     const canvas = canvasRef.current
-    if (!canvas) return { x: 0, y: 0 }
+    if (!canvas) return
+
+    const ctx = canvas.getContext("2d")
+    if (!ctx) return
+
+    ctx.lineCap = "round"
+    ctx.lineJoin = "round"
+    ctxRef.current = ctx
+  }, [])
+
+  const getCoordinates = (e: React.MouseEvent | React.TouchEvent | MouseEvent | TouchEvent) => {
+    const canvas = canvasRef.current
+    if (!canvas) return null
 
     const rect = canvas.getBoundingClientRect()
-    const clientX = 'touches' in e ? e.touches[0].clientX : e.clientX
-    const clientY = 'touches' in e ? e.touches[0].clientY : e.clientY
+    let clientX, clientY
 
-    return {
-      x: (clientX - rect.left) * (canvas.width / rect.width),
-      y: (clientY - rect.top) * (canvas.height / rect.height)
+    if ("touches" in e) {
+      clientX = e.touches[0].clientX
+      clientY = e.touches[0].clientY
+    } else {
+      clientX = (e as MouseEvent).clientX
+      clientY = (e as MouseEvent).clientY
     }
+
+    // Scale coordinates to internal resolution
+    const x = (clientX - rect.left) * (INTERNAL_WIDTH / rect.width)
+    const y = (clientY - rect.top) * (INTERNAL_HEIGHT / rect.height)
+
+    return { x, y }
   }
 
   const startDrawing = (e: React.MouseEvent | React.TouchEvent) => {
-    isDrawingRef.current = true
-    const { x, y } = getCoordinates(e)
-    const ctx = canvasRef.current?.getContext("2d")
-    if (ctx) {
-      ctx.beginPath()
-      ctx.moveTo(x, y)
-    }
+    const coords = getCoordinates(e)
+    if (!coords) return
+
+    isDrawing.current = true
+    lastPoint.current = coords
   }
 
   const draw = (e: React.MouseEvent | React.TouchEvent) => {
-    if (!isDrawingRef.current) return
-    const { x, y } = getCoordinates(e)
-    const ctx = canvasRef.current?.getContext("2d")
-    if (ctx) {
-      if (tool === "eraser") {
-        ctx.globalCompositeOperation = "destination-out"
-        ctx.lineWidth = 25
-      } else {
-        ctx.globalCompositeOperation = "source-over"
-        ctx.strokeStyle = "#3b82f6"
-        ctx.lineWidth = 3
-      }
-      ctx.lineCap = "round"
-      ctx.lineJoin = "round"
-      ctx.lineTo(x, y)
-      ctx.stroke()
+    if (!isDrawing.current || !ctxRef.current || !lastPoint.current) return
 
-      // Start a new sub-path to avoid stacking strokes and thickening
-      ctx.beginPath()
-      ctx.moveTo(x, y)
+    const coords = getCoordinates(e)
+    if (!coords) return
+
+    const ctx = ctxRef.current
+    ctx.beginPath()
+    ctx.moveTo(lastPoint.current.x, lastPoint.current.y)
+    ctx.lineTo(coords.x, coords.y)
+
+    if (tool === "eraser") {
+      ctx.globalCompositeOperation = "destination-out"
+      ctx.lineWidth = 20
+    } else {
+      ctx.globalCompositeOperation = "source-over"
+      ctx.strokeStyle = color
+      ctx.lineWidth = 3
     }
+
+    ctx.stroke()
+    lastPoint.current = coords
   }
 
   const stopDrawing = () => {
-    isDrawingRef.current = false
-    const ctx = canvasRef.current?.getContext("2d")
-    if (ctx) {
-      ctx.globalCompositeOperation = "source-over"
-    }
+    isDrawing.current = false
+    lastPoint.current = null
   }
 
   const clear = () => {
-    const canvas = canvasRef.current
-    if (!canvas) return
-    const ctx = canvas.getContext("2d")
-    if (ctx) ctx.clearRect(0, 0, canvas.width, canvas.height)
+    const ctx = ctxRef.current
+    if (!ctx) return
+    ctx.clearRect(0, 0, INTERNAL_WIDTH, INTERNAL_HEIGHT)
   }
 
   const download = () => {
@@ -87,18 +113,15 @@ export default function SofaWhiteboard() {
   }
 
   return (
-    <Card className="w-full h-full flex flex-col overflow-hidden">
-      <CardHeader className="flex-row items-center justify-between space-y-0 py-4">
-        <div>
-          <CardTitle>The Sofa Whiteboard</CardTitle>
-          <CardDescription>Draw your solutions during your study session.</CardDescription>
-        </div>
+    <div className="flex flex-col h-full bg-card rounded-xl border shadow-sm overflow-hidden">
+      <div className="flex items-center justify-between p-4 border-b bg-muted/30">
         <div className="flex items-center space-x-2">
           <Button
             variant={tool === "pen" ? "default" : "outline"}
             size="icon"
             onClick={() => setTool("pen")}
-            aria-label="Pen tool"
+            title="Pen"
+            aria-label="Pen Tool"
           >
             <Pen className="h-4 w-4" />
           </Button>
@@ -106,24 +129,44 @@ export default function SofaWhiteboard() {
             variant={tool === "eraser" ? "default" : "outline"}
             size="icon"
             onClick={() => setTool("eraser")}
-            aria-label="Eraser tool"
+            title="Eraser"
+            aria-label="Eraser Tool"
           >
             <Eraser className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="icon" onClick={clear} aria-label="Clear canvas">
+          <div className="w-px h-6 bg-border mx-2" />
+          {COLORS.map((c) => (
+            <button
+              key={c.value}
+              className={cn(
+                "w-6 h-6 rounded-full border-2 transition-transform hover:scale-110",
+                color === c.value ? "border-primary scale-110" : "border-transparent"
+              )}
+              style={{ backgroundColor: c.value }}
+              onClick={() => {
+                setColor(c.value)
+                setTool("pen")
+              }}
+              title={c.name}
+              aria-label={`Select ${c.name} color`}
+            />
+          ))}
+        </div>
+        <div className="flex items-center space-x-2">
+          <Button variant="outline" size="icon" onClick={clear} title="Clear canvas" aria-label="Clear Canvas">
             <Trash2 className="h-4 w-4" />
           </Button>
-          <Button variant="outline" size="icon" onClick={download} aria-label="Download drawing">
+          <Button variant="outline" size="icon" onClick={download} title="Download drawing" aria-label="Download Drawing">
             <Download className="h-4 w-4" />
           </Button>
         </div>
-      </CardHeader>
-      <CardContent className="flex-1 p-0 bg-[#0f172a] relative cursor-crosshair">
+      </div>
+      <div className="flex-1 bg-white relative cursor-crosshair overflow-hidden touch-none">
         <canvas
           ref={canvasRef}
-          width={CANVAS_WIDTH}
-          height={CANVAS_HEIGHT}
-          className="w-full h-full touch-none"
+          width={INTERNAL_WIDTH}
+          height={INTERNAL_HEIGHT}
+          className="absolute inset-0 w-full h-full"
           onMouseDown={startDrawing}
           onMouseMove={draw}
           onMouseUp={stopDrawing}
@@ -133,7 +176,7 @@ export default function SofaWhiteboard() {
           onTouchEnd={stopDrawing}
           onTouchCancel={stopDrawing}
         />
-      </CardContent>
-    </Card>
+      </div>
+    </div>
   )
 }

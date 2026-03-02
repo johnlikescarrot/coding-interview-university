@@ -34,6 +34,7 @@ describe('Roadmap', () => {
     (useProgressStore as any).mockReturnValue({
       completedCheckboxes: {},
       toggleCheckbox,
+      language: 'en'
     });
   });
 
@@ -64,10 +65,11 @@ describe('Roadmap', () => {
     expect(toggleCheckbox).toHaveBeenCalledWith('s1', 'check-1');
   });
 
-  it('calculates progress correctly', () => {
+  it('calculates progress correctly with namespaced keys', () => {
     (useProgressStore as any).mockReturnValue({
-      completedCheckboxes: { 'check-1': true },
+      completedCheckboxes: { 's1:check-1': true },
       toggleCheckbox,
+      language: 'en'
     });
 
     render(<Roadmap topics={mockTopics} />);

@@ -5,9 +5,9 @@ const nextConfig: NextConfig = {
   images: {
     unoptimized: true,
   },
-  basePath: process.env.NODE_ENV === 'production' ? '/coding-interview-university-app' : '',
-  // Remove trailing slash to avoid double slashes in asset URLs
-  assetPrefix: process.env.NODE_ENV === 'production' ? '/coding-interview-university-app' : '',
+  // Ensure basePath and assetPrefix do not have trailing slashes
+  basePath: process.env.NEXT_PUBLIC_BASE_PATH || '',
+  assetPrefix: process.env.NEXT_PUBLIC_BASE_PATH || '',
 };
 
 export default nextConfig;

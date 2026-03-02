@@ -17,8 +17,43 @@ interface RoadmapProps {
   topics: CurriculumTopic[]
 }
 
+const ROADMAP_UI = {
+  en: {
+    title: "Your Roadmap",
+    subtitle: "Follow the path to mastery, one step at a time.",
+    complete: "Complete",
+    tasks: "tasks",
+    modules: "modules available"
+  },
+  es: {
+    title: "Tu Hoja de Ruta",
+    subtitle: "Sigue el camino hacia la maestría, paso a paso.",
+    complete: "Completado",
+    tasks: "tareas",
+    modules: "módulos disponibles"
+  },
+  cn: {
+    title: "学习路线图",
+    subtitle: "循序渐进，迈向精通之路。",
+    complete: "已完成",
+    tasks: "任务",
+    modules: "个可用模块"
+  },
+  ja: {
+    title: "ロードマップ",
+    subtitle: "一歩ずつ着実に、マスターへの道を歩みましょう。",
+    complete: "完了",
+    tasks: "タスク",
+    modules: "個のモジュールが利用可能"
+  }
+}
+
 export default function Roadmap({ topics }: RoadmapProps) {
-  const { completedCheckboxes, toggleCheckbox } = useProgressStore()
+  const { completedCheckboxes, toggleCheckbox, language } = useProgressStore()
+
+  // Safe locale selection
+  const locale = Object.prototype.hasOwnProperty.call(ROADMAP_UI, language) ? language : 'en'
+  const labels = ROADMAP_UI[locale]
 
   // Mathematically accurate scoped progress calculation
   const { totalTasks, completedTasks } = React.useMemo(() => {
@@ -30,7 +65,7 @@ export default function Roadmap({ topics }: RoadmapProps) {
         if (item.checkboxes) {
           item.checkboxes.forEach(cb => {
             total++
-            if (completedCheckboxes[cb.id]) {
+            if (completedCheckboxes[`${item.id}:${cb.id}`]) {
               completed++
             }
           })
@@ -45,25 +80,44 @@ export default function Roadmap({ topics }: RoadmapProps) {
 
   const progressPercentage = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
 
-  // Safe URL validation to prevent javascript: XSS
+  /**
+   * Safe URL validation to prevent javascript: XSS.
+   * Uses URL constructor for robust protocol parsing.
+   */
   const getSafeUrl = (url: string) => {
     if (!url) return '#'
-    const trimmed = url.trim().toLowerCase()
-    if (trimmed.startsWith('javascript:') || trimmed.startsWith('data:') || trimmed.startsWith('vbscript:')) {
+    const trimmed = url.trim()
+    try {
+      // Use window.location.origin as base to allow relative URLs
+      const base = typeof window !== 'undefined' ? window.location.origin : 'https://example.com'
+      const urlObj = new URL(trimmed, base)
+      const protocol = urlObj.protocol.toLowerCase()
+
+      // Allow only safe protocols
+      if (['http:', 'https:', 'mailto:', 'tel:'].includes(protocol)) {
+        return trimmed
+      }
+
+      // Allow internal relative paths starting with /
+      if (trimmed.startsWith('/') && !trimmed.startsWith('//')) {
+        return trimmed
+      }
+
+      return '#'
+    } catch (e) {
       return '#'
     }
-    return url
   }
 
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
         <div className="space-y-1">
-          <h2 className="text-3xl font-bold tracking-tight">Your Roadmap</h2>
-          <p className="text-muted-foreground">Follow the path to mastery, one step at a time.</p>
+          <h2 className="text-3xl font-bold tracking-tight">{labels.title}</h2>
+          <p className="text-muted-foreground">{labels.subtitle}</p>
         </div>
         <Badge variant="secondary" className="px-4 py-1 text-sm font-semibold">
-          {progressPercentage}% Complete ({completedTasks}/{totalTasks} tasks)
+          {progressPercentage}% {labels.complete} ({completedTasks}/{totalTasks} {labels.tasks})
         </Badge>
       </div>
 
@@ -86,7 +140,7 @@ export default function Roadmap({ topics }: RoadmapProps) {
                   )}
                   <div>
                     <h3 className="text-lg font-semibold">{topic.title}</h3>
-                    <p className="text-sm text-muted-foreground">{topic.subtopics.length} modules available</p>
+                    <p className="text-sm text-muted-foreground">{topic.subtopics.length} {labels.modules}</p>
                   </div>
                 </div>
               </AccordionTrigger>
@@ -95,7 +149,8 @@ export default function Roadmap({ topics }: RoadmapProps) {
                   {topic.checkboxes && topic.checkboxes.length > 0 && (
                     <div className="grid gap-4 pl-4 border-l-2 border-primary/20">
                       {topic.checkboxes.map((check) => {
-                        const isCompleted = !!completedCheckboxes[check.id]
+                        const storeKey = `${topic.id}:${check.id}`
+                        const isCompleted = !!completedCheckboxes[storeKey]
                         return (
                           <div key={check.id} className="flex items-center space-x-3 group">
                             <Checkbox
@@ -140,7 +195,8 @@ export default function Roadmap({ topics }: RoadmapProps) {
                       {sub.checkboxes && sub.checkboxes.length > 0 && (
                         <div className="grid gap-3 ml-3 pl-4 border-l border-primary/10">
                           {sub.checkboxes.map((subCheck) => {
-                            const isSubCompleted = !!completedCheckboxes[subCheck.id]
+                            const storeKey = `${sub.id}:${subCheck.id}`
+                            const isSubCompleted = !!completedCheckboxes[storeKey]
                             return (
                               <div key={subCheck.id} className="flex items-center space-x-3 group">
                                 <Checkbox
