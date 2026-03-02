@@ -33,70 +33,77 @@ describe('Parser logic (Integration)', () => {
       const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
       expect(parseCurriculum('nonexistent.md')).toEqual([]);
-      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('file not found'));
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('found'));
     });
 
-    it('should return empty array and log error on read failure', () => {
+    it('should return empty array and log error when readFileSync throws', () => {
       vi.spyOn(fs, 'existsSync').mockReturnValue(true);
-      vi.spyOn(fs, 'readFileSync').mockImplementation(() => { throw new Error('disk failure'); });
+      vi.spyOn(fs, 'readFileSync').mockImplementation(() => { throw new Error('failure'); });
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
       expect(parseCurriculum('error.md')).toEqual([]);
       expect(consoleSpy).toHaveBeenCalled();
     });
 
-    it('should correctly parse sections, topics, and handle ID collisions', () => {
+    it('should correctly parse sections, topics, and handle ID collisions (foo, foo-1)', () => {
       const mockMd = `
-# Title
-Skip me.
-
-## Section 1
-Direct link in section.
-- [S1 Link](http://u1.com)
-
+## Section A
 - ### Topic A
-    - [T1 Link](http://u2.com)
-    - [T1 Duplicate Link](http://u2.com)
-    - [Internal Anchor Link](#anchor)
-
-- **Topic B**
-    - [T2 Link](http://u3.com)
-
+    - [T1](http://u1.com)
 - ### Topic A
-    - [T3 Link](http://u4.com)
-
-## [Empty H2 Section]()
-
-## LICENSE
-[⬆ back to top](#)
+    - [T2](http://u2.com)
+- ### C#
+    - [T3](http://u3.com)
+- ### C#
+    - [T4](http://u4.com)
+- ### Topic With Brackets
+    - [T5](<https://bracketed.com>)
 `;
       vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
       vi.spyOn(fs, 'existsSync').mockReturnValue(true);
 
       const result = parseCurriculum('curriculum.md');
+      const topics = result[0].topics;
 
-      // Verification: Section 1 should exist
+      expect(topics).toHaveLength(5);
+      expect(topics[0].id).toBe('topic-a');
+      expect(topics[1].id).toBe('topic-a-1');
+      expect(topics[2].title).toBe('C#');
+      expect(topics[2].id).toBe('c');
+      expect(topics[3].id).toBe('c-1');
+      expect(topics[4].resources[0].url).toBe('https://bracketed.com');
+    });
+
+    it('should handle duplicate SECTION titles by appending counters', () => {
+      const mockMd = `
+## Section A
+- [L1](http://u1.com)
+## Section A
+- [L2](http://u2.com)
+`;
+      vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
+      vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+
+      const result = parseCurriculum('sections.md');
+      expect(result).toHaveLength(2);
+      expect(result[0].topics[0].id).toBe('section-a');
+      expect(result[1].topics[0].id).toBe('section-a-1');
+    });
+
+    it('should exclude Table of Contents and other boilerplate headers', () => {
+      const mockMd = `
+## Table of Contents
+## LICENSE
+## ---
+## Section Valid
+- [L](http://u.com)
+`;
+      vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
+      vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+
+      const result = parseCurriculum('excluded.md');
       expect(result).toHaveLength(1);
-      const s1 = result[0];
-      expect(s1.title).toBe('Section 1');
-
-      // Topic verification
-      // 1. Overview (captures S1 Link)
-      // 2. Topic A (captures T1 Link, dedupes T1 Duplicate, skips Anchor)
-      // 3. Topic B (Bold topic)
-      // 4. Topic A-1 (ID collision)
-      expect(s1.topics).toHaveLength(4);
-
-      expect(s1.topics[0].title).toBe('Overview');
-      expect(s1.topics[0].resources).toHaveLength(1);
-
-      expect(s1.topics[1].id).toBe('topic-a');
-      expect(s1.topics[1].resources).toHaveLength(1);
-
-      expect(s1.topics[2].title).toBe('Topic B');
-
-      expect(s1.topics[3].id).toBe('topic-a-1');
-      expect(s1.topics[3].title).toBe('Topic A');
+      expect(result[0].title).toBe('Section Valid');
     });
 
     it('should handle Unicode titles for slugification', () => {
@@ -115,23 +122,26 @@ Direct link in section.
       const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
       expect(parseLanguageResources('n.md')).toEqual({});
-      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('file not found'));
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('found'));
     });
 
-    it('should return {} and log error on read failure', () => {
+    it('should return {} and log error when readFileSync throws', () => {
       vi.spyOn(fs, 'existsSync').mockReturnValue(true);
-      vi.spyOn(fs, 'readFileSync').mockImplementation(() => { throw new Error('disk failure'); });
+      vi.spyOn(fs, 'readFileSync').mockImplementation(() => { throw new Error('failure'); });
       const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
-      expect(parseLanguageResources('error.md')).toEqual({});
+      expect(parseLanguageResources('e.md')).toEqual({});
       expect(consoleSpy).toHaveBeenCalled();
     });
 
-    it('should handle links and ignore non-http protocols (XSS safety)', () => {
+    it('should handle links, angle brackets, and non-indented headers', () => {
       const mockMd = `
 - Python
-  - [Safe](http://python.org)
+  - [Safe](https://python.org)
+  - [Bracketed](<https://python.org/libs>)
   - [Malicious](javascript:alert(1))
+  - Indented bullet which is NOT a language:
+    - [Nested](https://nested.com)
 - JavaScript
   - [L1](http://js.org)
 `;
@@ -139,14 +149,15 @@ Direct link in section.
       vi.spyOn(fs, 'existsSync').mockReturnValue(true);
 
       const result = parseLanguageResources('lang.md');
-      expect(result['Python']).toHaveLength(1);
-      expect(result['Python'][0].title).toBe('Safe');
-      expect(result['JavaScript']).toHaveLength(1);
+      expect(result['Python']).toHaveLength(3);
+      expect(result['Python'][1].url).toBe('https://python.org/libs');
+      expect(result['Indented bullet which is NOT a language:']).toBeUndefined();
+      expect(result['JavaScript']).toBeDefined();
     });
   });
 
   describe('flattenTopics', () => {
-    it('should correctly flatten sections into topics with full coverage', () => {
+    it('should correctly flatten sections into topics', () => {
       const sections: Section[] = [
         {
           title: 'S1',

@@ -45,13 +45,13 @@ export function Sidebar() {
           className="h-1.5"
           aria-label="Curriculum mastery progress"
         />
-        <p className="text-[11px] text-muted-foreground mt-4 text-center font-semibold italic">
+        <p className="text-xs text-muted-foreground mt-4 text-center font-semibold italic">
           {completed.length} of {totalTopics} nodes decoded
         </p>
       </motion.div>
 
-      {/* Decorative accent */}
-      <div className="absolute top-0 right-0 w-[1px] h-full bg-linear-to-b from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
+      {/* Decorative accent - fallback to standard bg-gradient for safety */}
+      <div className="absolute top-0 right-0 w-[1px] h-full bg-gradient-to-b from-transparent via-primary/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700" />
     </aside>
   )
 }

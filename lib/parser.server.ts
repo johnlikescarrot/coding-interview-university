@@ -10,12 +10,13 @@ import { Resource, Topic, Section } from './types';
 // Unicode-aware slugify that preserves international letters and numbers
 const slugify = (text: string) =>
   text
-    .toLocaleLowerCase()
+    .toLowerCase() // Locale-invariant
     .normalize('NFD')
     .replace(/[\u0300-\u036f]/g, '') // Remove diacritics
     .replace(/[^\p{L}\p{N}\s-]/gu, '') // Keep Unicode letters, numbers, spaces, hyphens
     .trim()
-    .replace(/\s+/g, '-');
+    .replace(/\s+/g, '-')
+    .replace(/-+/g, '-'); // Consolidate multiple hyphens
 
 export const getResourceType = (url: string): Resource['type'] => {
   const u = url.toLowerCase();
@@ -49,25 +50,35 @@ export function parseCurriculum(filePath: string): Section[] {
 
       if (h2Match) {
          const title = h2Match[1].replace(/\[(.*?)\]\(.*?\)/, '$1').replace(/\*+/g, '').trim();
+         // Fix: explicitly clear context for excluded sections to prevent link leaking
          if (title.startsWith('[⬆') || title === 'LICENSE' || title === 'Table of Contents' || title.includes('---')) {
+            currentSection = null;
+            currentTopic = null;
             return;
          }
 
          currentSection = { title, topics: [] };
          sections.push(currentSection);
 
-         const id = slugify(title) || 'section';
+         const baseId = slugify(title) || 'section';
+         let id = baseId;
+         let counter = 0;
+         while (usedIds.has(id)) {
+           id = `${baseId}-${++counter}`;
+         }
          usedIds.add(id);
          currentTopic = { id, title: "Overview", completed: false, resources: [] };
          currentSection.topics.push(currentTopic);
       } else if ((h3Match || boldListMatch) && currentSection) {
          const rawTitle = h3Match ? h3Match[1] : boldListMatch![1];
          const title = rawTitle.replace(/\[(.*?)\]\(.*?\)/, '$1').replace(/\*+/g, '').trim();
-         if (!title || title.includes('#')) return;
+
+         const tMatch = title.trim();
+         if (!tMatch || tMatch.startsWith('#')) return;
 
          const baseId = slugify(title) || 'topic';
          let id = baseId;
-         let counter = 0; // Initialize at 0 so first collision is foo-1
+         let counter = 0;
          while (usedIds.has(id)) {
            id = `${baseId}-${++counter}`;
          }
@@ -76,27 +87,30 @@ export function parseCurriculum(filePath: string): Section[] {
          currentTopic = { id, title, completed: false, resources: [] };
          currentSection.topics.push(currentTopic);
       } else if (currentTopic) {
-        // Validation: only capture http(s) links to prevent javascript: XSS
-        const linkMatch = trimmed.match(/\[(.*?)\]\((http.*?)\)/);
+        // Tightened regex: handles optional angle brackets and requires https? protocol
+        const linkMatch = trimmed.match(/\[(.*?)\]\((?:<)?(https?:\/\/[^\s>)]+)(?:>)?\)/i);
         if (linkMatch && !linkMatch[2].includes('#')) {
-           if (!currentTopic.resources.some(r => r.url === linkMatch[2])) {
+           const url = linkMatch[2];
+           if (!currentTopic.resources.some(r => r.url === url)) {
              currentTopic.resources.push({
-               title: linkMatch[1].trim() || linkMatch[2],
-               url: linkMatch[2],
-               type: getResourceType(linkMatch[2])
+               title: linkMatch[1].trim() || url,
+               url: url,
+               type: getResourceType(url)
              });
            }
         }
       }
     });
 
-    sections.forEach(s => {
+    // Cleanup: Remove empty overview topics and empty sections
+    const filteredSections = sections.filter(s => {
        if (s.topics.length > 1 && s.topics[0].title === "Overview" && s.topics[0].resources.length === 0) {
           s.topics.shift();
        }
+       return s.topics.some(t => t.resources.length > 0);
     });
 
-    return sections.filter(s => s.title !== 'The Study Plan' && s.topics.some(t => t.resources.length > 0));
+    return filteredSections.filter(s => s.title !== 'The Study Plan');
   } catch (e) {
     console.error(`Failed to parse curriculum at ${filePath}:`, e);
     return [];
@@ -116,19 +130,22 @@ export function parseLanguageResources(filePath: string): Record<string, Resourc
 
     lines.forEach(line => {
       const t = line.trim();
-      // Security fix: explicitly check for http protocol in links
-      if (t.startsWith('- [')) {
-        const match = t.match(/\[(.*?)\]\((http.*?)\)/);
-        if (match && currentLang) {
-          if (!sections[currentLang].some(r => r.url === match[2])) {
-            sections[currentLang].push({
-              title: match[1],
-              url: match[2],
-              type: getResourceType(match[2])
-            });
-          }
+      if (!t) return;
+
+      // Handle links with potential angle brackets and protocol validation
+      const linkMatch = t.match(/\[(.*?)\]\((?:<)?(https?:\/\/[^\s>)]+)(?:>)?\)/i);
+
+      if (linkMatch && currentLang) {
+        const url = linkMatch[2];
+        if (!sections[currentLang].some(r => r.url === url)) {
+          sections[currentLang].push({
+            title: linkMatch[1],
+            url: url,
+            type: getResourceType(url)
+          });
         }
-      } else if (t.startsWith('- ')) {
+      } else if (line.startsWith('- ')) {
+        // Only treat top-level bullets (not indented) as language headers
         const lang = t.replace('- ', '').trim();
         if (!lang.includes('[')) {
           currentLang = lang;

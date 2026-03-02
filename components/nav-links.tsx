@@ -25,6 +25,7 @@ export function NavLinks({ onItemClick }: { onItemClick?: () => void }) {
             key={link.href}
             href={link.href}
             onClick={onItemClick}
+            aria-current={isActive ? "page" : undefined}
             className={cn(
               "group relative isolate flex items-center gap-3 rounded-xl px-4 py-2.5 text-sm font-semibold transition-all duration-200",
               isActive

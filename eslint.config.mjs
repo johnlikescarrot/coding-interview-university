@@ -8,6 +8,7 @@ export default ts.config(
   js.configs.recommended,
   ...ts.configs.recommended,
   {
+    files: ["**/*.{ts,tsx,js,jsx}"],
     plugins: {
       "@next/next": nextPlugin,
       react: reactPlugin,
@@ -16,6 +17,9 @@ export default ts.config(
     rules: {
       ...nextPlugin.configs.recommended.rules,
       ...nextPlugin.configs["core-web-vitals"].rules,
+      ...reactPlugin.configs.flat.recommended.rules,
+      ...reactPlugin.configs.flat['jsx-runtime'].rules,
+      ...reactHooksPlugin.configs.recommended.rules,
       "@typescript-eslint/no-explicit-any": "off",
       "react/no-unescaped-entities": "off",
     },
