@@ -25,7 +25,6 @@ npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
-next_dev.log
 *.log
 
 # local env files
@@ -38,6 +37,3 @@ next_dev.log
 # typescript
 *.tsbuildinfo
 next-env.d.ts
-# additional logs and caches
-server.log
-dev.log

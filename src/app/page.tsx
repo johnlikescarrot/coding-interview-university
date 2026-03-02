@@ -136,14 +136,9 @@ export default function HomePage() {
 
     let fetchUrl = ''
     if (basePath.includes('://')) {
-      const protocolMatch = basePath.match(/^(https?:\/\/)(.*)$/)
-      if (protocolMatch) {
-        const protocol = protocolMatch[1]
-        const rest = `${protocolMatch[2]}/${dataPath}`.replace(/\/+/g, '/')
-        fetchUrl = `${protocol}${rest}`
-      } else {
-        fetchUrl = `${basePath}/${dataPath}`.replace(/\/+/g, '/')
-      }
+      const [protocol, rest] = basePath.split('://')
+      const joinedRest = `${rest}/${dataPath}`.replace(/\/+/g, '/')
+      fetchUrl = `${protocol}://${joinedRest}`
     } else {
       fetchUrl = `${basePath}/${dataPath}`.replace(/\/+/g, '/')
     }

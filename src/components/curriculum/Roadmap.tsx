@@ -125,9 +125,9 @@ export default function Roadmap({ topics }: RoadmapProps) {
                         {sub.title}
                       </h4>
                       <div className="flex flex-wrap gap-4 ml-3">
-                        {sub.links.map((link) => (
+                        {sub.links.map((link, lIdx) => (
                           <a
-                            key={link.url}
+                            key={`${link.url}-${lIdx}`}
                             href={getSafeUrl(link.url)}
                             className="text-sm text-muted-foreground hover:text-primary underline underline-offset-4 transition-colors"
                             target="_blank"
