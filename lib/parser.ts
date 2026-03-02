@@ -63,27 +63,36 @@ export function parseCurriculum(filePath: string): Section[] {
           currentSection = { title: text, topics: [] };
           sections.push(currentSection);
           currentTopic = null;
-        } else if (node.depth === 3 && currentSection) {
+          continue;
+        }
+
+        if (node.depth === 3 && currentSection) {
           const baseId = text.toLowerCase().replace(/[^\w\s-]/g, '').replace(/\s+/g, '-') || 'heading';
           let id = baseId;
           let counter = 1;
-          while (usedIds.has(id)) id = `${baseId}-${++counter}`;
+          while (usedIds.has(id)) {
+            id = `${baseId}-${counter}`;
+            counter++;
+          }
           usedIds.add(id);
           currentTopic = { id, title: text, completed: false, resources: [] };
           currentSection.topics.push(currentTopic);
+          continue;
         }
-      } else if (node.type === 'list' && currentTopic) {
+      }
+
+      if (node.type === 'list' && currentTopic) {
         for (const listItem of node.children) {
           const paragraph = listItem.children.find((c: any) => c.type === 'paragraph');
-          if (paragraph) {
-            const link = paragraph.children.find((c: any) => c.type === 'link');
-            if (link?.url && !currentTopic.resources.some(r => r.url === link.url)) {
-              currentTopic.resources.push({
-                title: extractText(link) || extractText(paragraph),
-                url: link.url,
-                type: getResourceType(link.url)
-              });
-            }
+          if (!paragraph) continue;
+
+          const link = paragraph.children.find((c: any) => c.type === 'link');
+          if (link?.url && !currentTopic.resources.some(r => r.url === link.url)) {
+            currentTopic.resources.push({
+              title: extractText(link) || extractText(paragraph),
+              url: link.url,
+              type: getResourceType(link.url)
+            });
           }
         }
       }

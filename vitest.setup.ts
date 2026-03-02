@@ -1,26 +1,27 @@
 import "@testing-library/jest-dom/vitest"
-import { vi } from 'vitest'
-import { screen, queryByAttribute } from '@testing-library/react'
+import { expect, vi } from 'vitest'
+import { queryAllByAttribute, screen } from '@testing-library/react'
 
-// Polyfill ResizeObserver for tests (needed for cmdk/Command)
+// Mock ResizeObserver
 class ResizeObserver {
   observe() {}
   unobserve() {}
   disconnect() {}
 }
-window.ResizeObserver = ResizeObserver;
 
-// Mock scrollIntoView
-window.HTMLElement.prototype.scrollIntoView = vi.fn();
+Object.defineProperty(window, 'ResizeObserver', {
+  writable: true,
+  configurable: true,
+  value: ResizeObserver
+});
 
+// Mock IntersectionObserver
 class IntersectionObserverMock {
-  root = null;
-  rootMargin = "";
-  thresholds = [];
-  disconnect = vi.fn();
-  observe = vi.fn();
-  takeRecords = vi.fn();
-  unobserve = vi.fn();
+  constructor() {}
+  observe() {}
+  unobserve() {}
+  disconnect() {}
+  takeRecords() { return [] }
 }
 
 Object.defineProperty(window, 'IntersectionObserver', {
@@ -29,12 +30,20 @@ Object.defineProperty(window, 'IntersectionObserver', {
   value: IntersectionObserverMock
 });
 
-// Custom helper for data-slot (shadcn/ui v4 uses data-slot extensively)
-const getByDataSlot = (id: string) => {
-  const el = queryByAttribute('data-slot', document.body, id);
-  if (!el) throw new Error(`Could not find element with data-slot="${id}"`);
-  return el;
+// Mock scrollIntoView
+Element.prototype.scrollIntoView = vi.fn();
+
+// Add strict getByDataSlot helper
+export const getByDataSlot = (container: HTMLElement, id: string) => {
+  const elements = queryAllByAttribute('data-slot', container, id);
+  if (elements.length === 0) {
+    throw new Error(`Could not find element with data-slot="${id}"`);
+  }
+  if (elements.length > 1) {
+    throw new Error(`Multiple elements found with data-slot="${id}"`);
+  }
+  return elements[0];
 };
 
-// Extend screen
-Object.assign(screen, { getByDataSlot });
+// Attach to screen object for convenience
+(screen as any).getByDataSlot = (id: string) => getByDataSlot(document.body, id);

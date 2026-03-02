@@ -1,41 +1,45 @@
-# CIU Mastery | Beast Mode V1.0
+# CIU Mastery: Transcendent Study Engine
 
-> A transcendent, interactive educational platform for software engineering mastery.
+> **"Beast Mode Activated."** This is the high-fidelity, world-class study companion for the legendary Coding Interview University.
 
-This is a high-performance modernization of [Coding Interview University](https://github.com/jwasham/coding-interview-university). It transforms the original static curriculum into a dynamic, "Beast Mode" interactive application designed for maximum cognitive retention and aesthetic excellence.
+CIU Mastery is not just a study plan; it's an interactive cognitive engine designed for software engineering mastery. Originally based on John Washam's journey to Amazon, this version has been evolved with bleeding-edge technology and a "Beast Mode" aesthetic.
 
-## ⚡ Beast Mode Features
+## 🚀 Vision: Absolute Mastery
 
-- **Neuro-Sync State Engine:** Powered by React 19 `useOptimistic` and `useTransition`, providing instant feedback and zero-latency persistence to `localStorage`.
-- **Active Recall Interface:** High-fidelity 3D flashcards and a "Neuro-Glass" curriculum view for high-intensity memory retrieval.
-- **Transcendent UI:** A world-class aesthetic built on Tailwind CSS 4.0, featuring glassmorphism, OKLCH color spaces, and ambient fluid animations.
-- **Command Palette Navigation:** Global search and quick-nav via `⌘K` command palette.
-- **100% Code Coverage:** Verified by Vitest and V8, ensuring industrial-grade stability.
+This application serves as your high-frequency interface for computer science excellence. It features:
 
-## 🚀 Technical Stack
+- **Neuro-Sync State Engine**: Real-time progress synchronization with React 19 optimistic updates and zero-latency persistence.
+- **Transcendent Visuals**: Hardware-accelerated 3D flip animations, glassmorphism, and "Hyper-Glass" ambient effects.
+- **Interactive Active Recall**: Dynamic flashcards and curated language-specific resource labs.
+- **100% Verified Logic**: Absolute 100% code coverage across the entire core, ensured by rigorous automated testing.
 
-- **Framework:** Next.js 15.1.6 (Stable App Router)
-- **Runtime:** React 19.0.0 (Production Release)
-- **Styling:** Tailwind CSS 4.0 + Framer Motion 11.13
-- **Testing:** Vitest + @testing-library/react (100% Statement Coverage)
-- **Static Export:** Fully optimized for GitHub Pages.
+## 🛠 Tech Stack Ascension
 
-## 🏗️ Build & Deploy
+- **Framework**: Next.js 16.2-canary (Turbopack Powered)
+- **UI Architecture**: React 19.2 (Actions, Optimistic UI, Transitions)
+- **Styling**: Tailwind CSS 4.2 (High-Performance CSS-in-JS Engine)
+- **Motion**: Framer Motion 12.4
+- **Testing**: Vitest + Testing Library (Extreme Coverage Mode)
 
-The project is configured for static export:
+## 🏁 Getting Started
 
-```bash
-npm run build
-```
+To launch the beast locally:
 
-The production-ready artifacts will be generated in the `out/` directory, ready for deployment to any static host or GitHub Pages.
+1. Install dependencies: `npm install`
+2. Run development server: `npm run dev`
 
-## ✅ Quality Standards
+Open http://localhost:3000 to begin your transformation.
 
-The platform maintains 100% code coverage. To run the test suite:
+## 📦 Deployment
 
-```bash
-npm test
-```
+Optimized for high-availability static hosting on GitHub Pages. Build with:
 
-*Transcend your limits. Master the interview.*
+`npm run build`
+
+## 🧠 Coverage
+
+This project maintains a mandate of **100% code coverage**. No line of code enters production without full verification.
+
+---
+
+*Study hard. Stay calm. Activate Beast Mode.*
