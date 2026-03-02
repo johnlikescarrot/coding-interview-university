@@ -180,6 +180,7 @@ export default function Flashcards({ cards, labels }: FlashcardsProps) {
             size="sm"
             onClick={reset}
             className="text-xs opacity-50 hover:opacity-100 flex items-center"
+            aria-label={labels.reset}
           >
             <RotateCcw className="h-3 w-3 mr-1" />
             {labels.reset}

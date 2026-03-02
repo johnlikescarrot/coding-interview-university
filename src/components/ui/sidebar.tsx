@@ -210,7 +210,11 @@ const Sidebar = React.forwardRef<
             className="w-[18rem] bg-sidebar p-0 text-sidebar-foreground [&>button]:hidden"
             side={side}
           >
-            <div className={cn("flex h-full w-full flex-col", className)} {...props}>
+            <div
+              ref={ref}
+              className={cn("flex h-full w-full flex-col", className)}
+              {...props}
+            >
               {children}
             </div>
           </SheetContent>

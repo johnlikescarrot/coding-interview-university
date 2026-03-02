@@ -38,3 +38,6 @@ next_dev.log
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+# additional logs and caches
+server.log
+dev.log

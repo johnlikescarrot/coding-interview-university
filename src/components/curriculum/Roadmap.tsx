@@ -45,6 +45,16 @@ export default function Roadmap({ topics }: RoadmapProps) {
 
   const progressPercentage = totalTasks > 0 ? Math.round((completedTasks / totalTasks) * 100) : 0
 
+  // Safe URL validation to prevent javascript: XSS
+  const getSafeUrl = (url: string) => {
+    if (!url) return '#'
+    const trimmed = url.trim().toLowerCase()
+    if (trimmed.startsWith('javascript:') || trimmed.startsWith('data:') || trimmed.startsWith('vbscript:')) {
+      return '#'
+    }
+    return url
+  }
+
   return (
     <div className="space-y-8">
       <div className="flex items-center justify-between">
@@ -115,10 +125,10 @@ export default function Roadmap({ topics }: RoadmapProps) {
                         {sub.title}
                       </h4>
                       <div className="flex flex-wrap gap-4 ml-3">
-                        {sub.links.map((link, lIdx) => (
+                        {sub.links.map((link) => (
                           <a
-                            key={`${link.url}-${lIdx}`}
-                            href={link.url}
+                            key={link.url}
+                            href={getSafeUrl(link.url)}
                             className="text-sm text-muted-foreground hover:text-primary underline underline-offset-4 transition-colors"
                             target="_blank"
                             rel="noopener noreferrer"

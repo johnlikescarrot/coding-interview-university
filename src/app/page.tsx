@@ -9,7 +9,18 @@ import Flashcards from "@/components/study/Flashcards"
 import { useProgressStore } from "@/store/useProgressStore"
 import { CurriculumTopic } from "@/lib/parser"
 
-const FLASHCARD_LABELS: Record<string, any> = {
+interface LabelSet {
+  title: string
+  subtitle: string
+  question: string
+  answer: string
+  next: string
+  prev: string
+  reset: string
+  flip: string
+}
+
+const FLASHCARD_LABELS: Record<string, LabelSet> = {
   en: {
     title: "Active Recall",
     subtitle: "Quick-fire conceptual challenges to solidify your understanding.",
@@ -52,14 +63,35 @@ const FLASHCARD_LABELS: Record<string, any> = {
   },
 }
 
-const ARENA_LABELS: Record<string, any> = {
+interface ArenaLabel {
+  title: string
+  subtitle: string
+}
+
+const ARENA_LABELS: Record<string, ArenaLabel> = {
   en: { title: "Practice Arena", subtitle: "Sharpen your logic with the Sofa Whiteboard." },
   es: { title: "Campo de Práctica", subtitle: "Afina tu lógica con la Pizarra Sofa." },
   cn: { title: "演武场", subtitle: "使用 Sofa 白板磨练你的逻辑。" },
   ja: { title: "演習場", subtitle: "Sofa ホワイトボードで論理を磨きましょう。" },
 }
 
-const FLASHCARDS: Record<string, any[]> = {
+interface UILabels {
+  errorTitle: string
+}
+
+const UI_LABELS: Record<string, UILabels> = {
+  en: { errorTitle: "Error Loading Content" },
+  es: { errorTitle: "Error al cargar contenido" },
+  cn: { errorTitle: "内容加载错误" },
+  ja: { errorTitle: "コンテンツの読み込みエラー" },
+}
+
+interface CardItem {
+  q: string
+  a: string
+}
+
+const FLASHCARDS: Record<string, CardItem[]> = {
   en: [
     { q: "What is Big O notation used for?", a: "To describe the upper bound of an algorithm's time or space complexity." },
     { q: "What is the average time complexity of Quick Sort?", a: "O(n log n)" },
@@ -77,7 +109,7 @@ const FLASHCARDS: Record<string, any[]> = {
   ],
   ja: [
     { q: "Big O 記法は何のために使われますか？", a: "アルゴリズムの時間または空間計算量の上限を記述するため。" },
-    { q: "クイックソートの平均时间計算量は？", a: "O(n log n)" },
+    { q: "クイックソートの平均時間計算量は？", a: "O(n log n)" },
     { q: "スタックにおける LIFO の原則を説明してください。", a: "後入れ先出し：最後に追加された要素が最初に削除されます。" },
   ],
 }
@@ -98,11 +130,25 @@ export default function HomePage() {
     setIsLoading(true)
     setError(null)
 
-    // Robust basePath construction
+    // Robust fetch URL construction preserving protocol
     const basePath = process.env.NEXT_PUBLIC_BASE_PATH || ''
-    const url = `${basePath}/data/curriculum-${locale}.json`.replace(/\/+/g, '/')
+    const dataPath = `/data/curriculum-${locale}.json`
 
-    fetch(url, { signal })
+    let fetchUrl = ''
+    if (basePath.includes('://')) {
+      const protocolMatch = basePath.match(/^(https?:\/\/)(.*)$/)
+      if (protocolMatch) {
+        const protocol = protocolMatch[1]
+        const rest = `${protocolMatch[2]}/${dataPath}`.replace(/\/+/g, '/')
+        fetchUrl = `${protocol}${rest}`
+      } else {
+        fetchUrl = `${basePath}/${dataPath}`.replace(/\/+/g, '/')
+      }
+    } else {
+      fetchUrl = `${basePath}/${dataPath}`.replace(/\/+/g, '/')
+    }
+
+    fetch(fetchUrl, { signal })
       .then(res => {
         if (!res.ok) throw new Error(`Failed to fetch curriculum: ${res.status}`)
         return res.json()
@@ -139,7 +185,7 @@ export default function HomePage() {
             </div>
           ) : error ? (
             <div className="p-8 text-center bg-destructive/10 rounded-xl border border-destructive/20">
-              <p className="text-destructive font-semibold">Error Loading Content</p>
+              <p className="text-destructive font-semibold">{UI_LABELS[locale]?.errorTitle || UI_LABELS.en.errorTitle}</p>
               <p className="text-sm text-muted-foreground">{error}</p>
             </div>
           ) : (
