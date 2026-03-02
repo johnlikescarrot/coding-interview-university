@@ -33,7 +33,7 @@ describe('Parser logic (Integration)', () => {
       const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
       expect(parseCurriculum('nonexistent.md')).toEqual([]);
-      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('found'));
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('not found'));
     });
 
     it('should return empty array and log error when readFileSync throws', () => {
@@ -58,6 +58,8 @@ describe('Parser logic (Integration)', () => {
     - [T4](http://u4.com)
 - ### Topic With Brackets
     - [T5](<https://bracketed.com>)
+- ### Topic With Fragment
+    - [T6](https://docs.example.com/page#intro)
 `;
       vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
       vi.spyOn(fs, 'existsSync').mockReturnValue(true);
@@ -65,13 +67,14 @@ describe('Parser logic (Integration)', () => {
       const result = parseCurriculum('curriculum.md');
       const topics = result[0].topics;
 
-      expect(topics).toHaveLength(5);
+      expect(topics).toHaveLength(6);
       expect(topics[0].id).toBe('topic-a');
       expect(topics[1].id).toBe('topic-a-1');
       expect(topics[2].title).toBe('C#');
       expect(topics[2].id).toBe('c');
       expect(topics[3].id).toBe('c-1');
       expect(topics[4].resources[0].url).toBe('https://bracketed.com');
+      expect(topics[5].resources[0].url).toBe('https://docs.example.com/page#intro');
     });
 
     it('should handle duplicate SECTION titles by appending counters', () => {
@@ -122,7 +125,7 @@ describe('Parser logic (Integration)', () => {
       const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
       expect(parseLanguageResources('n.md')).toEqual({});
-      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('found'));
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('not found'));
     });
 
     it('should return {} and log error when readFileSync throws', () => {

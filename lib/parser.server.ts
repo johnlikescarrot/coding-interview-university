@@ -89,7 +89,7 @@ export function parseCurriculum(filePath: string): Section[] {
       } else if (currentTopic) {
         // Tightened regex: handles optional angle brackets and requires https? protocol
         const linkMatch = trimmed.match(/\[(.*?)\]\((?:<)?(https?:\/\/[^\s>)]+)(?:>)?\)/i);
-        if (linkMatch && !linkMatch[2].includes('#')) {
+        if (linkMatch) {
            const url = linkMatch[2];
            if (!currentTopic.resources.some(r => r.url === url)) {
              currentTopic.resources.push({
