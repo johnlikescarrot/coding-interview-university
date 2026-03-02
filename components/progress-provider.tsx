@@ -1,7 +1,7 @@
 "use client"
 
 import * as React from "react"
-import { createContext, useContext, useEffect, useState, useCallback, useActionState, useOptimistic, startTransition } from "react"
+import { createContext, useContext, useEffect, useState, useCallback, useOptimistic, useTransition } from "react"
 
 const DEFAULT_TOTAL_TOPICS = 180
 
@@ -19,20 +19,15 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const [completed, setCompleted] = useState<string[]>([])
   const [totalTopics, setTotalTopics] = useState(DEFAULT_TOTAL_TOPICS)
   const [isMounted, setIsMounted] = useState(false)
+  const [isPending, startTransition] = useTransition()
 
-  // React 19 Action State for Neuro-Sync Updates
-  const [state, dispatch, isPending] = useActionState(
-    async (prevState: string[], id: string) => {
-      const nextState = prevState.includes(id)
-        ? prevState.filter((i) => i !== id)
-        : [...prevState, id]
-      return nextState
-    },
-    []
+  const [optimisticCompleted, addOptimistic] = useOptimistic(
+    completed,
+    (state: string[], id: string) =>
+      state.includes(id)
+        ? state.filter((i) => i !== id)
+        : [...state, id]
   )
-
-  // Optimistic UI for Transcendent Speed
-  const [optimisticCompleted, setOptimisticCompleted] = useOptimistic(completed)
 
   useEffect(() => {
     const saved = localStorage.getItem("ciu-progress")
@@ -61,21 +56,14 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     }
   }, [completed, isMounted])
 
-  // Sync action state with base state
-  useEffect(() => {
-    if (state.length > 0 || completed.length > 0) {
-       setCompleted(state)
-    }
-  }, [state])
-
   const toggleTopic = useCallback((id: string) => {
     startTransition(() => {
-      setOptimisticCompleted((prev) =>
+      addOptimistic(id)
+      setCompleted((prev) =>
         prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
       )
-      dispatch(id)
     })
-  }, [dispatch, setOptimisticCompleted])
+  }, [addOptimistic])
 
   const value = React.useMemo(() => ({
     completed: optimisticCompleted,

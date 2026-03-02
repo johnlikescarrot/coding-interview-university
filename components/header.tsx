@@ -15,7 +15,6 @@ import {
 } from "@/components/ui/command";
 import { Sheet, SheetContent, SheetTrigger, SheetHeader, SheetTitle } from "@/components/ui/sheet";
 import { NavLinks } from "./nav-links";
-import { motion } from "framer-motion";
 
 export function Header() {
   const [open, setOpen] = React.useState(false)
@@ -39,12 +38,7 @@ export function Header() {
   }, [])
 
   return (
-    <motion.header
-      className="sticky top-0 z-40 border-b border-border/40 bg-background/60 backdrop-blur-xl supports-[backdrop-filter]:bg-background/40"
-      initial={{ y: -20, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.5 }}
-    >
+    <header className="sticky top-0 z-40 border-b border-border/40 bg-background/60 backdrop-blur-xl supports-[backdrop-filter]:bg-background/40">
       <div className="container flex h-20 items-center justify-between px-6 lg:px-12 max-w-7xl mx-auto">
         <div className="flex items-center gap-6 flex-1">
           {/* Mobile Menu */}
@@ -116,6 +110,6 @@ export function Header() {
           </CommandList>
         </div>
       </CommandDialog>
-    </motion.header>
+    </header>
   );
 }

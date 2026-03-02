@@ -1,6 +1,6 @@
-import { describe, it, expect } from 'vitest';
 import { render, screen } from '@testing-library/react';
 import { Card, CardHeader, CardTitle, CardDescription, CardContent, CardFooter, CardAction } from '../components/ui/card';
+import { describe, it, expect } from 'vitest';
 import * as React from 'react';
 
 describe('Card component', () => {
@@ -22,6 +22,8 @@ describe('Card component', () => {
     expect(screen.getByText('Action')).toBeInTheDocument();
     expect(screen.getByText('Card Content')).toBeInTheDocument();
     expect(screen.getByText('Card Footer')).toBeInTheDocument();
-    expect(screen.getByTestId('card')).toHaveClass('custom-card');
+
+    // Verify by data-slot
+    expect(screen.getByDataSlot('card')).toHaveClass('custom-card');
   });
 });

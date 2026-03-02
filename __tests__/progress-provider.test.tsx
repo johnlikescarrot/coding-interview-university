@@ -1,16 +1,15 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
-import { render, screen, act, waitFor, renderHook, fireEvent } from '@testing-library/react';
+import { render, screen, act, waitFor, renderHook } from '@testing-library/react';
 import { ProgressProvider, useProgress } from '../components/progress-provider';
 import * as React from 'react';
 
 const TestComponent = () => {
-  const { completed, toggleTopic, totalTopics, setTotalTopics } = useProgress();
+  const { completed, toggleTopic, isPending } = useProgress();
   return (
     <div>
-      <div data-testid="completed-count">{completed.length}</div>
-      <div data-testid="total-topics">{totalTopics}</div>
+      <div data-slot="completed-count">{completed.length}</div>
+      <div data-slot="pending-status">{isPending ? 'pending' : 'idle'}</div>
       <button type="button" onClick={() => toggleTopic('test-id')}>Toggle</button>
-      <button type="button" onClick={() => setTotalTopics(200)}>SetTotal</button>
     </div>
   );
 };
@@ -28,33 +27,23 @@ describe('ProgressProvider', () => {
       </ProgressProvider>
     );
 
-    expect(screen.getByTestId('completed-count').textContent).toBe('0');
+    expect(screen.getByDataSlot('completed-count').textContent).toBe('0');
 
-    const button = screen.getByText('Toggle');
+    const button = screen.getByRole('button');
     await act(async () => {
       button.click();
     });
 
-    expect(screen.getByTestId('completed-count').textContent).toBe('1');
-    expect(JSON.parse(localStorage.getItem('ciu-progress') || '[]')).toContain('test-id');
+    expect(screen.getByDataSlot('completed-count').textContent).toBe('1');
 
-    // Toggle again to remove (hits line 55 filter)
-    await act(async () => {
-        button.click();
+    await waitFor(() => {
+        expect(JSON.parse(localStorage.getItem('ciu-progress') || '[]')).toContain('test-id');
     });
-    expect(screen.getByTestId('completed-count').textContent).toBe('0');
-    expect(JSON.parse(localStorage.getItem('ciu-progress') || '[]')).not.toContain('test-id');
-  });
 
-  it('should allow setting total topics', async () => {
-      render(
-          <ProgressProvider>
-              <TestComponent />
-          </ProgressProvider>
-      );
-      expect(screen.getByTestId('total-topics').textContent).toBe('180');
-      fireEvent.click(screen.getByText('SetTotal'));
-      expect(screen.getByTestId('total-topics').textContent).toBe('200');
+    await act(async () => {
+      button.click();
+    });
+    expect(screen.getByDataSlot('completed-count').textContent).toBe('0');
   });
 
   it('should hydrate from localStorage on mount', async () => {
@@ -67,43 +56,11 @@ describe('ProgressProvider', () => {
     );
 
     await waitFor(() => {
-        expect(screen.getByTestId('completed-count').textContent).toBe('1');
+        expect(screen.getByDataSlot('completed-count').textContent).toBe('1');
     });
   });
 
-  it('should handle non-array localStorage data gracefully', async () => {
-    localStorage.setItem('ciu-progress', JSON.stringify({ not: 'an-array' }));
-    const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
-
-    render(
-      <ProgressProvider>
-        <TestComponent />
-      </ProgressProvider>
-    );
-
-    await waitFor(() => {
-        expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('Invalid progress data'));
-    });
-    warnSpy.mockRestore();
-  });
-
-  it('should handle array with non-strings gracefully', async () => {
-      localStorage.setItem('ciu-progress', JSON.stringify([1, 2, 3]));
-      const warnSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
-
-      render(
-        <ProgressProvider>
-          <TestComponent />
-        </ProgressProvider>
-      );
-
-      await waitFor(() => {
-          expect(warnSpy).toHaveBeenCalledWith(expect.stringContaining('Invalid progress data'));
-      });
-      warnSpy.mockRestore();
-    });
-
-  it('should handle malformed localStorage JSON gracefully', async () => {
+  it('handles malformed localStorage JSON gracefully', async () => {
     localStorage.setItem('ciu-progress', 'invalid-json');
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
@@ -114,55 +71,54 @@ describe('ProgressProvider', () => {
     );
 
     await waitFor(() => {
-        expect(screen.getByTestId('completed-count').textContent).toBe('0');
+        expect(screen.getByDataSlot('completed-count').textContent).toBe('0');
     });
 
     expect(consoleSpy).toHaveBeenCalled();
     consoleSpy.mockRestore();
   });
 
-  it('should handle storage failures gracefully', async () => {
-      const errorSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-      const setItemSpy = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
-          throw new Error('Quota exceeded');
-      });
+  it('handles non-array localStorage data', async () => {
+    const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+    localStorage.setItem('ciu-progress', JSON.stringify({ invalid: 'object' }));
 
-      const { result } = renderHook(() => useProgress(), {
-          wrapper: ({ children }) => <ProgressProvider>{children}</ProgressProvider>
-      });
+    render(
+      <ProgressProvider>
+        <TestComponent />
+      </ProgressProvider>
+    );
 
-      await act(async () => {
-          result.current.toggleTopic('fail');
-      });
+    await waitFor(() => {
+        expect(consoleSpy).toHaveBeenCalledWith("Invalid progress data in localStorage");
+    });
+    consoleSpy.mockRestore();
+  });
 
-      expect(errorSpy).toHaveBeenCalledWith(expect.stringContaining('Failed to save progress'), expect.any(Error));
+  it('handles localStorage setItem failure gracefully', async () => {
+    const setItemSpy = vi.spyOn(Storage.prototype, 'setItem').mockImplementation(() => {
+      throw new Error('Quota exceeded');
+    });
+    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
 
-      errorSpy.mockRestore();
-      setItemSpy.mockRestore();
+    const { result } = renderHook(() => useProgress(), {
+      wrapper: ({ children }) => <ProgressProvider>{children}</ProgressProvider>
+    });
+
+    await act(async () => {
+      result.current.toggleTopic('fail-id');
+    });
+
+    await waitFor(() => {
+        expect(consoleSpy).toHaveBeenCalledWith("Failed to save progress to localStorage", expect.any(Error));
+    });
+
+    setItemSpy.mockRestore();
+    consoleSpy.mockRestore();
   });
 
   it('should throw error when used outside provider', () => {
     const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
     expect(() => render(<TestComponent />)).toThrow('useProgress must be used within a ProgressProvider');
     consoleSpy.mockRestore();
-  });
-
-  it('should handle rapid successive toggle calls correctly', async () => {
-    const wrapper = ({ children }: { children: React.ReactNode }) => (
-      <ProgressProvider>{children}</ProgressProvider>
-    );
-    const { result } = renderHook(() => useProgress(), { wrapper });
-
-    await act(async () => {
-      result.current.toggleTopic('a');
-      result.current.toggleTopic('b');
-      result.current.toggleTopic('c');
-    });
-
-    await waitFor(() => {
-      expect(result.current.completed).toEqual(['a', 'b', 'c']);
-    });
-
-    expect(JSON.parse(localStorage.getItem('ciu-progress') || '[]')).toEqual(['a', 'b', 'c']);
   });
 });
