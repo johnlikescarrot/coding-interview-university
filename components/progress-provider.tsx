@@ -1,15 +1,16 @@
 "use client"
 
 import * as React from "react"
-import { createContext, useContext, useEffect, useState, useCallback } from "react"
+import { createContext, useContext, useEffect, useState, useCallback, useActionState, useOptimistic, startTransition } from "react"
 
-const DEFAULT_TOTAL_TOPICS = 180 // Approximate count from curriculum
+const DEFAULT_TOTAL_TOPICS = 180
 
 interface ProgressContextType {
   completed: string[]
   totalTopics: number
   toggleTopic: (id: string) => void
   setTotalTopics: (count: number) => void
+  isPending: boolean
 }
 
 const ProgressContext = createContext<ProgressContextType | undefined>(undefined)
@@ -19,13 +20,25 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
   const [totalTopics, setTotalTopics] = useState(DEFAULT_TOTAL_TOPICS)
   const [isMounted, setIsMounted] = useState(false)
 
-  // Hydrate from localStorage on mount
+  // React 19 Action State for Neuro-Sync Updates
+  const [state, dispatch, isPending] = useActionState(
+    async (prevState: string[], id: string) => {
+      const nextState = prevState.includes(id)
+        ? prevState.filter((i) => i !== id)
+        : [...prevState, id]
+      return nextState
+    },
+    []
+  )
+
+  // Optimistic UI for Transcendent Speed
+  const [optimisticCompleted, setOptimisticCompleted] = useOptimistic(completed)
+
   useEffect(() => {
     const saved = localStorage.getItem("ciu-progress")
     if (saved) {
       try {
         const parsed = JSON.parse(saved)
-        // Runtime validation
         if (Array.isArray(parsed) && parsed.every(item => typeof item === "string")) {
           setCompleted(parsed)
         } else {
@@ -38,7 +51,6 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     setIsMounted(true)
   }, [])
 
-  // Persist to localStorage when completed changes
   useEffect(() => {
     if (isMounted) {
       try {
@@ -49,20 +61,29 @@ export function ProgressProvider({ children }: { children: React.ReactNode }) {
     }
   }, [completed, isMounted])
 
+  // Sync action state with base state
+  useEffect(() => {
+    if (state.length > 0 || completed.length > 0) {
+       setCompleted(state)
+    }
+  }, [state])
+
   const toggleTopic = useCallback((id: string) => {
-    setCompleted((prev) =>
-      prev.includes(id)
-        ? prev.filter((i) => i !== id)
-        : [...prev, id]
-    )
-  }, [])
+    startTransition(() => {
+      setOptimisticCompleted((prev) =>
+        prev.includes(id) ? prev.filter((i) => i !== id) : [...prev, id]
+      )
+      dispatch(id)
+    })
+  }, [dispatch, setOptimisticCompleted])
 
   const value = React.useMemo(() => ({
-    completed,
+    completed: optimisticCompleted,
     totalTopics,
     toggleTopic,
-    setTotalTopics
-  }), [completed, totalTopics, toggleTopic])
+    setTotalTopics,
+    isPending
+  }), [optimisticCompleted, totalTopics, toggleTopic, isPending])
 
   return (
     <ProgressContext.Provider value={value}>
