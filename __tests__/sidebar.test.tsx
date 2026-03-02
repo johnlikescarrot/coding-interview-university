@@ -1,5 +1,5 @@
-import { describe, it, expect, vi } from 'vitest';
-import { render, screen } from '@testing-library/react';
+import { describe, it, expect, vi, afterEach } from 'vitest';
+import { render, screen, cleanup } from '@testing-library/react';
 import { Sidebar } from '../components/sidebar';
 import { useProgress } from '../components/progress-provider';
 
@@ -22,25 +22,28 @@ const renderWithProgress = (completed: string[], totalTopics: number) => {
   return render(<Sidebar />);
 };
 
-describe('Sidebar Component', () => {
-  it('renders correctly at various progress levels', () => {
-    // 0%
+describe('Sidebar Component Scenarios', () => {
+  afterEach(cleanup);
+
+  it('renders correctly at 0% progress', () => {
     renderWithProgress([], 100);
     expect(screen.getAllByText((content, element) => element?.textContent === '0%').length).toBeGreaterThan(0);
+    expect(screen.getAllByText('CIU Mastery').length).toBeGreaterThan(0);
+  });
 
-    // 100%
+  it('renders correctly at 100% progress', () => {
     renderWithProgress(['a', 'b'], 2);
     expect(screen.getAllByText((content, element) => element?.textContent === '100%').length).toBeGreaterThan(0);
+  });
 
-    // Edge case: completed > total (should cap at 100%)
+  it('handles over-complete progress (caps at 100%)', () => {
     renderWithProgress(['a', 'b', 'c'], 2);
     expect(screen.getAllByText((content, element) => element?.textContent === '100%').length).toBeGreaterThan(0);
+  });
 
-    // Edge case: totalTopics is 0 (should be 0%)
+  it('handles totalTopics = 0 (defaults to 0%)', () => {
     renderWithProgress(['a'], 0);
     expect(screen.getAllByText((content, element) => element?.textContent === '0%').length).toBeGreaterThan(0);
-
-    expect(screen.getAllByText('CIU Mastery').length).toBeGreaterThan(0);
   });
 
   it('renders correctly at 73% progress', () => {

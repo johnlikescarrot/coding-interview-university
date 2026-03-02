@@ -40,7 +40,8 @@ export const getResourceType = (url: string): Resource['type'] => {
   if (u.includes('amazon.com') || u.includes('books.google') || u.includes('oreilly.com')) return 'book';
   const interactive = ['labex.io', 'exercism.org', 'codewars.com', 'leetcode.com'];
   if (interactive.some(d => u.includes(d))) return 'interactive';
-  return 'article';
+  if (u.includes('article') || u.includes('blog') || u.includes('medium.com')) return 'article';
+  return 'other';
 };
 
 export function parseCurriculum(filePath: string): Section[] {

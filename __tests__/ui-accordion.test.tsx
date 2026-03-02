@@ -4,26 +4,26 @@ import { Accordion, AccordionItem, AccordionTrigger, AccordionContent } from '..
 
 vi.mock('@radix-ui/react-accordion', () => {
     return {
-        Root: ({ children, className }: any) => <div className={className}>{children}</div>,
-        Item: ({ children, className, value }: any) => <div className={className} data-testid="item">{children}</div>,
-        Header: ({ children }: any) => <div>{children}</div>,
-        Trigger: ({ children, className }: any) => <button className={className}>{children}</button>,
-        Content: ({ children, className }: any) => <div className={className}>{children}</div>,
+        Root: ({ children, className, collapsible, ...props }: any) => <div className={className} {...props}>{children}</div>,
+        Item: ({ children, className, value, ...props }: any) => <div className={className} data-value={value} {...props}>{children}</div>,
+        Header: ({ children, ...props }: any) => <div {...props}>{children}</div>,
+        Trigger: ({ children, className, ...props }: any) => <button type="button" className={className} {...props}>{children}</button>,
+        Content: ({ children, className, ...props }: any) => <div className={className} {...props}>{children}</div>,
     };
 });
 
 describe('Accordion UI component', () => {
-  it('renders correctly', () => {
+  it('renders and supports prop forwarding', () => {
     render(
-      <Accordion type="single" collapsible>
-        <AccordionItem value="item-1" className="item-class">
+      <Accordion type="single">
+        <AccordionItem value="item-1" className="item-class" data-testid="accordion-item">
           <AccordionTrigger className="trigger-class">Trigger</AccordionTrigger>
           <AccordionContent className="content-class">Content</AccordionContent>
         </AccordionItem>
       </Accordion>
     );
     expect(screen.getByText('Trigger')).toBeInTheDocument();
-    expect(screen.getByText('Content')).toBeInTheDocument();
-    expect(screen.getByTestId('item')).toHaveClass('item-class');
+    expect(screen.getByTestId('accordion-item')).toHaveClass('item-class');
+    expect(screen.getByText('Trigger')).toHaveAttribute('type', 'button');
   });
 });

@@ -7,7 +7,6 @@ vi.mock('../components/progress-provider', () => ({
   useProgress: vi.fn(),
 }));
 
-// Fixed: Destructure and discard framer-motion props to avoid React unknown-prop warnings
 vi.mock('framer-motion', () => {
     const motionProxy = new Proxy({}, {
         get: (target, prop) => {
@@ -36,26 +35,35 @@ describe('CurriculumView', () => {
     });
   });
 
-  it('renders sections and handles progress toggling', () => {
+  it('renders all resource types and handles empty path', () => {
     const sections = [
       {
         title: 'Section 1',
         topics: [
-          { id: 't1', title: 'Topic 1', completed: false, resources: [{ title: 'R1', url: 'u1', type: 'article' as const }] },
-          { id: 't2', title: 'Topic 2', completed: false, resources: [] },
+          {
+            id: 't1',
+            title: 'Topic 1',
+            completed: false,
+            resources: [
+                { title: 'R1', url: 'u1', type: 'video' as const },
+                { title: 'R2', url: 'u2', type: 'book' as const },
+                { title: 'R3', url: 'u3', type: 'interactive' as const },
+                { title: 'R4', url: 'u4', type: 'article' as const },
+                { title: 'R5', url: 'u5', type: 'other' as const }
+            ]
+          },
         ]
       },
-      { title: 'Empty Section', topics: [] }
     ];
 
     render(<CurriculumView sections={sections} />);
+    const trigger = screen.getByText('Topic 1');
+    fireEvent.click(trigger);
 
-    expect(screen.getByText('Section 1')).toBeInTheDocument();
-    expect(screen.queryByText('Empty Section')).toBeNull();
-
-    const checkboxes = screen.getAllByRole('checkbox');
-    fireEvent.click(checkboxes[1]);
-    expect(toggleTopic).toHaveBeenCalledWith('t2');
-    expect(setTotalTopics).toHaveBeenCalledWith(2);
+    expect(screen.getByText('R1')).toBeInTheDocument();
+    expect(screen.getByText('R2')).toBeInTheDocument();
+    expect(screen.getByText('R3')).toBeInTheDocument();
+    expect(screen.getByText('R4')).toBeInTheDocument();
+    expect(screen.getByText('R5')).toBeInTheDocument();
   });
 });

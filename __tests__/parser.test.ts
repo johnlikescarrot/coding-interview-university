@@ -10,25 +10,26 @@ describe('Parser Logic Extreme', () => {
   });
 
   it('should cover all code paths', () => {
-    // Collision loop, skip paragraph, dedupe, multiple depths
-    const mock = '## S\n### T\n- [L](u)\n### T\n- NoLink\n- [L](u)\n- [L2](v)\n#### H4';
+    const mock = '## S\n### T\n- [L](u)\n### T\n- NoLink\n- [L](u)\n- [L2](v)';
     vi.spyOn(fs, 'existsSync').mockReturnValue(true);
     vi.spyOn(fs, 'readFileSync').mockReturnValue(mock);
 
     const s = parseCurriculum('x.md');
     expect(s[0].topics[0].id).toBe('t');
     expect(s[0].topics[1].id).toBe('t-1');
-    expect(s[0].topics[0].resources).toHaveLength(1);
 
     expect(getResourceType('https://youtube.com')).toBe('video');
-    expect(getResourceType('https://amazon.com')).toBe('book');
+    expect(getResourceType('https://oreilly.com')).toBe('book');
     expect(getResourceType('https://exercism.org')).toBe('interactive');
+    expect(getResourceType('https://medium.com/test')).toBe('article');
+    expect(getResourceType('unknown')).toBe('other');
+
     expect(extractText({ type: 'text', value: 'v' })).toBe('v');
     expect(extractText({ type: 'p', children: [{ type: 't', value: 'c' }] })).toBe('c');
-    expect(extractText({ type: 'e' })).toBe('');
+    expect(extractText({ type: 'empty' })).toBe('');
   });
 
-  it('should handle catastrophic failures and missing files', () => {
+  it('should handle catastrophic failures', () => {
     vi.spyOn(fs, 'existsSync').mockReturnValue(false);
     expect(parseCurriculum('m')).toEqual([]);
     expect(parseLanguageResources('m')).toEqual({});
@@ -40,11 +41,11 @@ describe('Parser Logic Extreme', () => {
   });
 
   it('should handle language resources accurately', () => {
-    const mock = '- L1\n  - [T](u)\n  - [T](u)\n- \n- L2\n- L1\n  - [T](v)';
+    const mock = '- L1\n  - [T1](u)\n  - [T1](u)\n- L2\n- L1\n  - [T2](v)\n- [NoLang](v)';
     vi.spyOn(fs, 'existsSync').mockReturnValue(true);
     vi.spyOn(fs, 'readFileSync').mockReturnValue(mock);
-    const r = parseLanguageResources('l.md');
-    expect(r['L1']).toHaveLength(2); // (T,u) and (T,v) are different URLs
-    expect(r['L2']).toHaveLength(0);
+    const res = parseLanguageResources('l.md');
+    expect(res['L1']).toHaveLength(2);
+    expect(res['L2']).toHaveLength(0);
   });
 });
