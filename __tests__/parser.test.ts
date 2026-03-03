@@ -23,7 +23,7 @@ describe('Parser logic (Integration)', () => {
       expect(getResourceType('exercism.org/tracks')).toBe('interactive');
       expect(getResourceType('codewars.com/kata')).toBe('interactive');
       expect(getResourceType('leetcode.com/problems')).toBe('interactive');
-      expect(getResourceType('blog.com/article')).toBe('article');
+      expect(getResourceType('blog.com/article')).toBe('other');
     });
   });
 

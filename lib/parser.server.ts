@@ -23,7 +23,7 @@ export const getResourceType = (url: string): Resource['type'] => {
   if (u.includes('youtube.com') || u.includes('youtu.be') || u.includes('vimeo.com')) return 'video';
   if (u.includes('amazon.com') || u.includes('books.google') || u.includes('oreilly.com')) return 'book';
   if (u.includes('labex.io') || u.includes('exercism.org') || u.includes('codewars.com') || u.includes('leetcode.com')) return 'interactive';
-  return 'article';
+  return 'other';
 };
 
 export function parseCurriculum(filePath: string): Section[] {
@@ -48,7 +48,7 @@ export function parseCurriculum(filePath: string): Section[] {
       const h3Match = trimmed.match(/^(?:-\s+)?###\s+(.*)/);
       const boldListMatch = trimmed.match(/^-\s+\*\*(.*)\*\*/);
 
-      if (h2Match) {
+      if (h2Match && h2Match[1]) {
          const title = h2Match[1].replace(/\[(.*?)\]\(.*?\)/, '$1').replace(/\*+/g, '').trim();
          // Fix: explicitly clear context for excluded sections to prevent link leaking
          if (title.startsWith('[⬆') || title === 'LICENSE' || title === 'Table of Contents' || title.includes('---')) {
@@ -69,7 +69,7 @@ export function parseCurriculum(filePath: string): Section[] {
          usedIds.add(id);
          currentTopic = { id, title: "Overview", completed: false, resources: [] };
          currentSection.topics.push(currentTopic);
-      } else if ((h3Match || boldListMatch) && currentSection) {
+      } else if (currentSection && ((h3Match && h3Match[1]) || (boldListMatch && boldListMatch[1]))) {
          const rawTitle = h3Match ? h3Match[1] : boldListMatch![1];
          const title = rawTitle.replace(/\[(.*?)\]\(.*?\)/, '$1').replace(/\*+/g, '').trim();
 
@@ -89,7 +89,7 @@ export function parseCurriculum(filePath: string): Section[] {
       } else if (currentTopic) {
         // Tightened regex: handles optional angle brackets and requires https? protocol
         const linkMatch = trimmed.match(/\[(.*?)\]\((?:<)?(https?:\/\/[^\s>)]+)(?:>)?\)/i);
-        if (linkMatch) {
+        if (linkMatch && linkMatch[1] && linkMatch[2]) {
            const url = linkMatch[2];
            if (!currentTopic.resources.some(r => r.url === url)) {
              currentTopic.resources.push({
@@ -135,7 +135,7 @@ export function parseLanguageResources(filePath: string): Record<string, Resourc
       // Handle links with potential angle brackets and protocol validation
       const linkMatch = t.match(/\[(.*?)\]\((?:<)?(https?:\/\/[^\s>)]+)(?:>)?\)/i);
 
-      if (linkMatch && currentLang) {
+      if (linkMatch && linkMatch[1] && linkMatch[2] && currentLang) {
         const url = linkMatch[2];
         if (!sections[currentLang].some(r => r.url === url)) {
           sections[currentLang].push({

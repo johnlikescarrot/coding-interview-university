@@ -14,7 +14,7 @@ export function Flashcard({ front, back }: FlashcardProps) {
   const [isFlipped, setIsFlipped] = useState(false)
   const shouldReduceMotion = useReducedMotion()
 
-  const springConfig = { type: "spring", stiffness: 260, damping: 20 }
+  const springConfig = { type: "spring" as const, stiffness: 260, damping: 20 }
   const instantConfig = { duration: 0 }
 
   return (
