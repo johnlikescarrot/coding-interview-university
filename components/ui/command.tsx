@@ -185,5 +185,5 @@ export {
   CommandGroup,
   CommandItem,
   CommandShortcut,
-  CommandSeparator, // Correcting previous alias mismatch if any
+  CommandSeparator,
 }

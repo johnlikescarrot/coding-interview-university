@@ -18,6 +18,10 @@ const slugify = (text: string) =>
     .replace(/\s+/g, '-')
     .replace(/-+/g, '-'); // Consolidate multiple hyphens
 
+const normalizeTitle = (title: string, fallback: string = '') => {
+  return title.replace(/\[(.*?)\]\(.*?\)/, '$1').replace(/\*+/g, '').trim() || fallback;
+};
+
 export const getResourceType = (url: string): Resource['type'] => {
   const u = url.toLowerCase();
   if (u.includes('youtube.com') || u.includes('youtu.be') || u.includes('vimeo.com')) return 'video';
@@ -49,7 +53,7 @@ export function parseCurriculum(filePath: string): Section[] {
       const boldListMatch = trimmed.match(/^-\s+\*\*(.*)\*\*/);
 
       if (h2Match && h2Match[1]) {
-         const title = h2Match[1].replace(/\[(.*?)\]\(.*?\)/, '$1').replace(/\*+/g, '').trim();
+         const title = normalizeTitle(h2Match[1]);
          // Fix: explicitly clear context for excluded sections to prevent link leaking
          if (title.startsWith('[⬆') || title === 'LICENSE' || title === 'Table of Contents' || title.includes('---')) {
             currentSection = null;
@@ -71,7 +75,7 @@ export function parseCurriculum(filePath: string): Section[] {
          currentSection.topics.push(currentTopic);
       } else if (currentSection && ((h3Match && h3Match[1]) || (boldListMatch && boldListMatch[1]))) {
          const rawTitle = h3Match ? h3Match[1] : boldListMatch![1];
-         const title = rawTitle.replace(/\[(.*?)\]\(.*?\)/, '$1').replace(/\*+/g, '').trim();
+         const title = normalizeTitle(rawTitle);
 
          const tMatch = title.trim();
          if (!tMatch || tMatch.startsWith('#')) return;
@@ -93,7 +97,7 @@ export function parseCurriculum(filePath: string): Section[] {
            const url = linkMatch[2];
            if (!currentTopic.resources.some(r => r.url === url)) {
              currentTopic.resources.push({
-               title: linkMatch[1].trim() || url,
+               title: normalizeTitle(linkMatch[1], url),
                url: url,
                type: getResourceType(url)
              });
@@ -139,7 +143,7 @@ export function parseLanguageResources(filePath: string): Record<string, Resourc
         const url = linkMatch[2];
         if (!sections[currentLang].some(r => r.url === url)) {
           sections[currentLang].push({
-            title: linkMatch[1],
+            title: normalizeTitle(linkMatch[1], url),
             url: url,
             type: getResourceType(url)
           });
