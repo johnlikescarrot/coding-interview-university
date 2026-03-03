@@ -9,7 +9,7 @@ import {
 } from "@/components/ui/accordion"
 import { Checkbox } from "@/components/ui/checkbox"
 import { useProgress } from "@/components/progress-provider"
-import { Section } from "@/lib/parser"
+import { Section } from "@/lib/types"
 
 interface CurriculumViewProps {
   sections: Section[]

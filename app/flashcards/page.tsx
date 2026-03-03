@@ -1,4 +1,4 @@
-import { parseCurriculum } from "@/lib/parser";
+import { parseCurriculum } from "@/lib/parser.server";
 import path from "path";
 import { Flashcard } from "@/components/flashcard";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";

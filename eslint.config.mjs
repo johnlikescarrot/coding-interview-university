@@ -1,24 +1,35 @@
-import { dirname } from "path";
-import { fileURLToPath } from "url";
-import { FlatCompat } from "@eslint/eslintrc";
+import js from "@eslint/js";
+import ts from "typescript-eslint";
+import nextPlugin from "@next/eslint-plugin-next";
+import reactPlugin from "eslint-plugin-react";
+import reactHooksPlugin from "eslint-plugin-react-hooks";
 
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = dirname(__filename);
-
-const compat = new FlatCompat({
-  baseDirectory: __dirname,
-});
-
-const eslintConfig = [
-  ...compat.extends("next/core-web-vitals", "next/typescript"),
+export default ts.config(
+  js.configs.recommended,
+  ...ts.configs.recommended,
   {
+    files: ["**/*.{ts,tsx,js,jsx}"],
+    plugins: {
+      "@next/next": nextPlugin,
+      react: reactPlugin,
+      "react-hooks": reactHooksPlugin,
+    },
     rules: {
-      // Disabled to allow parsing of complex Markdown AST nodes without deep type casting
+      ...nextPlugin.configs.recommended.rules,
+      ...nextPlugin.configs["core-web-vitals"].rules,
+      ...reactPlugin.configs.flat.recommended.rules,
+      ...reactPlugin.configs.flat['jsx-runtime'].rules,
+      ...reactHooksPlugin.configs.recommended.rules,
       "@typescript-eslint/no-explicit-any": "off",
-      // Disabled to support raw Markdown content containing entities that are otherwise escaped in JSX
       "react/no-unescaped-entities": "off",
     },
+    settings: {
+      react: {
+        version: "detect",
+      },
+    },
   },
-];
-
-export default eslintConfig;
+  {
+    ignores: [".next/*", "out/*", "node_modules/*"],
+  }
+);

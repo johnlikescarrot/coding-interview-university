@@ -1,108 +1,180 @@
 import { describe, it, expect, vi, beforeEach } from 'vitest';
 import fs from 'fs';
-import { parseCurriculum, parseLanguageResources } from '../lib/parser';
+import { parseCurriculum, parseLanguageResources, getResourceType } from '../lib/parser.server';
+import { flattenTopics } from '../lib/parser';
+import { Section } from '../lib/types';
 
 vi.mock('fs');
 
-describe('Parser logic', () => {
+describe('Parser logic (Integration)', () => {
   beforeEach(() => {
     vi.clearAllMocks();
   });
 
-  it('should return empty array if file does not exist', () => {
-    vi.spyOn(fs, 'existsSync').mockReturnValue(false);
-    const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
-
-    const result = parseCurriculum('nonexistent.md');
-    expect(result).toEqual([]);
-    expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('File not found'));
-
-    consoleSpy.mockRestore();
-  });
-
-  it('should return empty array for content without sections', () => {
-    const mockMd = '# Title\nSome paragraph without sections';
-    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
-    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
-
-    const result = parseCurriculum('dummy.md');
-    expect(result).toEqual([]);
-  });
-
-  it('should parse curriculum sections and topics', () => {
-    const mockMd = '## Section 1\n### Topic 1\n- [Link](url)';
-    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
-    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
-
-    const result = parseCurriculum('dummy.md');
-    expect(result).toHaveLength(1);
-    expect(result[0].title).toBe('Section 1');
-    expect(result[0].topics).toHaveLength(1);
-    expect(result[0].topics[0].title).toBe('Topic 1');
-  });
-
-  it('should handle formatted headings correctly', () => {
-    const mockMd = '## Section **Bold**\n### Topic *Italic*';
-    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
-    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
-
-    const result = parseCurriculum('dummy.md');
-    expect(result[0].title).toBe('Section Bold');
-    expect(result[0].topics[0].title).toBe('Topic Italic');
-  });
-
-  it('should detect resource types correctly and deduplicate', () => {
-    const mockMd = '## Section\n### Topic\n- [Video](https://youtube.com/watch?v=123)\n- [Link](https://youtube.com/watch?v=123)\n- [Book](https://amazon.com/dp/123)\n- [Interactive](https://exercism.org/tracks/python)\n- [Article](https://blog.com/post)';
-    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
-    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
-
-    const result = parseCurriculum('dummy.md');
-    const resources = result[0].topics[0].resources;
-    expect(resources).toHaveLength(4); // Video/Link deduplicated
-    expect(resources[0].type).toBe('video');
-    expect(resources[1].type).toBe('book');
-    expect(resources[2].type).toBe('interactive');
-    expect(resources[3].type).toBe('article');
-  });
-
-  it('should handle ID collisions by appending a counter', () => {
-    const mockMd = '## Section 1\n### Same Title\n- [L1](u1)\n## Section 2\n### Same Title\n- [L2](u2)';
-    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
-    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
-
-    const result = parseCurriculum('dummy.md');
-    expect(result[0].topics[0].id).toBe('same-title');
-    expect(result[1].topics[0].id).toBe('same-title-2');
-  });
-
-  it('should parse language resources correctly and prevent duplicates', () => {
-    const mockMd = '- Python\n  - [Link](http://py.com)\n  - [Link](http://py.com)\n- C++\n  - [Video](https://youtube.com/watch?v=cpp)';
-    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
-    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
-
-    const result = parseLanguageResources('lang.md');
-    expect(result['Python']).toHaveLength(1);
-    expect(result['Python'][0]).toMatchObject({
-      title: 'Link',
-      url: 'http://py.com',
-      type: 'article'
-    });
-    expect(result['C++'][0]).toMatchObject({
-      title: 'Video',
-      url: 'https://youtube.com/watch?v=cpp',
-      type: 'video'
+  describe('getResourceType', () => {
+    it('should identify all types correctly', () => {
+      expect(getResourceType('youtube.com/watch?v=123')).toBe('video');
+      expect(getResourceType('youtu.be/123')).toBe('video');
+      expect(getResourceType('vimeo.com/123')).toBe('video');
+      expect(getResourceType('amazon.com/dp/123')).toBe('book');
+      expect(getResourceType('books.google.com')).toBe('book');
+      expect(getResourceType('oreilly.com/library')).toBe('book');
+      expect(getResourceType('labex.io/tracks')).toBe('interactive');
+      expect(getResourceType('exercism.org/tracks')).toBe('interactive');
+      expect(getResourceType('codewars.com/kata')).toBe('interactive');
+      expect(getResourceType('leetcode.com/problems')).toBe('interactive');
+      expect(getResourceType('blog.com/article')).toBe('article');
     });
   });
 
-  it('should handle non-contiguous language resource blocks', () => {
-    const mockMd = '- Python\n  - [P1](u1)\n- C++\n  - [C1](v1)\n- Python\n  - [P2](u2)';
-    vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
-    vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+  describe('parseCurriculum', () => {
+    it('should return empty array and log warning when file not found', () => {
+      vi.spyOn(fs, 'existsSync').mockReturnValue(false);
+      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
 
-    const result = parseLanguageResources('lang.md');
-    expect(result['Python']).toHaveLength(2);
-    expect(result['Python'][0].title).toBe('P1');
-    expect(result['Python'][1].title).toBe('P2');
-    expect(result['C++']).toHaveLength(1);
+      expect(parseCurriculum('nonexistent.md')).toEqual([]);
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('not found'));
+    });
+
+    it('should return empty array and log error when readFileSync throws', () => {
+      vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+      vi.spyOn(fs, 'readFileSync').mockImplementation(() => { throw new Error('failure'); });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+      expect(parseCurriculum('error.md')).toEqual([]);
+      expect(consoleSpy).toHaveBeenCalled();
+    });
+
+    it('should correctly parse sections, topics, and handle ID collisions (foo, foo-1)', () => {
+      const mockMd = `
+## Section A
+- ### Topic A
+    - [T1](http://u1.com)
+- ### Topic A
+    - [T2](http://u2.com)
+- ### C#
+    - [T3](http://u3.com)
+- ### C#
+    - [T4](http://u4.com)
+- ### Topic With Brackets
+    - [T5](<https://bracketed.com>)
+- ### Topic With Fragment
+    - [T6](https://docs.example.com/page#intro)
+`;
+      vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
+      vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+
+      const result = parseCurriculum('curriculum.md');
+      const topics = result[0].topics;
+
+      expect(topics).toHaveLength(6);
+      expect(topics[0].id).toBe('topic-a');
+      expect(topics[1].id).toBe('topic-a-1');
+      expect(topics[2].title).toBe('C#');
+      expect(topics[2].id).toBe('c');
+      expect(topics[3].id).toBe('c-1');
+      expect(topics[4].resources[0].url).toBe('https://bracketed.com');
+      expect(topics[5].resources[0].url).toBe('https://docs.example.com/page#intro');
+    });
+
+    it('should handle duplicate SECTION titles by appending counters', () => {
+      const mockMd = `
+## Section A
+- [L1](http://u1.com)
+## Section A
+- [L2](http://u2.com)
+`;
+      vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
+      vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+
+      const result = parseCurriculum('sections.md');
+      expect(result).toHaveLength(2);
+      expect(result[0].topics[0].id).toBe('section-a');
+      expect(result[1].topics[0].id).toBe('section-a-1');
+    });
+
+    it('should exclude Table of Contents and other boilerplate headers', () => {
+      const mockMd = `
+## Table of Contents
+## LICENSE
+## ---
+## Section Valid
+- [L](http://u.com)
+`;
+      vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
+      vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+
+      const result = parseCurriculum('excluded.md');
+      expect(result).toHaveLength(1);
+      expect(result[0].title).toBe('Section Valid');
+    });
+
+    it('should handle Unicode titles for slugification', () => {
+      const mockMd = "## 数据结构\n- [Link](http://u1.com)";
+      vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
+      vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+
+      const result = parseCurriculum('unicode.md');
+      expect(result[0].topics[0].id).toBe('数据结构');
+    });
+  });
+
+  describe('parseLanguageResources', () => {
+    it('should return {} and log warning when file not found', () => {
+      vi.spyOn(fs, 'existsSync').mockReturnValue(false);
+      const consoleSpy = vi.spyOn(console, 'warn').mockImplementation(() => {});
+
+      expect(parseLanguageResources('n.md')).toEqual({});
+      expect(consoleSpy).toHaveBeenCalledWith(expect.stringContaining('not found'));
+    });
+
+    it('should return {} and log error when readFileSync throws', () => {
+      vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+      vi.spyOn(fs, 'readFileSync').mockImplementation(() => { throw new Error('failure'); });
+      const consoleSpy = vi.spyOn(console, 'error').mockImplementation(() => {});
+
+      expect(parseLanguageResources('e.md')).toEqual({});
+      expect(consoleSpy).toHaveBeenCalled();
+    });
+
+    it('should handle links, angle brackets, and non-indented headers', () => {
+      const mockMd = `
+- Python
+  - [Safe](https://python.org)
+  - [Bracketed](<https://python.org/libs>)
+  - [Malicious](javascript:alert(1))
+  - Indented bullet which is NOT a language:
+    - [Nested](https://nested.com)
+- JavaScript
+  - [L1](http://js.org)
+`;
+      vi.spyOn(fs, 'readFileSync').mockReturnValue(mockMd);
+      vi.spyOn(fs, 'existsSync').mockReturnValue(true);
+
+      const result = parseLanguageResources('lang.md');
+      expect(result['Python']).toHaveLength(3);
+      expect(result['Python'][1].url).toBe('https://python.org/libs');
+      expect(result['Indented bullet which is NOT a language:']).toBeUndefined();
+      expect(result['JavaScript']).toBeDefined();
+    });
+  });
+
+  describe('flattenTopics', () => {
+    it('should correctly flatten sections into topics', () => {
+      const sections: Section[] = [
+        {
+          title: 'S1',
+          topics: [
+            { title: 'T1', id: 't1', completed: false, resources: [] },
+            { title: 'T2', id: 't2', completed: false, resources: [] }
+          ]
+        }
+      ];
+      const flattened = flattenTopics(sections);
+      expect(flattened).toEqual([
+        { title: 'T1', id: 't1', section: 'S1' },
+        { title: 'T2', id: 't2', section: 'S1' }
+      ]);
+    });
   });
 });
