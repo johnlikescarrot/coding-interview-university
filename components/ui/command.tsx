@@ -14,13 +14,15 @@ import {
   DialogTitle,
 } from "@/components/ui/dialog"
 
+export interface CommandProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive> {
+  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive>>
+}
+
 const Command = ({
   className,
   ref,
   ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive> & {
-  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive>>
-}) => (
+}: CommandProps) => (
   <CommandPrimitive
     ref={ref}
     className={cn(
@@ -58,13 +60,15 @@ function CommandDialog({
   )
 }
 
+export interface CommandInputProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> {
+  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.Input>>
+}
+
 const CommandInput = ({
   className,
   ref,
   ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Input> & {
-  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.Input>>
-}) => (
+}: CommandInputProps) => (
   <div className="flex items-center border-b px-3" cmdk-input-wrapper="">
     <Search className="mr-2 h-4 w-4 shrink-0 opacity-50" />
     <CommandPrimitive.Input
@@ -79,13 +83,15 @@ const CommandInput = ({
 )
 CommandInput.displayName = "CommandInput"
 
+export interface CommandListProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.List> {
+  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.List>>
+}
+
 const CommandList = ({
   className,
   ref,
   ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.List> & {
-  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.List>>
-}) => (
+}: CommandListProps) => (
   <CommandPrimitive.List
     ref={ref}
     className={cn("max-h-[300px] overflow-y-auto overflow-x-hidden", className)}
@@ -94,13 +100,15 @@ const CommandList = ({
 )
 CommandList.displayName = "CommandList"
 
+export interface CommandEmptyProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty> {
+  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.Empty>>
+}
+
 const CommandEmpty = ({
   className,
   ref,
   ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Empty> & {
-  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.Empty>>
-}) => (
+}: CommandEmptyProps) => (
   <CommandPrimitive.Empty
     ref={ref}
     className={cn("py-6 text-center text-sm", className)}
@@ -109,13 +117,15 @@ const CommandEmpty = ({
 )
 CommandEmpty.displayName = "CommandEmpty"
 
+export interface CommandGroupProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group> {
+  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.Group>>
+}
+
 const CommandGroup = ({
   className,
   ref,
   ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Group> & {
-  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.Group>>
-}) => (
+}: CommandGroupProps) => (
   <CommandPrimitive.Group
     ref={ref}
     className={cn(
@@ -127,13 +137,15 @@ const CommandGroup = ({
 )
 CommandGroup.displayName = "CommandGroup"
 
+export interface CommandSeparatorProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator> {
+  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.Separator>>
+}
+
 const CommandSeparator = ({
   className,
   ref,
   ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Separator> & {
-  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.Separator>>
-}) => (
+}: CommandSeparatorProps) => (
   <CommandPrimitive.Separator
     ref={ref}
     className={cn("-mx-1 h-px bg-border", className)}
@@ -142,13 +154,15 @@ const CommandSeparator = ({
 )
 CommandSeparator.displayName = "CommandSeparator"
 
+export interface CommandItemProps extends React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item> {
+  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.Item>>
+}
+
 const CommandItem = ({
   className,
   ref,
   ...props
-}: React.ComponentPropsWithoutRef<typeof CommandPrimitive.Item> & {
-  ref?: React.Ref<React.ElementRef<typeof CommandPrimitive.Item>>
-}) => (
+}: CommandItemProps) => (
   <CommandPrimitive.Item
     ref={ref}
     className={cn(
