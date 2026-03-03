@@ -5,6 +5,7 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { Sidebar } from "@/components/sidebar";
 import { Header } from "@/components/header";
 import { ProgressProvider } from "@/components/progress-provider";
+import { PageTransition } from "@/components/page-transition";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -37,7 +38,9 @@ export default function RootLayout({
                 <Header />
                 <main className="flex-1 overflow-y-auto p-6 md:p-10 scroll-smooth">
                   <div className="max-w-7xl mx-auto w-full relative">
-                    {children}
+                    <PageTransition>
+                        {children}
+                    </PageTransition>
                   </div>
                 </main>
                 {/* Background Decor */}

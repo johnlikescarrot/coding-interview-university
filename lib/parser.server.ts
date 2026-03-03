@@ -23,7 +23,7 @@ export const getResourceType = (url: string): Resource['type'] => {
   if (u.includes('youtube.com') || u.includes('youtu.be') || u.includes('vimeo.com')) return 'video';
   if (u.includes('amazon.com') || u.includes('books.google') || u.includes('oreilly.com')) return 'book';
   if (u.includes('labex.io') || u.includes('exercism.org') || u.includes('codewars.com') || u.includes('leetcode.com')) return 'interactive';
-  return 'article';
+  return 'other';
 };
 
 export function parseCurriculum(filePath: string): Section[] {

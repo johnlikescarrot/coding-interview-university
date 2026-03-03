@@ -51,65 +51,65 @@
 
 @layer base {
   :root {
-    --background: oklch(0.99 0.005 270);
-    --foreground: oklch(0.15 0.02 270);
+    --background: oklch(0.99 0.002 260);
+    --foreground: oklch(0.12 0.02 260);
 
     --card: oklch(1 0 0);
-    --card-foreground: oklch(0.15 0.02 270);
+    --card-foreground: oklch(0.12 0.02 260);
 
     --popover: oklch(1 0 0);
-    --popover-foreground: oklch(0.15 0.02 270);
+    --popover-foreground: oklch(0.12 0.02 260);
 
-    --primary: oklch(0.55 0.22 260); /* Transcendent Indigo */
+    --primary: oklch(0.6 0.18 260); /* Deep Electric Indigo */
     --primary-foreground: oklch(0.99 0 0);
 
-    --secondary: oklch(0.94 0.03 260);
-    --secondary-foreground: oklch(0.25 0.1 260);
+    --secondary: oklch(0.96 0.01 260);
+    --secondary-foreground: oklch(0.3 0.05 260);
 
-    --muted: oklch(0.94 0.02 270);
-    --muted-foreground: oklch(0.45 0.05 270);
+    --muted: oklch(0.95 0.01 260);
+    --muted-foreground: oklch(0.45 0.04 260);
 
-    --accent: oklch(0.85 0.15 190); /* Energetic Cyan */
-    --accent-foreground: oklch(0.2 0.05 190);
+    --accent: oklch(0.7 0.14 190); /* Pure Electric Cyan */
+    --accent-foreground: oklch(0.15 0.03 190);
 
-    --destructive: oklch(0.6 0.18 25);
+    --destructive: oklch(0.55 0.18 25);
     --destructive-foreground: oklch(0.99 0 0);
 
-    --border: oklch(0.9 0.02 270);
-    --input: oklch(0.9 0.02 270);
-    --ring: oklch(0.55 0.22 260);
+    --border: oklch(0.92 0.01 260);
+    --input: oklch(0.92 0.01 260);
+    --ring: oklch(0.6 0.18 260);
 
-    --radius: 0.75rem;
+    --radius: 1rem;
   }
 
   .dark {
-    --background: oklch(0.12 0.03 270); /* Deep Void */
-    --foreground: oklch(0.95 0.02 270);
+    --background: oklch(0.1 0.02 260); /* Void Black */
+    --foreground: oklch(0.96 0.01 260);
 
-    --card: oklch(0.16 0.04 270);
-    --card-foreground: oklch(0.95 0.02 270);
+    --card: oklch(0.14 0.03 260);
+    --card-foreground: oklch(0.96 0.01 260);
 
-    --popover: oklch(0.14 0.04 270);
-    --popover-foreground: oklch(0.95 0.02 270);
+    --popover: oklch(0.12 0.03 260);
+    --popover-foreground: oklch(0.96 0.01 260);
 
-    --primary: oklch(0.65 0.2 260); /* Glowing Indigo */
-    --primary-foreground: oklch(0.1 0.02 270);
+    --primary: oklch(0.7 0.15 260); /* Glowing Indigo */
+    --primary-foreground: oklch(0.05 0.01 260);
 
-    --secondary: oklch(0.22 0.06 260);
-    --secondary-foreground: oklch(0.9 0.05 260);
+    --secondary: oklch(0.18 0.04 260);
+    --secondary-foreground: oklch(0.9 0.02 260);
 
-    --muted: oklch(0.2 0.04 270);
-    --muted-foreground: oklch(0.7 0.03 270);
+    --muted: oklch(0.18 0.03 260);
+    --muted-foreground: oklch(0.65 0.02 260);
 
-    --accent: oklch(0.75 0.18 190); /* Glowing Cyan */
-    --accent-foreground: oklch(0.1 0.05 190);
+    --accent: oklch(0.75 0.16 190); /* Glowing Cyan */
+    --accent-foreground: oklch(0.1 0.02 190);
 
     --destructive: oklch(0.45 0.15 25);
-    --destructive-foreground: oklch(0.95 0 0);
+    --destructive-foreground: oklch(0.96 0 0);
 
-    --border: oklch(0.25 0.04 270);
-    --input: oklch(0.25 0.04 270);
-    --ring: oklch(0.65 0.2 260);
+    --border: oklch(0.22 0.04 260);
+    --input: oklch(0.22 0.04 260);
+    --ring: oklch(0.7 0.15 260);
   }
 }
 
@@ -118,7 +118,7 @@
     @apply border-border outline-ring/50;
   }
   body {
-    @apply bg-background text-foreground font-sans antialiased;
+    @apply bg-background text-foreground font-sans antialiased selection:bg-primary/20 selection:text-primary transition-colors duration-500;
   }
 }
 
@@ -133,13 +133,19 @@
     backface-visibility: hidden;
   }
 
-  /* Modern Glassmorphism Utility */
   .glass {
-    @apply bg-background/60 backdrop-blur-md border-white/10 dark:border-white/5;
+    @apply bg-background/40 backdrop-blur-xl border-white/5 dark:border-white/2;
   }
 
-  /* Transcendent Gradient Utility */
   .text-gradient {
-    @apply bg-clip-text text-transparent bg-linear-to-r from-primary to-accent;
+    @apply bg-clip-text text-transparent bg-linear-to-br from-primary via-primary/80 to-accent;
+  }
+
+  .glow-sm {
+    filter: drop-shadow(0 0 5px oklch(var(--primary) / 0.2));
+  }
+
+  .glow-md {
+    filter: drop-shadow(0 0 15px oklch(var(--primary) / 0.3));
   }
 }

@@ -1,7 +1,7 @@
 export interface Resource {
   title: string;
   url: string;
-  type: 'video' | 'article' | 'book' | 'interactive';
+  type: 'video' | 'article' | 'book' | 'interactive' | 'other';
 }
 
 export interface Topic {
