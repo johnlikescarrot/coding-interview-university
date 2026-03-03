@@ -6,6 +6,7 @@ import { Sidebar } from "@/components/sidebar";
 import { Header } from "@/components/header";
 import { ProgressProvider } from "@/components/progress-provider";
 import { PageTransition } from "@/components/page-transition";
+import { MotionConfig } from "framer-motion";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -32,21 +33,23 @@ export default function RootLayout({
             enableSystem
             disableTransitionOnChange
           >
-            <div className="flex h-screen overflow-hidden">
-              <Sidebar />
-              <div className="flex flex-col flex-1 overflow-hidden relative">
-                <Header />
-                <main className="flex-1 overflow-y-auto p-6 md:p-10 scroll-smooth">
-                  <div className="max-w-7xl mx-auto w-full relative">
-                    <PageTransition>
+            <MotionConfig reducedMotion="user">
+              <div className="flex h-screen overflow-hidden">
+                <Sidebar />
+                <div className="flex flex-col flex-1 overflow-hidden relative">
+                  <Header />
+                  <main className="flex-1 overflow-y-auto p-6 md:p-10 scroll-smooth">
+                    <div className="max-w-7xl mx-auto w-full relative">
+                      <PageTransition>
                         {children}
-                    </PageTransition>
-                  </div>
-                </main>
-                {/* Background Decor */}
-                <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] bg-primary/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+                      </PageTransition>
+                    </div>
+                  </main>
+                  {/* Background Decor */}
+                  <div className="absolute top-0 right-0 -z-10 h-[500px] w-[500px] bg-primary/5 blur-[120px] rounded-full translate-x-1/2 -translate-y-1/2 pointer-events-none" />
+                </div>
               </div>
-            </div>
+            </MotionConfig>
           </ThemeProvider>
         </ProgressProvider>
       </body>

@@ -23,6 +23,18 @@ export const getResourceType = (url: string): Resource['type'] => {
   if (u.includes('youtube.com') || u.includes('youtu.be') || u.includes('vimeo.com')) return 'video';
   if (u.includes('amazon.com') || u.includes('books.google') || u.includes('oreilly.com')) return 'book';
   if (u.includes('labex.io') || u.includes('exercism.org') || u.includes('codewars.com') || u.includes('leetcode.com')) return 'interactive';
+
+  // Article detection for common blog platforms and patterns
+  if (
+    u.includes('medium.com') ||
+    u.includes('dev.to') ||
+    u.includes('substack.com') ||
+    u.includes('hashnode.com') ||
+    u.includes('blog.') ||
+    u.includes('/blog/') ||
+    u.includes('/article/')
+  ) return 'article';
+
   return 'other';
 };
 

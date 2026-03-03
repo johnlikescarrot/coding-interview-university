@@ -142,10 +142,10 @@
   }
 
   .glow-sm {
-    filter: drop-shadow(0 0 5px oklch(var(--primary) / 0.2));
+    filter: drop-shadow(0 0 5px oklch(from var(--primary) l c h / 0.2));
   }
 
   .glow-md {
-    filter: drop-shadow(0 0 15px oklch(var(--primary) / 0.3));
+    filter: drop-shadow(0 0 15px oklch(from var(--primary) l c h / 0.3));
   }
 }

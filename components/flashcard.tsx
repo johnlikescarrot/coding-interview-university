@@ -41,8 +41,8 @@ export function Flashcard({ front, back }: FlashcardProps) {
           <Card
             aria-hidden={isFlipped}
             className={cn(
-              "absolute inset-0 backface-hidden flex flex-col items-center justify-center p-10 text-center border-2 border-primary/20 transition-all duration-500 bg-card/80 backdrop-blur-sm group-hover:border-primary/40 rounded-2xl shadow-xl",
-              isFlipped ? "pointer-events-none opacity-0" : "opacity-100"
+              "absolute inset-0 backface-hidden flex flex-col items-center justify-center p-10 text-center border-2 border-primary/20 transition-colors duration-300 bg-card/80 backdrop-blur-sm group-hover:border-primary/40 rounded-2xl shadow-xl",
+              isFlipped && "pointer-events-none"
             )}
           >
             <CardContent className="p-0 space-y-4">
@@ -62,17 +62,21 @@ export function Flashcard({ front, back }: FlashcardProps) {
           <Card
             aria-hidden={!isFlipped}
             className={cn(
-              "absolute inset-0 backface-hidden flex items-center justify-center p-10 text-center border-2 border-primary bg-primary/[0.05] [transform:rotateY(180deg)] transition-all duration-500 backdrop-blur-md rounded-2xl shadow-2xl shadow-primary/10",
-              !isFlipped ? "pointer-events-none opacity-0" : "opacity-100"
+              "absolute inset-0 backface-hidden flex items-center justify-center p-10 text-center border-2 border-primary bg-primary/[0.05] [transform:rotateY(180deg)] transition-colors duration-300 backdrop-blur-md rounded-2xl shadow-2xl shadow-primary/10",
+              !isFlipped && "pointer-events-none"
             )}
           >
             <CardContent className="p-0">
               <AnimatePresence mode="wait">
                 {isFlipped && (
                   <motion.div
-                    initial={{ opacity: 0, scale: 0.9, filter: "blur(10px)" }}
+                    initial={
+                      shouldReduceMotion
+                        ? { opacity: 1, scale: 1, filter: "blur(0px)" }
+                        : { opacity: 0, scale: 0.9, filter: "blur(10px)" }
+                    }
                     animate={{ opacity: 1, scale: 1, filter: "blur(0px)" }}
-                    transition={{ delay: 0.2, duration: 0.4 }}
+                    transition={shouldReduceMotion ? { duration: 0 } : { delay: 0.2, duration: 0.4 }}
                   >
                     <p className="text-lg font-bold leading-relaxed text-foreground/90">
                       {back}
